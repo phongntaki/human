@@ -1,0 +1,7 @@
+#home_login:hover #home_logout{
+	display: block;
+}
+
+#home_logout{
+	display: none;
+}
