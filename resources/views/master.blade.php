@@ -116,16 +116,16 @@
                             </ul>  
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-address-card-o fa-fw"></i> Bạn đọc<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-address-card-o fa-fw"></i> Ứng viên<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{!! url('/admin/customers/listgr')!!}"><i class="fa fa-tags fa-fw"></i> Nhóm</a>
                                 </li>
                                 <li>
-                                    <a href="{!! url('/admin/customers/list')!!}"><i class="fa  fa-address-book fa-fw"></i> Người đọc</a>
+                                    <a href="{!! url('/admin/customers/list')!!}"><i class="fa  fa-address-book fa-fw"></i> Ứng viên</a>
                                 </li>
                                 <li>
-                                    <a href="{!! url('/admin/customers/feedback')!!}"><i class="fa  fa-comment fa-fw"></i> Ý kiến bạn đọc</a>
+                                    <a href="{!! url('/admin/customers/feedback')!!}"><i class="fa  fa-comment fa-fw"></i> Ý kiến ứng viên</a>
                                 </li>
                             </ul>
                         </li>

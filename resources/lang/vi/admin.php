@@ -192,7 +192,11 @@ return [
 "listproduct"=>"List SP",
 "action"=>"Thao tác",
 "date_order_at"=>"Ngày đặt hàng",
- 
+
+"education"=>"Giáo dục",
+"introduce"=>"Giới thiệu bản thân",
+"desire"=>"Mong muốn",
+"candidate"=>"Ứng viên",
 ];
 
 ?>

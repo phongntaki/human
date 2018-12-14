@@ -1,0 +1,26 @@
+.w50{
+	width: 50%;
+}
+
+.w20{
+	width: 20%;
+}
+
+.flex{
+	display: flex;
+}
+.flex-direction-row{
+	flex-direction: row;
+}
+.flex-wrap-nowrap{
+	flex-wrap: nowrap;
+}
+.justify-content-spacebetween{
+	justify-content: space-between;
+}
+.align-item-center{
+	align-items: center;
+}
+.align-content-stretch{
+	align-content: stretch;
+}

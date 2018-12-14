@@ -16,53 +16,81 @@
 					<div class="col-lg-8" style="padding-bottom:70px"> 
 		              	<input type="hidden" name="_token" value="{{csrf_token()}}">
 		                <fieldset>
-		                  <div class="form-group">
-		                    <label class="control-label">Tên</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Giới tính</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Ngày sinh</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Số điện thoạiz</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Địa chỉ</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Mail</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Trình độ</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Ngoại ngữ</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Học vấn(Cấp cao nhất)</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Giới thiệu bản thân, kinh nghiệm làm việc</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Mong muốn</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <br>
-		                  <br>
-		                  <button type="submit" class="btn btn-orange">Login</button>
+		                  	<div class="form-group">
+			                    <label class="control-label">Tên</label>
+			                    <input class="form-control" name="name" placeholder=" " value="" />
+		                  	</div>
+		                  	<div class="form-group">
+			                    <label class="control-label">Giới tính</label>
+			                    <div class="col-xs-12 col-md-12">
+			                        <div class="form-group">
+			                            <div class="col-xs-12 col-md-12">
+			                                <label class="radio-inline">
+			                                    <input type="radio" name="sex" value="0" > Nam
+			                                </label>
+			                                <label class="radio-inline">
+			                                    <input type="radio" name="sex" value="1" checked> Nữ
+			                                </label>                           
+			                            </div>                    
+			                        </div>
+			                    </div>
+		                  	</div>
+		                  	<div class="form-group">
+			                    <label class="control-label">Ngày sinh</label>
+			                    <input class="form-control" name="birthday" type="date" />
+		                  	</div>
+		                  	<div class="form-group">
+			                    <label class="control-label">Số điện thoại</label>
+			                    <input class="form-control" name="phone" placeholder=" " value="" />
+		                  	</div>
+		                  	<div class="form-group">
+			                    <label class="control-label">Địa chỉ</label>
+			                    <input class="form-control" name="address" placeholder=" " value="" />
+		                  	</div>
+		                  	<div class="form-group">
+		                    	<label class="control-label">Học vấn(Cấp cao nhất)</label>
+			                    <select class="form-control" name="nnmodnews" id="nn-mod-news" required>
+	                                <option value="">---Vui Lòng Chọn Học Vấn---</option>
+	                                <option value="1"> Cấp 3 </option>
+	                                <option value="2"> Cao Đẳng </option>
+	                                <option value="3"> Đại học </option>
+	                                <option value="4"> Thạc sĩ </option>
+	                            </select>
+		                  	</div>
+		                  	<div class="form-group">
+		                    	<label class="control-label">Tiếng Nhật</label>
+		                    	<select class="form-control w50" name="nnmodnews" id="nn-mod-news" required>
+	                                <option value="">---Vui Lòng Chọn Cấp độ---</option>
+	                                <option value="1"> N1 </option>
+	                                <option value="2"> N2 </option>
+	                                <option value="3"> N3 </option>
+	                                <option value="4"> N4 </option>
+	                                <option value="5"> N5 </option>
+                            	</select>
+			                    <div>
+			                    	<label class="control-label">Ngoại Ngữ Khác</label>
+			                    	<input class="form-control" name="name" placeholder="Toeic 500" value="" />
+			                    </div>
+			                    <div class="form-group">
+				                    <label class="control-label">Ngoại Ngữ Khác</label>
+				                    <input class="form-control" name="mail" placeholder=" " value="" />
+			                  	</div>
+		                  	</div>
+		                  	<div class="form-group">
+			                    <label class="control-label">Giới thiệu bản thân, kinh nghiệm làm việc</label>
+			                    <div class="col-sx-12">
+		                          <textarea name="nntomtatnew" class="form-control" rows="4">{!! old('nntomtatnew') !!}</textarea>
+		                        </div>
+		                  	</div>
+		                  	<div class="form-group">
+			                    <label class="control-label">Mong muốn</label>
+			                    <div class="col-sx-12">
+		                          <textarea name="nntomtatnew" class="form-control" rows="4">{!! old('nntomtatnew') !!}</textarea>
+		                        </div>
+		                  	</div>
+		                  	<br>
+		                  	<br>
+		                  	<button type="submit" class="btn btn-orange">Update</button>
 		                </fieldset>
 	            	</div>
               	</form>

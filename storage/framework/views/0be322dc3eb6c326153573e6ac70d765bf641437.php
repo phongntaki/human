@@ -1,6 +1,5 @@
-@extends('master')
-@section('title','workflow management - Feedback')
-@section('content')
+<?php $__env->startSection('title','workflow management - Feedback'); ?>
+<?php $__env->startSection('content'); ?>
 <div id="page-wrapper">
 	<div class="row">
         <div class="col-lg-12">
@@ -13,16 +12,18 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                @if(session('thongbao'))
+                <?php if(session('thongbao')): ?>
                     <div class="alert-tb alert alert-success">
-                        <span class="fa fa-check"> </span> {{ session('thongbao') }}
+                        <span class="fa fa-check"> </span> <?php echo e(session('thongbao')); ?>
+
                     </div>
-                @endif
-                @if(session('loi'))
+                <?php endif; ?>
+                <?php if(session('loi')): ?>
                     <div class="alert-tb alert alert-danger">
-                        <span class="fa fa-check"> </span> {{ session('loi') }}
+                        <span class="fa fa-check"> </span> <?php echo e(session('loi')); ?>
+
                     </div>
-                @endif
+                <?php endif; ?>
                     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-customer">
                         <thead>
                             <tr>
@@ -34,18 +35,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($feedback as $fb)
+                            <?php $__currentLoopData = $feedback; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $fb): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr class="odd gradeX">
-                                <td>{{ $fb->name }}</td>
-                                <td>{{ $fb->email }}</td>
-                                <td>{!! str_limit($fb->content, $limit = 100, $end = '...') !!}</td>
-                                <td>{{ $fb->created_at }}</td>
-                                <td editid="{{ $fb->id }}" content="{{ $fb->content }}" name="{{ $fb->name }}" mail="{{ $fb->email }}" date="{{ $fb->created_at }}">
+                                <td><?php echo e($fb->name); ?></td>
+                                <td><?php echo e($fb->email); ?></td>
+                                <td><?php echo str_limit($fb->content, $limit = 100, $end = '...'); ?></td>
+                                <td><?php echo e($fb->created_at); ?></td>
+                                <td editid="<?php echo e($fb->id); ?>" content="<?php echo e($fb->content); ?>" name="<?php echo e($fb->name); ?>" mail="<?php echo e($fb->email); ?>" date="<?php echo e($fb->created_at); ?>">
                                     <span class="btn btn-default view_feedback"><i class="fa fa-calendar"></i> Chi tiết</span>
                                     <span class="btn btn-danger nndremovecus"><i class="fa fa-trash"></i> Xóa</span>
                                 </td>
                             </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                     <!-- /.table-responsive -->
@@ -88,7 +89,7 @@
           </div>
           <form class="form-horizontal" method="post" action="feedback/delete" enctype="multipart/form-data">
           <input type="hidden" name="dennidCustomer" id="dennidCustomer" /> 
-          <input type="hidden" name="_token" value="{{ csrf_token()}}" />
+          <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
           <div class="modal-body">
             <div class="row">
                 <h4 class="nnbodydelete">Bạn có chắc xóa Customer <i id="deletename"></i></h4>
@@ -104,7 +105,8 @@
     </div>
 </div>
     <!-- end modal -->
-@endsection()
-@section('script')
-  <script src="{{ asset('public/js/admin/feedback.js') }}"></script>
-@endsection()
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
+  <script src="<?php echo e(asset('public/js/admin/feedback.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
