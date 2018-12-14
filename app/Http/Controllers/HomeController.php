@@ -777,9 +777,9 @@ class HomeController extends Controller {
         
         
         $checkLogin = Customers::where("cusemail",'=',$email)->where("cuspass",'=',$password)->first();
-        // echo "<pre>";
-        // echo $checkLogin;
-        // echo "</pre>";
+        echo "<pre>";
+        echo $checkLogin;
+        echo "</pre>";
         if($checkLogin!=null){
             echo "<script type='text/javascript'>alert('$email');</script>";
             Session::put('logined_cus', 1);
@@ -860,7 +860,7 @@ class HomeController extends Controller {
         ]);
         $fullname      = $request->input('fullname');
         $email      = $request->input('email');
-        $password   = sha1($request->input('pass'));
+        $password   = sha1($request->input('password'));
 
         
 
@@ -874,6 +874,13 @@ class HomeController extends Controller {
         $cus->cusimg = "";
         $cus->status = 1;
         $cus->cusaddress = "";
+        $cus->sex = "0";
+        $cus->birthday = null;
+        $cus->education = null;
+        $cus->language_jp = null;
+        $cus->language_other = null;
+        $cus->introduce = null;
+        $cus->desire = null;
         $cus->cusface = "";
         $cus->cuspass = $password;
         $cus->idloginsocial = "";
@@ -1379,22 +1386,14 @@ class HomeController extends Controller {
         return view('home.content_news_ajax_list',compact('listnews_cat','listnew'));
     }
 
-    public function lien_he(){
-        // echo "<pre>";
-        // echo "dsa";
-        // echo "</pre>";
-        // echo "<script type='text/javascript'>alert('zz');</script>";
-        if(Session::get('logined_cusid') == 1){
-            // echo "<script type='text/javascript'>alert('zz11111');</script>";
-            $public_var = $this->public_var();
-            return view('home.lienhe',array_merge($public_var, [ ]) );
-        } else{
-            // echo "<script type='text/javascript'>alert('zz22222');</script>";
-            return redirect()->route('login')->with(['flash_level'=>'success','flash_message'=>'Login Fail']);
-        }
-        // $public_var = $this->public_var();
-        // return view('home.lienhe',array_merge($public_var, [ ]) );
-    }
+    // public function lien_he(){
+    //     if(Session::get('logined_cus') == 1){
+    //         $public_var = $this->public_var();
+    //         return view('home.lienhe',array_merge($public_var, [ ]) );
+    //     } else{
+    //         return redirect()->route('login')->with(['flash_level'=>'success','flash_message'=>'Login Fail']);
+    //     }
+    // }
 
     public function gioi_thieu(){
         $public_var = $this->public_var();
@@ -1408,5 +1407,46 @@ class HomeController extends Controller {
         $public_var = $this->public_var();
         return view('home.linhvuc',array_merge($public_var, [ ]) );
     }
+    public function my_profile(){
+        if(Session::get('logined_cus') == 1){
+            $cusEmail = Session::get('logined_cusemail');
+            $cus_data = Customers::where("cusemail",'=',$cusEmail)->first();
+            // echo '<pre>';
+        // echo $cusId;
+        // echo '<br>';
+        // echo $cusId->id;
+        // echo '</pre>';
+            $public_var = $this->public_var();
+            return view('home.myprofile',array_merge($public_var, [ ]), compact('cus_data'));
+        } else{
+            // echo "<script type='text/javascript'>alert('zz22222');</script>";
+            return redirect()->route('login')->with(['flash_level'=>'success','flash_message'=>'Login Fail']);
+        }
+    }
 
+    public function post_my_profile(Request $request){
+        $cus_data = Customers::where("cusemail",'=',Session::get('logined_cusemail'))->first();
+        $cus_data->cusfullname = $request->txtname;
+        $cus_data->sex = $request->sex;
+        $cus_data->birthday = $request->birthday;
+        $cus_data->cusphone = $request->phone;
+        $cus_data->cusaddress = $request->address;
+        $cus_data->education = $request->nnHocVan;
+        $cus_data->language_jp = $request->nnLanguageJP;
+        $cus_data->language_other = $request->nnLanguageOther;
+        $cus_data->introduce = $request->nnIntroduce;
+        $cus_data->desire = $request->nnDesire;
+
+        $cus_data->idgroup = "1";
+        $cus_data->cusemail = Session::get('logined_cusemail');
+        $cus_data->cusimg = "";
+        $cus_data->status = "1";
+
+        $cus_data->save();
+        Session::put('logined_cusfullname', $request->txtname);
+        Session::put('logined_cusphone', $request->phone);
+        Session::put('logined_cusaddress', $request->address);
+        return redirect('gioi-thieu')->with('thongbao','Update Success');
+
+    }
 }

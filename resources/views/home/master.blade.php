@@ -35,6 +35,7 @@
 		<link type="text/css" rel="stylesheet" href="{{url('public/home/css/mystyle.css')}}" />
 		<link type="text/css" rel="stylesheet" href="{{url('public/home/css/demo-settings.css')}}" />
 		<link type="text/css" rel="stylesheet" href="{{url('public/home/css/style.css')}}" />
+		<link type="text/css" rel="stylesheet" href="{{url('public/home/css/lienhe.css')}}" />
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!-- Đặt thẻ này vào phần đầu hoặc ngay trước thẻ đóng phần nội dung của bạn. -->
@@ -77,10 +78,11 @@
 							<ul>
 								<!-- <li><a href="#" target="_blank" class="hover-color-facebook"><i class="fa fa-facebook"></i></a></li> -->
 								<!-- <li><a href="{{ url('/login') }}" target="_blank" class="hover-color-twitter">Login</a></li> -->
-								@if(Session::get('logined_cusid') == 1)
+								@if (Session::get('logined_cus') == 1)
                                 <li id="home_login" class="dropdown hover"><a class="myaccount" href="">Hi {{Session::get('logined_cusfullname')}}</a>
                                     <ul id="home_logout" class="dropdown-menu">
-                                        <li><a href="{{ url('logout') }}" style="color: red">Logout</a></li>
+                                    	<li><a href="{{ url('my-profile') }}">My profile setting</a></li>
+                                        <li><a href="{{ url('logout') }}">Logout</a></li>
                                     </ul>
                                 </li>
                                 @else

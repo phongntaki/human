@@ -542,7 +542,7 @@ class CustomerController extends Controller
         $customer->status = $request->ennhide;
         $customer->cusaddress = $request->ennaddcus;
         $customer->cusface = $request->ennfacebook;
-        $customer->cuspass = "nguyennam.90st";
+        $customer->cuspass = "phongst";
         if($request->hasFile('ennavatarfile')){
             $file = $request->file('ennavatarfile');
             $nameimg = $file->getClientOriginalName(); 
