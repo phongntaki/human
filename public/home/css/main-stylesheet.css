@@ -20,15 +20,22 @@
 
 Reseting styles for individual theme
 -------------------------------------------------------------------*/
+html {
+    font-size: 62.5%;
+}
 
 body {
-    font-size: 13px;
+    font-size: 1.4rem;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    font-weight: 400;
     margin: 0;
     padding: 0;
-    color: #8b8b8b;
+    color: #333;
     overflow-x: hidden;
+}
+
+*, *::before, *::after {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 
 a {
@@ -39,18 +46,15 @@ a {
     -webkit-transition: all 0.2s;
     -o-transition: all 0.2s;
 }
-
 a:hover {
     color: #eb6435;
     text-decoration: none;
 }
-
 a:focus {
     outline: 0;
     color: inherit;
     text-decoration: none;
 }
-
 a:active {
     outline: 0;
     text-decoration: none;
@@ -59,40 +63,31 @@ a:active {
 .clear-float {
     clear: both;
 }
-
 .wrapper {
     width: 1050px;
     margin: 0px auto;
     position: relative;
 }
-
 .boxed:not(.active) {
     background: #fff;
 }
-
 .active.boxed {
     width: 1120px;
     margin: 0px auto;
     background: #fff;
-    -webkit-box-shadow: 0 0px 10px rgba(0,0,0,0.2);
-    box-shadow: 0 0px 10px rgba(0,0,0,0.2);
     padding: 0px;
     min-height: 100%;
 }
-
 .left {
     float: left;
 }
-
 .right {
     float: right;
 }
-
 i.fa {
     line-height: inherit;
     font-weight: normal;
 }
-
 nav {
     display: block;
 }
@@ -129,7 +124,7 @@ img {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #3f3f3f;
+/*    color: #3f3f3f;*/
 }
 
 p {
@@ -232,22 +227,16 @@ p:last-child {
 
 .header {
     display: block;
+    margin-bottom: 35px;
 }
 
 .header .header-main {
-    display: table;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-.header .header-main > div {
-    display: table-cell;
-    vertical-align: middle;
+    padding: 30px 0 30px;
 }
 
 .header .header-main .header-main-logo {
-    width: 20%;
+    display: inline-block;
+
 }
 
 .header .header-main .header-main-logo h1 {
@@ -262,6 +251,12 @@ p:last-child {
 .header .header-main .header-main-logo h1 a {
     color: #EB6435;
 }
+.header .header-main .header-main-logo a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 
 .header .header-main .header-main-weather {
     width: 26%;
@@ -280,24 +275,26 @@ p:last-child {
 }
 
 .header-main-search .search-block input {
-    width: 100%;
     position: relative;
-    z-index: 2;
-    background: transparent;
+    width: 100%;
+    padding: 12px 15px;
     padding-right: 38px;
+    border-radius: 10px;
+    line-height: 1;
 }
 
 .header-main-search .search-block:after {
+    position: absolute;
     display: block;
     content: '\f002';
+    top: 50%;
+    right: 0;
+    padding-right: 15px;
     font-family: "FontAwesome";
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    color: #ccc;
+    color: #8c8c8c;
     font-size: 16px;
-    z-index: 0;
-    padding: 10px 14px;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
 }
 
 .header-main-weather .weather-block {
@@ -320,10 +317,13 @@ p:last-child {
 }
 
 .top-menu {
+    position: absolute;
     display: block;
-    border-bottom: 1px solid #e8e8e8;
+    top: 15px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
     z-index: 1001;
-    position: relative;
 }
 
 .top-menu ul:after,
@@ -336,20 +336,18 @@ p:last-child {
 .top-menu ul {
     display: block;
     margin-bottom: 0px;
-    border-left: 1px solid #f4f4f4;
 }
 
 .top-menu li {
     display: block;
     float: left;
-    border-right: 1px solid #f4f4f4;
-    font-size: 12px;
+/*    font-size: 12px;*/
 }
 
 .top-menu li a {
     display: block;
     color: #8c8c8c;
-    padding: 10px 19px;
+    padding: 10px 20px;
 }
 
 .top-menu li a span:after {
@@ -400,6 +398,24 @@ p:last-child {
 }
 
 
+.top-menu .top-menu-soc ul {
+/*    border-right: 1px solid #f4f4f4;*/
+}
+.top-menu .top-menu-soc li {
+/*    border-right: 1px solid #f4f4f4;*/
+    margin-left: 10px;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+}
+
+.top-menu .top-menu-list {
+/*
+    position: absolute;
+    top: 50px;
+    right: 0;
+*/
+}
+
 
 
 /*------------------------------------------------------------------
@@ -414,10 +430,9 @@ p:last-child {
 -------------------------------------------------------------------*/
 
 .header .main-menu {
+    position: relative;
     display: block;
     z-index: 1000;
-    position: relative;
-    margin-bottom: 10px;
 }
 
 .main-menu-placeholder {
@@ -429,7 +444,6 @@ p:last-child {
     display: block;
     background-color: #fff;
     margin-bottom: 0px;
-    border: 1px solid #f4f4f4;
 }
 
 .header .main-menu .top-bottom-menu {
@@ -449,15 +463,13 @@ p:last-child {
 .header .main-menu .top-main-menu li {
     display: block;
     float: left;
-    font-size: 13px;
-    border-right: 1px solid rgba(255, 255, 255, 0.13);
-    color: #fff;
 }
 
 .header .main-menu .top-main-menu li a {
     display: block;
+    padding: 15px 15px;
+    font-size: 14px;
     color: #3c3c3c;
-    padding: 10px 7px;
 }
 
 .header .main-menu .top-main-menu li:hover > a {
@@ -6798,10 +6810,7 @@ div.bbp-breadcrumb {
     padding-bottom: 9px;
     margin-right: 7px;
 }
-a{
-    font-size: 12px !important;
-    line-height: 16px;
-}
+
 .article-list ul li a {
     display: block;
     height: 36px;
@@ -6809,7 +6818,7 @@ a{
     margin-bottom: 2px;
 }
 .header-main-search{
-    min-width: 550px;
+    min-width: 300px;
 }
 .item {
     padding: 0;
