@@ -65,7 +65,7 @@
         }(document, 'script', 'facebook-jssdk'));</script>
 
         <!-- BEGIN .boxed -->
-        <div class="boxed active ">
+<!--        <div class="boxed active ">-->
 
             <!-- BEGIN .header -->
             <header class="header">
@@ -73,39 +73,52 @@
                 <div class="top-menu">
 
                     <!-- BEGIN .wrapper -->
-                    <div class="wrapper">
-                        <nav class="top-menu-soc right">
-                            <ul>
-                                <!-- <li><a href="#" target="_blank" class="hover-color-facebook"><i class="fa fa-facebook"></i></a></li> -->
-                                <!-- <li><a href="{{ url('/login') }}" target="_blank" class="hover-color-twitter">Login</a></li> -->
-                                @if (Session::get('logined_cus') == 1)
-                                <li id="home_login" class="dropdown hover"><a class="myaccount" href="">Hi {{Session::get('logined_cusfullname')}}</a>
-                                    <ul id="home_logout" class="dropdown-menu">
-                                        <li><a href="{{ url('my-profile') }}">My profile setting</a></li>
-                                        <li><a href="{{ url('logout') }}">Logout</a></li>
-                                    </ul>
-                                </li>
-                                @else
-                                <li><a class="myaccount" href="{{ url('login') }}">Login</a></li>
-                                <li><a href="{{ url('/register') }}" target="_blank" class="hover-color-google-plus">Register</a></li>
-                                @endif
-                            </ul>
-                        </nav>
-                        <nav class="top-menu-list right">
-                            <ul class="load-responsive" rel="Top Menu">
-                                <li>
-                                    <div class="header-main-search">
-                                        <div class="search-block">
-                                            <form action="{{ url('/search') }}">
-                                                <input type="text" name="key" placeholder="Nhập từ khóa tìm kiếm.." />
-                                            </form>
+                    <div class="boxed active">
+                        <div class="wrapper">
+                            <nav class="top-menu-soc right">
+                                <ul>
+                                    <!-- <li><a href="#" target="_blank" class="hover-color-facebook"><i class="fa fa-facebook"></i></a></li> -->
+                                    <!-- <li><a href="{{ url('/login') }}" target="_blank" class="hover-color-twitter">Login</a></li> -->
+                                    <li>
+                                        <div class="header-main-search">
+                                            <div class="search-block">
+                                                <form action="{{ url('/search') }}">
+                                                    <input type="text" name="key" placeholder="Nhập từ khóa tìm kiếm.." />
+                                                </form>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </nav>
+                                    </li>
+                                    @if (Session::get('logined_cus') == 1)
+                                    <li id="home_login" class="dropdown hover"><a class="myaccount" href="">Hi {{Session::get('logined_cusfullname')}}</a>
+                                        <ul id="home_logout" class="dropdown-menu">
+                                            <li><a href="{{ url('my-profile') }}">My profile setting</a></li>
+                                            <li><a href="{{ url('logout') }}">Logout</a></li>
+                                        </ul>
+                                    </li>
+                                    @else
+                                    <li><a class="myaccount" href="{{ url('login') }}">Login</a></li>
+                                    <li><a href="{{ url('/register') }}" target="_blank" class="hover-color-google-plus">Register</a></li>
+                                    @endif
+                                </ul>
+                            </nav>
+<!--
+                            <nav class="top-menu-list right">
+                                <ul class="load-responsive" rel="Top Menu">
+                                    <li>
+                                        <div class="header-main-search">
+                                            <div class="search-block">
+                                                <form action="{{ url('/search') }}">
+                                                    <input type="text" name="key" placeholder="Nhập từ khóa tìm kiếm.." />
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </nav>
+-->
 
-                    <!-- END .wrapper -->
+                        <!-- END .wrapper -->
+                        </div>
                     </div>
 
                 <!-- END .top-menu -->
@@ -202,7 +215,7 @@
             </div>
 
         <!-- END .boxed -->
-        </div>
+<!--        </div>-->
 
         <!-- Scripts -->
         <script type="text/javascript" src="{{url('public/home/jscript/jquery-latest.min.js')}}"></script>

@@ -65,7 +65,7 @@
         }(document, 'script', 'facebook-jssdk'));</script>
 
         <!-- BEGIN .boxed -->
-        <div class="boxed active ">
+<!--        <div class="boxed active ">-->
 
             <!-- BEGIN .header -->
             <header class="header">
@@ -73,39 +73,52 @@
                 <div class="top-menu">
 
                     <!-- BEGIN .wrapper -->
-                    <div class="wrapper">
-                        <nav class="top-menu-soc right">
-                            <ul>
-                                <!-- <li><a href="#" target="_blank" class="hover-color-facebook"><i class="fa fa-facebook"></i></a></li> -->
-                                <!-- <li><a href="<?php echo e(url('/login')); ?>" target="_blank" class="hover-color-twitter">Login</a></li> -->
-                                <?php if(Session::get('logined_cus') == 1): ?>
-                                <li id="home_login" class="dropdown hover"><a class="myaccount" href="">Hi <?php echo e(Session::get('logined_cusfullname')); ?></a>
-                                    <ul id="home_logout" class="dropdown-menu">
-                                        <li><a href="<?php echo e(url('my-profile')); ?>">My profile setting</a></li>
-                                        <li><a href="<?php echo e(url('logout')); ?>">Logout</a></li>
-                                    </ul>
-                                </li>
-                                <?php else: ?>
-                                <li><a class="myaccount" href="<?php echo e(url('login')); ?>">Login</a></li>
-                                <li><a href="<?php echo e(url('/register')); ?>" target="_blank" class="hover-color-google-plus">Register</a></li>
-                                <?php endif; ?>
-                            </ul>
-                        </nav>
-                        <nav class="top-menu-list right">
-                            <ul class="load-responsive" rel="Top Menu">
-                                <li>
-                                    <div class="header-main-search">
-                                        <div class="search-block">
-                                            <form action="<?php echo e(url('/search')); ?>">
-                                                <input type="text" name="key" placeholder="Nhập từ khóa tìm kiếm.." />
-                                            </form>
+                    <div class="boxed active">
+                        <div class="wrapper">
+                            <nav class="top-menu-soc right">
+                                <ul>
+                                    <!-- <li><a href="#" target="_blank" class="hover-color-facebook"><i class="fa fa-facebook"></i></a></li> -->
+                                    <!-- <li><a href="<?php echo e(url('/login')); ?>" target="_blank" class="hover-color-twitter">Login</a></li> -->
+                                    <li>
+                                        <div class="header-main-search">
+                                            <div class="search-block">
+                                                <form action="<?php echo e(url('/search')); ?>">
+                                                    <input type="text" name="key" placeholder="Nhập từ khóa tìm kiếm.." />
+                                                </form>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </nav>
+                                    </li>
+                                    <?php if(Session::get('logined_cus') == 1): ?>
+                                    <li id="home_login" class="dropdown hover"><a class="myaccount" href="">Hi <?php echo e(Session::get('logined_cusfullname')); ?></a>
+                                        <ul id="home_logout" class="dropdown-menu">
+                                            <li><a href="<?php echo e(url('my-profile')); ?>">My profile setting</a></li>
+                                            <li><a href="<?php echo e(url('logout')); ?>">Logout</a></li>
+                                        </ul>
+                                    </li>
+                                    <?php else: ?>
+                                    <li><a class="myaccount" href="<?php echo e(url('login')); ?>">Login</a></li>
+                                    <li><a href="<?php echo e(url('/register')); ?>" target="_blank" class="hover-color-google-plus">Register</a></li>
+                                    <?php endif; ?>
+                                </ul>
+                            </nav>
+<!--
+                            <nav class="top-menu-list right">
+                                <ul class="load-responsive" rel="Top Menu">
+                                    <li>
+                                        <div class="header-main-search">
+                                            <div class="search-block">
+                                                <form action="<?php echo e(url('/search')); ?>">
+                                                    <input type="text" name="key" placeholder="Nhập từ khóa tìm kiếm.." />
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </nav>
+-->
 
-                    <!-- END .wrapper -->
+                        <!-- END .wrapper -->
+                        </div>
                     </div>
 
                 <!-- END .top-menu -->
@@ -202,7 +215,7 @@
             </div>
 
         <!-- END .boxed -->
-        </div>
+<!--        </div>-->
 
         <!-- Scripts -->
         <script type="text/javascript" src="<?php echo e(url('public/home/jscript/jquery-latest.min.js')); ?>"></script>
