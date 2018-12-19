@@ -55,10 +55,10 @@
 
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <!-- <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i><?php echo e(Session::get('locale')); ?></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-alerts">
+                    </a> -->
+                    <!-- <ul class="dropdown-menu dropdown-alerts">
                         <?php $__currentLoopData = $admin_lang; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lang): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <li>
                             <div class="col-xs-12 nn_select_lang" name="nnlocation" idlang="<?php echo e($lang->id); ?>">
@@ -70,7 +70,7 @@
                         </li>
                         <li class="divider"></li>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>                        
-                    </ul>
+                    </ul> -->
                     <!-- /.dropdown-alerts -->
                 </li>
                 <!-- /.dropdown -->
@@ -105,12 +105,12 @@
                             <a href="#"><i class="fa fa-cogs fa-fw"></i> <?php echo e(trans('translate.Setting')); ?><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                
-                                <li>
+                                <!-- <li>
                                     <a href="<?php echo e(url('/admin/lang/list')); ?>"><i class="fa fa-globe fa-fw"></i> <?php echo e(trans('translate.language')); ?></a>
                                 </li>
                                 <li>
                                     <a href="<?php echo e(url('/admin/socical/list')); ?>"><i class="fa fa-share-alt-square fa-fw"></i> <?php echo e(trans('translate.socical')); ?></a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a href="<?php echo e(url('/admin/contact')); ?>"><i class="fa fa-exclamation-circle fa-fw"></i> <?php echo e(trans('translate.info')); ?></a>
                                 </li>
@@ -119,15 +119,15 @@
                         <li>
                             <a href="#"><i class="fa fa-address-card-o fa-fw"></i> Ứng viên<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
+                                <!-- <li>
                                     <a href="<?php echo url('/admin/customers/listgr'); ?>"><i class="fa fa-tags fa-fw"></i> Nhóm</a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a href="<?php echo url('/admin/customers/list'); ?>"><i class="fa  fa-address-book fa-fw"></i> Ứng viên</a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="<?php echo url('/admin/customers/feedback'); ?>"><i class="fa  fa-comment fa-fw"></i> Ý kiến ứng viên</a>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
                         <li>

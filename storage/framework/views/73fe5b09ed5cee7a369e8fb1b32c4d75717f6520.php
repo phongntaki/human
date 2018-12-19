@@ -51,6 +51,8 @@
                   <br>
                   <br>
                   <button type="submit" class="btn btn-orange">Login</button>
+
+					<a href="<?php echo e(url('/login_social/facebook/gioi-thieu')); ?>" class="btn btn-primary">Facebook Login</a>
                 </fieldset>
               </form>
 				<?php $index_count = 0; $ads = 0;?>

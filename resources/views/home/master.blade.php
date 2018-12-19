@@ -137,16 +137,20 @@
 
 						<div class="header-main-weather">
 							<div class="weather-block">
-								<i class="wi wi-day-cloudy"></i>
-								<strong>Japan, Tokyo</strong>
-								<span>+29&deg;C, Cloudy</span>
+								<a class="weatherwidget-io" href="https://forecast7.com/en/35d69139d69/tokyo/" data-label_1="TOKYO" data-mode="Current" data-theme="mountains" >TOKYO</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
 							</div>
 						</div>
 
 					<!-- END .header-main -->
 					</div>
-					
-
+					@if (Session::get('logined_cus') != 1)
+						<div class="noInformation">
+						  	Bạn nên đăng ký thông tin cá nhân để chúng tôi có thể chọn ra công việc tốt nhất phù hợp với bạn. Chưa có tài khoản, đăng ký tại <a href="{{ url('/register') }}" style="color: #81F7F3">ĐÂY</a>
+						</div>
+					@endif
 					<nav class="main-menu">
 						<a href="#dat-menu" class="dat-menu-button"><i class="fa fa-bars"></i>MENU</a>
 						<div class="main-menu-placeholder">
