@@ -1386,14 +1386,11 @@ class HomeController extends Controller {
         return view('home.content_news_ajax_list',compact('listnews_cat','listnew'));
     }
 
-    // public function lien_he(){
-    //     if(Session::get('logined_cus') == 1){
-    //         $public_var = $this->public_var();
-    //         return view('home.lienhe',array_merge($public_var, [ ]) );
-    //     } else{
-    //         return redirect()->route('login')->with(['flash_level'=>'success','flash_message'=>'Login Fail']);
-    //     }
-    // }
+    public function lien_he(){
+        $public_var = $this->public_var();
+        return view('home.lienhe',array_merge($public_var, [ ]) );
+        
+    }
 
     public function gioi_thieu(){
         $public_var = $this->public_var();

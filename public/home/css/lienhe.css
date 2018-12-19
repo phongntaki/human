@@ -24,3 +24,10 @@
 .align-content-stretch{
 	align-content: stretch;
 }
+
+.noInformation {
+  padding: 20px;
+  background-color: green;
+  color: white;
+  margin-bottom: 15px;
+}
