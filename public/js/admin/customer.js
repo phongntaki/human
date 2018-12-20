@@ -7,12 +7,53 @@ $(document).ready(function() {
 		$("#ennidCustomer").val($(this).attr('editid')) ;
 		$("#enntitle").val($(this).attr('title')) ;
 		$("#ennfullname").val($(this).attr('name')) ;
-		$("input:radio[name=ennhide][value=" + $(this).attr('hide') + "]").attr('checked', 'checked');
+
+		if($(this).attr('sex')=="0"){
+			$("input:radio[name=ennsex]")[0].checked=true ;
+		}
+		else{
+			$("input:radio[name=ennsex]")[1].checked=true ;
+		}
 		$("#ennmailcus").val($(this).attr('cusemail')) ;
+		$("#ennbirthday").val($(this).attr('birthday')) ;
 		$("#ennphonecus").val($(this).attr('phone'));
 		$("#ennaddcus").val($(this).attr('cusaddress'));
-		$("#ennfacebook").val($(this).attr('cusaddress'));
-		$("#ennaddcus").val($(this).attr('cusface'));
+		$("#enneducation").val($(this).attr('education'));
+
+		if($(this).attr('education')=="Cấp 3"){
+			$("select[name=enneducation] option")[1].selected=true;
+		}
+		else if($(this).attr('education')=="Cao Đẳng"){
+			$("select[name=enneducation] option")[2].selected=true;
+		}
+		else if($(this).attr('education')=="Đại học"){
+			$("select[name=enneducation] option")[3].selected=true;
+		}
+		else{
+			$("select[name=enneducation] option")[4].selected=true;
+		}
+
+		//Language_jp
+		if($(this).attr('language_jp')=="N1"){
+			$("select[name=ennlanguage_jp] option")[1].selected=true;
+		}
+		else if($(this).attr('language_jp')=="N2"){
+			$("select[name=ennlanguage_jp] option")[2].selected=true;
+		}
+		else if($(this).attr('language_jp')=="N3"){
+			$("select[name=ennlanguage_jp] option")[3].selected=true;
+		}
+		else if($(this).attr('language_jp')=="N4"){
+			$("select[name=ennlanguage_jp] option")[3].selected=true;
+		}
+		else{
+			$("select[name=ennlanguage_jp] option")[4].selected=true;
+		}
+
+		$("#ennLanguageOther").val($(this).attr('language_other'));
+		$("#ennIntroduce").val($(this).attr('introduce'));
+		$("#ennDesire").val($(this).attr('desire'));
+		$("#ennfacebook").val($(this).attr('cusface'));
 		$("#ennimguserold").val($(this).attr('imgo'));	
 		$("#ennavatarfile").val("");
 		$("#ennavatar").attr('src',"../../public/img/customers/"+$(this).attr('imgo'));

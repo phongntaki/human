@@ -206,9 +206,14 @@ return [
 "date_order_at"=>"Date order",
 
 "education"=>"Education",
+"language_jp"=>"Japanese",
+"language_other"=>"Other Language",
 "introduce"=>"Self Introduce",
 "desire"=>"Desire",
 "candidate"=>"Candidate",
+"sex"=>"Sex",
+"birthday"=>"Birthday",
+"facebook"=>"Facebook",
 ];
 
 ?>

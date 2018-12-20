@@ -27,7 +27,7 @@ Route::get('loadmorelist', ['as' => 'loadmorelist', 'uses' => 'HomeController@lo
 Route::get('search', ['as' => 'search', 'uses' => 'HomeController@search']);
 Route::get('tags/{tag}', ['as' => 'tags', 'uses' => 'HomeController@tags']);
 //lien he
-// Route::get('lien-he', ['as' => 'lien_he', 'uses' => 'HomeController@lien_he']);
+Route::get('lien-he', ['as' => 'lien_he', 'uses' => 'HomeController@lien_he']);
 Route::get('gioi-thieu', ['as' => 'gioi_thieu', 'uses' => 'HomeController@gioi_thieu']);
 Route::get('hinh-thanh', ['as' => 'hinh_thanh', 'uses' => 'HomeController@hinh_thanh']);
 Route::get('linh-vuc', ['as' => 'linh_vuc', 'uses' => 'HomeController@linh_vuc']);

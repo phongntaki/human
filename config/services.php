@@ -37,9 +37,9 @@ return [
 
     //Socialite
     'facebook' => [
-        'client_id'     => '126446734665310',
-        'client_secret' => '739119781ee76fed62643c06deeb476f',
-        'redirect'      => 'http://dothothantai.com/login/callback/facebook',
+        'client_id'     => env('FACEBOOK_ID'),
+        'client_secret' => env('FACEBOOK_SECRET'),
+        'redirect'      => env('FACEBOOK_URL'),
     ],
 
     // https://developers.google.com/+/web/signin/

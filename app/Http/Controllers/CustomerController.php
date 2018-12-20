@@ -17,9 +17,9 @@ use App\Contactus;
 class CustomerController extends Controller
 {
 
-
     public function login_social($provider, $page_return)
     {
+        // echo $page_return;
         Session::put('page_return_login_social', $page_return);
         return redirect("login/redirect/".$provider); 
     }
@@ -36,7 +36,8 @@ class CustomerController extends Controller
         if (!empty($user)) {
 
           $item_user = Customers::where("idloginsocial",'=',$user->id)->first();
-          if(count($item_user) == 0){
+          // if(count($item_user) == 0){
+          if($item_user == null){
             $item_user = new Customers;
             $item_user->idgroup         = 1;
             $item_user->idloginsocial   = $user->id;
@@ -440,6 +441,9 @@ class CustomerController extends Controller
     //  Customer ==================================
     public function ListCus(){
         $customers = Customers::where('idgroup','<>',2)->get();
+        // echo "<pre>";
+        // echo $customers;
+        // echo "</pre>";
         $grcus = GroupCustomers::all();
         return view('admin.customer.customers',['customers'=>$customers,'group'=>$grcus]);
     }
@@ -461,10 +465,8 @@ class CustomerController extends Controller
                 'nnaddcus' => 'required',
                 'nnphonecus' => 'required|numeric',
                 'nnfacebook' => 'required',
-                'nngroupkh' => 'numeric',
                 'nnavatarfile' => 'image|max:500000',                
             ],[
-                'nngroupkh.numeric' => 'Bạn cần chọn nhóm khách hàng',
                 'nnfullname.required' => 'Bạn cần thêm tên khách hàng',
                 'nnmailcus.required' => 'Bạn cần thêm email khách hàng',
                 'nnphonecus.required' => 'Bạn cần thêm số điện thoại khách hàng',
@@ -476,14 +478,21 @@ class CustomerController extends Controller
 
             ]);
         $customer = new Customers;
-        $customer->idgroup = $request->nngroupkh;
+        $customer->idgroup = "1";
         $customer->cusfullname = $request->nnfullname;
+        $customer->birthday = $request->nnbirthday;
         $customer->cusemail = $request->nnmailcus;
         $customer->cusphone = $request->nnphonecus;
-        $customer->status = $request->nnhide;
         $customer->cusaddress = $request->nnaddcus;
+        $customer->education = $request->nneducation;
+        $customer->language_jp = $request->nnlanguage_jp;
+        $customer->language_other = $request->nnLanguageOther;
+        $customer->introduce = $request->nnIntroduce;
+        $customer->desire = $request->nnDesire;
+        $customer->status = "1";
+        
         $customer->cusface = $request->nnfacebook;
-        $customer->cuspass = "nguyennam.90st";
+        $customer->cuspass = "";
         if($request->hasFile('nnavatarfile')){
                 $file = $request->file('nnavatarfile');
                 $nameimg = $file->getClientOriginalName(); 
@@ -519,30 +528,34 @@ class CustomerController extends Controller
                 'ennmailcus' => 'required',
                 'ennaddcus' => 'required',
                 'ennphonecus' => 'required|numeric',
-                'enngroupkh' => 'numeric',
                 'ennfacebook' => 'required',
                 'ennavatarfile' => 'image|max:500000',                
             ],[
-                'enngroupkh.numeric' => 'Bạn cần chọn nhóm khách hàng',
-                'ennfullname.required' => 'Bạn cần thêm tên khách hàng',
-                'ennmailcus.required' => 'Bạn cần thêm email khách hàng',
-                'ennphonecus.required' => 'Bạn cần thêm số điện thoại khách hàng',
-                'ennaddcus.required' => 'Bạn cần thêm địa chỉ khách hàng',
-                'ennfacebook.required' => 'Bạn cần thêm facebook khách hàng hoặc để #',
+                'ennfullname.required' => 'Bạn cần thêm tên ứng viên',
+                'ennmailcus.required' => 'Bạn cần thêm email ứng viên',
+                'ennphonecus.required' => 'Bạn cần thêm số điện thoại ứng viên',
+                'ennaddcus.required' => 'Bạn cần thêm địa chỉ ứng viên',
+                'ennfacebook.required' => 'Bạn cần thêm facebook ứng viên hoặc để #',
                 'ennphonecus.numeric'     => 'Số điện thoại phải là số',
                 'ennavatarfile.image' => 'Avatar phải là hình ảnh',
                 'ennavatarfile.max' => 'Avatar dung lượng quá lớn',
 
             ]);
         $customer = Customers::find($request->ennidCustomer);
-        $customer->idgroup = $request->enngroupkh;
         $customer->cusfullname = $request->ennfullname;
+        $customer->sex = $request->ennsex;
+        $customer->birthday = $request->ennbirthday;
         $customer->cusemail = $request->ennmailcus;
         $customer->cusphone = $request->ennphonecus;
-        $customer->status = $request->ennhide;
         $customer->cusaddress = $request->ennaddcus;
+        $customer->education = $request->enneducation;
+        $customer->language_jp = $request->ennlanguage_jp;
+        $customer->language_other = $request->ennLanguageOther;
+        $customer->introduce = $request->ennIntroduce;
+        $customer->desire = $request->ennDesire;
+        $customer->status = "1";
         $customer->cusface = $request->ennfacebook;
-        $customer->cuspass = "phongst";
+        // $customer->cuspass = "phongst";
         if($request->hasFile('ennavatarfile')){
             $file = $request->file('ennavatarfile');
             $nameimg = $file->getClientOriginalName(); 
