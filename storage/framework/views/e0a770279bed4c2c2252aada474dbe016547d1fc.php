@@ -71,15 +71,13 @@
             <header class="header">
                 <!-- BEGIN .top-menu -->
                 <div class="top-menu">
-
-                    <!-- BEGIN .wrapper -->
                     <div class="boxed active">
                         <div class="wrapper">
                             <nav class="top-menu-soc right">
-                                <ul>
+                                <ul class="top-menu-lists">
                                     <!-- <li><a href="#" target="_blank" class="hover-color-facebook"><i class="fa fa-facebook"></i></a></li> -->
                                     <!-- <li><a href="<?php echo e(url('/login')); ?>" target="_blank" class="hover-color-twitter">Login</a></li> -->
-                                    <li>
+                                    <li class="search-block-wrapper">
                                         <div class="header-main-search">
                                             <div class="search-block">
                                                 <form action="<?php echo e(url('/search')); ?>">
@@ -88,6 +86,16 @@
                                             </div>
                                         </div>
                                     </li>
+<!--                                    ドロップダウンテスト用-->
+<!--
+                                    <li id="home_login" class="dropdown hover"><a class="myaccount" href="">Hi <?php echo e(Session::get('logined_cusfullname')); ?></a>
+                                        <ul id="home_logout" class="dropdown-menu">
+                                            <li><a href="<?php echo e(url('my-profile')); ?>">My profile setting</a></li>
+                                            <li><a href="<?php echo e(url('logout')); ?>">Logout</a></li>
+                                            <li><a href="">test</a></li>
+                                        </ul>
+                                    </li>
+-->
                                     <?php if(Session::get('logined_cus') == 1): ?>
                                     <li id="home_login" class="dropdown hover"><a class="myaccount" href="">Hi <?php echo e(Session::get('logined_cusfullname')); ?></a>
                                         <ul id="home_logout" class="dropdown-menu">
@@ -96,92 +104,82 @@
                                         </ul>
                                     </li>
                                     <?php else: ?>
-                                    <li><a class="myaccount" href="<?php echo e(url('login')); ?>">Login</a></li>
-                                    <li><a href="<?php echo e(url('/register')); ?>" target="_blank" class="hover-color-google-plus">Register</a></li>
+                                    <li class="btn-login"><a class="myaccount" href="<?php echo e(url('login')); ?>">Login</a></li>
+                                    <li class="btn-register"><a href="<?php echo e(url('/register')); ?>" target="_blank" class="hover-color-google-plus">Register</a></li>
                                     <?php endif; ?>
                                 </ul>
                             </nav>
-<!--
-                            <nav class="top-menu-list right">
-                                <ul class="load-responsive" rel="Top Menu">
-                                    <li>
-                                        <div class="header-main-search">
-                                            <div class="search-block">
-                                                <form action="<?php echo e(url('/search')); ?>">
-                                                    <input type="text" name="key" placeholder="Nhập từ khóa tìm kiếm.." />
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </nav>
--->
-
-                        <!-- END .wrapper -->
                         </div>
                     </div>
-
                 <!-- END .top-menu -->
                 </div>
-                <!-- BEGIN .wrapper -->
-                <div class="wrapper">
-
-                    <!-- BEGIN .header-main -->
-                    <div class="header-main">
-                        <style type="text/css" media="screen">
-                            #top_text {
-                                       color: #00918e;
+                <!-- BEGIN .header-main -->
+                <div class="header-main">
+                    <div class="boxed active">
+                        <div class="wrapper">
+<!--
+                            <style type="text/css" media="screen">
+                                #top_text {
+                                    color: #00918e;
                                     text-shadow: 1px 1px #00918e, 2px 2px #FF8040, 3px 3px #FF8040;
                                     font: Bold 30px Sketch_Block;
                                     -webkit-transition: all 0.12s ease-out;/*chrome & safari*/
                                     -moz-transition:all 0.12s ease-out;/*firefox 3.7*/
                                     -o-tramsition:all 0.12s ease-out /*Opera*/
-                                    }
+                                }
 
-                                    #top_text:hover {
-                                        position:relative; top:-3px; left:-3px;
-                                        text-shadow:1px 1px #FF8040, 2px 2px #FF8040, 3px 3px #FF8040, 4px 4px #FF8040, 5px 5px #FF8040, 6px 6px #FF8040
-                                    }
-                        </style>
-                        <div class="header-main-logo">
-                            <a href="<?php echo e(url('')); ?>"><img src="<?php echo e(url('/public/logo.png')); ?>" alt="ENZI human resources" /></a>
-                        </div>
-                    <!-- END .header-main -->
-                    </div>
-
-
-                    <nav class="main-menu">
-                        <a href="#dat-menu" class="dat-menu-button"><i class="fa fa-bars"></i>MENU</a>
-                        <div class="main-menu-placeholder">
-                            <div class="main-menu-wrapper">
-                                <ul class="top-main-menu load-responsive" rel="DANH MỤC TIN">
-                                    <li style="padding-top: 2px;"><a href="<?php echo e(url('')); ?>">TRANG CHỦ</a></li>
-                                    <li><a href="<?php echo e(url('')); ?>"><span>Giới thiệu</span></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="<?php echo e(url('gioi-thieu')); ?>">Giới thiệu chung</a></li>
-                                            <li><a href="<?php echo e(url('hinh-thanh')); ?>">Hình thành và phát triển</a></li>
-                                            <li><a href="<?php echo e(url('linh-vuc')); ?>">Lĩnh vực hoạt động</a></li>
-                                        </ul>
-                                    </li>
-                                <?php $__currentLoopData = $modnews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $itemmod): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li><a href="<?php echo e(url('loai-tin').'/'.$itemmod->slug); ?>"><span><?php echo e($itemmod->modname); ?></span></a>
-                                        <ul class="sub-menu">
-                                        <?php $__currentLoopData = $itemmod->listnews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $itemlist): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <li><a href="<?php echo e(url('loai-tin').'/'.$itemlist->slug); ?>"><?php echo e($itemlist->listname); ?></a></li>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                        </ul>
-                                    </li>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    <li style="padding-top: 2px;"><a href="<?php echo e(url('lien-he')); ?>">Liên hệ</a>
-                                        <ul class="sub-menu"></ul>
-                                    </li>
-                                </ul>
+                                #top_text:hover {
+                                    position:relative; top:-3px; left:-3px;
+                                    text-shadow:1px 1px #FF8040, 2px 2px #FF8040, 3px 3px #FF8040, 4px 4px #FF8040, 5px 5px #FF8040, 6px 6px #FF8040
+                                }
+                            </style>
+-->
+                            <div class="header-main-logo">
+                                <h1 class="logo">
+                                    <a href="<?php echo e(url('')); ?>"><img src="<?php echo e(url('/public/logo.png')); ?>" alt="ENZI human resources" /></a>
+                                </h1>
                             </div>
                         </div>
-                    </nav>
-                <!-- END .wrapper -->
+                    </div>
+                    <!-- END .header-main -->
                 </div>
-
+                <!-- BEGIN .global-menu -->
+                <div class="global-menu">
+                    <div class="boxed active">
+                        <div class="wrapper">
+                            <nav class="main-menu">
+                                <a href="#dat-menu" class="dat-menu-button"><i class="fa fa-bars"></i>MENU</a>
+                                <div class="main-menu-placeholder">
+                                    <div class="main-menu-wrapper">
+                                        <ul class="top-main-menu load-responsive" rel="DANH MỤC TIN">
+                                            <li style="padding-top: 2px;"><a href="<?php echo e(url('')); ?>">TRANG CHỦ</a></li>
+                                            <li><a href="<?php echo e(url('')); ?>"><span>Giới thiệu</span></a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="<?php echo e(url('gioi-thieu')); ?>">Giới thiệu chung</a></li>
+                                                    <li><a href="<?php echo e(url('hinh-thanh')); ?>">Hình thành và phát triển</a></li>
+                                                    <li><a href="<?php echo e(url('linh-vuc')); ?>">Lĩnh vực hoạt động</a></li>
+                                                </ul>
+                                            </li>
+                                        <?php $__currentLoopData = $modnews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $itemmod): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <li><a href="<?php echo e(url('loai-tin').'/'.$itemmod->slug); ?>"><span><?php echo e($itemmod->modname); ?></span></a>
+                                                <ul class="sub-menu">
+                                                <?php $__currentLoopData = $itemmod->listnews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $itemlist): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <li><a href="<?php echo e(url('loai-tin').'/'.$itemlist->slug); ?>"><?php echo e($itemlist->listname); ?></a></li>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                </ul>
+                                            </li>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <li style="padding-top: 2px;"><a href="<?php echo e(url('lien-he')); ?>">Liên hệ</a>
+                                                <ul class="sub-menu"></ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                <!-- END .global-menu -->
+                </div>
             <!-- END .header -->
             </header>
 
