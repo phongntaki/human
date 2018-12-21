@@ -4,7 +4,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">{{ trans('admin.group')}} {{ trans('admin.custommer')}}</h1>
+            <h1 class="page-header">{{ trans('admin.group')}} {{ trans('admin.candidate')}}</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>

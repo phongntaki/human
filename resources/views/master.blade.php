@@ -55,10 +55,10 @@
 
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <!-- <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i>{{ Session::get('locale') }}</i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-alerts">
+                    </a> -->
+                    <!-- <ul class="dropdown-menu dropdown-alerts">
                         @foreach($admin_lang as $lang)
                         <li>
                             <div class="col-xs-12 nn_select_lang" name="nnlocation" idlang="{{$lang->id}}">
@@ -69,7 +69,7 @@
                         </li>
                         <li class="divider"></li>
                         @endforeach                        
-                    </ul>
+                    </ul> -->
                     <!-- /.dropdown-alerts -->
                 </li>
                 <!-- /.dropdown -->
@@ -104,29 +104,29 @@
                             <a href="#"><i class="fa fa-cogs fa-fw"></i> {{ trans('translate.Setting') }}<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                
-                                <li>
+                                <!-- <li>
                                     <a href="{{ url('/admin/lang/list')}}"><i class="fa fa-globe fa-fw"></i> {{ trans('translate.language') }}</a>
                                 </li>
                                 <li>
                                     <a href="{{ url('/admin/socical/list')}}"><i class="fa fa-share-alt-square fa-fw"></i> {{ trans('translate.socical') }}</a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a href="{{ url('/admin/contact')}}"><i class="fa fa-exclamation-circle fa-fw"></i> {{ trans('translate.info') }}</a>
                                 </li>
                             </ul>  
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-address-card-o fa-fw"></i> Bạn đọc<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-address-card-o fa-fw"></i> Ứng viên<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
+                                <!-- <li>
                                     <a href="{!! url('/admin/customers/listgr')!!}"><i class="fa fa-tags fa-fw"></i> Nhóm</a>
-                                </li>
+                                </li> -->
                                 <li>
-                                    <a href="{!! url('/admin/customers/list')!!}"><i class="fa  fa-address-book fa-fw"></i> Người đọc</a>
+                                    <a href="{!! url('/admin/customers/list')!!}"><i class="fa  fa-address-book fa-fw"></i> Ứng viên</a>
                                 </li>
-                                <li>
-                                    <a href="{!! url('/admin/customers/feedback')!!}"><i class="fa  fa-comment fa-fw"></i> Ý kiến bạn đọc</a>
-                                </li>
+                                <!-- <li>
+                                    <a href="{!! url('/admin/customers/feedback')!!}"><i class="fa  fa-comment fa-fw"></i> Ý kiến ứng viên</a>
+                                </li> -->
                             </ul>
                         </li>
                         <li>
@@ -143,9 +143,9 @@
                                 </li>
                             </ul>  
                         </li>                           
-                        <li>
+                        <!-- <li>
                             <a href="{{ url('/admin/slide/list')}}"><i class="fa fa-picture-o fa-fw"></i> Slide show</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="{{ url('/admin/advert/list')}}"><i class="fa fa-bullhorn fa-fw"></i>{{ trans('translate.advert') }}</a>
                         </li>

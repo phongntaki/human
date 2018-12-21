@@ -12,60 +12,7 @@
 			<!-- BEGIN .content-block-single -->
 			<div class="content-block-single">
 				
-				<form role="form" class="form-vertical" action="" method="POST">
-					<div class="col-lg-8" style="padding-bottom:70px"> 
-		              	<input type="hidden" name="_token" value="{{csrf_token()}}">
-		                <fieldset>
-		                  <div class="form-group">
-		                    <label class="control-label">Tên</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Giới tính</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Ngày sinh</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Số điện thoạiz</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Địa chỉ</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Mail</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Trình độ</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Ngoại ngữ</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Học vấn(Cấp cao nhất)</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Giới thiệu bản thân, kinh nghiệm làm việc</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <div class="form-group">
-		                    <label class="control-label">Mong muốn</label>
-		                    <input class="form-control" name="name" placeholder=" " value="" />
-		                  </div>
-		                  <br>
-		                  <br>
-		                  <button type="submit" class="btn btn-orange">Login</button>
-		                </fieldset>
-	            	</div>
-              	</form>
+				Test Content
 
 			<!-- END .content-block-single -->
 			</div>

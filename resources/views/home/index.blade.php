@@ -19,7 +19,9 @@
 				<div class="ot-breaking-news-content-wrap">
 				@foreach($khuyenmai as $item_km)
 					<div class="item">
+						<img class="img-responsive" style="width: 25%;height: 25%;" src="{{url('public/img/news/300x300/'.$item_km['newimg'])}}">
 						<strong><a href="{{url('/chi-tiet/'.$item_km->slug)}}">{{ $item_km->newsname}}</a></strong>
+						<p>{{ $item_km->newintro}}</p>
 					</div>
 				@endforeach
 				</div>

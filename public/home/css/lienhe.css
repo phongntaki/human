@@ -7,6 +7,7 @@
 }
 
 .flex{
+<<<<<<< HEAD
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -33,6 +34,23 @@
 }
 .align-content-stretch{
 	-ms-flex-line-pack: stretch;
+=======
+	display: flex;
+}
+.flex-direction-row{
+	flex-direction: row;
+}
+.flex-wrap-nowrap{
+	flex-wrap: nowrap;
+}
+.justify-content-spacebetween{
+	justify-content: space-between;
+}
+.align-item-center{
+	align-items: center;
+}
+.align-content-stretch{
+>>>>>>> c41fd306f53e62348be4cc218be77d43a749b8c7
 	align-content: stretch;
 }
 

@@ -35,6 +35,7 @@
 		<link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/mystyle.css')); ?>" />
 		<link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/demo-settings.css')); ?>" />
 		<link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/style.css')); ?>" />
+		<link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/lienhe.css')); ?>" />
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!-- Đặt thẻ này vào phần đầu hoặc ngay trước thẻ đóng phần nội dung của bạn. -->
@@ -77,16 +78,17 @@
 							<ul>
 								<!-- <li><a href="#" target="_blank" class="hover-color-facebook"><i class="fa fa-facebook"></i></a></li> -->
 								<!-- <li><a href="<?php echo e(url('/login')); ?>" target="_blank" class="hover-color-twitter">Login</a></li> -->
-								<?php if(Session::get('logined_cusid') == 1): ?>
+								<?php if(Session::get('logined_cus') == 1): ?>
                                 <li id="home_login" class="dropdown hover"><a class="myaccount" href="">Hi <?php echo e(Session::get('logined_cusfullname')); ?></a>
                                     <ul id="home_logout" class="dropdown-menu">
-                                        <li><a href="<?php echo e(url('logout')); ?>" style="color: red">Logout</a></li>
+                                    	<li><a href="<?php echo e(url('my-profile')); ?>">My profile setting</a></li>
+                                        <li><a href="<?php echo e(url('logout')); ?>">Logout</a></li>
                                     </ul>
                                 </li>
                                 <?php else: ?>
                                 <li><a class="myaccount" href="<?php echo e(url('login')); ?>">Login</a></li>
                                 <li><a href="<?php echo e(url('/register')); ?>" target="_blank" class="hover-color-google-plus">Register</a></li>
-                                <?php endif; ?>
+                                <?php endif; ?> 
 							</ul>
 						</nav>
 						<nav class="top-menu-list">
@@ -133,18 +135,15 @@
 							<a href="<?php echo e(url('')); ?>"><img src="<?php echo e(url('/public/sky.jpg')); ?>" style="width: 25%;height: 10%" alt="No logo" /></a>
 						</div>
 
-						<div class="header-main-weather">
-							<div class="weather-block">
-								<i class="wi wi-day-cloudy"></i>
-								<strong>Japan, Tokyo</strong>
-								<span>+29&deg;C, Cloudy</span>
-							</div>
-						</div>
+						
 
 					<!-- END .header-main -->
 					</div>
-					
-
+					<?php if(Session::get('logined_cus') != 1): ?>
+						<div class="noInformation">
+						  	Bạn nên đăng ký thông tin cá nhân để chúng tôi có thể chọn ra công việc tốt nhất phù hợp với bạn. Chưa có tài khoản, đăng ký tại <a href="<?php echo e(url('/register')); ?>" style="color: #81F7F3">ĐÂY</a>
+						</div>
+					<?php endif; ?>
 					<nav class="main-menu">
 						<a href="#dat-menu" class="dat-menu-button"><i class="fa fa-bars"></i>MENU</a>
 						<div class="main-menu-placeholder">
@@ -221,6 +220,7 @@
 		<script type="text/javascript" src="<?php echo e(url('public/home/jscript/theme-scripts.js')); ?>"></script>
 		<script type="text/javascript" src="<?php echo e(url('public/home/jscript/ot-lightbox.js')); ?>"></script>
 		<script type="text/javascript" src="<?php echo e(url('public/js/jquery.sticky-kit.min.js')); ?>"></script>
+		<script src="<?php echo e(asset('public/js/home/customer.js')); ?>"></script>
 	<!-- END body -->
 	<script>
 		if ($(window).width() >700) {

@@ -194,20 +194,26 @@ return [
 
 
 
-	"khai_vi"=>"Appetizer",
-	"mon_chinh"=>"Main dishes",
-	"trang_mieng"=>"Desserts",
-	"loaimon"=>"Type",
-	"loaisanpham"=>"Product Type",
+"khai_vi"=>"Appetizer",
+"mon_chinh"=>"Main dishes",
+"trang_mieng"=>"Desserts",
+"loaimon"=>"Type",
+"loaisanpham"=>"Product Type",
 
-	"modproduct"=>"Mod Product",
-	"listproduct"=>"List Product",
-	"action"=>"Action",
-	"date_order_at"=>"Date order",
+"modproduct"=>"Mod Product",
+"listproduct"=>"List Product",
+"action"=>"Action",
+"date_order_at"=>"Date order",
 
-
-
-
+"education"=>"Education",
+"language_jp"=>"Japanese",
+"language_other"=>"Other Language",
+"introduce"=>"Self Introduce",
+"desire"=>"Desire",
+"candidate"=>"Candidate",
+"sex"=>"Sex",
+"birthday"=>"Birthday",
+"facebook"=>"Facebook",
 ];
 
 ?>

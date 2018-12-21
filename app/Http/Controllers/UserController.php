@@ -115,10 +115,10 @@ class UserController extends Controller
             if($request->hasFile('nnavatarfile')){
                 $file = $request->file('nnavatarfile');
                 $nameimg = $file->getClientOriginalName(); 
-                $hinh = "longtriCo".str_random(6)."_".$nameimg;
+                $hinh = "imageEnzi".str_random(6)."_".$nameimg;
                 while(file_exists("public/img/user/".$hinh))
                 {
-                    $hinh = "longtriCo".str_random(6)."_".$nameimg;
+                    $hinh = "imageEnzi".str_random(6)."_".$nameimg;
                 }
                 $file->move("public/img/user",$hinh);
                 $user->avatar = $hinh;
@@ -190,10 +190,10 @@ class UserController extends Controller
             if($request->hasFile('ennavatarfile')){
                 $file = $request->file('ennavatarfile');
                 $nameimg = $file->getClientOriginalName(); 
-                $hinh = "longtriCo".str_random(6)."_".$nameimg;
+                $hinh = "imageEnzi".str_random(6)."_".$nameimg;
                 while(file_exists("public/img/user/".$hinh))
                 {
-                    $hinh = "longtriCo".str_random(6)."_".$nameimg;
+                    $hinh = "imageEnzi".str_random(6)."_".$nameimg;
                 }
                 $file->move("public/img/user",$hinh);
                 // removefile

@@ -192,7 +192,16 @@ return [
 "listproduct"=>"List SP",
 "action"=>"Thao tác",
 "date_order_at"=>"Ngày đặt hàng",
- 
+
+"education"=>"Học vấn",
+"language_jp"=>"Tiếng Nhật",
+"language_other"=>"Ngoại ngữ khác",
+"introduce"=>"Giới thiệu bản thân",
+"desire"=>"Mong muốn",
+"candidate"=>"Ứng viên",
+"sex"=>"Giới tính",
+"birthday"=>"Ngày sinh",
+"facebook"=>"Facebook",
 ];
 
 ?>

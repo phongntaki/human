@@ -31,8 +31,8 @@ Route::get('lien-he', ['as' => 'lien_he', 'uses' => 'HomeController@lien_he']);
 Route::get('gioi-thieu', ['as' => 'gioi_thieu', 'uses' => 'HomeController@gioi_thieu']);
 Route::get('hinh-thanh', ['as' => 'hinh_thanh', 'uses' => 'HomeController@hinh_thanh']);
 Route::get('linh-vuc', ['as' => 'linh_vuc', 'uses' => 'HomeController@linh_vuc']);
-
-
+Route::get('my-profile', ['as' => 'my_profile', 'uses' => 'HomeController@my_profile']);
+Route::post('my-profile', ['as' => 'my_profile', 'uses' => 'HomeController@post_my_profile']);
 
 
 //Social Login
