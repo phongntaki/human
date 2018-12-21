@@ -56,7 +56,12 @@ $(document).ready(function() {
 		$("#ennfacebook").val($(this).attr('cusface'));
 		$("#ennimguserold").val($(this).attr('imgo'));	
 		$("#ennavatarfile").val("");
-		$("#ennavatar").attr('src',"../../public/img/customers/"+$(this).attr('imgo'));
+		if($(this).attr('imgo').search('https')==-1){
+			$("#ennavatar").attr('src',"../../public/img/customers/"+$(this).attr('imgo'));
+			
+		} else{
+			$("#ennavatar").attr('src',""+$(this).attr('imgo'));
+		}
 		$('.nn-modal-edit-Customer').modal('show');
 	});
 	$(".nndremovecus").click(function(){

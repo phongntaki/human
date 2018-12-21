@@ -143,9 +143,9 @@
                                 </li>
                             </ul>  
                         </li>                           
-                        <li>
+                        <!-- <li>
                             <a href="{{ url('/admin/slide/list')}}"><i class="fa fa-picture-o fa-fw"></i> Slide show</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="{{ url('/admin/advert/list')}}"><i class="fa fa-bullhorn fa-fw"></i>{{ trans('translate.advert') }}</a>
                         </li>

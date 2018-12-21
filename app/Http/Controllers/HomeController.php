@@ -1422,6 +1422,7 @@ class HomeController extends Controller {
     }
 
     public function post_my_profile(Request $request){
+        // echo "<script type='text/javascript'>alert('zz000');</script>";
         $cus_data = Customers::where("cusemail",'=',Session::get('logined_cusemail'))->first();
         $cus_data->cusfullname = $request->txtname;
         $cus_data->sex = $request->sex;
@@ -1436,7 +1437,32 @@ class HomeController extends Controller {
 
         $cus_data->idgroup = "1";
         $cus_data->cusemail = Session::get('logined_cusemail');
-        $cus_data->cusimg = "";
+        // $cus_data->cusimg = "";
+        if($request->hasFile('hnnavatarfile')){
+            echo "<script type='text/javascript'>alert('zz111');</script>";
+            $file = $request->file('hnnavatarfile');
+            $nameimg = $file->getClientOriginalName(); 
+            $hinh = "imageEnzi".str_random(6)."_".$nameimg;
+            while(file_exists("public/img/customers/".$hinh))
+            {
+                $hinh = "imageEnzi".str_random(6)."_".$nameimg;
+            }
+            $file->move("public/img/customers",$hinh);
+            $imgold = $cus_data->cusimg;
+            if($imgold !="no-img.png" && ($imgold !='')){
+                while(file_exists("public/img/customers/".$imgold))
+                {
+                    unlink("public/img/customers/".$imgold);
+                }
+            }
+            $cus_data->cusimg = $hinh;
+        }else{
+            if($cus_data->cusimg!="no-img.png" && ($cus_data->cusimg !='')){
+                $cus_data->cusimg = $cus_data->cusimg;
+            }else{
+                $cus_data->cusimg = "no-img.png";
+            }
+        }
         $cus_data->status = "1";
 
         $cus_data->save();

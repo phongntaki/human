@@ -11,7 +11,7 @@
 			<!-- BEGIN .content-block-single -->
 			<div class="content-block-single">
 				
-				<form role="form" class="form-vertical" action="" method="POST">
+				<form role="form" class="form-vertical" action="" method="POST" enctype="multipart/form-data">
 					<div class="col-lg-8" style="padding-bottom:70px"> 
 		              	<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
 		                <fieldset>
@@ -127,6 +127,20 @@
 		                          <textarea name="nnDesire" class="form-control" rows="4"><?php echo old('nnDesire',isset($cus_data) ? $cus_data['desire'] : null); ?></textarea>
 		                        </div>
 		                  	</div>
+		                  	<div class="form-group">
+		                        <label for="hnnavatar" class="col-sm-4 control-label"><i class="fa  fa-picture-o"></i> Hình ảnh</label>
+		                        <div class="col-sm-8">
+		                            <img id="hnnavatar"
+		                            <?php if($cus_data["cusimg"]=="no-img.png" && $cus_data["cusimg"]==null): ?>
+		                             src="http://shopproject30.com/wp-content/themes/venera/images/placeholder-camera-green.png"
+		                             <?php else: ?>
+		                             src="<?php echo e(url('public/img/customers/'.$cus_data['cusimg'])); ?>"
+		                             <?php endif; ?>
+		                              alt="..." class="img-thumbnail" style="width: 50%;">
+		                            <input type="file" name="hnnavatarfile" id="hnnavatarfile" onchange="eshowimg(this);" style="display: none">
+		                            <input type="hidden" name="hnnimguserold" id="hnnimguserold">
+		                        </div>
+		                    </div>
 		                  	<br>
 		                  	<br>
 		                  	<button type="submit" class="btn btn-orange">Update</button>
