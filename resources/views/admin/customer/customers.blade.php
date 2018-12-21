@@ -33,7 +33,7 @@
                                 <th>{{ trans("admin.name") }}</th>
                                 <th>{{ trans("admin.info") }}</th>
                                 <th>{{ trans("admin.phone") }}</th>
-                                <th>{{ trans("admin.status") }}</th>
+                                <th>{{ trans("admin.image_p") }}</th>
                                 <th>{{ trans("admin.detail") }}</th>
                             </tr>
                         </thead>
@@ -46,7 +46,7 @@
                                 
                                 <td class="center">
 
-                                <img @if($cus->idloginsocial==null) src="{{ asset('public/img/customers/'.$cus->cusimg) }}" @else src="{{ $cus->cusimg }}" @endif style="width: 55px">
+                                <img @if($cus->idloginsocial==null || !str_contains($cus->cusimg,'https')) src="{{ asset('public/img/customers/'.$cus->cusimg) }}" @else src="{{ $cus->cusimg }}" @endif style="width: 55px">
                                 </td>                                        
                                 <td>
                                     <i class="nneditcustomer btn btn-info fa fa-edit" id="enngr{{ $cus->id }}" editid="{{ $cus->id }}" name="{{ $cus->cusfullname }}" sex="{{$cus->sex}}" birthday="{{ $cus->birthday }}" education="{{$cus->education}}" language_jp="{{$cus->language_jp}}" language_other="{{$cus->language_other}}" introduce="{{$cus->introduce}}" desire="{{$cus->desire}}" imgo="{{ $cus->cusimg }}" phone="{{ $cus->cusphone }}" cusemail="{{ $cus->cusemail }}" status="{{ $cus->status }}" cusaddress="{{ $cus->cusaddress }}" cusface="{{ $cus->cusface }}" hide="{{ $cus->status }}" idgroup="{{ $cus->idgroup }}"> {{ trans("admin.edit") }}</i>

@@ -366,10 +366,10 @@ class CustomerController extends Controller
         if($request->hasFile('nnavatarfile')){
                 $file = $request->file('nnavatarfile');
                 $nameimg = $file->getClientOriginalName(); 
-                $hinh = "longtriCo".str_random(6)."_".$nameimg;
+                $hinh = "imageEnzi".str_random(6)."_".$nameimg;
                 while(file_exists("public/img/customers/".$hinh))
                 {
-                    $hinh = "longtriCo".str_random(6)."_".$nameimg;
+                    $hinh = "imageEnzi".str_random(6)."_".$nameimg;
                 }
                 $file->move("public/img/customers",$hinh);
                 $gruop->listimg = $hinh;
@@ -398,10 +398,10 @@ class CustomerController extends Controller
         if($request->hasFile('ennavatarfile')){
             $file = $request->file('ennavatarfile');
             $nameimg = $file->getClientOriginalName(); 
-            $hinh = "longtriCo".str_random(6)."_".$nameimg;
+            $hinh = "imageEnzi".str_random(6)."_".$nameimg;
             while(file_exists("public/img/customers/".$hinh))
             {
-                $hinh = "longtriCo".str_random(6)."_".$nameimg;
+                $hinh = "imageEnzi".str_random(6)."_".$nameimg;
             }
             $file->move("public/img/customers",$hinh);
             // removefile
@@ -494,18 +494,18 @@ class CustomerController extends Controller
         $customer->cusface = $request->nnfacebook;
         $customer->cuspass = "";
         if($request->hasFile('nnavatarfile')){
-                $file = $request->file('nnavatarfile');
-                $nameimg = $file->getClientOriginalName(); 
-                $hinh = "longtriCo".str_random(6)."_".$nameimg;
-                while(file_exists("public/img/customers/".$hinh))
-                {
-                    $hinh = "longtriCo".str_random(6)."_".$nameimg;
-                }
-                $file->move("public/img/customers",$hinh);
-                $customer->cusimg = $hinh;
-            }else{
-                $customer->cusimg = "no-img.png";
+            $file = $request->file('nnavatarfile');
+            $nameimg = $file->getClientOriginalName(); 
+            $hinh = "imageEnzi".str_random(6)."_".$nameimg;
+            while(file_exists("public/img/customers/".$hinh))
+            {
+                $hinh = "imageEnzi".str_random(6)."_".$nameimg;
             }
+            $file->move("public/img/customers",$hinh);
+            $customer->cusimg = $hinh;
+        }else{
+            $customer->cusimg = "no-img.png";
+        }
         $customer->save();
         if($type=='cus') {
         return redirect('admin/customers/list')->with('thongbao','thêm thành công');
@@ -559,10 +559,10 @@ class CustomerController extends Controller
         if($request->hasFile('ennavatarfile')){
             $file = $request->file('ennavatarfile');
             $nameimg = $file->getClientOriginalName(); 
-            $hinh = "longtriCo".str_random(6)."_".$nameimg;
+            $hinh = "imageEnzi".str_random(6)."_".$nameimg;
             while(file_exists("public/img/customers/".$hinh))
             {
-                $hinh = "longtriCo".str_random(6)."_".$nameimg;
+                $hinh = "imageEnzi".str_random(6)."_".$nameimg;
             }
             $file->move("public/img/customers",$hinh);
             // removefile

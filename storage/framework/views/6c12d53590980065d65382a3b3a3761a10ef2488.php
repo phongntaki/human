@@ -144,9 +144,9 @@
                                 </li>
                             </ul>  
                         </li>                           
-                        <li>
+                        <!-- <li>
                             <a href="<?php echo e(url('/admin/slide/list')); ?>"><i class="fa fa-picture-o fa-fw"></i> Slide show</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="<?php echo e(url('/admin/advert/list')); ?>"><i class="fa fa-bullhorn fa-fw"></i><?php echo e(trans('translate.advert')); ?></a>
                         </li>

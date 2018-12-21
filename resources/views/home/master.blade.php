@@ -326,7 +326,7 @@
                                 @else
                                 <li><a class="myaccount" href="{{ url('login') }}">Login</a></li>
                                 <li><a href="{{ url('/register') }}" target="_blank" class="hover-color-google-plus">Register</a></li>
-                                @endif
+                                @endif 
 							</ul>
 						</nav>
 						<nav class="top-menu-list">
@@ -373,14 +373,7 @@
 							<a href="{{url('')}}"><img src="{{ url('/public/sky.jpg')}}" style="width: 25%;height: 10%" alt="No logo" /></a>
 						</div>
 
-						<div class="header-main-weather">
-							<div class="weather-block">
-								<a class="weatherwidget-io" href="https://forecast7.com/en/35d69139d69/tokyo/" data-label_1="TOKYO" data-mode="Current" data-theme="mountains" >TOKYO</a>
-<script>
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-</script>
-							</div>
-						</div>
+						
 
 					<!-- END .header-main -->
 					</div>
@@ -465,6 +458,7 @@
 		<script type="text/javascript" src="{{url('public/home/jscript/theme-scripts.js')}}"></script>
 		<script type="text/javascript" src="{{url('public/home/jscript/ot-lightbox.js')}}"></script>
 		<script type="text/javascript" src="{{url('public/js/jquery.sticky-kit.min.js')}}"></script>
+		<script src="{{ asset('public/js/home/customer.js') }}"></script>
 	<!-- END body -->
 	<script>
 		if ($(window).width() >700) {

@@ -19,7 +19,9 @@
 				<div class="ot-breaking-news-content-wrap">
 				<?php $__currentLoopData = $khuyenmai; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_km): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 					<div class="item">
+						<img class="img-responsive" style="width: 25%;height: 25%;" src="<?php echo e(url('public/img/news/300x300/'.$item_km['newimg'])); ?>">
 						<strong><a href="<?php echo e(url('/chi-tiet/'.$item_km->slug)); ?>"><?php echo e($item_km->newsname); ?></a></strong>
+						<p><?php echo e($item_km->newintro); ?></p>
 					</div>
 				<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 				</div>
