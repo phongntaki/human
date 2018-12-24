@@ -9,6 +9,7 @@
     <div class="wrapper">
 
         <!-- BEGIN .ot-breaking-news-body -->
+<!--
         <div class="ot-breaking-news-body" data-breaking-timeout="4000" data-breaking-autostart="true">
             <div class="ot-breaking-news-controls">
                 <button class="right" data-break-dir="right"><i class="fa fa-angle-right"></i></button>
@@ -24,8 +25,11 @@
                     @endforeach
                 </div>
             </div>
+-->
         <!-- END .ot-breaking-news-body -->
-        </div>
+<!--        </div>-->
+
+        <h1>登録ページ</h1>
 
         <div class="content-block has-sidebar">
             <!-- BEGIN .content-block-single -->
@@ -95,12 +99,12 @@
                     </form>
                 </div>
                 <?php $index_count = 0; $ads = 0;?>
-                @foreach($modnews as $index_mod)        
+                @foreach($modnews as $index_mod)
                 <!-- BEGIN .content-panel -->
 
                 <?php $index_count = $index_count +1; ?>
                 <!-- END .content-panel -->
-                @endforeach             
+                @endforeach
             </div>
             <!-- END .content-block-single -->
             <!-- BEGIN .sidebar -->
