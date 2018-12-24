@@ -34,16 +34,16 @@ body {
 }
 *, *::before, *::after {
     -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+            box-sizing: border-box;
 }
 a {
     color: #333;
     text-decoration: none;
     -webkit-transition: 0.2s;
-    transition: 0.2s;
+            transition: 0.2s;
 }
 a:visited, a:hover, a:active {
-    color: #eb6435;
+    color: #eb6435; /*後で確認*/
     text-decoration: none;
     opacity: 0.8;
 }
@@ -197,7 +197,7 @@ button:hover {
     right: 0;
     left: 0;
     margin: 0 auto;
-    z-index: 1001;
+    z-index: 10001;
 }
 .top-menu .wrapper:after {
     display: block;
@@ -235,7 +235,7 @@ button:hover {
     white-space: nowrap;
 }
 .top-menu .top-menu-lists .btn-login a,
-.top-menu .top-menu-lists .dropdown a {
+.top-menu .top-menu-lists .btn-myaccount a {
     /*    background-color: #4a72af;*/
     background-color: #22539c;
     /*    background-color: #0244a9;*/
@@ -263,7 +263,6 @@ button:hover {
     content: '';
     width: 100%;
     border-bottom: 1px solid #5f84b9;
-    padding: 0 15px;
 }
 .top-menu .dropdown-menu li:first-child a {
     border-top-left-radius: 0;
