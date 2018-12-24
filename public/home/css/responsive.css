@@ -263,11 +263,15 @@
         display: none!important;
     }
 
+
     .header .top-menu {
         display: none;
     }
     .header .header-logo .logo {
         margin: 0 auto;
+    }
+    .header .global-nav {
+        display: none;
     }
     .visible-xs {
         display: block !important;

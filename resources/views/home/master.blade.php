@@ -89,7 +89,6 @@
                                 </li>
                                 <!--                                    ドロップダウンテスト用-->
 
-<!--
                                 <li id="home_login" class="btn-myaccount dropdown hover"><a class="myaccount" href="">Hi {{Session::get('logined_cusfullname')}}</a>
                                     <ul id="home_logout" class="dropdown-menu">
                                         <li><a href="{{ url('my-profile') }}">My profile setting</a></li>
@@ -97,7 +96,6 @@
                                         <li><a href="">test</a></li>
                                     </ul>
                                 </li>
--->
 
                                 @if (Session::get('logined_cus') == 1)
                                 <li id="home_login" class="btn-account dropdown hover"><a class="myaccount" href="">Hi {{Session::get('logined_cusfullname')}}</a>
@@ -171,8 +169,14 @@
 
         <!-- BEGIN .content -->
         <section class="content">
-            @yield('content')
-            <!-- BEGIN .content -->
+            <div class="boxed active">
+                <div class="wrapper">
+
+                    @yield('content')
+
+                </div>
+            </div>
+        <!-- END .content -->
         </section>
 
         <!-- BEGIN .footer -->
@@ -195,9 +199,9 @@
             <a href="#top" class="right" style="color: #fff;"><i class="fa fa-chevron-up"></i><strong></strong></a>
         </div>
         <div class="popup_menu visible-xs">
-            <a href="#dat-menu"  title="Danh mục tin">
-                <!--                    <i class="fa fa-bars"></i>-->
-                <span>ME</span><span>NU</span>
+            <a href="#dat-menu" class="btn-popup" title="menu">
+                <i class="fa fa-bars"></i>
+                <span class="popup-text-menu">MENU</span>
             </a>
         </div>
 
