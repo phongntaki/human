@@ -5,13 +5,14 @@
 [Style Index]
 
 0. Reset
-1. Main header
-2. Main menu
+1. Header
+2. Global Nav
 3. Content styling
 4. Comments
 5. Photo gallery
 6. Sidebar styling
 7. Footer
+8. Popup Mnu
 -------------------------------------------------------------------*/
 
 
@@ -36,15 +37,14 @@ body {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
 }
-a {
+a, a:hover {
     color: #333;
     text-decoration: none;
     -webkit-transition: 0.2s;
-            transition: 0.2s;
+    transition: 0.2s;
 }
-a:visited, a:hover, a:active {
+a:hover {
     color: #eb6435; /*後で確認*/
-    text-decoration: none;
     opacity: 0.8;
 }
 img {
@@ -172,7 +172,7 @@ button:hover {
 
 
 /*------------------------------------------------------------------
-[1. header]
+[1. Header]
 
 + .header
     + .top-menu
@@ -187,11 +187,11 @@ button:hover {
 -------------------------------------------------------------------*/
 
 .header {
-    margin-bottom: 50px;
+    margin-bottom: 35px;
 }
 
 /* top-menu */
-.top-menu {
+.header .top-menu {
     position: absolute;
     top: 25px;
     right: 0;
@@ -230,7 +230,7 @@ button:hover {
     color: #fff;
     line-height: 35px;
     height: 35px;
-    padding: 0 15px;
+    padding: 0 20px;
     border-radius: 6px;
     white-space: nowrap;
 }
@@ -382,7 +382,7 @@ right: 0;
 
 /*header-logo*/
 .header .header-logo {
-    padding: 25px 0 30px;
+    padding: 35px 0 35px;
 }
 .header .header-logo .logo {
     width: 200px;
@@ -398,7 +398,7 @@ right: 0;
 
 
 /*------------------------------------------------------------------
-[2. global-nav]
+[2. Global Nav]
 
 + .header
     + .global-nav
@@ -416,67 +416,69 @@ right: 0;
 .header .global-nav {}
 
 .global-nav .global-nav-inner {
-    border-bottom: 1px solid #e8e8e8;
+    padding: 15px 0;
     background-color: #fff;
-    /*
-    -webkit-box-shadow: 0 0 10px 1px #e3e3e3;
-    box-shadow: 0 2px 10px 1px #e3e3e3;
-    */
     z-index: 9999;
 }
-.global-nav .nav {
-/*    z-index: 999;*/
-}
+.global-nav .nav {}
+
 /* .nav にpositionをつけていたが、こっちにつけて動作かくにん*/
 .global-nav .nav .nav-lists {
-    position: relative;
-    font-size: 0;
+/*    position: relative;*/
+/*    font-size: 0;*/
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
     margin-bottom: 0;
     z-index: 9999;
 }
 .global-nav .nav .nav-lists li {
-    font-size: 1.4rem;
+    position: relative;
+    width: 100%;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    white-space: nowrap;
     letter-spacing: 0.05em;
 }
 .global-nav .nav .nav-lists > li {
-    display: inline-block;
+    border-left: 1px solid #efefef;
+}
+.global-nav .nav .nav-lists > li:last-child {
+    border-right: 1px solid #efefef;
 }
 .global-nav .nav .nav-lists li a {
     display: block;
-    line-height: 35px;
-    height: 35px;
-    padding: 0 10px 0 12px
+    width: 100%;
+    height: 100%;
+    padding: 0 15px;
 }
-.global-nav .nav .nav-lists li a span::after {
-    display: inline-block;
-    /*    content: '\f0d7';*/
-    /*    content: '\f107';*/
-    content: '\f078';
-    font-family: "FontAwesome";
-    font-size: 10px;
-    color: #4e4e4e;
-    padding-left: 10px;
-}
-
-
 .global-nav .nav .nav-lists li:hover a {
-    background-color: #f4f4f4;
+    background-color: #f4f4f4;    /*あとで調整*/
 }
 
 /* sub-nav */
 .global-nav .nav .nav-lists .sub-nav-lists {
     position: absolute;
+    left: 50%;
     display: none;
-    background-color: #f4f4f4;
+    background-color: #f4f4f4; /*あとで調整*/
+    -webkit-transform:translateX(-50%);
+            transform:translateX(-50%);
 }
 .global-nav .nav .nav-lists .sub-nav-lists li {
-    border-top: 1px solid rgba(255, 255, 255, 0.75);
+    border-top: 1px solid rgba(255, 255, 255, 0.65); /*あとで調整*/
 }
 .global-nav .nav .nav-lists li:hover > .sub-nav-lists {
     display: block;
 }
 .global-nav .nav .nav-lists .sub-nav-lists li:hover > a {
-    background-color: #f4f4f4;
+    background-color: #f4f4f4; /*あとで調整*/
 }
 
 
@@ -499,224 +501,25 @@ right: 0;
 
 
 
-
-
-/* クラス名がない*/
-/*
-
-.header .main-menu .top-bottom-menu {
-    border: 1px solid #e8e8e8;
-    border-top: 0px;
-    margin-bottom: 0px;
-    background-color: #fff;
-}
-.header .main-menu .top-bottom-menu:after,
-.header .main-menu .top-main-menu:after {
-    display: block;
-    content: '';
-    clear: both;
-}
-*/
-
-
-
-
-/*ot-mega-menu　がない*/
-/*
-.header .main-menu .has-ot-mega-menu:hover > a {
-    background-color: #ffffff!important;
-    color: #3c3c3c!important;
-    -webkit-box-shadow: inset 0 1px 0 0 #e8e8e8;
-    box-shadow: inset 0 1px 0 0 #e8e8e8;
-}
-
-.header .main-menu .top-main-menu ul.ot-mega-menu > li {
-    border: 0px;
-    float: none;
-    display: table;
-}
-
-.header .main-menu .top-main-menu ul.ot-mega-menu a {
-    color: #3f3f3f;
-    padding: 0px;
-}
-
-.header .main-menu .top-main-menu ul.ot-mega-menu {
-    display: none;
-    position: absolute;
-    width: 100%;
-    left: 0px;
-    background-color: #ffffff;
-    -webkit-box-shadow: inset 0 -3px 0 #3c3c3c, inset 0 -1px 0 1px #e8e8e8;
-    box-shadow: inset 0 -3px 0 #3c3c3c, inset 0 -1px 0 1px #e8e8e8;
-}
-
-.header .main-menu .top-main-menu li:hover > ul.ot-mega-menu {
-    display: block;
-    padding: 0 15px;
-}
-
-ul.ot-mega-menu .widget {
-    display: table-cell;
-    width: 25%;
-    padding: 30px 15px;
-    vertical-align: top;
-}
-
-ul.ot-mega-menu .widget > h3 {
-    display: block;
-    margin-top: 0px;
-    padding-bottom: 15px;
-    margin-bottom: 17px;
-    font-size: 16px;
-    color: #9d9d9d;
-    font-weight: bold;
-    border-bottom: 2px solid #efefef;
-}
-
-ul.ot-mega-menu .widget .widget-article-list .item .item-content .item-meta a:nth-child(2) {
-    display: none;
-}
-*/
-
-
-/* menu-search-thing がない*/
-/*
-.header .menu-search-thing {
-    position: absolute;
-    right: 0px;
-    top: 0px;
-}
-
-.header .menu-search-thing button {
-    border: 0px;
-    background: #EB6435;
-    color: #fff;
-    width: 58px;
-    height: 100%;
-    font-size: 13px;
-    border-radius: 0px;
-    transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    -webkit-transition: all 0.2s;
-    -o-transition: all 0.2s;
-}
-
-.header .menu-search-thing button:hover {
-    background: #4b4b4b;
-}
-
-.header .menu-search-thing form {
-    position: absolute;
-    z-index: 2;
-    top: 0px;
-    right: 0px;
-    height: 100%;
-    display: none;
-    font-size: 0;
-    white-space: nowrap;
-}
-
-.header .menu-search-thing.show-this form {
-    display: block;
-    vertical-align: bottom;
-}
-
-.header .menu-search-thing input {
-    display: inline-block;
-    height: 100%;
-}
-
-.header .menu-search-thing input[type=search],
-.header .menu-search-thing input[type=text] {
-    border: 0px;
-    border-radius: 0px;
-    -webkit-box-shadow: inset 0 1px 0 #e8e8e8, inset 0 -1px 0 #e8e8e8;
-    box-shadow: inset 0 1px 0 #e8e8e8, inset 0 -1px 0 #e8e8e8;
-}
-
-.header .menu-search-thing input[type=submit] {
-    border: 0px;
-    border-radius: 0px;
-    color: transparent;
-    background: transparent;
-    width: 58px;
-}
-
-.header .menu-search-thing input[type=submit]:hover {
-    background: rgba(255,255,255,0.2);
-}
-*/
-
-
-
-/*top-bottom-menu　がない*/
-/*
-.header .main-menu .top-bottom-menu li {
-    display: block;
-    float: left;
-    font-size: 12px;
-    border-right: 1px solid #f4f4f4;
-}
-
-.header .main-menu .top-bottom-menu li a {
-    display: block;
-    color: #8c8c8c;
-    padding: 17px 19px;
-}
-
-.header .main-menu .top-bottom-menu li:hover > a {
-    background: #f4f4f4;
-}
-*/
-
-
-.ot-menu-will-follow .main-menu-placeholder.is-now-following .main-menu-wrapper {
+.header .global-nav.is-now-following .global-nav-inner {
     position: fixed;
     top: 0px;
-    left: 50%;
-    margin-left: -525px;
     width: 100%;
-    max-width: 1050px;
-    -webkit-box-shadow: 0 3px 0 rgba(0,0,0,0.02);
-    box-shadow: 0 3px 0 rgba(0,0,0,0.02);
+
+}
+.header .global-nav.is-now-following.smallify .global-nav-inner {
+    padding: 10px 0;
+    -webkit-box-shadow: 0 -2px 15px 1px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 -2px 15px 1px rgba(0, 0, 0, 0.15);
+    z-index: 100000;
+}
+.header .global-nav.is-now-following.smallify .nav .nav-lists li {
+    line-height: 45px;
+    height: 45px;
 }
 
-.ot-menu-will-follow.admin-bar .main-menu-placeholder.is-now-following .main-menu-wrapper {
-    top: 32px;
-}
 
-.header .main-menu .main-menu-placeholder.is-now-following.smallify .top-main-menu > li > a,
-.header .main-menu .main-menu-placeholder.is-now-following.smallify .top-main-menu ul:not(.ot-mega-menu) li a {
-    padding: 10px 10px;
-}
 
-.header .main-menu .main-menu-placeholder.is-now-following.smallify .top-bottom-menu li a {
-    padding: 10px 19px;
-}
-
-.header .main-menu-placeholder.is-now-following.smallify .menu-search-thing button {
-    height: 42px;
-    font-size: 14px;
-}
-
-.header .main-menu-placeholder .menu-search-thing button,
-.header .main-menu .main-menu-placeholder .top-bottom-menu li a,
-.header .main-menu .main-menu-placeholder .top-main-menu li a {
-    transition: color 0.2s, background 0.2s;
-    -moz-transition: color 0.2s, background 0.2s;
-    -webkit-transition: color 0.2s, background 0.2s;
-    -o-transition: color 0.2s, background 0.2s;
-}
-
-.header .main-menu-placeholder.is-now-following .menu-search-thing button,
-.header .main-menu .main-menu-placeholder.is-now-following .top-bottom-menu li a,
-.header .main-menu .main-menu-placeholder.is-now-following .top-main-menu li a {
-    transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    -webkit-transition: all 0.2s;
-    -o-transition: all 0.2s;
-}
 
 
 
@@ -1022,23 +825,25 @@ ul.ot-mega-menu .widget .widget-article-list .item .item-content .item-meta a:nt
 
 
 .ot-breaking-news-body {
-    display: block;
-    margin-bottom: 15px;
+    position: relative;
+    height: 350px;
+    margin-bottom: 50px;
     background-color: #f4f4f4;
-    font-size: 12px;
 }
 
 .ot-breaking-news-body:after {
+/*
     display: block;
     clear: both;
     content: '';
+*/
 }
 
 .ot-breaking-news-body .ot-breaking-news-controls {
-    display: block;
-    width: 165px;
-    float: left;
-    padding: 5px 0 5px 20px;
+    position: absolute;
+/*    width: 165px;*/
+/*    float: left;*/
+/*    padding: 5px 0 5px 20px;*/
 }
 
 .ot-breaking-news-body .ot-breaking-news-controls strong {
@@ -1064,16 +869,19 @@ ul.ot-mega-menu .widget .widget-article-list .item .item-content .item-meta a:nt
 }
 
 .ot-breaking-news-body .ot-breaking-news-content {
+/*
     display: block;
     margin-left: 216px;
     padding: 5px 5px;
     border-left: 1px solid #fff;
+*/
+    height: 100%;
 }
 
 .ot-breaking-news-body .ot-breaking-news-content strong {
     margin-right: 10px;
-    font-size: 13px;
-    line-height: 16px;
+    font-size: 2.4rem;
+/*    line-height: 16px;*/
 }
 
 .ot-breaking-news-body .ot-breaking-news-content .ot-breaking-news-content-wrap {
@@ -1085,12 +893,13 @@ ul.ot-mega-menu .widget .widget-article-list .item .item-content .item-meta a:nt
 }
 
 .ot-breaking-news-body .ot-breaking-news-content .item {
-    font-size: 12px;
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
     width: 100%;
-    padding-right: 15px;
+    height: 100%;
+    padding: 0 50px;
+    margin: 0;
     text-overflow: ellipsis;
     transition: all 0.5s;
     -moz-transition: all 0.5s;
@@ -6820,4 +6629,52 @@ div.bbp-breadcrumb {
     padding: 0;
     margin: 0;
     margin-bottom: 5px;
+}
+
+
+
+
+
+
+/*------------------------------------------------------------------
+[8. Popup Menu]
+
+    + .popup_menu
+        + .btn-popup
+
+-------------------------------------------------------------------*/
+
+.popup_menu {
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    height: 46px;
+    width: 46px;
+    text-align: center;
+    background-color: #c60720;
+    border-radius: 4px;
+    z-index: 99999;
+}
+.popup_menu .btn-popup {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-top: 4px;
+}
+.popup_menu i{
+    color: #fff;
+    font-size: 2.4rem;
+    line-height: 1;
+}
+.popup_menu .popup-text-menu {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    color: #fff;
+    font-size: 1.0rem;
+/*    font-weight: 700;*/
+    line-height: 1;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
 }

@@ -6,21 +6,21 @@
 @section('seo_url', url()->current())
 @section('content')
 <!-- BEGIN .wrapper -->
-	<div class="wrapper">
-			<!-- BEGIN .ot-breaking-news-body -->
-		<div class="content-block has-sidebar">
-			<!-- BEGIN .content-block-single -->
-			<div class="content-block-single">
-				
-				Test Content
+    <div class="wrapper">
+            <!-- BEGIN .ot-breaking-news-body -->
+        <div class="content-block has-sidebar">
+            <!-- BEGIN .content-block-single -->
+            <div class="content-block-single">
 
-			<!-- END .content-block-single -->
-			</div>
+                Test Content
+
+            <!-- END .content-block-single -->
+            </div>
 
 
-		</div>
-		
+        </div>
 
-	<!-- END .wrapper -->
-	</div>
+
+    <!-- END .wrapper -->
+    </div>
 @endsection
