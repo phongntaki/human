@@ -127,8 +127,10 @@
             </div>
 
             @if (Session::get('logined_cus') != 1)
-            <div class="noInformation">
-                Bạn nên đăng ký thông tin cá nhân để chúng tôi có thể chọn ra công việc tốt nhất phù hợp với bạn. Chưa có tài khoản, đăng ký tại <a href="{{ url('/register') }}" style="color: #81F7F3">ĐÂY</a>
+            <div class="no-information">
+                <p class="noinfo-text">
+                    <span class="nowrap">Bạn nên đăng ký thông tin cá nhân để chúng tôi có</span> <span class="nowrap">thể chọn ra công việc tốt nhất phù hợp với bạn.</span> <span class="nowrap">Chưa có tài khoản, đăng ký tại</span><span class="btn-noinfo nowrap"><a href="{{ url('/register') }}" style="color: #81F7F3">ĐÂY</a></span>
+                </p>
             </div>
             @endif
 

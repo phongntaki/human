@@ -56,6 +56,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 p {
     margin-bottom: 25px;
+    letter-spacing: 0.05em;
 }
 p:last-child {
     margin-bottom: 0px;
@@ -397,6 +398,32 @@ right: 0;
 
 
 
+/* no-informaition */
+.header .no-information {
+    padding: 20px;
+    margin: 0;
+    background-color: #22539c;
+}
+
+.header .noinfo-text {
+    color: #fff;
+    text-align: center;
+    line-height: 34px;
+}
+.header .no-information .btn-noinfo a {
+    display: inline-block;
+    color: #fff !important;
+    background-color: #c60720;
+    line-height: 28px;
+    padding: 0 12px;
+    margin-left: 15px;
+    border-radius: 4px;
+}
+.header .no-information .nowrap {
+    white-space: nowrap;
+}
+
+
 /*------------------------------------------------------------------
 [2. Global Nav]
 
@@ -416,9 +443,9 @@ right: 0;
 .global-nav .global-nav-inner {
     padding: 15px 0;
     background-color: #fff;
+    -webkit-transition: 0.4s;
+            transition: 0.4s;
     z-index: 9999;
-    -webkit-transition: 0.2s;
-            transition: 0.2s;
 }
 .global-nav .nav-lists {
     display: -webkit-box;
@@ -450,7 +477,7 @@ right: 0;
     height: 24px;
     background-color: #e6e6e6;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 .global-nav .nav-lists > li::before {
     left: 0;
@@ -479,9 +506,10 @@ right: 0;
             transform:translateX(-50%);
 }
 .global-nav .nav-lists .sub-nav-lists li {
-    border-top: 1px solid rgba(255, 255, 255, 0.5); /*あとで調整*/
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    /*あとで調整*/
 }
-.global-nav .nav .nav-lists li:hover > .sub-nav-lists {
+.global-nav .nav-lists li:hover > .sub-nav-lists {
     display: block;
     z-index: 9999;
 }
@@ -492,14 +520,13 @@ right: 0;
     top: 0;
     width: 100%;
     -webkit-box-shadow: 0 -2px 15px 1px rgba(0, 0, 0, 0.25);
-    box-shadow: 0 -2px 15px 1px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 -2px 15px 1px rgba(0, 0, 0, 0.25);
     -webkit-transition: 0.4s;
-    transition: 0.4s;
+            transition: 0.4s;
 }
 .global-nav.is-now-following.smallify .global-nav-inner {
     padding: 0;
     background-color: #22539c;
-
     -webkit-transition: 0.4s;
             transition: 0.4s;
 }
@@ -520,6 +547,7 @@ right: 0;
 .global-nav.is-now-following.smallify .nav-lists > li:last-child::after {
     background-color: #bfbfbf;
 }
+
 
 
 /*------------------------------------------------------------------
