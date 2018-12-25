@@ -125,6 +125,13 @@
                 </div>
                 <!-- END .header-logo -->
             </div>
+
+            @if (Session::get('logined_cus') != 1)
+            <div class="noInformation">
+                Bạn nên đăng ký thông tin cá nhân để chúng tôi có thể chọn ra công việc tốt nhất phù hợp với bạn. Chưa có tài khoản, đăng ký tại <a href="{{ url('/register') }}" style="color: #81F7F3">ĐÂY</a>
+            </div>
+            @endif
+
             <!-- BEGIN .global-nav -->
             <div class="global-nav">
                 <div class="global-nav-inner">
