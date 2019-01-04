@@ -65,8 +65,7 @@
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));</script>
 
-        <!-- BEGIN .boxed -->
-        <!--        <div class="boxed active ">-->
+
 
         <!-- BEGIN .header -->
         <header class="header">
@@ -126,6 +125,7 @@
                 <!-- END .header-logo -->
             </div>
 
+<!--
             @if (Session::get('logined_cus') != 1)
             <div class="no-information">
                 <p class="noinfo-text">
@@ -133,6 +133,7 @@
                 </p>
             </div>
             @endif
+-->
 
             <!-- BEGIN .global-nav -->
             <div class="global-nav">
@@ -173,9 +174,6 @@
 
 
 
-
-
-
         <!-- BEGIN .content -->
         <section class="content">
             <div class="boxed active">
@@ -190,22 +188,21 @@
 
         <!-- BEGIN .footer -->
         <footer class="footer">
-            <!-- BEGIN .footer-copyright -->
-            <div class="footer-copyright">
-                <!-- BEGIN .wrapper -->
+            <div class="boxed active">
                 <div class="wrapper">
-                    <p>{!! $contact->slogan_intro !!}</p>
-                    <p>&copy; Copyright <strong>{{$contact->nameco}}</strong> <?php echo date("Y"); ?>, <strong><a href="https://nt7solution.com/" target="_blank">{{$contact->website}}</a></strong></p>
-
-                    <!-- END .wrapper -->
+                    <!-- BEGIN .footer-copyright -->
+                    <div class="footer-copyright">
+                        <p>{!! $contact->slogan_intro !!}</p>
+                        <p>&copy; Copyright <strong>{{$contact->nameco}}</strong> <?php echo date("Y"); ?>, <strong><a href="https://nt7solution.com/" target="_blank">{{$contact->website}}</a></strong></p>
+                    <!-- END .footer-copyright -->
+                    </div>
                 </div>
-                <!-- END .footer-copyright -->
             </div>
-
-            <!-- END .footer -->
+        <!-- END .footer -->
         </footer>
+
         <div class="back_top" style="display: none;">
-            <a href="#top" class="right" style="color: #fff;"><i class="fa fa-chevron-up"></i><strong></strong></a>
+            <a href="#top"><i class="fa fa-chevron-up"></i></a>
         </div>
         <div class="popup_menu visible-xs">
             <a href="#dat-menu" class="btn-popup" title="menu">

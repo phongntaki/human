@@ -12,6 +12,7 @@
 5. Photo gallery
 6. Sidebar styling
 7. Footer
+8. back_top
 8. Popup Mnu
 -------------------------------------------------------------------*/
 
@@ -41,7 +42,7 @@ a, a:hover {
     color: #333;
     text-decoration: none;
     -webkit-transition: 0.2s;
-    transition: 0.2s;
+            transition: 0.2s;
 }
 a:hover {
     color: #c60720; /*後で確認*/
@@ -177,9 +178,10 @@ button:hover {
 
 + .header
     + .top-menu
-        + .wrapper
-            + .top-menu-soc
-                + .top-menu-list
+        + .boxed.active
+            + .wrapper
+                + .top-menu-soc
+                    + .top-menu-list
     + .header-logo
         + .boxed.active
             + .wrapper
@@ -402,11 +404,12 @@ right: 0;
 .header .no-information {
     padding: 20px;
     margin: 0;
-    background-color: #22539c;
+/*    background-color: #22539c;*/
+    background-color: #efefef;
 }
 
 .header .noinfo-text {
-    color: #fff;
+/*    color: #fff;*/
     text-align: center;
     line-height: 34px;
 }
@@ -447,6 +450,10 @@ right: 0;
             transition: 0.4s;
     z-index: 9999;
 }
+.global-nav .nav::before,
+.global-nav .nav::after {
+    content: none;
+}
 .global-nav .nav-lists {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -477,7 +484,7 @@ right: 0;
     height: 24px;
     background-color: #e6e6e6;
     -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
+            transform: translateY(-50%);
 }
 .global-nav .nav-lists > li::before {
     left: 0;
@@ -494,6 +501,8 @@ right: 0;
 }
 .global-nav .nav-lists li:hover a {
     background-color: #efefef;
+    -webkit-transition: none;
+    transition: none;
 }
 
 /* sub-nav */
@@ -513,6 +522,7 @@ right: 0;
     display: block;
     z-index: 9999;
 }
+
 
 /* following menu */
 .global-nav.is-now-following .global-nav-inner {
@@ -4145,39 +4155,37 @@ input[type=submit].button:active {
 [7. Footer]
 
 + .footer
-    + .footer-menu
+    + .boxed.active
         + .wrapper
-    + .wrapper
-        +
-    + .copyright
-        + .wrapper
+            + .footer-copyright
 
 -------------------------------------------------------------------*/
 
 .footer {
-    display: block;
-    background: #00918e;
+    padding: 35px 0 80px;
+    background: #626262;
     color: #fff;
-    font-size: 14px;
 }
 
 .footer p {
+/*
     color: #fff;
     font-size: 14px;
+*/
 }
 
 .footer .footer-copyright p {
-    color: #ADADAD;
-    font-size: 14px;
+/*    color: #ADADAD;*/
+/*    font-size: 14px;*/
 }
 
-.footer hr {
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
+.footer .footer-copyright div {
+    background-color: transparent !important;
 }
 
-
-
-
+/* footer-menu */
+/*
+ footer-menu
 .footer .footer-menu {
     background-color: rgba(255,255,255,0.05);
 }
@@ -4213,10 +4221,12 @@ input[type=submit].button:active {
 .footer .footer-menu a:hover {
     background-color: rgba(255,255,255,0.03);
 }
+*/
 
 
 
-
+/* footer-weiget */
+/*
 .footer .footer-widgets {
     display: table;
     background-color: rgba(255,255,255,0.03);
@@ -4307,16 +4317,21 @@ input[type=submit].button:active {
     color: #f0f0f0;
     background: rgba(255, 255, 255, 0.2);
 }
+*/
 
 
 
 
 .footer .footer-copyright {
+/*
     background-color: #fff;
     color: #898888;
     padding: 20px 0;
+*/
 }
 
+/* footer ul */
+/*
 .footer .footer-copyright ul {
     display: block;
     float: right;
@@ -4349,6 +4364,7 @@ input[type=submit].button:active {
 .footer .footer-copyright ul li a {
     display: block;
 }
+*/
 
 .footer .footer-copyright a {
     color: #898888;
@@ -4357,6 +4373,20 @@ input[type=submit].button:active {
 .footer .footer-copyright a:hover {
     color: #232323;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .dat-menu-setup {
     background-image: url(../images/photo-3.jpg);
@@ -4473,6 +4503,7 @@ input[type=submit].button:active {
 
 /* WooCommerce */
 
+/*
 .woocommerce-ordering {
     float: right;
     margin-top: -43px;
@@ -4837,6 +4868,7 @@ input[type=submit].button:active {
     clear: none;
     margin-left: auto;
 }
+*/
 
 
 
@@ -6657,10 +6689,36 @@ div.bbp-breadcrumb {
 
 
 
+/*------------------------------------------------------------------
+[8. back_top]
+
++ .back_top
+
+-------------------------------------------------------------------*/
+.back_top {
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    width: 50px;
+    height: 50px;
+    line-height: 46px;
+    font-size: 2.4rem;
+    text-align: center;
+    font-weight: 800;
+    border-radius: 50%;
+    background-color: #c60720;
+    z-index: 99999;
+}
+.back_top a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+}
 
 
 /*------------------------------------------------------------------
-[8. Popup Menu]
+[9. Popup Menu]
 
     + .popup_menu
         + .btn-popup
