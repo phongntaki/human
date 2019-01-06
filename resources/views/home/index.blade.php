@@ -9,17 +9,21 @@
         <!-- BEGIN .ot-breaking-news-body -->
         <div class="ot-breaking-news-body" data-breaking-timeout="4000" data-breaking-autostart="true">
             <div class="ot-breaking-news-controls">
-                <button class="right" data-break-dir="right"><i class="fa fa-angle-right"></i></button>
-                <button class="right" data-break-dir="left"><i class="fa fa-angle-left"></i></button>
+                <button class="slider-button right" data-break-dir="right"><i class="fa fa-angle-right"></i></button>
+                <button class="slider-button left" data-break-dir="left"><i class="fa fa-angle-left"></i></button>
 <!--                <strong><i class="fa fa-bar-chart"></i>Tin mới    </strong>-->
             </div>
             <div class="ot-breaking-news-content">
                 <div class="ot-breaking-news-content-wrap">
                 @foreach($khuyenmai as $item_km)
                     <div class="item">
-                        <img class="img-responsive" style="width: 25%;height: 25%;" src="{{url('public/img/news/300x300/'.$item_km['newimg'])}}">
-                        <strong><a href="{{url('/chi-tiet/'.$item_km->slug)}}">{{ $item_km->newsname}}</a></strong>
-                        <p>{{ $item_km->newintro}}</p>
+                        <a href="{{url('/chi-tiet/'.$item_km->slug)}}">
+                            <div class="item-lead">
+                                <h3 class="item-title">{{ $item_km->newsname}}</h3>
+                                <p class="item-desc">{{ $item_km->newintro}}</p>
+                            </div>
+                            <img class="item-img" src="{{url('public/img/news/300x300/'.$item_km['newimg'])}}">
+                        </a>
                     </div>
                 @endforeach
                 </div>

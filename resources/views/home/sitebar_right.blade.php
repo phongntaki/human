@@ -1,16 +1,18 @@
+
+    <div class="widget widget-weather">
+        <div class="weather-block">
+            <a class="weatherwidget-io" href="https://forecast7.com/en/35d69139d69/tokyo/" data-label_1="TOKYO" data-mode="Current" data-theme="mountains" >TOKYO</a>
+            <script>
+                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+            </script>
+        </div>
+    </div>
+
 {{-- tin moi nhat --}}
     <div class="widget">
-        <h3>Tin mới nhất</h3>
-        <div class="header-main-weather">
-            <div class="weather-block">
-                <a class="weatherwidget-io" href="https://forecast7.com/en/35d69139d69/tokyo/" data-label_1="TOKYO" data-mode="Current" data-theme="mountains" >TOKYO</a>
-                <script>
-                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-                </script>
-            </div>
-        </div>
-
-        <div class="widget-article-list">
+        <h3 class="widget-title">Tin mới nhất</h3>
+<!--
+        <div class="widget-article-lists">
         <?php $count =0; ?>
         @foreach($lasted_news as $item_lt)
             @if($count <5)
@@ -27,13 +29,30 @@
                     </span>
                 </div>
             </div>
-            <div class="clearfix">
-
-            </div>
             @endif
         <?php  $count = $count +1; ?>
         @endforeach
         </div>
+-->
+        <ul class="widget-article-lists">
+            <?php $count =0; ?>
+            @foreach($lasted_news as $item_lt)
+            @if($count < 5)
+            <li class="item">
+                <a href="{{url('chi-tiet/'.$item_lt->slug)}}">
+                    <img src="{{url('/public/img/news/100x100/'.$item_lt->newimg)}}" class="item-img" alt="{{$item_lt->newsname}}" />
+                    <div class="item-content">
+                        <h4 class="item-title">{{$item_lt->newsname}}</h4>
+                        <p class="item-meta">
+                            <i class="fa fa-clock-o"></i>{{$item_lt->created_at}}
+                        </p>
+                    </div>
+                </a>
+            </li>
+        @endif
+        <?php  $count = $count +1; ?>
+        @endforeach
+        </ul>
     </div>
 
 {{-- quang cao 1 --}}

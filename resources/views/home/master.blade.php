@@ -118,7 +118,7 @@
                 <div class="boxed active">
                     <div class="wrapper">
                         <h1 class="logo">
-                            <a href="{{url('')}}"><img src="{{ url('/public/logo.png')}}" alt="ENZI human resources" /></a>
+                            <a href="{{url('')}}"><img src="{{ url('/public/logo2.png')}}" alt="ENZI human resources" /></a>
                         </h1>
                     </div>
                 </div>
