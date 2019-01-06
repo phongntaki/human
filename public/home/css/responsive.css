@@ -132,8 +132,10 @@
 @media only screen and (max-width: 900px) {
 
     body, div, p, a, table, td {
+/*
         -webkit-text-size-adjust: none;
         letter-spacing: .015em;
+*/
     }
 
     .demo-settings {
@@ -152,19 +154,10 @@
         height: auto!important;
     }
 
-    .ot-breaking-news-body .ot-breaking-news-controls button {
-        margin-top: -12px;
-        margin-bottom: -12px;
-        height: 41px;
-    }
-
     .ot-breaking-news-body .ot-breaking-news-content {
-        padding: 12px 20px;
+/*        padding: 12px 20px;*/
     }
 
-    .ot-breaking-news-body .ot-breaking-news-controls {
-        padding: 12px  0 12px 20px;
-    }
 
     .full-width-articles > .item .item-content p,
     .photo-gallery-blocks > .item .item-content p,
@@ -318,66 +311,29 @@
 /* PHONE */
 @media only screen and (max-width: 700px) {
 
-    .header .header-main {
-        display: block;
-    }
 
-    .header .header-main > div {
-        display: block;
-        float: none;
-        width: 100%!important;
-        margin-left: 0px;
-        clear: both;
-        text-align: center;
-        margin-bottom: 25px;
-        padding-left: 0px!important;
-    }
-
-    .header .header-main > div:last-child {
-        margin-bottom: 0px;
-    }
-
-    .header .header-main .header-main-weather {
-        width: 300px!important;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-        max-width: 100%;
-    }
-
-    .header .header-main .header-main-weather .weather-block {
-        padding-left: 0px!important;
-    }
-
-    .header .header-main .header-main-weather i.wi {
-        display: none;
-    }
-
-    .header .header-main .header-main-search {
-        width: 300px!important;
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 100%;
+    .header .header-logo .logo {
+        width: 150px;
+        height:auto;
     }
 
     .pagination .page-numbers {
         font-size: 10px;
     }
 
-    .ot-breaking-news-body .ot-breaking-news-content {
-        display: block;
-        clear: both;
-        margin-left: 0px;
-    }
 
-    .ot-breaking-news-body .ot-breaking-news-content strong {
-        font-size: 12px;
+    /* TOP Slider-Area */
+    .ot-breaking-news-body {
+        height: 250px;
     }
-
-    .ot-breaking-news-body .ot-breaking-news-controls {
+    .ot-breaking-news-content .item .item-lead {
+        left: 0;
         width: 100%;
-        border-bottom: 1px solid #FFF;
     }
+    .ot-breaking-news-content .item .item-desc {
+        -webkit-line-clamp: 3;
+    }
+
 
     .paragraph-row > ul,
     .paragraph-row > div,
