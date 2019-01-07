@@ -44,7 +44,7 @@
                     <div class="item-content">
                         <h4 class="item-title"><?php echo e($item_lt->newsname); ?></h4>
                         <p class="item-meta">
-                            <i class="fa fa-clock-o"></i><?php echo e($item_lt->created_at); ?>
+                            <i class="fa fa-clock-o"></i><?php echo e($item_lt->created_at->format('Y/m/d')); ?>
 
                         </p>
                     </div>
