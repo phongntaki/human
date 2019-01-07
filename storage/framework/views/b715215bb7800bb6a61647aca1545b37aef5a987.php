@@ -20,6 +20,7 @@
                         <a href="<?php echo e(url('/chi-tiet/'.$item_km->slug)); ?>">
                             <div class="item-lead">
                                 <p class="item-desc"><?php echo e($item_km->created_at->format('Y/m/d')); ?></p>
+
                                 <h3 class="item-title"><?php echo e($item_km->newsname); ?></h3>
                                 <p class="item-desc"><?php echo e($item_km->newintro); ?></p>
                             </div>
