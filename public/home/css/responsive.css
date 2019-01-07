@@ -324,14 +324,26 @@
 
     /* TOP Slider-Area */
     .ot-breaking-news-body {
-        height: 250px;
+        height: 225px;
     }
     .ot-breaking-news-content .item .item-lead {
         left: 0;
         width: 100%;
+        padding: 0 60px;
+    }
+    .ot-breaking-news-content .item .item-date {
+        font-size: 1.2rem;
+        line-height: 20px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+    }
+    .ot-breaking-news-content .item .item-title {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
     }
     .ot-breaking-news-content .item .item-desc {
-        -webkit-line-clamp: 3;
+        margin-bottom: 5px;
+        -webkit-line-clamp: 2;
     }
 
 

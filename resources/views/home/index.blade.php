@@ -11,7 +11,6 @@
             <div class="ot-breaking-news-controls">
                 <button class="slider-button right" data-break-dir="right"><i class="fa fa-angle-right"></i></button>
                 <button class="slider-button left" data-break-dir="left"><i class="fa fa-angle-left"></i></button>
-<!--                <strong><i class="fa fa-bar-chart"></i>Tin mới    </strong>-->
             </div>
             <div class="ot-breaking-news-content">
                 <div class="ot-breaking-news-content-wrap">
@@ -19,11 +18,13 @@
                     <div class="item">
                         <a href="{{url('/chi-tiet/'.$item_km->slug)}}">
                             <div class="item-lead">
-                                <p class="item-desc">{{ $item_km->created_at->format('Y/m/d')}}</p>
+                                <p class="item-date">{{ $item_km->created_at->format('Y/m/d')}}</p>
                                 <h3 class="item-title">{{ $item_km->newsname}}</h3>
                                 <p class="item-desc">{{ $item_km->newintro}}</p>
                             </div>
-                            <img class="item-img" src="{{url('public/img/news/300x300/'.$item_km['newimg'])}}">
+                            <div class="item-image">
+                                <img src="{{url('public/img/news/300x300/'.$item_km['newimg'])}}">
+                            </div>
                         </a>
                     </div>
                 @endforeach
