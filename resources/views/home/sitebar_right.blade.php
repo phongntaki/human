@@ -9,7 +9,7 @@
     </div>
 
 {{-- tin moi nhat --}}
-    <div class="widget">
+    <div class="widget widget-news">
         <h3 class="widget-title">Tin mới nhất</h3>
         <ul class="widget-article-lists">
             <?php $count =0; ?>
@@ -20,11 +20,9 @@
                     <div class="item-image">
                         <img src="{{url('/public/img/news/100x100/'.$item_lt->newimg)}}" alt="{{$item_lt->newsname}}" />
                     </div>
-                    <div class="item-content">
+                    <div class="item-lead">
                         <h4 class="item-title">{{$item_lt->newsname}}</h4>
-                        <p class="item-date">
-                            <i class="fa fa-clock-o"></i>{{$item_lt->created_at->format('Y/m/d')}}
-                        </p>
+                        <p class="item-date"><i class="fa fa-clock-o"></i>{{$item_lt->created_at->format('Y/m/d')}}</p>
                     </div>
                 </a>
             </li>
@@ -35,30 +33,28 @@
     </div>
 
 {{-- doc nhieu nhat --}}
-    <div class="widget">
+    <div class="widget widget-ranking">
         <h3 class="widget-title">Đọc nhiều nhất</h3>
-        <div class="widget-article-lists">
+        <ul class="widget-article-lists">
         <?php $count =1; ?>
         @foreach($most_news as $item_most)
             @if($count <6)
-            <div class="item">
+            <li class="item">
                 <a href="{{url('chi-tiet/'.$item_most->slug)}}">
                     <div class="item-image">
                         <p class="item-counter">{{$count}}</p>
                         <img src="{{url('/public/img/news/100x100/'.$item_most->newimg)}}" alt="{{$item_most->newsname}}" />
                     </div>
-                    <div class="item-content">
-                        <h4 class="item-title"><a href="{{url('chi-tiet/'.$item_most->slug)}}" title="{{$item_most->newsname}}">{{$item_most->newsname}}</a></h4>
-                        <p class="item-date">
-                            <i class="fa fa-clock-o"></i>{{$item_most->created_at->format('Y/m/d')}}
-                        </p>
+                    <div class="item-lead">
+                        <h4 class="item-title">{{$item_most->newsname}}</h4>
+                        <p class="item-date"><i class="fa fa-clock-o"></i>{{$item_most->created_at->format('Y/m/d')}}</p>
                     </div>
                 </a>
-            </div>
+            </li>
             @endif
         <?php  $count = $count +1; ?>
         @endforeach
-        </div>
+        </ul>
     </div>
 
     {{-- quang cao 1 --}}

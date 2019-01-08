@@ -42,44 +42,36 @@
                 <!-- BEGIN .content-panel -->
                 <div class="content-panel">
                     <div class="content-panel-title">
-                        <ul class="sub_menu">
-                            <li class="active"><a href="{{ url('loai-tin/'.$index_mod->slug) }}">{{ $index_mod->modname }}</a></li>
+                        <h2 class="panel-title"><a href="{{ url('loai-tin/'.$index_mod->slug) }}">{{ $index_mod->modname }}</a></h2>
+                        <ul class="panel-title-submenu">
                             @foreach($index_mod->listnews as $itemlist)
-                            <li><a href="{{url('/loai-tin/'.$itemlist->slug)}}" title="{{$itemlist->listname}}">{{$itemlist->listname}}</a></li>
+                            <li class="submenu-item"><a href="{{url('/loai-tin/'.$itemlist->slug)}}"><i class="fa fa-angle-right"></i>{{$itemlist->listname}}</a></li>
                             @endforeach
                         </ul>
                     </div>
                     <?php
-                        $item = $index_mod->news_in_mod($index_mod->id);
+                        $item = $index_mod->news_in_mod($index_mod->id)->take(4);
                     ?>
-                    <div class="row">
-                        <div class="hidden-xs col-md-5 nopadding">
-                            <div class="content-panel-body article-list" style="max-height: none">
-                                <ul>
-                                    @foreach($item as $news)
-                                    <li>
-                                        <img src="{{url('public/img/news/300x300/'.$news['newimg'])}}" alt="No image" />
-                                        <b>{{$news->created_at}}</b>
-                                        <a href="{{url('/chi-tiet/'.$news->slug)}}" title="{{$news->newsname}}"><b class="fa fa-angle-right" aria-hidden="true"></b><b>{{$news->newsname}}</b></a>
-                                        
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                        @foreach($item as $m_item)
-                        <div class="visible-xs col-xs-6 padding4 mobile_item">
-                            <div class="mobile_img">
-                                <a href="{{url('/chi-tiet/'.$m_item->slug)}}" title="{{$m_item->newsname}}"><img class="img-responsive" src="{{url('public/img/news/300x300/'.$m_item['newimg'])}}" alt=""></a>
-                            </div>
-                            <div class="mobile_title">
-                                <a href="{{url('/chi-tiet/'.$m_item->slug)}}" title="{{$m_item->newsname}}"><h1>{{$m_item->newsname}}</h1></a>
-                            </div>
-                        </div>
-                        @endforeach
+                    <div class="content-panel-body">
+                        <ul class="panel-items">
+                            @foreach($item as $news)
+                            <li class="item">
+                                <a href="{{url('/chi-tiet/'.$news->slug)}}">
+                                    <div class="item-image">
+                                        <img src="{{url('public/img/news/300x300/'.$news['newimg'])}}" alt="{{$news->created_at}}" />
+                                    </div>
+                                    <div class="item-lead">
+                                        <p class="item-date">{{$news->created_at->format('Y/m/d')}}</p>
+                                        <h3 class="item-title">{{$news->newsname}}</h3>
+                                    </div>
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
                     </div>
+
                     {{-- quang cao --}}
-                @if($index_count == 4)
+                    @if($index_count == 4)
                     <div class="content-panel">
                         <div class="content-panel-body do-space">
                         @if($adverts_main[$ads]->code != "")
@@ -91,21 +83,26 @@
                         @endif
                         </div>
                     <?php $ads = $ads +1; ?>
-                    <!-- END .content-panel -->
+                    <!--END .content-panel-->
                     </div>
-                @endif
+                    @endif
+
+                <!-- END .content-panel -->
                 </div>
                 <?php $index_count = $index_count +1; ?>
-                <!-- END .content-panel -->
                 @endforeach
-            </div>
             <!-- END .content-block-single -->
+            </div>
+
             <!-- BEGIN .sidebar -->
             <aside class="sidebar sticky_column">
                 @include('home.sitebar_right')
             <!-- END .sidebar -->
             </aside>
+
+        <!-- END .content-block -->
         </div>
+
         <!-- BEGIN .content-panel -->
         <div class="content-panel">
             <div class="content-panel-body do-space">

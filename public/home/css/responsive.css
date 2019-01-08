@@ -217,6 +217,20 @@
         background-color: transparent!important;
     }
 
+
+
+
+    /* sidebar
+    --------------------------------*/
+    .sidebar .widget .widget-article-lists .item .item-content .item-title {
+        -webkit-line-clamp: 3;
+    }
+
+
+
+
+
+
     .widget .widget-photo-gallery .item {
         display: block;
         margin-left: auto;
