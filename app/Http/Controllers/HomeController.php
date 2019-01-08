@@ -124,7 +124,7 @@ class HomeController extends Controller {
 
             $socials    = Socical::where('idlang', $this->idlang)->where('hide', 2)->orderBy('id', 'desc')->get();
 
-            $languages  = Language::orderBy('id', 'desc')->get(); 
+            $languages  = Language::orderBy('id', 'desc')->get();
             $lasted_news = News::orderBy('created_at','DESC')->take(10)->get();
             $most_news = News::orderBy('view_count','DESC')->take(5)->get();
             $khuyenmai = News::orderBy('created_at','DESC')->take(10)->get();
@@ -380,152 +380,6 @@ class HomeController extends Controller {
                                                             ] ));
     }
 
-	// =========================cart=========================
-	public function cart()
-	{
-		$carts = Cart::content(); 
-        // ================================   
-		// ================================        					
-
-        $public_var = $this->public_var();
-        return view('home.cart',array_merge($public_var, [  'carts'=>$carts ]));
-	}
-
-	public function addcart_ajax(Request $request){
-		$idproduct = $request->input('idproduct');
-		$product = Product::select('*', DB::raw('products.id as idproduct'))
-							->where('products.id',$idproduct)
-							->join("productdetail","products.id", "=", "productdetail.idproduct")
-        					->where('productdetail.idlang',$this->idlang)
-        					->where('hide', 0)
-        					->get()->first(); 
-
-        if(!empty($product->price) && $product->price != 0){                            
-    		if(!empty($product->vat) || $product->vat != 0){        					
-            	$price_with_vat = $product->price + $product->price * $product->vat / 100;
-            	$price_to_sale_with_vat = $product->price_to_sale + $product->price_to_sale * $product->vat / 100;
-            }else{      					
-            	$price_with_vat = $product->price;
-            	$price_to_sale_with_vat = $product->price_to_sale;
-            }
-            $price_show = $product->price;
-
-    		Cart::add(['id' => $idproduct, 
-    					'name' => $product->name, 
-    					'qty' => 1, 
-    					'price' => $price_with_vat, 
-    					'options' => ['image' => $product->image, 
-    									'vat' => $product->vat, 
-    									'unit' => $product->currency, 
-    									'currency' => $product->currency, 
-    									'price_show' => $price_show,
-    									'price' => $product->price,
-    									'price_with_vat' => $price_with_vat, 
-    									'price_to_sale' => $product->price_to_sale, 
-    									'price_to_sale_with_vat' => $price_to_sale_with_vat, 
-    									'quantity_sale' => $product->quantity_sale] ]);
-    	   
-    	 	$cart 	   = Cart::content();
-    		foreach ($cart as $item) {
-    			if($item->qty >= $item->options->quantity_sale && ($item->options->quantity_sale != 0 || !empty($item->options->quantity_sale)) ){
-    				$price 		= $item->options->price_to_sale_with_vat;
-    				$price_show = $item->options->price_to_sale;
-    			}else{
-    				$price 		= $item->options->price_with_vat;
-    				$price_show = $item->options->price;
-    			}
-
-                Cart::update( $item->rowId, ['id' => $item->id, 
-                'name' => $item->name, 
-                'qty' => $item->qty, 
-                'price' => $price, 
-                'options' => ['image' => $item->options->image, 
-                                'vat' => $item->options->vat, 
-                                'unit' => $item->options->currency, 
-                                'currency' => $item->options->currency, 
-                                'price_show' => $price_show,
-                                'price' => $item->options->price,
-                                'price_with_vat' => $item->options->price_with_vat, 
-                                'price_to_sale' => $item->options->price_to_sale, 
-                                'price_to_sale_with_vat' => $item->options->price_to_sale_with_vat, 
-                                'quantity_sale' => $item->options->quantity_sale] ]);
-    		}
-    		$totalCart = format_curency(Cart::total(0,"",""));
-    		echo $product->name.trans('index.added_cart')."<a href='".url('gio-hang')."'>".trans('index.cart')."</a>\n".trans('index.added_cart_total').$totalCart." ";
-        }else{
-            echo $product->name.trans('index.not_added_cart')."<a href='".url('gio-hang')."'>".trans('index.cart')."</a>";
-        }
-	}
-	public function removecart($rowId){
-		Cart::remove($rowId);
-      	return redirect()->back();
-	}	
-	public function updatecart_ajax(Request $request){
-		$rowId 	= $request->input('rowid');
-		$qty 	= $request->input('qty'); 
-		Cart::update($rowId, $qty);
-		$item   = Cart::get($rowId);
-		$id = $item->id;
- 
-		if($item->qty >= $item->options->quantity_sale){
-			$price 		= $item->options->price_to_sale_with_vat;
-			$price_show = $item->options->price_to_sale;
-		}else{
-			$price 		= $item->options->price_with_vat;
-			$price_show = $item->options->price;
-		}
-
-        Cart::update( $item->rowId, ['id' => $item->id, 
-        'name' => $item->name, 
-        'qty' => $item->qty, 
-        'price' => $price, 
-        'options' => ['image' => $item->options->image, 
-                        'vat' => $item->options->vat, 
-                        'unit' => $item->options->currency, 
-                        'currency' => $item->options->currency, 
-                        'price_show' => $price_show,
-                        'price' => $item->options->price,
-                        'price_with_vat' => $item->options->price_with_vat, 
-                        'price_to_sale' => $item->options->price_to_sale, 
-                        'price_to_sale_with_vat' => $item->options->price_to_sale_with_vat, 
-                        'quantity_sale' => $item->options->quantity_sale] ]);
- 
-
-		$item = Cart::get($item->rowId);
-
-		$result = array(
-						'link_delete' => url('removecart/'.$item->rowId), 
-						'rowid' 	  => $item->rowId, 
-						'priceitem'   => format_curency($item->options->price_show) , 
-						'totalitem'   => format_curency($item->subtotal) , 
-						'subtotal' 	  => format_curency(Cart::subtotal(0,"","")) , 
-						'total' 	  => format_curency(Cart::total(0,"","")) , 
-						);
-
-		echo json_encode($result);
-	}
-
-	// ======================pay========================
-	public function pay()
-	{
-		if(session('logined_cusid') == ""){
-			return redirect('checkout');
-		}else{
-			$carts = Cart::content();
-	        $cities 	= Cities::orderBy('name', 'desc')->get(); 
-            $customer   = Customers::find(Session::get("logined_cusid"));
-	        // ================================  
-			// ================================ 
-  
-            $public_var = $this->public_var();
-            return view('home.pay',array_merge($public_var, [ 
-												'carts'=>$carts, 
-                                                'cities'=>$cities,
-												'customer'=>$customer,
-                                                ]) );
-		}
-	}
-
 	// ======================`kout========================
 	public function checkout() 
 	{
@@ -629,23 +483,6 @@ class HomeController extends Controller {
         echo json_encode($error);
 	}
 
-	// ==================================giaohang====================
-	public function giaohang()
-	{ 
-		if(session('logined_cusid') == "" || session('pay_error') != 0){
-			return redirect('checkout');
-		}else{ 
-	        $cities 	= Cities::orderBy('name', 'desc')->get();
-
-
-	        // ================================  
-			// ================================   
-  
-            $public_var = $this->public_var();
-            return view('home.giaohang',array_merge($public_var, [  
-													'cities'=>$cities ]) );
-		}
-	}
 	public function select_distict_ajax(Request $request){
 		$idcity 	= $request->input('idcity');
         $districts 	= Districts::where('idcity',$idcity)->orderBy('name', 'desc')->get();
@@ -917,41 +754,6 @@ class HomeController extends Controller {
     }
 
 
-
-	// ===========================thanhtoan======================
-	public function thanhtoan()
-	{
-        // if(session('logined_cusid') == "" || session('shipping_error') != 0){
-        //  return redirect('giaohang');
-        // }else{
-        
-        if(Cart::count() <= 0){
-			return redirect('cart');
-		}else{
-            $customer   = Customers::find(Session::get("logined_cusid"));
-			$carts = Cart::content(); 
-	        $payments 	= Payments::where('idlang',$this->idlang)->orderBy('type', 'desc')->get();
-	        $shippings 	= Shippings::where('idlang',$this->idlang)->orderBy('name', 'desc')->get();
-
-
-	        // ================================   
-			// ================================    
-            $public_var = $this->public_var();
-            return view('home.thanhtoan',array_merge($public_var, [  
-													'carts'=>$carts, 
-                                                    'payments'=>$payments, 
-													'customer'=>$customer, 
-													'shippings'=>$shippings ]) );
-		}
-	}
-
-	public function get_shipping_fee(Request $request){
-		$idshipping 	= $request->input('idshipping');
-		$shipping 		= Shippings::find($idshipping);
-		$fee 			= format_curency($shipping->fee);
-		echo $fee;
-	}
-
 	public function submit_order(Request $request){
 		if(Cart::count() > 0){
             $txtNameOrder       = $request->input('txtNameOrder');
@@ -1072,115 +874,6 @@ class HomeController extends Controller {
 	        $ipaddress = 'UNKNOWN';
 	    return $ipaddress;
 	}
-
-
-	function check_payment_creaditcart(Request $request){
-		$idshipping 		 	= $request->input('idshipping');
-		$payment_credit_type 	= $request->input('payment_credit_type');
-		$payment_credit_number 	= $request->input('payment_credit_number');
-		$payment_credit_name 	= $request->input('payment_credit_name');
-		$payment_credit_expdate	= $request->input('payment_credit_expdate');
-		$payment_credit_cvv2 	= $request->input('payment_credit_cvv2');
-
-		$shipping 		= Shippings::find($idshipping);
-		$contact = Contact::find(Session::get('idlocale'));
-
-		$api_endpoint 	= 'https://api-3t.sandbox.paypal.com/nvp';
-		$api_username 	= $contact->api_username;
-		$api_password 	= $contact->api_password;
-		$api_signature 	= $contact->api_signature;
-    	$AMT 		    = Cart::total(0,"","") + $shipping->fee;
- 
-		// $number = "6011041221999335";
-		// $expdate = "042022";
-		// $cvv2    = "335";
-
-		// $number = "6011041469099434";
-		// $expdate = "022020";
-		// $cvv2    = "434";
-
-	   // Tạo yêu cầu API và lưu các tham số đó vào mảng
-	   $request_params = array (
-	      'METHOD' 			=> 'DoDirectPayment',
-	      'USER' 			=> $api_username,
-	      'PWD' 			=> $api_password,
-	      'SIGNATURE' 		=> $api_signature,
-	      'VERSION' 		=> "85.0",
-	      'PAYMENTACTION' 	=> 'Sale',
-	      'IPADDRESS' 		=> $_SERVER['REMOTE_ADDR'],
-	      'CREDITCARDTYPE' 	=> $payment_credit_type,
-	      'ACCT' 			=> $payment_credit_number,
-	      'EXPDATE' 		=> $payment_credit_expdate,
-	      'CVV2' 			=> $payment_credit_cvv2,
-	      'FIRSTNAME' 		=> $payment_credit_name,
-	      'AMT' 			=> $AMT,
-	      'CURRENCYCODE' 	=> Session::get("curency_codelocale"),
-	      'DESC' 			=> Session::get("pay_name")." - ".Session::get("pay_phone")
-	   );
-	 
-	   // vòng lặp với mảng $request_params để tạo chuỗi NVP (Name-Value Pair).
-	   $nvp_string = '';
-	   foreach($request_params as $var=>$val)
-	   {
-	      $nvp_string .= '&'.$var.'='.urlencode($val);
-	   }
-	   // gửi yêu cầu (chuỗi NVP ) HTTP đến PayPal
-	   $curl = curl_init();
-	 
-	   curl_setopt($curl, CURLOPT_VERBOSE, 0);
-	   curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-	   curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
-	   curl_setopt($curl, CURLOPT_TIMEOUT, 30);
-	   curl_setopt($curl, CURLOPT_URL, $api_endpoint);
-	   curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-	   curl_setopt($curl, CURLOPT_POSTFIELDS, $nvp_string);
-	 
-	    // những thông tin trên được gửi qua Paypal và tôi sẽ nhận được phản hồi trong biến $result
-	   $result = curl_exec($curl);
-	 
-	   curl_close($curl);
-	 
-	   // Phân tách chuỗi phản hồi dùng hàm parse_str()
-	   $nvp_response_array = parse_str($result);
-	 
-	 
-		// Hàm chuyển chuỗi NVP sang dạng mảng
-	   $result_array = array();
-	   $NVPString = $result;
-	   while(strlen($NVPString))
-	   {
-	      	// key
-			$keypos= strpos($NVPString,'=');
-			$keyval = substr($NVPString,0,$keypos);
-
-			//value
-			$valuepos = strpos($NVPString,'&') ? strpos($NVPString,'&'): strlen($NVPString);
-			$valval = substr($NVPString,$keypos+1,$valuepos-$keypos-1);
-
-			// giải mã chuỗi phản hồi
-			$result_array[$keyval] = urldecode($valval);
-			$NVPString = substr($NVPString,$valuepos+1,strlen($NVPString));
-		}
-
-	   // hiển thị dạng phản hồi API theo mảng
-	   if( isset($result_array["ACK"]) ){
-	   		if($result_array["ACK"] == "Success"){
-				Session::put('payment_credit_type', $payment_credit_type);
-				Session::put('payment_credit_number', $payment_credit_number);
-				Session::put('payment_credit_name', $payment_credit_name);
-				Session::put('payment_credit_expdate', $payment_credit_expdate);
-				Session::put('payment_credit_transactionid', $result_array["TRANSACTIONID"]);
-
-	   	    	echo 1;
-	   		}else{
-	   	    	echo $result_array;
-	   		}
-	   }else{
-	   	    echo $result_array;
-	   }
-	}
-
- 
 
 	// ===============user===================
 	public function user()

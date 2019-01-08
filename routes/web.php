@@ -5,9 +5,7 @@ Route::get('/danh-muc/{slug}',['as'=>'list_product','uses'=>'HomeController@list
 Route::get('/san-pham/{slug}',['as'=>'product','uses'=>'HomeController@product']);
 Route::get('/loai-tin/{slug}',['as'=>'list_news','uses'=>'HomeController@list_news']);
 Route::get('/chi-tiet/{slug}',['as'=>'news','uses'=>'HomeController@news']);
-Route::get('/gio-hang',['as'=>'cart','uses'=>'HomeController@cart']);
 Route::get('/checkout', 'HomeController@checkout');
-Route::get('/giaohang', 'HomeController@giaohang');
 Route::get('/user',['as'=>'pay','uses'=>'HomeController@user']);
 Route::get('/error_404',['as'=>'error_404','uses'=>'HomeController@error_404']);
 // Route::get('/ok', 'HomeController@ok');
@@ -18,8 +16,6 @@ Route::get('/login', 'HomeController@login');
 Route::post('login',['as'=>'login','uses'=>'HomeController@postLogin']);
 Route::get('/logout', 'CustomerController@logout');
 Route::get('/contact', 'HomeController@contact');
-Route::get('/pay', 'HomeController@pay');
-Route::get('/thanhtoan', 'HomeController@thanhtoan');
 // loadmore
 Route::get('loadmoremod', ['as' => 'loadmoremod', 'uses' => 'HomeController@loadmore_news_in_mod']);
 Route::get('loadmorelist', ['as' => 'loadmorelist', 'uses' => 'HomeController@loadmore_news_in_list']);
@@ -44,27 +40,16 @@ Route::get('/login/redirect/{provider?}', 'CustomerController@login_redirect');
 Route::get('/login/callback/{provider?}', 'CustomerController@login_callback');
  
 
- 
-Route::get('addcart_ajax/{id}',['as'=>'addcart_ajax', 'uses'=>'HomeController@addcart_ajax']);
-Route::get('updatecart_ajax',['as'=>'updatecart_ajax', 'uses'=>'HomeController@updatecart_ajax']);
-Route::get('removecart/{id}',['as'=>'removecart', 'uses'=>'HomeController@removecart']);
-
 Route::get('select_distict_ajax',['as'=>'select_distict_ajax', 'uses'=>'HomeController@select_distict_ajax']);
 Route::get('select_ward_ajax',['as'=>'select_ward_ajax', 'uses'=>'HomeController@select_ward_ajax']);
 
 Route::get('login_ajax',['as'=>'login_ajax', 'uses'=>'HomeController@login_ajax']);
 Route::get('register_ajax',['as'=>'register_ajax', 'uses'=>'CustomerController@register_ajax']);
-Route::get('store_address_shipping',['as'=>'store_address_shipping', 'uses'=>'HomeController@store_address_shipping']);
-Route::get('store_address_pay',['as'=>'store_address_pay', 'uses'=>'HomeController@store_address_pay']);
 Route::get('order_not_account',['as'=>'order_not_account', 'uses'=>'HomeController@order_not_account']);
-Route::get('get_shipping_fee',['as'=>'get_shipping_fee', 'uses'=>'HomeController@get_shipping_fee']);
-Route::get('check_payment_creaditcart',['as'=>'check_payment_creaditcart', 'uses'=>'HomeController@check_payment_creaditcart']);
-Route::get('submit_order',['as'=>'submit_order', 'uses'=>'HomeController@submit_order']);
 Route::get('save_custommer_info',['as'=>'save_custommer_info', 'uses'=>'CustomerController@save_custommer_info']);
 Route::get('save_custommer_address',['as'=>'save_custommer_address', 'uses'=>'CustomerController@save_custommer_address']);
 Route::get('save_custommer_pass',['as'=>'save_custommer_pass', 'uses'=>'CustomerController@save_custommer_pass']);
 Route::get('save_contact',['as'=>'save_contact', 'uses'=>'HomeController@save_contact']);
-Route::get('get_price_range',['as'=>'get_price_range', 'uses'=>'HomeController@get_price_range']);
 Route::get('get_post_ajax',['as'=>'get_post_ajax', 'uses'=>'HomeController@get_post_ajax']);
 
 // ==============*********************++++++++++++++++++++***********************
