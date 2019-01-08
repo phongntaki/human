@@ -51,43 +51,20 @@
                     </div>
                     <?php
                         $item = $index_mod->news_in_mod($index_mod->id);
-                        $hot = $item->shift();
-                     ?>
+                    ?>
                     <div class="row">
-                        <div class="hidden-xs col-md-7 nopadding">
-                            <div class="content-panel-body article-list">
-                                <div class="item" data-color-top-slider="#867eef">
-                                    <div class="item-header">
-                                        <a href="{{url('chi-tiet/'.$hot['slug'])}}">
-                                            <span class="comment-tag"><i class="fa fa-comment-o"></i><span class="fb-comments-count" data-href="{{url('chi-tiet/'.$hot['slug'])}}"></span><i></i></span>
-                                            <span class="read-more-wrapper"><span class="read-more">Đọc thêm +<i></i></span></span>
-                                            <img src="{{url('public/img/news/300x300/'.$hot['newimg'])}}" alt="No image" />
-                                        </a>
-                                    </div>
-                                    <div class="item-content">
-                                        <h3><a href="{{url('chi-tiet/'.$hot['slug'])}}">{{$hot['newsname']}}</a></h3>
-                                        <p>{!! $hot['newintro'] !!}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="hidden-xs col-md-5 nopadding">
-                            <div class="content-panel-body article-list">
+                            <div class="content-panel-body article-list" style="max-height: none">
                                 <ul>
                                     @foreach($item as $news)
                                     <li>
-                                        <a href="{{url('/chi-tiet/'.$news->slug)}}" title="{{$news->newsname}}"><b class="fa fa-angle-right" aria-hidden="true"></b> <b>{{$news->newsname}}</b> </a>
+                                        <img src="{{url('public/img/news/300x300/'.$news['newimg'])}}" alt="No image" />
+                                        <b>{{$news->created_at}}</b>
+                                        <a href="{{url('/chi-tiet/'.$news->slug)}}" title="{{$news->newsname}}"><b class="fa fa-angle-right" aria-hidden="true"></b><b>{{$news->newsname}}</b></a>
+                                        
                                     </li>
                                     @endforeach
                                 </ul>
-                            </div>
-                        </div>
-                        <div class="visible-xs col-xs-12">
-                            <div class="mobile_hot_img">
-                                <a href="{{url('/chi-tiet/'.$hot->slug)}}" title="{{$hot->newsname}}"><img class="img-responsive" src="{{url('public/img/news/300x300/'.$hot['newimg'])}}" alt="{{$hot['newimg']}}"></a>
-                            </div>
-                            <div class="mobile_title">
-                                <a href="{{url('/chi-tiet/'.$hot->slug)}}" title="{{$hot->newsname}}"><h1>{{$hot->newsname}}</h1></a>
                             </div>
                         </div>
                         @foreach($item as $m_item)
