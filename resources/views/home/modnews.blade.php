@@ -133,7 +133,7 @@
                 </div>
                 <!-- END .content-panel -->
                 <div class="ajax-load text-center" style="display:none;z-index: 10000; opacity: 1;">
-                    <p><img src="http://demo.itsolutionstuff.com/plugin/loader.gif">Đang tải</p>
+                    <p><img src="#">Đang tải</p>
                 </div>
                  <div class="text-center" @if($total <=10) style="display: none;" @endif>
                      <a class="btn btn-default btn-more-info" id="load_more" base_url="{{url('')}}" modid="{{$modnew->id}}" skip="10" take="5" total="{{$total}}"  role="button">

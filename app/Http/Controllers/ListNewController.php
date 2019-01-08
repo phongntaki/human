@@ -46,10 +46,10 @@ class ListNewController extends Controller
         if($request->hasFile('nnavatarfile')){
             $file = $request->file('nnavatarfile');
             $nameimg = $file->getClientOriginalName(); 
-            $hinh = "nt7solution-".str_random(6)."_".$nameimg;
+            $hinh = "imageEnzi-".str_random(6)."_".$nameimg;
             while(file_exists("public/img/listnews/".$hinh))
             {
-                $hinh = "nt7solution-".str_random(6)."_".$nameimg;
+                $hinh = "imageEnzi-".str_random(6)."_".$nameimg;
             }
             $file->move("public/img/listnews",$hinh);
             $listproduct->listimg = "public/img/listnews/".$hinh;
@@ -84,10 +84,10 @@ class ListNewController extends Controller
         if($request->hasFile('ennavatarfile')){
             $file = $request->file('ennavatarfile');
             $nameimg = $file->getClientOriginalName(); 
-            $hinh = "nt7solution-".str_random(6)."_".$nameimg;
+            $hinh = "imageEnzi-".str_random(6)."_".$nameimg;
             while(file_exists("public/img/listnews/".$hinh))
             {
-                $hinh = "nt7solution-".str_random(6)."_".$nameimg;
+                $hinh = "imageEnzi-".str_random(6)."_".$nameimg;
             }
             $file->move("public/img/listnews",$hinh);
             // removefile

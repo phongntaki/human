@@ -10,7 +10,7 @@
         <meta name="description" content="" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
-        <meta name="generator" content="nt7solution.com">
+        <meta name="generator" content="enzi.co.jp">
         <meta property="fb:app_id" content="{{ (!empty($contact)?$contact->fb_app_id:"") }}" />
         <meta property="og:type" content="article" />
         <meta property="og:title" content="@yield('title')" />
