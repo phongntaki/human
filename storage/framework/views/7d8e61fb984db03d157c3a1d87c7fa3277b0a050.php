@@ -1,6 +1,6 @@
-@extends('master')
-@section('title','workflow management - users')
-@section('content')
+
+<?php $__env->startSection('title','workflow management - users'); ?>
+<?php $__env->startSection('content'); ?>
 <div id="page-wrapper">
   <div class="row">
         <div class="col-lg-12">
@@ -17,16 +17,18 @@
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">                
-                @if(session('thongbao'))
+                <?php if(session('thongbao')): ?>
                     <div class="alert-tb alert alert-success">
-                        <span class="fa fa-check"> </span> {{ session('thongbao') }}
+                        <span class="fa fa-check"> </span> <?php echo e(session('thongbao')); ?>
+
                     </div>
-                @endif
-                @if(session('errorus'))
+                <?php endif; ?>
+                <?php if(session('errorus')): ?>
                     <div class="alert-tb alert alert-danger">
-                        <span class="fa fa-close"> </span> {{ session('errorus') }}
+                        <span class="fa fa-close"> </span> <?php echo e(session('errorus')); ?>
+
                     </div>
-                @endif
+                <?php endif; ?>
                     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-product">
                         <thead>
                             <tr>
@@ -39,28 +41,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($users as $us)
+                            <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $us): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr class="odd gradeX">
-                              @if($us->level==99)
+                              <?php if($us->level==99): ?>
                                 <td>Boss</td> 
-                              @elseif($us->level==9)
+                              <?php elseif($us->level==9): ?>
                                 <td>Admin</td> 
-                              @else
+                              <?php else: ?>
                                 <td>Member</td> 
-                              @endif                          
-                                <td>{{ $us->fullname }}</td>
-                                <td>{{ $us->address }}</td>
-                                <td>{{ $us->phone }}</td>
+                              <?php endif; ?>                          
+                                <td><?php echo e($us->fullname); ?></td>
+                                <td><?php echo e($us->address); ?></td>
+                                <td><?php echo e($us->phone); ?></td>
                                 
                                 <td class="center">
-                                  <img src="{{ asset('public/img/user/'.$us->avatar) }}" style="width: 55px">
+                                  <img src="<?php echo e(asset('public/img/user/'.$us->avatar)); ?>" style="width: 55px">
                                 </td>                                        
-                                <td class="center nnedit" uname="{{ $us->username }}" editid="{{ $us->id }}" fname="{{ $us->fullname }}" addr="{{ $us->address }}" phone="{{ $us->phone }}" htown="{{ $us->hometown }}" imgo="{{ $us->avatar }}" note="{{ $us->note }}" bday="{{ $us->birthday }}" level="{{ $us->level }}">
-                                  <i id="ennuser{{ $us->id }}" class="nnedituser btn btn-info fa fa-edit"> Sữa</i> &nbsp; &nbsp; 
+                                <td class="center nnedit" uname="<?php echo e($us->username); ?>" editid="<?php echo e($us->id); ?>" fname="<?php echo e($us->fullname); ?>" addr="<?php echo e($us->address); ?>" phone="<?php echo e($us->phone); ?>" htown="<?php echo e($us->hometown); ?>" imgo="<?php echo e($us->avatar); ?>" note="<?php echo e($us->note); ?>" bday="<?php echo e($us->birthday); ?>" level="<?php echo e($us->level); ?>">
+                                  <i id="ennuser<?php echo e($us->id); ?>" class="nnedituser btn btn-info fa fa-edit"> Sữa</i> &nbsp; &nbsp; 
                                   <i class="enndeleteusser btn btn-danger fa fa-trash"> Xóa </i>
                                 </td>
                             </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                     <!-- /.table-responsive -->
@@ -84,16 +86,16 @@
             <h4 class="modal-title" id="myModalLabel">Thêm mới thành viên</h4>
           </div>
           <form class="form-horizontal" method="post" action="listuser" enctype="multipart/form-data">    
-          <input type="hidden" name="_token" value="{{ csrf_token()}}" /> 
+          <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" /> 
           <div class="modal-body">
             <div class="row"> 
-                @if(count($errors)>0)
+                <?php if(count($errors)>0): ?>
                     <div class="alert-tb alert alert-danger">
-                        @foreach($errors->all() as $err)
-                          <i class="fa fa-exclamation-circle"></i> {{ $err }}<br/>
-                        @endforeach
+                        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $err): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                          <i class="fa fa-exclamation-circle"></i> <?php echo e($err); ?><br/>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
-                @endif
+                <?php endif; ?>
                      
                    <div class="col-xs-6"> 
                       <div class="form-group">
@@ -151,9 +153,9 @@
                         <div class="form-group">
                           <label for="nn-level-user" class="col-sm-4 control-label"><i class="fa fa-toggle-on"></i> Level</label>
                           <div class="col-sm-8">
-                              <!-- <label class="radio-inline">
+                              <label class="radio-inline">
                                 <input type="radio" name="nnlevel" id="nn-level-1" value="99" > Boss
-                              </label> -->
+                              </label>
                               <label class="radio-inline">
                                 <input type="radio" name="nnlevel" id="nn-level-2" value="9"> Admin
                               </label>
@@ -198,17 +200,17 @@
             <h4 class="modal-title" id="myModalLabel">Sửa thành viên</h4>
           </div>
           <form class="form-horizontal" method="post" action="listuser/edit" enctype="multipart/form-data">    
-          <input type="hidden" name="_token" value="{{ csrf_token()}}" /> 
+          <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" /> 
           <input type="hidden" name="enniduser" id="enniduser" /> 
           <div class="modal-body">
             <div class="row"> 
-                @if(count($errors)>0)
+                <?php if(count($errors)>0): ?>
                     <div class="alert-tb alert alert-danger">
-                        @foreach($errors->all() as $err)
-                          <i class="fa fa-exclamation-circle"></i> {{ $err }}<br/>
-                        @endforeach
+                        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $err): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                          <i class="fa fa-exclamation-circle"></i> <?php echo e($err); ?><br/>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
-                @endif
+                <?php endif; ?>
                      
                    <div class="col-xs-6"> 
                       <div class="form-group">
@@ -267,9 +269,9 @@
                         <div class="form-group">
                           <label for="enn-level-user" class="col-sm-4 control-label"><i class="fa fa-toggle-on"></i> Level</label>
                           <div class="col-sm-8">
-                              <!-- <label class="radio-inline">
+                              <label class="radio-inline">
                                 <input type="radio" name="ennlevel" id="enn-level-1" value="99" > Boss
-                              </label> -->
+                              </label>
                               <label class="radio-inline">
                                 <input type="radio" name="ennlevel" id="enn-level-2" value="9"> Admin
                               </label>
@@ -278,7 +280,7 @@
                               </label>
                           </div>
                         </div>
-                        @if(Auth::user()->id==1)
+                        <?php if(Auth::user()->id==1): ?>
                           <div class="form-group">
                               <label for="newpassword" class="col-sm-12 control-label"> Đổi mật khẩu chỉ dành cho Quản Trị Viên Cao Cấp.</label>
                             </div>
@@ -294,7 +296,7 @@
                                 <input type="password" class="form-control" name="nnrepassnew" placeholder="Nhập lại mật khẩu mới">
                               </div>
                             </div>
-                        @endif
+                        <?php endif; ?>
                    </div>
                
             </div>     
@@ -320,7 +322,7 @@
           <form class="form-horizontal" method="post" action="listuser/delete" enctype="multipart/form-data">
           <input type="hidden" name="enndeleteuid" id="enndeleteuid" /> 
           <input type="hidden" name="dennimgslide" id="dennimgslide" /> 
-          <input type="hidden" name="_token" value="{{ csrf_token()}}" />
+          <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
           <div class="modal-body">
             <div class="row">
                 <h4 class="nnbodydelete">Bạn có chắc xóa User <i id="deletename"></i></h4>
@@ -335,17 +337,18 @@
     </div>
 </div>
     <!-- end modal -->
-@endsection()
-@section('script')
-  <script src="{{ asset('public/js/user.js') }}"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
+  <script src="<?php echo e(asset('public/js/user.js')); ?>"></script>
   <script type="text/javascript">
-    @if(session('actionuser')=='add' && count($errors) > 0)
+    <?php if(session('actionuser')=='add' && count($errors) > 0): ?>
         $('.nn-add-user-new').modal('show');
-    @endif
-    @if (session('actionuser')=='edit' && count($errors) > 0)
+    <?php endif; ?>
+    <?php if(session('actionuser')=='edit' && count($errors) > 0): ?>
         $(document).ready(function(){
-          $("#ennuser{{ session('editid') }}").trigger('click');
+          $("#ennuser<?php echo e(session('editid')); ?>").trigger('click');
         });
-    @endif
+    <?php endif; ?>
   </script>
-@endsection()
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

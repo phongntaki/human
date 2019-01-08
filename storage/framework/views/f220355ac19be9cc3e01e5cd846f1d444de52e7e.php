@@ -1,10 +1,10 @@
-@extends('home.master')
-@section('title', (!empty($contact)?$contact->seo_title:""))
-@section('seo_keyword', (!empty($contact)?$contact->seo_keyword:""))
-@section('seo_description', (!empty($contact)?$contact->seo_description:""))
-@section('seo_image', (!empty($contact)?asset($contact->seo_image):""))
-@section('seo_url', url()->current())
-@section('content')
+
+<?php $__env->startSection('title', (!empty($contact)?$contact->seo_title:"")); ?>
+<?php $__env->startSection('seo_keyword', (!empty($contact)?$contact->seo_keyword:"")); ?>
+<?php $__env->startSection('seo_description', (!empty($contact)?$contact->seo_description:"")); ?>
+<?php $__env->startSection('seo_image', (!empty($contact)?asset($contact->seo_image):"")); ?>
+<?php $__env->startSection('seo_url', url()->current()); ?>
+<?php $__env->startSection('content'); ?>
 <!-- BEGIN .wrapper -->
     <div class="wrapper">
 
@@ -18,11 +18,11 @@
             </div>
             <div class="ot-breaking-news-content">
                 <div class="ot-breaking-news-content-wrap">
-                @foreach($khuyenmai as $item_km)
+                <?php $__currentLoopData = $khuyenmai; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_km): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="item">
-                        <strong><a href="{{url('/chi-tiet/'.$item_km->slug)}}">{{ $item_km->newsname}}</a></strong>
+                        <strong><a href="<?php echo e(url('/chi-tiet/'.$item_km->slug)); ?>"><?php echo e($item_km->newsname); ?></a></strong>
                     </div>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
 -->
@@ -38,7 +38,7 @@
                 <div class="content-panel">
                     <div class="content-panel-title">
                         <ul class="sub_menu">
-                            <li class="active"><a href="{{ url('loai-tin/'.$listnew->slug) }}">{{ $listnew->listname }}</a></li>
+                            <li class="active"><a href="<?php echo e(url('loai-tin/'.$listnew->slug)); ?>"><?php echo e($listnew->listname); ?></a></li>
                         </ul>
                     </div>
                     <div class="row">
@@ -50,15 +50,15 @@
                              ?>
                                 <div class="item" data-color-top-slider="#867eef">
                                     <div class="item-header">
-                                        <a href="{{url('chi-tiet/'.$hot['slug'])}}">
-                                            <span class="comment-tag"><i class="fa fa-comment-o"></i><span class="fb-comments-count" data-href="{{url('chi-tiet/'.$hot['slug'])}}"></span><i></i></span>
+                                        <a href="<?php echo e(url('chi-tiet/'.$hot['slug'])); ?>">
+                                            <span class="comment-tag"><i class="fa fa-comment-o"></i><span class="fb-comments-count" data-href="<?php echo e(url('chi-tiet/'.$hot['slug'])); ?>"></span><i></i></span>
                                             <span class="read-more-wrapper"><span class="read-more">Đọc thêm +<i></i></span></span>
-                                            <img src="{{url('public/img/news/300x300/'.$hot['newimg'])}}" alt="No image" />
+                                            <img src="<?php echo e(url('public/img/news/300x300/'.$hot['newimg'])); ?>" alt="No image" />
                                         </a>
                                     </div>
                                     <div class="item-content">
-                                        <h3><a href="{{url('chi-tiet/'.$hot['slug'])}}">{{$hot['newsname']}}</a></h3>
-                                        <p>{!! $hot['newintro'] !!}</p>
+                                        <h3><a href="<?php echo e(url('chi-tiet/'.$hot['slug'])); ?>"><?php echo e($hot['newsname']); ?></a></h3>
+                                        <p><?php echo $hot['newintro']; ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -66,36 +66,36 @@
                         <div class="hidden-xs col-md-5 nopadding">
                             <div class="content-panel-body article-list">
                                 <ul>
-                                    @foreach($item as $news)
+                                    <?php $__currentLoopData = $item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $news): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <li>
-                                        <a href="{{url('/chi-tiet/'.$news->slug)}}" title="{{$news->newsname}}"><b class="fa fa-angle-right" aria-hidden="true"></b> <b>{{$news->newsname}}</b> </a>
+                                        <a href="<?php echo e(url('/chi-tiet/'.$news->slug)); ?>" title="<?php echo e($news->newsname); ?>"><b class="fa fa-angle-right" aria-hidden="true"></b> <b><?php echo e($news->newsname); ?></b> </a>
                                     </li>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
                             </div>
                         </div>
                         <div class="visible-xs col-xs-12">
                             <div class="mobile_hot_img">
-                                <a href="{{url('/chi-tiet/'.$hot->slug)}}" title="{{$hot->newsname}}"><img class="img-responsive" src="{{url('public/img/news/300x300/'.$hot['newimg'])}}" alt="{{$hot['newimg']}}"></a>
+                                <a href="<?php echo e(url('/chi-tiet/'.$hot->slug)); ?>" title="<?php echo e($hot->newsname); ?>"><img class="img-responsive" src="<?php echo e(url('public/img/news/300x300/'.$hot['newimg'])); ?>" alt="<?php echo e($hot['newimg']); ?>"></a>
                             </div>
                             <div class="mobile_title">
-                                <a href="{{url('/chi-tiet/'.$hot->slug)}}" title="{{$hot->newsname}}"><h1>{{$hot->newsname}}</h1></a>
+                                <a href="<?php echo e(url('/chi-tiet/'.$hot->slug)); ?>" title="<?php echo e($hot->newsname); ?>"><h1><?php echo e($hot->newsname); ?></h1></a>
                             </div>
                         </div>
-                        @foreach($item as $m_item)
+                        <?php $__currentLoopData = $item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m_item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="visible-xs col-xs-6 padding4">
                             <div class="mobile_img">
-                                <a href="{{url('/chi-tiet/'.$m_item->slug)}}" title="{{$m_item->newsname}}"><img class="img-responsive" src="{{url('public/img/news/300x300/'.$m_item['newimg'])}}" alt=""></a>
+                                <a href="<?php echo e(url('/chi-tiet/'.$m_item->slug)); ?>" title="<?php echo e($m_item->newsname); ?>"><img class="img-responsive" src="<?php echo e(url('public/img/news/300x300/'.$m_item['newimg'])); ?>" alt=""></a>
                             </div>
                             <div class="mobile_title">
-                                <a href="{{url('/chi-tiet/'.$m_item->slug)}}" title="{{$m_item->newsname}}"><h1>{{$m_item->newsname}}</h1></a>
+                                <a href="<?php echo e(url('/chi-tiet/'.$m_item->slug)); ?>" title="<?php echo e($m_item->newsname); ?>"><h1><?php echo e($m_item->newsname); ?></h1></a>
                             </div>
                         </div>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
                 <!-- END .content-panel -->
-{{-- tin moi trong mod          --}}
+
                 <!-- BEGIN .content-panel -->
                 <div class="content-panel">
                     <div class="content-panel-title">
@@ -104,17 +104,18 @@
                         </ul>
                     </div>
                     <div class="row" id="content_pro">
-                        @include('home.content_news_ajax_list')
+                        <?php echo $__env->make('home.content_news_ajax_list', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                         <div class="hidden-xs col-md-3 nopadding sticky_column">
                             <div class="row">
                                 <div class="col-md-12">
-                                    @if($adverts_center[0]->code != "")
-                                        {{$adverts_center[0]->code}}
-                                    @else
-                                    <a href="{{$adverts_center[0]->link}}" target="_blank">
-                                        <img src="{{url('public/img/images_bn/'.$adverts_center[0]->img)}}" alt="No image" width="100%" style="object-fit: contain;" />
+                                    <?php if($adverts_center[0]->code != ""): ?>
+                                        <?php echo e($adverts_center[0]->code); ?>
+
+                                    <?php else: ?>
+                                    <a href="<?php echo e($adverts_center[0]->link); ?>" target="_blank">
+                                        <img src="<?php echo e(url('public/img/images_bn/'.$adverts_center[0]->img)); ?>" alt="No image" width="100%" style="object-fit: contain;" />
                                     </a>
-                                    @endif
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -124,8 +125,8 @@
                 <div class="ajax-load text-center" style="display:none;z-index: 10000; opacity: 1;">
                     <p><img src="#">Đang tải</p>
                 </div>
-                 <div class="text-center" @if($total <=10) style="display: none;" @endif>
-                     <a class="btn btn-default btn-more-info" id="load_more" base_url="{{url('')}}" listid="{{$listnew->id}}" skip="10" take="5" total="{{$total}}"  role="button">
+                 <div class="text-center" <?php if($total <=10): ?> style="display: none;" <?php endif; ?>>
+                     <a class="btn btn-default btn-more-info" id="load_more" base_url="<?php echo e(url('')); ?>" listid="<?php echo e($listnew->id); ?>" skip="10" take="5" total="<?php echo e($total); ?>"  role="button">
                         <i class="fa fa-refresh" aria-hidden="true"></i> Xem thêm
                     </a>
                 </div>
@@ -133,20 +134,21 @@
             <!-- END .content-block-single -->
             <!-- BEGIN .sidebar -->
             <aside class="sidebar sticky_column hidden-xs">
-                @include('home.sitebar_right')
+                <?php echo $__env->make('home.sitebar_right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <!-- END .sidebar -->
             </aside>
         </div>
         <!-- BEGIN .content-panel -->
         <div class="content-panel">
             <div class="content-panel-body do-space">
-                @if($adverts_main[0]->code != "")
-                    {{$adverts_main[0]->code}}
-                @else
-                <a href="{{$adverts_main[0]->link}}" target="_blank">
-                    <img src="{{url('public/img/images_bn/'.$adverts_main[0]->img)}}" alt="No image" width="100%" style="object-fit: contain; max-height: 150px; display: block;overflow:hidden; margin-bottom: 20px;" />
+                <?php if($adverts_main[0]->code != ""): ?>
+                    <?php echo e($adverts_main[0]->code); ?>
+
+                <?php else: ?>
+                <a href="<?php echo e($adverts_main[0]->link); ?>" target="_blank">
+                    <img src="<?php echo e(url('public/img/images_bn/'.$adverts_main[0]->img)); ?>" alt="No image" width="100%" style="object-fit: contain; max-height: 150px; display: block;overflow:hidden; margin-bottom: 20px;" />
                 </a>
-                @endif
+                <?php endif; ?>
             </div>
         <!-- END .content-panel -->
         </div>
@@ -198,4 +200,6 @@
                 });
         });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('home.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

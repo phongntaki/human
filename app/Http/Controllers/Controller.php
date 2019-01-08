@@ -48,52 +48,14 @@ class Controller extends BaseController
     
     public function mail()
     {
-        $user = "nguyennam.90st@mail.com";
+        $user = "phongntaki@mail.com";
         $message = "test mail laravel";
-        Mail::send('nguyennam.90st@mail.com', function($message){
+        Mail::send('phongntaki@mail.com', function($message){
             $message->to($user->email);
             $message->subject('E-Mail Example');
         });
 
         dd('Mail Send Successfully');
-    }
-        
-    public function reload_cart_with_lang($idlang){
-        foreach (Cart::content() as $item) {
-            $product = Product::select('*', DB::raw('products.id as idproduct'))
-                            ->where('products.id',$item->id)
-                            ->join("productdetail","products.id", "=", "productdetail.idproduct")
-                            ->where('productdetail.idlang',$idlang)
-                            ->get()->first();
-            if(!empty($product)){
-                if($product->vat != 0){                         
-                    $price_with_vat = $product->price + $product->price * $product->vat / 100;
-                    $price_to_sale_with_vat = $product->price_to_sale + $product->price_to_sale * $product->vat / 100;
-                }else{                          
-                    $price_with_vat = $product->price;
-                    $price_to_sale_with_vat = $product->price_to_sale;
-                }
-                $price_show = $product->price;
-
-                Cart::update( $item->rowId, ['id' => $product->idproduct, 
-                    'name' => $product->name, 
-                    'qty' => $item->qty, 
-                    'price' => $price_with_vat, 
-                    'options' => ['image' => $product->image, 
-                                    'vat' => $product->vat, 
-                                    'unit' => $product->currency, 
-                                    'currency' => $product->currency, 
-                                    'price_show' => $price_show,
-                                    'price' => $product->price,
-                                    'price_with_vat' => $price_with_vat, 
-                                    'price_to_sale' => $product->price_to_sale, 
-                                    'price_to_sale_with_vat' => $price_to_sale_with_vat, 
-                                    'quantity_sale' => $product->quantity_sale] ]);
-
-
-                // Cart::update( $item->rowId, ['id' => $product->idproduct, 'name' => $product->name, 'qty' => $item->qty, 'price' => $price_with_vat, 'options' => ['image' => $product->image, 'vat' => $product->vat, 'unit' => $product->currency, 'currency' => $product->currency, 'price' => $product->price,  'price_with_vat' => $price_with_vat, 'price_to_sale' => $product->price_to_sale, 'quantity_sale' => $product->quantity_sale] ]);
-            }
-        }
     }
 
 }

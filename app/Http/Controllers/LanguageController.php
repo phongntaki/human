@@ -18,43 +18,6 @@ class LanguageController extends Controller
         $languages = Language::all();
         return view('admin.languages',['languages'=>$languages]);
     }
-    // public function AddLang(Request $request){
-    //     session(['actionuser' => 'add']);        
-    //     $this->validate($request,[
-    //             'name' => 'required|unique:languages',
-    //             'nnchar' => 'required|max:5',
-    //             'nncurrency' => 'required|max:5',
-    //             'nnavatarfile' => 'image|max:500000',                
-    //         ],[
-    //             'name.required' => 'Bạn cần thêm tên ngôn ngữ',
-    //             'name.unique'  => 'Ngôn ngữ đã sử dụng',
-    //             'nnchar.required'=> 'Ký hiệu không được bỏ trống',
-    //             'nnchar.max'     => 'Ký hiệu không quá 5 ký tự',
-    //             'nncurrency.required'=> 'Ký hiệu không được bỏ trống',
-    //             'nncurrency.max'     => 'Ký hiệu không quá 5 ký tự',
-    //             'nnavatarfile.image' => 'Avatar phải là hình ảnh',
-    //             'nnavatarfile.max' => 'Avatar dung lượng quá lớn',
-
-    //         ]);
-    //     $lang = new Language;
-    //     $lang->name = $request->name;
-    //     $lang->char = $request->nnchar;
-    //     if($request->hasFile('nnavatarfile')){
-    //             $file = $request->file('nnavatarfile');
-    //             $nameimg = $file->getClientOriginalName(); 
-    //             $hinh = "longtriCo".str_random(6)."_".$nameimg;
-    //             while(file_exists("public/img/lang/".$hinh))
-    //             {
-    //                 $hinh = "longtriCo".str_random(6)."_".$nameimg;
-    //             }
-    //             $file->move("public/img/lang",$hinh);
-    //             $lang->img = $hinh;
-    //         }else{
-    //             $lang->img = "no-img.png";
-    //         }
-    //     $lang->save();
-    //     return redirect('admin/lang/list')->with('thongbao','thêm thành công');
-    // }
     public function EditLang(Request $request){
         session(['actionuser' => 'edit','editid'=>$request->ennidlang]);   
         $this->validate($request,[
@@ -77,10 +40,10 @@ class LanguageController extends Controller
         if($request->hasFile('ennavatarfile')){
             $file = $request->file('ennavatarfile');
             $nameimg = $file->getClientOriginalName(); 
-            $hinh = "nt7solution-".str_random(6)."_".$nameimg;
+            $hinh = "imageEnzi-".str_random(6)."_".$nameimg;
             while(file_exists("public/img/lang/".$hinh))
             {
-                $hinh = "nt7solution-".str_random(6)."_".$nameimg;
+                $hinh = "imageEnzi-".str_random(6)."_".$nameimg;
             }
             $file->move("public/img/lang",$hinh);
             // removefile
@@ -157,10 +120,10 @@ class LanguageController extends Controller
         if($request->hasFile('seo_image')){
             $file = $request->file('seo_image');
             $nameimg = $file->getClientOriginalName(); 
-            $hinh = "nt7solution-".str_random(6)."_".$nameimg;
+            $hinh = "imageEnzi-".str_random(6)."_".$nameimg;
             while(file_exists("public/img/".$hinh))
             {
-                $hinh = "nt7solution-".str_random(6)."_".$nameimg;
+                $hinh = "imageEnzi-".str_random(6)."_".$nameimg;
             }
             $file->move("public/img",$hinh);
 
@@ -179,10 +142,10 @@ class LanguageController extends Controller
         if($request->hasFile('logo_img')){
             $file = $request->file('logo_img');
             $nameimg = $file->getClientOriginalName(); 
-            $hinh = "nt7solution-".str_random(6)."_".$nameimg;
+            $hinh = "imageEnzi-".str_random(6)."_".$nameimg;
             while(file_exists("public/home/".$hinh))
             {
-                $hinh = "nt7solution-".str_random(6)."_".$nameimg;
+                $hinh = "imageEnzi-".str_random(6)."_".$nameimg;
             }
             $file->move("public/home",$hinh);
 

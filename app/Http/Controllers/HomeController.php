@@ -168,6 +168,7 @@ class HomeController extends Controller {
                 "listproducts_cat"=>$listproducts_cat,
                 "tag_list"=>$tag_list,
                 );
+            
             return $result;
     }
     public function error_404()
@@ -186,51 +187,6 @@ class HomeController extends Controller {
                                                             "index_modnew" =>$mod_new,
                                                             ] ));
 	}
-
-
-
-    // ====================product=================
-	public function product($slug)
-	{ 
-        $detail_product = Product::select('*', DB::raw('products.id as idproduct'))
-        							->where('productdetail.slug',$slug)
-        							->join("productdetail","products.id", "=", "productdetail.idproduct")
-        							->join("productstt","products.status", "=", "productstt.id")
-		        					->where('productdetail.idlang',$this->idlang)
-									->where('hide', 0)
-		        					->get()->first();
-		if(!empty($detail_product)){
-	        $list_img_product = ProductImage::where('idproduct',$detail_product->idproduct)->get();
-
-	        $related_product  = Product::select('*', DB::raw('products.id as idproduct'))
-	       								->where('products.idlist',$detail_product->idlist)
-	        							->where('products.id',"<>",$detail_product->idproduct)
-			        					->join("productdetail","products.id", "=", "productdetail.idproduct")
-			        					->where('productdetail.idlang',$this->idlang)
-			        					->orderBy('products.id', 'desc')
-										->where('hide', 0)
-	        							->skip(0)->take(8)->get();
-            $pro = Product::find($detail_product->idproduct);
-            $pro->view_count = $pro->view_count +1;
-            $pro->save();
-	        // ================================   
-			// ================================ 
-            $lasted_news = News::orderBy('created_at','DESC')->take(10)->get();
-            $public_var = $this->public_var();
-
-			return view('home.product',array_merge($public_var, 
-                                        [  
-										'detail_product'=>$detail_product, 
-										'list_img_product'=>$list_img_product, 
-                                        'related_product'=>$related_product,
-                                        'lasted_news'=>$lasted_news
-                                        ]));
-		}else{
-			return redirect('');
-		}
-	}
-
-
 
     // ====================news=================
 	public function news($slug)
@@ -305,54 +261,6 @@ class HomeController extends Controller {
             
         }
     }
-	// ====================list_product=======================
-	public function list_product($slug)
-    {
-        $detail_cat   = ListProduct::select('listproducts.*', DB::raw('translates.trname as trname'))
-                    ->join("translates","translates.trid", "=", "listproducts.id")
-                    ->where('translates.tridlang', $this->idlang)
-                    ->where('listproducts.slug', $slug)->get()->first();
-        if(!empty($detail_cat)){
-
-            $query  = Product::select('*', DB::raw('productdetail.slug as slug'))
-                            ->join("productdetail","productdetail.idproduct", "=", "products.id")
-                            ->join("listproducts","listproducts.id", "=", "products.idlist")
-                            ->where('products.hide', 0)
-                            ->where('productdetail.idlang',$this->idlang)
-                            ->where('products.idlist',$detail_cat->id);
-
-            $list_product_cat = $query->get();
-            $productstt = ProductStt::orderBy('id', 'desc')->get();
-        
-            $public_var = $this->public_var();
-            return view('home.listproduct',array_merge($public_var, [ 
-                                                    'list_product_cat'=>$list_product_cat,
-                                                    'productstt'=>$productstt, 
-                                                    'detail_cat'=>$detail_cat,
-                                                    ] ));
-
-        }else {
-            $detail_cat = ModProduct::select('modproducts.*', DB::raw('translates.trname as trname'))
-                    ->join("translates","translates.trid", "=", "modproducts.id")
-                    ->where('translates.tridlang', $this->idlang)
-                    ->where('translates.trcate', 1)
-                    ->where('modproducts.slug', $slug)
-                    ->get()->first(); 
-            if(!empty($detail_cat)){
-                $productstt = ProductStt::orderBy('id', 'desc')->get();
-        
-                $public_var = $this->public_var();
-                return view('home.modproduct',array_merge($public_var, [
-                                                    'productstt'=>$productstt, 
-                                                    'detail_cat'=>$detail_cat,
-                                                    ] ));
-            } else {
-                return redirect()->Route('error_404');
-            }
-            
-        } 
-        
-    }
 
 	public function search()
 	{        
@@ -403,86 +311,6 @@ class HomeController extends Controller {
 		Session::put('logined_cusid', 1);
 	}
 
-	public function store_address_pay(Request $request){
-		$name 				= $request->input('name');
-		$phone 				= $request->input('phone');
-		$address 			= $request->input('address');
-		$comment 			= $request->input('comment');
-		$select_city 		= $request->input('select_city');
-		$select_district 	= $request->input('select_district');
-		$select_ward 		= $request->input('select_ward');
-		$fulladdress 		= $request->input('fulladdress');
-
-		$pay_error = 0;
-
-		$error = array(
-			"name" 			=> "",
-			"phone" 		=> "",
-			"address" 		=> "",
-			"comment" 		=> "",
-			"select_city" 	=> "",
-			"select_district" => "",
-			"fulladdress" 	=> "",
-			);
-
-		if(!empty($name)){
-			Session::put('pay_name', $name);
-		}else{
-			$error["name"] = trans('form.err_fullname');
-			$pay_error = 1;
-		}
-
-		if(!empty($phone)){
-			Session::put('pay_phone', $phone);
-		}else{
-			$error["phone"] = trans('form.err_phone');
-			$pay_error = 1;
-		}
-
-		if(!empty($fulladdress)){
-			Session::put('pay_address', $fulladdress);
-		}else if($select_city == ""){
-			$error["address"] = trans('form.err_address');
-			$pay_error = 1;
-		}
-
-
-		if($select_city != "" || empty($fulladdress)){
-			$err = 0;
-			if($select_city == ""){
-				$error["select_city"] = trans('form.err_select_city');
-				$err = 1;
-			}
-			if($select_district == ""){
-				$error["select_district"] = trans('form.err_select_district');
-				$err = 1;
-			}
-			if($address == ""){
-				$error["address"] = trans('form.err_address');
-				$err = 1;
-			}
-			if($err == 0){
-        		$city 		= Cities::find($select_city);
-        		$district 	= Districts::find($select_district);
-                // dd($select_ward);
-        		if($select_ward != ""){   
-        			$ward 		= Wards::where('id',$select_ward)->first();
-                    // dd($ward);
-        			$fulladdress = $address.", ".$ward->name.", ".$district->name.", ".$city->name;
-        		}else{
-        			$fulladdress = $address.", ".$district->name.", ".$city->name;
-        		}
-        		Session::put('pay_address', $fulladdress);
-			}else{
-				$pay_error = 1;
-			}
-		}
- 
-		Session::put('pay_error', $pay_error);
-
-        echo json_encode($error);
-	}
-
 	public function select_distict_ajax(Request $request){
 		$idcity 	= $request->input('idcity');
         $districts 	= Districts::where('idcity',$idcity)->orderBy('name', 'desc')->get();
@@ -501,93 +329,7 @@ class HomeController extends Controller {
         }
         echo $html;
 	}
-	public function store_address_shipping(Request $request){
-		$same_address 		= $request->input('same_address');
-		if($same_address == "1"){
-			Session::put('shipping_name', session('pay_name'));
-			Session::put('shipping_phone', session('pay_phone'));
-			Session::put('shipping_address', session('pay_address'));
-			Session::put('same_address', 1);
-			Session::put('shipping_error', 0);
-		}else{
-			$name 				= $request->input('name');
-			$phone 				= $request->input('phone');
-			$address 			= $request->input('address');
-			$select_city 		= $request->input('select_city');
-			$select_district 	= $request->input('select_district');
-			$select_ward 		= $request->input('select_ward');
-			$fulladdress 		= $request->input('fulladdress');
-
-			$shipping_error = 0;
-
-			$error = array(
-				"name" 			=> "",
-				"phone" 		=> "",
-				"address" 		=> "",
-				"select_city" 	=> "",
-				"select_district" => "",
-				"fulladdress" 	=> "",
-				);
-
-			if(!empty($name)){
-				Session::put('shipping_name', $name);
-			}else{
-				$error["name"] = trans('form.err_fullname');
-				$shipping_error = 1;
-			}
-
-			if(!empty($phone)){
-				Session::put('shipping_phone', $phone);
-			}else{
-				$error["phone"] = trans('form.err_phone');
-				$shipping_error = 1;
-			}
-
-			if(!empty($fulladdress)){
-				Session::put('shipping_address', $fulladdress);
-			}else if($select_city == ""){
-				$error["address"] = trans('form.err_address');
-				$shipping_error = 1;
-			}
-
-
-			if($select_city != "" || empty($fulladdress)){
-				$err = 0;
-				if($select_city == ""){
-					$error["select_city"] = trans('form.err_select_city');
-					$err = 1;
-				}
-				if($select_district == ""){
-					$error["select_district"] = trans('form.err_select_district');
-					$err = 1;
-				}
-				if($address == ""){
-					$error["address"] = trans('form.err_address');
-					$err = 1;
-				}
-				if($err == 0){
-	        		$city 		= Cities::find($select_city);
-	        		$district 	= Districts::find($select_district);
-
-	        		if($select_ward != ""){
-	        			$ward 		= Wards::find($select_ward);
-	        			$fulladdress = $address.", ".$ward->name.", ".$district->name.", ".$city->name;
-	        		}else{
-	        			$fulladdress = $address.", ".$district->name.", ".$city->name;
-	        		}
-	        		Session::put('shipping_address', $fulladdress);
-				}else{
-					$shipping_error = 1;
-				}
-			}
- 
-			Session::put('same_address', 0);
-			Session::put('shipping_error', $shipping_error);
-
-	        echo json_encode($error);
-	    }
-	}
-
+	
 	// =============================login=========================
 	public function login()
 	{ 
@@ -753,109 +495,6 @@ class HomeController extends Controller {
         // return view('home.login',array_merge($public_var, [ ]) );
     }
 
-
-	public function submit_order(Request $request){
-		if(Cart::count() > 0){
-            $txtNameOrder       = $request->input('txtNameOrder');
-            $txtPhoneOrder      = $request->input('txtPhoneOrder');
-            $txtEmailOrder      = $request->input('txtEmailOrder');
-            // $sltCountpeople     = $request->input('sltCountpeople');
-
-              // ==============save info to order =============== 
-              Session::put('pay_name', $txtNameOrder);
-              Session::put('pay_phone', $txtPhoneOrder);
-              Session::put('pay_email', $txtEmailOrder);
-              Session::put('pay_address', "");
-
-              Session::put('shipping_name', session('pay_name'));
-              Session::put('shipping_phone', session('pay_phone'));
-              Session::put('shipping_address', session('pay_address'));
-              Session::put('shipping_email', session('pay_email'));
-              Session::put('same_address', 1);
-              Session::put('shipping_error', 0); 
-              // =============================
-
-            // $val_date_order_at  = $request->input('val_date_order_at');
-			$idshipping 		= $request->input('idshipping');
-			$idpayment 			= $request->input('idpayment');
-			$comment 			= $request->input('comment');
-
-			$shipping 		= Shippings::find($idshipping);
-			$payment 		= Payments::find($idpayment);
-
-
-	        $item_order = new Order;
-			if(session('logined_cusid') != "" && session('logined_cus') == 1){ //-- khách đăng nhập
-				$custommer 				= Customers::find(session('logined_cusid'));
-	        	$item_order->user_name  = "Khách online";
-	        	$item_order->idcustomer = session('logined_cusid');
-	        	$item_order->name 		= session('logined_cusfullname');
-	        	$item_order->address 	= session('logined_cusaddress');
-	        	$item_order->telephone 	= session('logined_cusphone');
-	        	$item_order->email 		= session('logined_cusemail');
-
-	        }else{	//--- khách vãng lai
-	        	$item_order->user_name  = "Khách vãng lai";
-	        	$item_order->idcustomer = 1;
-	        	$item_order->name 		= session('shipping_name');
-	        	$item_order->address 	= session('shipping_address');
-	        	$item_order->telephone 	= session('shipping_phone');
-	        	$item_order->email 		= session('shipping_email');
-	        } 
-
-	    	$item_order->total_order         		= Cart::total(0,"","") ;
-	    	$item_order->total_pay         			= Cart::total(0,"","") + $shipping->fee;
-
-	    	$item_order->comment         			= $comment;
-	    	$item_order->ip 	         			= $this->get_client_ip();
-	    	$item_order->idpayment 		 			= $idpayment;
-	    	$item_order->payment_name 	 			= Session::get("pay_name");
-	    	$item_order->payment_telephone 	 		= Session::get("pay_phone");
-	    	$item_order->payment_address 	 		= Session::get("pay_address");
-	    	$item_order->payment_credit_number 	 	= Session::get("payment_credit_number");
-	    	$item_order->payment_credit_name 	 	= Session::get("payment_credit_name");
-	    	$item_order->payment_credit_expdate 	= Session::get("payment_credit_expdate");
-	    	$item_order->payment_credit_transactionid = Session::get("payment_credit_transactionid");
-	    	$item_order->idshipping 	 			= $idshipping;
-	    	$item_order->shipping_name 	 			= Session::get("shipping_name");
-	    	$item_order->shipping_telephone 	 	= Session::get("shipping_phone");
-	    	$item_order->shipping_address 	 	 	= Session::get("shipping_address");
-            $item_order->shipping_fee               = $shipping->fee;
-            // $item_order->date_order_at              = $val_date_order_at;
-	    	// $item_order->number_people 	 	 		= $sltCountpeople;
-	        $item_order->save();
-
-	        $idorder = $item_order->id;
-			if($idorder){
-				$cart 	  = Cart::content();
-				foreach ($cart as $item) {
-					$orderItem = new OrderProduct();
-					$orderItem->name  		= $item->name;
-					$orderItem->quantity 	= $item->qty;
-					$orderItem->price 		= $item->price;
-					$orderItem->total   	= $item->subtotal;
-					$orderItem->idproduct   = $item->id;
-					$orderItem->idorder   	= $idorder;
-					$orderItem->save();
-				}
-				Cart::destroy();
-
-
-
-	          $customer = Customers::find(Session::get("logined_cusid"));
-	          $customer->cusphone     = Session::get("pay_phone");
-	          $customer->cusaddress   = Session::get("pay_address");
-	          $customer->save();
-
-				echo 1;
-			}else{
-				echo 0;
-			}
-		}else{
-			echo 0;
-		}
-	}	
-
 	function get_client_ip() {
 	    $ipaddress = '';
 	    if (isset($_SERVER['HTTP_CLIENT_IP']))
@@ -893,8 +532,6 @@ class HomeController extends Controller {
 											'customer'=>$customer,
 											'cities'=>$cities ]) );
 	}
-
- 
 
 	// ===============contact===================
 	public function contact()
@@ -945,123 +582,6 @@ class HomeController extends Controller {
         echo json_encode($error);
     }
 
-
-
-    public function get_price_range(Request $request)
-        {        
-            $range = $request->input('range');
-     
-            $range = explode(",",$range );
-
-        $result = array(
-            "range_min" => format_curency($range [0]),
-            "range_max" => format_curency($range [1])
-        );
-
-            echo json_encode($result );
-    }
- 
-
-    public function get_post_ajax(Request $request){
-        $idproduct  = $request->input('idproduct');
-        $type_get   = $request->input('type_get');
-
-        $detail_product = array();
-
-        if($type_get == 0){
-            $detail_product = Product::select('*', DB::raw('products.id as idproduct'))
-                                        ->where('products.id',$idproduct)
-                                        ->join("productdetail","products.id", "=", "productdetail.idproduct")
-                                        ->join("productstt","products.status", "=", "productstt.id")
-                                        ->where('productdetail.idlang',$this->idlang)
-                                        ->where('hide', 0)
-                                        ->get()->first(); 
-        }else if($type_get == 1){  
-            $next_product = DB::select('select min(id) as id from products where hide <> 1 AND id > '.$idproduct." AND id <> ".$idproduct);
-            if(!empty($next_product[0]->id)){
-                $next_product = $next_product[0];  
-                $idproduct = $next_product->id;
-
-                $detail_product = Product::select('*', DB::raw('products.id as idproduct'))
-                                            ->where('products.id', $next_product->id)
-                                            ->join("productdetail","products.id", "=", "productdetail.idproduct")
-                                            ->join("productstt","products.status", "=", "productstt.id")
-                                            ->where('productdetail.idlang',$this->idlang)
-                                            ->where('hide', 0)
-                                            ->get()->first();  
-            }
-        }else if($type_get == 2){
-            $next_product = DB::select('select max(id) as id from products where hide <> 1 AND id < '.$idproduct." AND id <> ".$idproduct);
-            if(!empty($next_product[0]->id)){
-                $next_product = $next_product[0];  
-                $idproduct = $next_product->id;
-
-                $detail_product = Product::select('*', DB::raw('products.id as idproduct'))
-                                            ->where('products.id', $next_product->id)
-                                            ->join("productdetail","products.id", "=", "productdetail.idproduct")
-                                            ->join("productstt","products.status", "=", "productstt.id")
-                                            ->where('productdetail.idlang',$this->idlang)
-                                            ->where('hide', 0)
-                                            ->get()->first();  
-            }
-        }
-
-        $check_next = DB::select('select min(id) as id from products where hide <> 1 AND id > '.$idproduct." AND id <> ".$idproduct);
-        $check_next = $check_next[0]->id;
-
-        $check_pre = DB::select('select max(id) as id from products where hide <> 1 AND id < '.$idproduct." AND id <> ".$idproduct);
-        $check_pre = $check_pre[0]->id;
-
-        // print_r("<br><br><br>".$check_pre."-".$idproduct."-".$check_next);
-
-        return view('computer.home.content_ajax', ["detail_product"=>$detail_product, 
-                                                    "idproduct"=>$idproduct, 
-                                                    "check_next"=>$check_next, 
-                                                    "check_pre"=>$check_pre]);
-
-    }
-
-
-    function save_tu_van_product(Request $request){ 
-        $name           = $request->input('name');
-        $email          = $request->input('email');
-        $content        = $request->input('content');
-        $product_id        = $request->input('product_id');
-        $register_error = 0;
-
-        $error = array(
-          "name"       => "",
-          "email"      => "", 
-          "content"    => "", 
-          );
-
-        if(empty($name)){
-          $error["name"] = trans('form.err_fullname');
-          $register_error = 1;
-        }
-
-        if(empty($email)){
-          $error["email"] = trans('form.err_email');
-          $register_error = 1;
-        }
-
-        if(empty($content)){
-          $error["content"] = trans('form.err_content');
-          $register_error = 1;
-        }
- 
-        
-        if($register_error == 0){
-          $contact = new Advisory;
-          $contact->name        = $name;
-          $contact->email       = $email; 
-          $contact->content     = $content; 
-          $contact->id_product     = $product_id; 
-          $contact->save();
-        }
-
-        echo json_encode($error);
-    }
     public function loadmore_news_in_mod(Request $rq){
         $modid = $rq->modid;
         $skip = $rq->skip;

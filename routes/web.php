@@ -1,8 +1,6 @@
 <?php
 
 Route::get('/',['as'=>'index','uses'=>'HomeController@index']);
-Route::get('/danh-muc/{slug}',['as'=>'list_product','uses'=>'HomeController@list_product']);
-Route::get('/san-pham/{slug}',['as'=>'product','uses'=>'HomeController@product']);
 Route::get('/loai-tin/{slug}',['as'=>'list_news','uses'=>'HomeController@list_news']);
 Route::get('/chi-tiet/{slug}',['as'=>'news','uses'=>'HomeController@news']);
 Route::get('/checkout', 'HomeController@checkout');
@@ -78,16 +76,6 @@ Route::group(['prefix'=>'admin','middleware'=>'controller'],function(){
         Route::post('changestt','OrderController@ChangesttOrder');
         Route::post('editadd','OrderController@EditAddOrder');
         Route::post('deladd','OrderController@DelAddOrder');
-        // shipping ========================
-        Route::get('shipping','OrderController@ListShipping');
-        Route::post('shipping','OrderController@AddShipping');
-        Route::post('shipping/edit','OrderController@EditShipping'); 
-        Route::post('shipping/delete','OrderController@DeleteShipping');
-        // payment =======================  
-        Route::get('payment','OrderController@ListPayment');
-        Route::post('payment','OrderController@AddPayment');
-        Route::post('payment/edit','OrderController@EditPayment'); 
-        Route::post('payment/delete','OrderController@DeletePayment');  
     });
     Route::group(['prefix'=>'contact'],function(){
         Route::get('/','LanguageController@getContactEdit');
@@ -131,23 +119,6 @@ Route::group(['prefix'=>'admin','middleware'=>'controller'],function(){
         Route::post('list','SocicalController@AddSocical');
         Route::post('list/edit','SocicalController@EditSocical'); 
         Route::post('list/delete','SocicalController@DeleteSocical'); 
-    });
-    // Product
-    Route::group(['prefix'=>'modproduct'],function(){
-        Route::get('list','ModProductController@ListModPro');
-        Route::post('list','ModProductController@AddModPro');
-        Route::post('list/edit','ModProductController@EditModPro'); 
-        Route::post('list/delete','ModProductController@DeleteModPro'); 
-    });
-    Route::group(['prefix'=>'listproduct'],function(){
-        Route::get('list','ListProductController@List2Pro');
-        Route::post('list','ListProductController@AddListPro');
-        Route::post('list/edit','ListProductController@EditListPro'); 
-        Route::post('list/delete','ListProductController@DeleteListPro'); 
-        Route::get('liststt','ListProductController@ListSTT');
-        Route::post('liststt','ListProductController@AddSTT');
-        Route::post('liststt/edit','ListProductController@EditSTT'); 
-        Route::post('liststt/delete','ListProductController@DeleteSTT');
     });
     //news
     Route::group(['prefix'=>'modnews'],function(){

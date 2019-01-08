@@ -43,10 +43,10 @@ class SlideController extends Controller
         if($request->hasFile('nnavatarfile')){
                 $file = $request->file('nnavatarfile');
                 $nameimg = changeTitle($file->getClientOriginalName()); 
-                $hinh = "nt7solution-".str_random(6)."_".$nameimg;
+                $hinh = "imageEnzi-".str_random(6)."_".$nameimg;
                 while(file_exists("public/img/slide/".$hinh))
                 {
-                    $hinh = "nt7solution-".str_random(6)."_".$nameimg;
+                    $hinh = "imageEnzi-".str_random(6)."_".$nameimg;
                 }
                 $file->move("public/img/slide",$hinh);
                 $slide->img = $hinh;
@@ -81,10 +81,10 @@ class SlideController extends Controller
         if($request->hasFile('ennavatarfile')){
             $file = $request->file('ennavatarfile');
             $nameimg = changeTitle($file->getClientOriginalName()); 
-            $hinh = "nt7solution-".str_random(6)."_".$nameimg;
+            $hinh = "imageEnzi-".str_random(6)."_".$nameimg;
             while(file_exists("public/img/slide/".$hinh))
             {
-                $hinh = "nt7solution-".str_random(6)."_".$nameimg;
+                $hinh = "imageEnzi-".str_random(6)."_".$nameimg;
             }
             $file->move("public/img/slide",$hinh);
             // removefile
