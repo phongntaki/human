@@ -47,7 +47,7 @@
                             <?php
                                 $item = $listnew->most_news_in_list_new($listnew->id);
                                 $hot = $item->shift();
-                             ?>
+                            ?>
                                 <div class="item" data-color-top-slider="#867eef">
                                     <div class="item-header">
                                         <a href="{{url('chi-tiet/'.$hot['slug'])}}">

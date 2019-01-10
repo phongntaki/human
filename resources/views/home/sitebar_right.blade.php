@@ -8,6 +8,19 @@
         </div>
     </div>
 
+    <!-- Lien he -->
+    <div class="widget widget-news" style="background-color: #fceadd;">
+        <h3 class="widget-title" style="color: red">Tư vấn trực tiếp</h3>
+        <ul class="widget-article-lists" >
+            <li class="item" style="color: #348AC9;">
+                Mr Phong: 0123456789<br>
+                Miss Đinh: 1234567890<br>
+                Email: enzi@enzi.vn
+            </li>
+        </ul>
+    </div>
+    <!-- -->
+
 {{-- tin moi nhat --}}
     <div class="widget widget-news">
         <h3 class="widget-title">Tin mới nhất</h3>
@@ -36,13 +49,13 @@
     <div class="widget widget-ranking">
         <h3 class="widget-title">Đọc nhiều nhất</h3>
         <ul class="widget-article-lists">
-        <?php $count =1; ?>
+        <!-- <?php $count =1; ?> -->
         @foreach($most_news as $item_most)
-            @if($count <6)
+            <!-- @if($count <6) -->
             <li class="item">
                 <a href="{{url('chi-tiet/'.$item_most->slug)}}">
                     <div class="item-image">
-                        <p class="item-counter">{{$count}}</p>
+                        <p class="item-counter">{{$item_most->view_count}}</p>
                         <img src="{{url('/public/img/news/100x100/'.$item_most->newimg)}}" alt="{{$item_most->newsname}}" />
                     </div>
                     <div class="item-lead">
@@ -51,8 +64,8 @@
                     </div>
                 </a>
             </li>
-            @endif
-        <?php  $count = $count +1; ?>
+           <!--  @endif -->
+        <!-- <?php  $count = $count +1; ?> -->
         @endforeach
         </ul>
     </div>
