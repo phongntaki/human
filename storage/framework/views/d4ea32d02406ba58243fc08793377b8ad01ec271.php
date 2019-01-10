@@ -29,7 +29,7 @@
         <!-- END .ot-breaking-news-body -->
 <!--        </div>-->
 
-        <h1>投稿記事アーカイブ</h1>
+        <h1>カテゴリトップ／アーカイブページ</h1>
 
         <div class="content-block has-sidebar">
             <!-- BEGIN .content-block-single -->
@@ -38,27 +38,36 @@
                 <div class="content-panel">
                     <div class="content-panel-title">
                         <ul class="sub_menu">
-                            <li class="active"><a href="<?php echo e(url('loai-tin/'.$listnew->slug)); ?>"><?php echo e($listnew->listname); ?></a></li>
+                            <li class="active"><a href="<?php echo e(url('loai-tin/'.$modnew->slug)); ?>"><?php echo e($modnew->modname); ?></a></li>
+                            <?php $__currentLoopData = $modnew->listnew_inmod($modnew->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat_mod): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li>
+                                    <a href="<?php echo e(url('loai-tin/'.$cat_mod->slug)); ?>"><?php echo e($cat_mod->listname); ?></a>
+                                </li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
+                    <?php
+                        $item = $modnew->top_news_item($modnew->id);
+                        $hot = $item->shift();
+                     ?>
                     <div class="row">
                         <div class="hidden-xs col-md-7 nopadding">
                             <div class="content-panel-body article-list">
-                            <?php
-                                $item = $listnew->most_news_in_list_new($listnew->id);
-                                $hot = $item->shift();
-                            ?>
+
                                 <div class="item" data-color-top-slider="#867eef">
                                     <div class="item-header">
-                                        <a href="<?php echo e(url('chi-tiet/'.$hot['slug'])); ?>">
-                                            <span class="comment-tag"><i class="fa fa-comment-o"></i><span class="fb-comments-count" data-href="<?php echo e(url('chi-tiet/'.$hot['slug'])); ?>"></span><i></i></span>
+                                        <a href="<?php echo e(url('chi-tiet/'.$hot->slug)); ?>">
+                                            <span class="comment-tag"><i class="fa fa-comment-o"></i><span class="fb-comments-count" data-href="<?php echo e(url('chi-tiet/'.$hot->slug)); ?>"></span><i></i></span>
                                             <span class="read-more-wrapper"><span class="read-more">Đọc thêm +<i></i></span></span>
-                                            <img src="<?php echo e(url('public/img/news/300x300/'.$hot['newimg'])); ?>" alt="No image" />
+                                            <img src="<?php echo e(url('public/img/news/300x300/'.$hot->newimg)); ?>" alt="No image" />
                                         </a>
                                     </div>
                                     <div class="item-content">
-                                        <h3><a href="<?php echo e(url('chi-tiet/'.$hot['slug'])); ?>"><?php echo e($hot['newsname']); ?></a></h3>
-                                        <p><?php echo $hot['newintro']; ?></p>
+                                        <h3><a href="<?php echo e(url('chi-tiet/'.$hot->slug)); ?>"><?php echo e($hot->newsname); ?></a></h3>
+                                        <span class="item-meta">
+                                            <a href="#"><i class="fa fa-clock-o"></i><?php echo e($hot->created_at); ?></a>
+                                        </span>
+                                        <p><?php echo $hot->newintro; ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +85,9 @@
                         </div>
                         <div class="visible-xs col-xs-12">
                             <div class="mobile_hot_img">
-                                <a href="<?php echo e(url('/chi-tiet/'.$hot->slug)); ?>" title="<?php echo e($hot->newsname); ?>"><img class="img-responsive" src="<?php echo e(url('public/img/news/300x300/'.$hot['newimg'])); ?>" alt="<?php echo e($hot['newimg']); ?>"></a>
+                                <a href="<?php echo e(url('/chi-tiet/'.$hot->slug)); ?>" title="<?php echo e($hot->newsname); ?>">
+                                    <img class="img-responsive" src="<?php echo e(url('public/img/news/300x300/'.$hot->newimg)); ?>" alt="<?php echo e($hot->newimg); ?>">
+                                </a>
                             </div>
                             <div class="mobile_title">
                                 <a href="<?php echo e(url('/chi-tiet/'.$hot->slug)); ?>" title="<?php echo e($hot->newsname); ?>"><h1><?php echo e($hot->newsname); ?></h1></a>
@@ -95,7 +106,7 @@
                     </div>
                 </div>
                 <!-- END .content-panel -->
-
+            
                 <!-- BEGIN .content-panel -->
                 <div class="content-panel">
                     <div class="content-panel-title">
@@ -104,7 +115,7 @@
                         </ul>
                     </div>
                     <div class="row" id="content_pro">
-                        <?php echo $__env->make('home.content_news_ajax_list', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                        <?php echo $__env->make('home.content_news_ajax', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                         <div class="hidden-xs col-md-3 nopadding sticky_column">
                             <div class="row">
                                 <div class="col-md-12">
@@ -126,15 +137,16 @@
                     <p><img src="#">Đang tải</p>
                 </div>
                  <div class="text-center" <?php if($total <=10): ?> style="display: none;" <?php endif; ?>>
-                     <a class="btn btn-default btn-more-info" id="load_more" base_url="<?php echo e(url('')); ?>" listid="<?php echo e($listnew->id); ?>" skip="10" take="5" total="<?php echo e($total); ?>"  role="button">
+                     <a class="btn btn-default btn-more-info" id="load_more" base_url="<?php echo e(url('')); ?>" modid="<?php echo e($modnew->id); ?>" skip="10" take="5" total="<?php echo e($total); ?>"  role="button">
                         <i class="fa fa-refresh" aria-hidden="true"></i> Xem thêm
                     </a>
                 </div>
             </div>
             <!-- END .content-block-single -->
             <!-- BEGIN .sidebar -->
-            <aside class="sidebar sticky_column hidden-xs">
+            <aside class="sidebar sticky_column ">
                 <?php echo $__env->make('home.sitebar_right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
             <!-- END .sidebar -->
             </aside>
         </div>
@@ -159,16 +171,16 @@
         $("#load_more").click(function(e){
           e.preventDefault()
           base_url = $(this).attr('base_url');
-          listid = $(this).attr('listid');
+          modid = $(this).attr('modid');
           skip = $(this).attr('skip');
           take = $(this).attr('take');
           total = $(this).attr('total');
           $.ajax(
                 {
-                    url: base_url+'/loadmorelist',
+                    url: base_url+'/loadmoremod',
                     type: 'GET',
                     data: {
-                        "listid" : listid,
+                        "modid" : modid,
                         "skip" : skip,
                         "take" : take,
                     },
