@@ -5,30 +5,11 @@
 <?php $__env->startSection('seo_image', (!empty($contact)?asset($contact->seo_image):"")); ?>
 <?php $__env->startSection('seo_url', url()->current()); ?>
 <?php $__env->startSection('content'); ?>
-<!-- BEGIN .wrapper -->
-    <div class="wrapper">
-        <!-- BEGIN .ot-breaking-news-body -->
-<!--
-        <div class="ot-breaking-news-body" data-breaking-timeout="4000" data-breaking-autostart="true">
-            <div class="ot-breaking-news-controls">
-                <button class="right" data-break-dir="right"><i class="fa fa-angle-right"></i></button>
-                <button class="right" data-break-dir="left"><i class="fa fa-angle-left"></i></button>
-                <strong><i class="fa fa-bar-chart"></i>Tin mới</strong>
-            </div>
-            <div class="ot-breaking-news-content">
-                <div class="ot-breaking-news-content-wrap">
-                <?php $__currentLoopData = $khuyenmai; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_km): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="item">
-                        <strong><a href="<?php echo e(url('/chi-tiet/'.$item_km->slug)); ?>"><?php echo e($item_km->newsname); ?></a></strong>
-                    </div>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </div>
-            </div>
--->
-        <!-- END .ot-breaking-news-body -->
-<!--        </div>-->
 
-        <h1>記事ページ</h1>
+<div class="boxed active">
+    <div class="wrapper">
+
+        <h1>記事ページ2</h1>
 
         <div class="content-block has-sidebar">
             <!-- BEGIN .content-block-single -->
@@ -168,17 +149,11 @@
             <?php endif; ?>
             <!-- END .content-block-single -->
             </div>
-
             <!-- BEGIN .sidebar -->
-            <aside class="sidebar sticky_column">
-                <?php echo $__env->make('home.sitebar_right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-            <!-- END .sidebar -->
-            </aside>
+            <?php echo $__env->make('home.sitebar_right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
-
-
-    <!-- END .wrapper -->
     </div>
+</div>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('home.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

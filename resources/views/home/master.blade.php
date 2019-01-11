@@ -166,17 +166,7 @@
 
         <!-- BEGIN .content -->
         <section class="content">
-<!--
-            <div class="boxed active">
-                <div class="wrapper">
--->
-
                     @yield('content')
-
-<!--
-                </div>
-            </div>
--->
         <!-- END .content -->
         </section>
 
@@ -221,12 +211,14 @@
         <script src="{{ asset('public/js/home/customer.js') }}"></script>
         <script async src="{{ asset('public/js/home/boxchat.js') }}"></script>
         <!-- END body -->
+<!--
         <script>
-            if ($(window).width() >700) {
+            if ($(window).width() > 1050) {
                 $(".sticky_column").stick_in_parent();
             }
         </script>
-        
+-->
+
     </body>
     <!-- END html -->
 </html>
