@@ -519,8 +519,6 @@ button:hover {
 
 -------------------------------------------------------------------*/
 
-.content {}
-
 .content .content-block {
     margin-bottom: 50px;
 }
@@ -529,44 +527,20 @@ button:hover {
     clear: both;
     content: '';
 }
-
-
-
-
-
-
 .content .content-block .content-block-single {
     display: block;
 }
-
 .content .content-block.has-sidebar .content-block-single {
     float: left;
     width: 70%;
 }
-
-
-
-
-
-/*.lightbox .content-panel*/
-/*
-.lightbox .content-panel {
-background: #E2E2E2;
-padding: 20px 40px 40px 40px!important;
-text-align: left;
-font-size: 14px;
-}
-
-.lightbox .content-panel-title {
-margin-bottom: 25px;
-}
-*/
 
 /* panel-title */
 .content .content-block .content-panel {
     margin-bottom: 75px;
 }
 .content .content-block .content-panel-title {
+/*
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -576,6 +550,7 @@ margin-bottom: 25px;
     -webkit-box-align: end;
     -ms-flex-align: end;
     align-items: flex-end;
+*/
     padding: 0 3px;
     margin-bottom: 35px;
 }
@@ -599,11 +574,12 @@ margin-bottom: 25px;
 .content .content-block .content-panel-title .panel-title-submenu {
     margin: 0;
     font-size: 0;
+    background-color: #efefef;
 }
 .content .content-block .content-panel-title .panel-title-submenu .submenu-item {
     font-size: 1.4rem;
     display: inline-block;
-    margin-left: 15px;
+/*    margin-left: 15px;*/
 }
 .content .content-block .content-panel-title .panel-title-submenu .submenu-item i.fa {
     font-size: 1.6rem;
@@ -3251,9 +3227,9 @@ Widget content      .widget > div
 .sidebar .widget .widget-title {
     font-size: 1.8rem;
     font-weight: 700;
-/*    background: #f4f4f4;*/
-    padding: 12px 18px;
-    margin: 0 0 20px 0;
+    background-color: #eaeaea;
+    padding: 15px 0 15px 18px;
+    margin: 0 0 25px 0;
 }
 
 /* widget-article-lists */
@@ -3316,6 +3292,10 @@ Widget content      .widget > div
 }
 
 /* widget-info */
+.sidebar .widget.widget-info {
+    padding: 15px;
+    background-color: #eaeaea;
+}
 .sidebar .widget.widget-info .widget-article-lists .item {}
 
 /* widget-ranking */
@@ -3348,20 +3328,6 @@ Widget content      .widget > div
     height: auto;
 }
 
-/*
-.sidebar .widget.widget_search {
-    padding: 0px!important;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
-
-#sidebar .widget.widget_search > form {
-    border: 0px!important;
-    padding: 0px!important;
-    font-size: 0;
-    margin-top: 10px;
-}
-*/
 
 
 
@@ -6500,7 +6466,7 @@ div.bbp-breadcrumb {
 -------------------------------------------------------------------*/
 .back_top {
     position: fixed;
-    bottom: 35px;
+    bottom:65px;
     right: 35px;
     width: 50px;
     height: 50px;

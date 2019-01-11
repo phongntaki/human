@@ -217,17 +217,6 @@ height: auto!important;
     .sidebar .widget {
         width: 48%;
     }
-    .sidebar .widget:nth-of-type(odd) {
-        float: left;
-    }
-    .sidebar .widget:nth-of-type(even) {
-        float: right;
-    }
-    .sidebar .widget:nth-of-type(even)::after {
-        content: '';
-        display: block;
-        clear: both;
-    }
     .sidebar .widget .widget-article-lists .item .item-lead .item-title {
         margin-bottom: 8px;
         -webkit-line-clamp: 3;
