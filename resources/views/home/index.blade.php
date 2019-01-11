@@ -7,6 +7,8 @@
 @section('content')
 
         <!-- BEGIN .ot-breaking-news-body -->
+<div class="boxed active top-slider">
+    <div class="wrapper">
         <div class="ot-breaking-news-body" data-breaking-timeout="4000" data-breaking-autostart="true">
             <div class="ot-breaking-news-controls">
                 <button class="slider-button right" data-break-dir="right"><i class="fa fa-angle-right"></i></button>
@@ -32,8 +34,10 @@
             </div>
         <!-- END .ot-breaking-news-body -->
         </div>
-
-
+    </div>
+</div>
+<div class="boxed active">
+    <div class="wrapper">
         <div class="content-block has-sidebar">
             <!-- BEGIN .content-block-single -->
             <div class="content-block-single">
@@ -70,6 +74,7 @@
                         </ul>
                     </div>
 
+<!--
                     {{-- quang cao --}}
                     @if($index_count == 4)
                     <div class="content-panel">
@@ -83,9 +88,12 @@
                         @endif
                         </div>
                     <?php $ads = $ads +1; ?>
+-->
                     <!--END .content-panel-->
+<!--
                     </div>
                     @endif
+-->
 
                 <!-- END .content-panel -->
                 </div>
@@ -116,5 +124,7 @@
             </div>
         <!-- END .content-panel -->
         </div>
+    </div>
+</div>
 
 @endsection
