@@ -166,13 +166,17 @@
 
         <!-- BEGIN .content -->
         <section class="content">
+<!--
             <div class="boxed active">
                 <div class="wrapper">
+-->
 
                     @yield('content')
 
+<!--
                 </div>
             </div>
+-->
         <!-- END .content -->
         </section>
 

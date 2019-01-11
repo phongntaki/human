@@ -1,4 +1,3 @@
-
     <div class="widget widget-weather">
         <div class="weather-block">
             <a class="weatherwidget-io" href="https://forecast7.com/en/35d69139d69/tokyo/" data-label_1="TOKYO" data-mode="Current" data-theme="mountains" >TOKYO</a>
