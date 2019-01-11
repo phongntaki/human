@@ -25,8 +25,8 @@
         <link type="text/css" rel="stylesheet" href="{{url('public/home/css/reset.css')}}" />
         <link type="text/css" rel="stylesheet" href="{{url('public/home/css/font-awesome.min.css')}}" />
         <link type="text/css" rel="stylesheet" href="{{url('public/home/css/weather-icons.min.css')}}" />
-        <link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Arvo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Arvo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
         <link type="text/css" rel="stylesheet" href="{{url('public/home/css/bootstrap.min.css')}}" />
         <link type="text/css" rel="stylesheet" href="{{url('public/home/css/dat-menu.css')}}" />
         <link type="text/css" rel="stylesheet" href="{{url('public/home/css/main-stylesheet.css')}}" />
@@ -56,16 +56,6 @@
     <!-- BEGIN body -->
     <!-- <body> -->
     <body class="ot-menu-will-follow">
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.10&appId=1717807391847359";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
-
-
 
         <!-- BEGIN .header -->
         <header class="header">
@@ -215,6 +205,7 @@
             </a>
         </div>
 
+
         <!-- END .boxed -->
         <!--        </div>-->
 
@@ -227,12 +218,15 @@
         <script type="text/javascript" src="{{url('public/home/jscript/theme-scripts.js')}}"></script>
         <script type="text/javascript" src="{{url('public/home/jscript/ot-lightbox.js')}}"></script>
         <script type="text/javascript" src="{{url('public/js/jquery.sticky-kit.min.js')}}"></script>
+        <script src="{{ asset('public/js/home/customer.js') }}"></script>
+        <script async src="{{ asset('public/js/home/boxchat.js') }}"></script>
         <!-- END body -->
         <script>
             if ($(window).width() >700) {
                 $(".sticky_column").stick_in_parent();
             }
         </script>
+        
     </body>
     <!-- END html -->
 </html>

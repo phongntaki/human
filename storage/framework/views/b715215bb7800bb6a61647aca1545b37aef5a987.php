@@ -11,7 +11,6 @@
             <div class="ot-breaking-news-controls">
                 <button class="slider-button right" data-break-dir="right"><i class="fa fa-angle-right"></i></button>
                 <button class="slider-button left" data-break-dir="left"><i class="fa fa-angle-left"></i></button>
-<!--                <strong><i class="fa fa-bar-chart"></i>Tin mới    </strong>-->
             </div>
             <div class="ot-breaking-news-content">
                 <div class="ot-breaking-news-content-wrap">
@@ -19,11 +18,13 @@
                     <div class="item">
                         <a href="<?php echo e(url('/chi-tiet/'.$item_km->slug)); ?>">
                             <div class="item-lead">
-                                <p class="item-desc"><?php echo e($item_km->created_at->format('Y/m/d')); ?></p>
+                                <p class="item-date"><?php echo e($item_km->created_at->format('Y/m/d')); ?></p>
                                 <h3 class="item-title"><?php echo e($item_km->newsname); ?></h3>
                                 <p class="item-desc"><?php echo e($item_km->newintro); ?></p>
                             </div>
-                            <img class="item-img" src="<?php echo e(url('public/img/news/300x300/'.$item_km['newimg'])); ?>">
+                            <div class="item-image">
+                                <img src="<?php echo e(url('public/img/news/300x300/'.$item_km['newimg'])); ?>">
+                            </div>
                         </a>
                     </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -41,44 +42,36 @@
                 <!-- BEGIN .content-panel -->
                 <div class="content-panel">
                     <div class="content-panel-title">
-                        <ul class="sub_menu">
-                            <li class="active"><a href="<?php echo e(url('loai-tin/'.$index_mod->slug)); ?>"><?php echo e($index_mod->modname); ?></a></li>
+                        <h2 class="panel-title"><a href="<?php echo e(url('loai-tin/'.$index_mod->slug)); ?>"><?php echo e($index_mod->modname); ?></a></h2>
+                        <ul class="panel-title-submenu">
                             <?php $__currentLoopData = $index_mod->listnews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $itemlist): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <li><a href="<?php echo e(url('/loai-tin/'.$itemlist->slug)); ?>" title="<?php echo e($itemlist->listname); ?>"><?php echo e($itemlist->listname); ?></a></li>
+                            <li class="submenu-item"><a href="<?php echo e(url('/loai-tin/'.$itemlist->slug)); ?>"><i class="fa fa-angle-right"></i><?php echo e($itemlist->listname); ?></a></li>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
                     <?php
-                        $item = $index_mod->news_in_mod($index_mod->id);
+                        $item = $index_mod->news_in_mod($index_mod->id)->take(4);
                     ?>
-                    <div class="row">
-                        <div class="hidden-xs col-md-5 nopadding">
-                            <div class="content-panel-body article-list" style="max-height: none">
-                                <ul>
-                                    <?php $__currentLoopData = $item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $news): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li>
-                                        <img src="<?php echo e(url('public/img/news/300x300/'.$news['newimg'])); ?>" alt="No image" />
-                                        <b><?php echo e($news->created_at); ?></b>
-                                        <a href="<?php echo e(url('/chi-tiet/'.$news->slug)); ?>" title="<?php echo e($news->newsname); ?>"><b class="fa fa-angle-right" aria-hidden="true"></b><b><?php echo e($news->newsname); ?></b></a>
-                                        
-                                    </li>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </ul>
-                            </div>
-                        </div>
-                        <?php $__currentLoopData = $item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m_item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="visible-xs col-xs-6 padding4 mobile_item">
-                            <div class="mobile_img">
-                                <a href="<?php echo e(url('/chi-tiet/'.$m_item->slug)); ?>" title="<?php echo e($m_item->newsname); ?>"><img class="img-responsive" src="<?php echo e(url('public/img/news/300x300/'.$m_item['newimg'])); ?>" alt=""></a>
-                            </div>
-                            <div class="mobile_title">
-                                <a href="<?php echo e(url('/chi-tiet/'.$m_item->slug)); ?>" title="<?php echo e($m_item->newsname); ?>"><h1><?php echo e($m_item->newsname); ?></h1></a>
-                            </div>
-                        </div>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <div class="content-panel-body">
+                        <ul class="panel-items">
+                            <?php $__currentLoopData = $item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $news): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li class="item">
+                                <a href="<?php echo e(url('/chi-tiet/'.$news->slug)); ?>">
+                                    <div class="item-image">
+                                        <img src="<?php echo e(url('public/img/news/300x300/'.$news['newimg'])); ?>" alt="<?php echo e($news->created_at); ?>" />
+                                    </div>
+                                    <div class="item-lead">
+                                        <p class="item-date"><?php echo e($news->created_at->format('Y/m/d')); ?></p>
+                                        <h3 class="item-title"><?php echo e($news->newsname); ?></h3>
+                                    </div>
+                                </a>
+                            </li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </ul>
                     </div>
+
                     
-                <?php if($index_count == 4): ?>
+                    <?php if($index_count == 4): ?>
                     <div class="content-panel">
                         <div class="content-panel-body do-space">
                         <?php if($adverts_main[$ads]->code != ""): ?>
@@ -91,21 +84,26 @@
                         <?php endif; ?>
                         </div>
                     <?php $ads = $ads +1; ?>
-                    <!-- END .content-panel -->
+                    <!--END .content-panel-->
                     </div>
-                <?php endif; ?>
+                    <?php endif; ?>
+
+                <!-- END .content-panel -->
                 </div>
                 <?php $index_count = $index_count +1; ?>
-                <!-- END .content-panel -->
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </div>
             <!-- END .content-block-single -->
+            </div>
+
             <!-- BEGIN .sidebar -->
             <aside class="sidebar sticky_column">
                 <?php echo $__env->make('home.sitebar_right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <!-- END .sidebar -->
             </aside>
+
+        <!-- END .content-block -->
         </div>
+
         <!-- BEGIN .content-panel -->
         <div class="content-panel">
             <div class="content-panel-body do-space">
