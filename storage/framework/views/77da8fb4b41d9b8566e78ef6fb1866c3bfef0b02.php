@@ -8,7 +8,7 @@
 <div class="boxed active">
     <div class="wrapper">
 
-        <h1>紹介業種一覧2</h1>
+        <h1>紹介業種一覧</h1>
 
         <div class="content-block has-sidebar">
             <!-- BEGIN .content-block-single -->

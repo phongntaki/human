@@ -8,7 +8,7 @@
 <div class="boxed active">
     <div class="wrapper">
 
-        <h1>会社概要2</h1>
+        <h1>会社概要</h1>
 
         <div class="content-block has-sidebar">
             <!-- BEGIN .content-block-single -->
