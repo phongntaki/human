@@ -130,9 +130,8 @@ height: auto!important;
         max-width: 95%;
     }
 
-    .content .content-block.has-sidebar .sidebar {
-        height: auto!important;
-    }
+
+
 
     .ot-breaking-news-body .ot-breaking-news-content {
         /*        padding: 12px 20px;*/
@@ -184,6 +183,7 @@ height: auto!important;
         margin-bottom: 20px;
     }
 
+/*
     .content .content-block.has-sidebar .sidebar {
         display: block;
         float: none;
@@ -191,6 +191,7 @@ height: auto!important;
         width: 100%;
         margin-left: 0px;
     }
+*/
 
     .item .item-article .item-header a, .photo-gallery-blocks > .item .item-header a, .full-width-articles > .item .item-header a, .split-article-slide-right > .item .item-header a, .content-panel-body.article-list > .item .item-header a,
     .top-slider-content-wrap .item .item-header a {
@@ -198,23 +199,33 @@ height: auto!important;
     }
 
 
-
-
     /* sidebar
     --------------------------------*/
-    .sidebar .widget.widget-news {
-        float: left;
+    .sidebar {
+        float: none;
+        width: 100%;
+        height: auto !important;
     }
-    .sidebar .widget.widget-ranking {
-        float: right;
+    .sidebar .widget-wrap {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
     }
-    .sidebar .widget.widget-news,
-    .sidebar .widget.widget-ranking {
+    .sidebar .widget {
         width: 48%;
     }
-    .sidebar .widget-wrap::after {
-        display: block;
+    .sidebar .widget:nth-of-type(odd) {
+        float: left;
+    }
+    .sidebar .widget:nth-of-type(even) {
+        float: right;
+    }
+    .sidebar .widget:nth-of-type(even)::after {
         content: '';
+        display: block;
         clear: both;
     }
     .sidebar .widget .widget-article-lists .item .item-lead .item-title {
@@ -409,9 +420,10 @@ height: auto!important;
 
     /* sidebar
     --------------------------------*/
-    .sidebar .widget.widget-news,
-    .sidebar .widget.widget-ranking {
-        float: none;
+    .sidebar .widget-wrap {
+        display: block;
+    }
+    .sidebar .widget {
         width: 100%;
     }
 
