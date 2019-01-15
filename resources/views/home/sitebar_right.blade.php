@@ -4,12 +4,13 @@
         <div class="widget widget-info">
             <h3 class="widget-title">Tư vấn trực tiếp</h3>
             {{-- tin moi nhat --}}
+            <p>Văn bản giả được nhập vào.Văn bản giả được nhập vào.Văn bản giả được nhập vào.</p>
             <ul class="widget-article-lists" >
-                <li class="item">
-                    Mr Phong: 0123456789<br>
-                    Miss Đinh: 1234567890<br>
-                    Email: enzi@enzi.vn
+                <li class="item info-phone">
+                    <span class="hidden">Phone: </span>012-345-6789<br>
+                    <span class="hidden">Time: </span><span class="info-phone-time">9:00-18:00</span>
                 </li>
+                <li class="item info-mail"><span class="hidden">Email: </span>info@enzi.vn</li>
             </ul>
         </div>
 
@@ -38,7 +39,9 @@
                     </div>
                     <div class="item-lead">
                         <h4 class="item-title">{{$item_lt->newsname}}</h4>
-                        <p class="item-date"><i class="fa fa-clock-o"></i>{{$item_lt->created_at->format('Y/m/d')}}</p>
+                        <p class="item-date">
+<!--                        <i class="fa fa-clock-o"></i>-->
+                        {{$item_lt->created_at->format('Y/m/d')}}</p>
                     </div>
                 </a>
                 </li>
@@ -63,7 +66,9 @@
                     </div>
                     <div class="item-lead">
                         <h4 class="item-title">{{$item_most->newsname}}</h4>
-                        <p class="item-date"><i class="fa fa-clock-o"></i>{{$item_most->created_at->format('Y/m/d')}}</p>
+                        <p class="item-date">
+<!--                        <i class="fa fa-clock-o"></i>-->
+                        {{$item_most->created_at->format('Y/m/d')}}</p>
                     </div>
                 </a>
                 </li>

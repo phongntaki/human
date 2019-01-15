@@ -48,12 +48,6 @@
         font-size: 14px;
     }
 
-    .sidebar .widget.widget-tabbed > h3 span,
-    .sidebar .widget > h3 {
-        font-size: 13px;
-        padding: 16px 20px;
-    }
-
     .popular-articles-middle .top-slider-controls {
         background: rgba(255,255,255,0.5);
         padding-top: 20px;
@@ -217,10 +211,39 @@ height: auto!important;
     .sidebar .widget {
         width: 48%;
     }
+    .sidebar .widget:not(.widget-info) .widget-title {
+        font-size: 2.0rem;
+    }
     .sidebar .widget .widget-article-lists .item .item-lead .item-title {
+        font-size: 1.6rem;
         margin-bottom: 8px;
         -webkit-line-clamp: 3;
     }
+
+    .sidebar .widget.widget-info .widget-title {
+        font-size: 2.0rem;
+    }
+    .sidebar .widget.widget-info .widget-article-lists .item {
+        font-size: 2.0rem;
+    }
+    .sidebar .widget.widget-info .widget-article-lists .item.info-phone,
+    .sidebar .widget.widget-info .widget-article-lists .item.info-mail {
+        background-position: left 50px top 50%;
+    }
+    .sidebar .widget.widget-info .widget-article-lists .item.info-phone {
+        background-size: 13%;
+    }
+    .sidebar .widget.widget-info .widget-article-lists .item.info-mail {
+        background-size: 12%;
+    }
+
+    .sidebar .widget.widget-ranking .widget-article-lists .item .item-image .item-counter {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 1.4rem;
+    }
+
 
 
 
@@ -404,6 +427,8 @@ height: auto!important;
     .content .content-block .content-panel-body .panel-items .item .item-lead .item-date {
         margin-bottom: 3px;
     }
+
+
 
 
 
