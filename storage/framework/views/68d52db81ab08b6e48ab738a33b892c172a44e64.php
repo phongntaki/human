@@ -51,14 +51,14 @@
             </ul>
         </div>
 
-        
-        <div class="widget widget-ranking">
-            <h3 class="widget-title">Đọc nhiều nhất</h3>
-            <ul class="widget-article-lists">
-                <?php $count =1; ?>
-                <?php $__currentLoopData = $most_news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_most): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <?php if($count <6): ?>
-                               <li class="item">
+
+    <div class="widget widget-ranking">
+        <h3 class="widget-title">Đọc nhiều nhất</h3>
+        <ul class="widget-article-lists">
+        <?php $count =1; ?>
+        <?php $__currentLoopData = $most_news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_most): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php if($count <6): ?>
+            <li class="item">
                 <a href="<?php echo e(url('chi-tiet/'.$item_most->slug)); ?>">
                     <div class="item-image">
                         <p class="item-counter"><?php echo e($count); ?></p>
