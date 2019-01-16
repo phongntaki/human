@@ -2,7 +2,6 @@
 <html lang = "vi">
     <head>
         <title>@yield('title')</title>
-        <!-- Meta Tags -->
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="description" content="">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,10 +15,8 @@
         <meta property="og:description" content="@yield('seo_description')" >
         <meta property="og:url" content="@yield('seo_url')">
         <meta property="og:site_name" content="{{ (!empty($contact)?$contact->seo_title:"") }}">
-        <!-- Favicon -->
         <link rel="shortcut icon" href="{{url('public/home/images/favicon.ico')}}">
 
-        <!-- Stylesheets -->
         <link type="text/css" rel="stylesheet" href="{{url('public/home/css/reset.css')}}">
         <link type="text/css" rel="stylesheet" href="{{url('public/home/css/font-awesome.min.css')}}">
         <link type="text/css" rel="stylesheet" href="{{url('public/home/css/weather-icons.min.css')}}">
