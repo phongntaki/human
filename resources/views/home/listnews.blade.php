@@ -5,29 +5,9 @@
 @section('seo_image', (!empty($contact)?asset($contact->seo_image):""))
 @section('seo_url', url()->current())
 @section('content')
-<!-- BEGIN .wrapper -->
-    <div class="wrapper">
 
-        <!-- BEGIN .ot-breaking-news-body -->
-<!--
-        <div class="ot-breaking-news-body" data-breaking-timeout="4000" data-breaking-autostart="true">
-            <div class="ot-breaking-news-controls">
-                <button class="right" data-break-dir="right"><i class="fa fa-angle-right"></i></button>
-                <button class="right" data-break-dir="left"><i class="fa fa-angle-left"></i></button>
-                <strong><i class="fa fa-bar-chart"></i>Tin mới    </strong>
-            </div>
-            <div class="ot-breaking-news-content">
-                <div class="ot-breaking-news-content-wrap">
-                @foreach($khuyenmai as $item_km)
-                    <div class="item">
-                        <strong><a href="{{url('/chi-tiet/'.$item_km->slug)}}">{{ $item_km->newsname}}</a></strong>
-                    </div>
-                @endforeach
-                </div>
-            </div>
--->
-        <!-- END .ot-breaking-news-body -->
-<!--        </div>-->
+<div class="boxed active">
+    <div class="wrapper">
 
         <h1>投稿記事アーカイブ</h1>
 
@@ -105,19 +85,6 @@
                     </div>
                     <div class="row" id="content_pro">
                         @include('home.content_news_ajax_list')
-                        <div class="hidden-xs col-md-3 nopadding sticky_column">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    @if($adverts_center[0]->code != "")
-                                        {{$adverts_center[0]->code}}
-                                    @else
-                                    <a href="{{$adverts_center[0]->link}}" target="_blank">
-                                        <img src="{{url('public/img/images_bn/'.$adverts_center[0]->img)}}" alt="No image" width="100%" style="object-fit: contain;" />
-                                    </a>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <!-- END .content-panel -->
@@ -130,72 +97,56 @@
                     </a>
                 </div>
             </div>
-            <!-- END .content-block-single -->
             <!-- BEGIN .sidebar -->
-            <aside class="sidebar sticky_column hidden-xs">
-                @include('home.sitebar_right')
-            <!-- END .sidebar -->
-            </aside>
+            @include('home.sitebar_right')
         </div>
-        <!-- BEGIN .content-panel -->
-        <div class="content-panel">
-            <div class="content-panel-body do-space">
-                @if($adverts_main[0]->code != "")
-                    {{$adverts_main[0]->code}}
-                @else
-                <a href="{{$adverts_main[0]->link}}" target="_blank">
-                    <img src="{{url('public/img/images_bn/'.$adverts_main[0]->img)}}" alt="No image" width="100%" style="object-fit: contain; max-height: 150px; display: block;overflow:hidden; margin-bottom: 20px;" />
-                </a>
-                @endif
-            </div>
-        <!-- END .content-panel -->
-        </div>
-
-    <!-- END .wrapper -->
     </div>
-    <script type="text/javascript">
-        $("#load_more").click(function(e){
-          e.preventDefault()
-          base_url = $(this).attr('base_url');
-          listid = $(this).attr('listid');
-          skip = $(this).attr('skip');
-          take = $(this).attr('take');
-          total = $(this).attr('total');
-          $.ajax(
-                {
-                    url: base_url+'/loadmorelist',
-                    type: 'GET',
-                    data: {
-                        "listid" : listid,
-                        "skip" : skip,
-                        "take" : take,
-                    },
-                    beforeSend: function()
-                    {
-                        $('.ajax-load').show();
-                    }
-                })
-                .done(function(data)
-                {
-                    if(data.html == " "){
-                        $('.ajax-load').html("Không có kết quả nào !");
-                        return;
-                    }
-                    $('.ajax-load').hide();
-                    $("#content_pro").append(data);
-                    $('#load_more').attr('skip', parseInt(skip) +5);
-                    skip = $('#load_more').attr('skip');
+</div>
 
-                    if (parseInt(skip) >= parseInt(total)) {
-                        $('#load_more').css('display', 'none');
-                    }
-                    // console.log(data);
-
-                })
-                .fail(function(jqXHR, ajaxOptions, thrownError)
+<script type="text/javascript">
+    $("#load_more").click(function(e){
+        e.preventDefault()
+        base_url = $(this).attr('base_url');
+        listid = $(this).attr('listid');
+        skip = $(this).attr('skip');
+        take = $(this).attr('take');
+        total = $(this).attr('total');
+        $.ajax(
+            {
+                url: base_url+'/loadmorelist',
+                type: 'GET',
+                data: {
+                    "listid" : listid,
+                    "skip" : skip,
+                    "take" : take,
+                },
+                beforeSend: function()
                 {
-                      alert('server not responding...');
-                });
+                    $('.ajax-load').show();
+                }
+            })
+            .done(function(data)
+                  {
+            if(data.html == " "){
+                $('.ajax-load').html("Không có kết quả nào !");
+                return;
+            }
+            $('.ajax-load').hide();
+            $("#content_pro").append(data);
+            $('#load_more').attr('skip', parseInt(skip) +5);
+            skip = $('#load_more').attr('skip');
+
+            if (parseInt(skip) >= parseInt(total)) {
+                $('#load_more').css('display', 'none');
+            }
+            // console.log(data);
+
+        })
+            .fail(function(jqXHR, ajaxOptions, thrownError)
+                  {
+            alert('server not responding...');
         });
-    </script>
+    });
+</script>
+
 @endsection

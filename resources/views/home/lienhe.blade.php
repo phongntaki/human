@@ -5,9 +5,10 @@
 @section('seo_image', (!empty($contact)?asset($contact->seo_image):""))
 @section('seo_url', url()->current())
 @section('content')
-<!-- BEGIN .wrapper -->
+
+<div class="boxed active">
     <div class="wrapper">
-            <!-- BEGIN .ot-breaking-news-body -->
+
         <div class="content-block has-sidebar">
             <!-- BEGIN .content-block-single -->
             <div class="content-block-single">
@@ -16,11 +17,10 @@
 
             <!-- END .content-block-single -->
             </div>
-
-
+            <!-- BEGIN .sidebar -->
+            @include('home.sitebar_right')
         </div>
-
-
-    <!-- END .wrapper -->
     </div>
+</div>
+
 @endsection

@@ -5,31 +5,11 @@
 @section('seo_image', (!empty($contact)?asset($contact->seo_image):""))
 @section('seo_url', url()->current())
 @section('content')
-<!-- BEGIN .wrapper -->
+
+<div class="boxed active">
     <div class="wrapper">
 
-        <!-- BEGIN .ot-breaking-news-body -->
-<!--
-        <div class="ot-breaking-news-body" data-breaking-timeout="4000" data-breaking-autostart="true">
-            <div class="ot-breaking-news-controls">
-                <button class="right" data-break-dir="right"><i class="fa fa-angle-right"></i></button>
-                <button class="right" data-break-dir="left"><i class="fa fa-angle-left"></i></button>
-                <strong><i class="fa fa-bar-chart"></i>Tin mới    </strong>
-            </div>
-            <div class="ot-breaking-news-content">
-                <div class="ot-breaking-news-content-wrap">
-                @foreach($khuyenmai as $item_km)
-                    <div class="item">
-                        <strong><a href="{{url('/chi-tiet/'.$item_km->slug)}}">{{ $item_km->newsname}}</a></strong>
-                    </div>
-                @endforeach
-                </div>
-            </div>
--->
-        <!-- END .ot-breaking-news-body -->
-<!--        </div>-->
-
-        <h1>カテゴリトップ／アーカイブページ</h1>
+        <h1>カテゴリトップ／アーカイブページ2</h1>
 
         <div class="content-block has-sidebar">
             <!-- BEGIN .content-block-single -->
@@ -116,56 +96,29 @@
                     </div>
                     <div class="row" id="content_pro">
                         @include('home.content_news_ajax')
-                        <div class="hidden-xs col-md-3 nopadding sticky_column">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    @if($adverts_center[0]->code != "")
-                                        {{$adverts_center[0]->code}}
-                                    @else
-                                    <a href="{{$adverts_center[0]->link}}" target="_blank">
-                                        <img src="{{url('public/img/images_bn/'.$adverts_center[0]->img)}}" alt="No image" width="100%" style="object-fit: contain;" />
-                                    </a>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <!-- END .content-panel -->
+
+                <!-- BEGIN Loading -->
                 <div class="ajax-load text-center" style="display:none;z-index: 10000; opacity: 1;">
                     <p><img src="#">Đang tải</p>
                 </div>
-                 <div class="text-center" @if($total <=10) style="display: none;" @endif>
+
+                <!-- BIGIN ReadMore -->
+                <div class="text-center" @if($total <=10) style="display: none;" @endif>
                      <a class="btn btn-default btn-more-info" id="load_more" base_url="{{url('')}}" modid="{{$modnew->id}}" skip="10" take="5" total="{{$total}}"  role="button">
                         <i class="fa fa-refresh" aria-hidden="true"></i> Xem thêm
                     </a>
                 </div>
             </div>
-            <!-- END .content-block-single -->
             <!-- BEGIN .sidebar -->
-            <aside class="sidebar sticky_column ">
                 @include('home.sitebar_right')
-
-            <!-- END .sidebar -->
-            </aside>
         </div>
-        <!-- BEGIN .content-panel -->
-        <div class="content-panel">
-            <div class="content-panel-body do-space">
-                @if($adverts_main[0]->code != "")
-                    {{$adverts_main[0]->code}}
-                @else
-                <a href="{{$adverts_main[0]->link}}" target="_blank">
-                    <img src="{{url('public/img/images_bn/'.$adverts_main[0]->img)}}" alt="No image" width="100%" style="object-fit: contain; max-height: 150px; display: block;overflow:hidden; margin-bottom: 20px;" />
-                </a>
-                @endif
-            </div>
-        <!-- END .content-panel -->
-        </div>
-
-    <!-- END .wrapper -->
     </div>
-    <script type="text/javascript">
+</div>
+
+<script type="text/javascript">
         $("#load_more").click(function(e){
           e.preventDefault()
           base_url = $(this).attr('base_url');
@@ -210,4 +163,5 @@
                 });
         });
     </script>
+
 @endsection
