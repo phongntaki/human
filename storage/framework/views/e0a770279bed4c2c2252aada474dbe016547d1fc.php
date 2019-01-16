@@ -1,32 +1,31 @@
 <!DOCTYPE HTML>
-<!-- BEGIN html -->
 <html lang = "vi">
-    <!-- BEGIN head -->
-
     <head>
         <title><?php echo $__env->yieldContent('title'); ?></title>
         <!-- Meta Tags -->
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="description" content="" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="description" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
         <meta name="generator" content="enzi.co.jp">
-        <meta property="fb:app_id" content="<?php echo e((!empty($contact)?$contact->fb_app_id:"")); ?>" />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content="<?php echo $__env->yieldContent('title'); ?>" />
+        <meta name="format-detection" content="telephone=no">
+        <meta property="fb:app_id" content="<?php echo e((!empty($contact)?$contact->fb_app_id:"")); ?>">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="<?php echo $__env->yieldContent('title'); ?>">
         <meta property="og:image" content="<?php echo $__env->yieldContent('seo_image'); ?>" >
         <meta property="og:description" content="<?php echo $__env->yieldContent('seo_description'); ?>" >
-        <meta property="og:url" content="<?php echo $__env->yieldContent('seo_url'); ?>" />
-        <meta property="og:site_name" content="<?php echo e((!empty($contact)?$contact->seo_title:"")); ?>" />
+        <meta property="og:url" content="<?php echo $__env->yieldContent('seo_url'); ?>">
+        <meta property="og:site_name" content="<?php echo e((!empty($contact)?$contact->seo_title:"")); ?>">
         <!-- Favicon -->
-        <link rel="shortcut icon" href="<?php echo e(url('public/home/images/favicon.ico')); ?>" />
+        <link rel="shortcut icon" href="<?php echo e(url('public/home/images/favicon.ico')); ?>">
 
         <!-- Stylesheets -->
-        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/reset.css')); ?>" />
-        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/font-awesome.min.css')); ?>" />
-        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/weather-icons.min.css')); ?>" />
+        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/reset.css')); ?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/font-awesome.min.css')); ?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/weather-icons.min.css')); ?>">
         <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Arvo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+<<<<<<< HEAD
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/bootstrap.min.css')); ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/dat-menu.css')); ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/main-stylesheet.css')); ?>" />
@@ -37,6 +36,18 @@
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/demo-settings.css')); ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/style.css')); ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/lienhe.css')); ?>" />
+=======
+        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/bootstrap.min.css')); ?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/dat-menu.css')); ?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/main-stylesheet.css')); ?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/ot-lightbox.css')); ?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/shortcodes.css')); ?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/responsive.css')); ?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/mystyle.css')); ?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/demo-settings.css')); ?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/style.css')); ?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/lienhe.css')); ?>">
+>>>>>>> 8d945d61505e66497a645261398ad055687b3c0a
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -49,13 +60,11 @@
 <![endif]-->
 
         <!--[if lte IE 8]>
-<link type="text/css" rel="stylesheet" href="css/ie-ancient.css" />
+<link type="text/css" rel="stylesheet" href="css/ie-ancient.css">
 <![endif]-->
         <!-- END head -->
     </head>
 
-    <!-- BEGIN body -->
-    <!-- <body> -->
     <body class="ot-menu-will-follow">
 
         <!-- BEGIN .header -->
@@ -66,13 +75,11 @@
                     <div class="wrapper">
                         <nav class="top-menu-soc right">
                             <ul class="top-menu-lists">
-                                <!-- <li><a href="#" target="_blank" class="hover-color-facebook"><i class="fa fa-facebook"></i></a></li> -->
-                                <!-- <li><a href="<?php echo e(url('/login')); ?>" target="_blank" class="hover-color-twitter">Login</a></li> -->
                                 <li class="search-block-wrapper">
                                     <div class="header-main-search">
                                         <div class="search-block">
                                             <form action="<?php echo e(url('/search')); ?>">
-                                                <input type="text" name="key" placeholder="Nhập từ khóa tìm kiếm.." />
+                                                <input type="text" name="key" placeholder="Nhập từ khóa tìm kiếm..">
                                             </form>
                                         </div>
                                     </div>
@@ -111,20 +118,12 @@
                 <div class="boxed active">
                     <div class="wrapper">
                         <h1 class="logo">
-                            <a href="<?php echo e(url('')); ?>"><img src="<?php echo e(url('/public/logo2.png')); ?>" alt="ENZI human resources" /></a>
+                            <a href="<?php echo e(url('')); ?>"><img src="<?php echo e(url('/public/home/images/logo2.png')); ?>" alt="<?php echo e($contact->nameco); ?>"></a>
                         </h1>
                     </div>
                 </div>
                 <!-- END .header-logo -->
             </div>
-
-            <?php if(Session::get('logined_cus') != 1): ?>
-            <div class="no-information">
-                <p class="noinfo-text">
-                    <span class="nowrap">Bạn nên đăng ký thông tin cá nhân để chúng tôi có</span> <span class="nowrap">thể chọn ra công việc tốt nhất phù hợp với bạn.</span> <span class="nowrap">Chưa có tài khoản, đăng ký tại</span><span class="btn-noinfo nowrap"><a href="<?php echo e(url('/register')); ?>" style="color: #81F7F3">ĐÂY</a></span>
-                </p>
-            </div>
-            <?php endif; ?>
 
             <!-- BEGIN .global-nav -->
             <div class="global-nav">
@@ -158,47 +157,82 @@
                         </div>
                     </div>
                 </div>
-                <!-- END .global-nav -->
             </div>
-            <!-- END .header -->
+
+            <?php if(Session::get('logined_cus') != 1): ?>
+            <div class="no-information">
+                <div class="boxed active">
+                    <div class="wrapper">
+                        <p class="noinfo-text">
+                            <span class="nowrap">Bạn nên đăng ký thông tin cá</span> <span class="nowrap">nhân để chúng tôi có</span> <span class="nowrap">thể chọn ra công việc</span> <span class="nowrap">tốt nhất phù hợp với bạn.</span> <span class="nowrap">Chưa có tài khoản, đăng ký tại</span><span class="btn-noinfo nowrap"><a href="<?php echo e(url('/register')); ?>" style="color: #81F7F3">ĐÂY</a></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
         </header>
-
-
 
         <!-- BEGIN .content -->
         <section class="content">
-                    <?php echo $__env->yieldContent('content'); ?>
-        <!-- END .content -->
+            <?php echo $__env->yieldContent('content'); ?>
         </section>
 
         <!-- BEGIN .footer -->
         <footer class="footer">
             <div class="boxed active">
                 <div class="wrapper">
-                    <!-- BEGIN .footer-copyright -->
-                    <div class="footer-copyright">
-                        <p><?php echo $contact->slogan_intro; ?></p>
-                        <p>&copy; Copyright <strong><?php echo e($contact->nameco); ?></strong> <?php echo date("Y"); ?>, <strong><a href="https://nt7solution.com/" target="_blank"><?php echo e($contact->website); ?></a></strong></p>
-                    <!-- END .footer-copyright -->
+                    <!-- BEGIN .footer-content -->
+                    <div class="footer-contents">
+                        <div class="company-message">
+                            <?php echo $contact->slogan_intro; ?>
+
+<!--
+                            <div class="share-items">
+                                <div class="fb-share-button share-item-button"
+                                     data-href="<?php echo e(url()->current()); ?>"
+                                     data-mobile_iframe="true"
+                                     data-layout="button">
+                                </div>
+                                <div class="g-plus share-item-button" data-action="share" data-annotation="bubble" data-height="24" data-href="<?php echo e(url()->current()); ?>"></div>
+                            </div>
+-->
+                        </div>
+                        <div class="company-info">
+                            <a href="<?php echo e(url('')); ?>" class="footer-logo"><img src="<?php echo e(url('/public/home/images/logo2.png')); ?>" alt="<?php echo e($contact->nameco); ?>"></a>
+                            <p class="company-text">
+                                Cơ sở 1: Đà Nẵng<br>
+                                Điện thoại: 375 458 698 555<br>
+                                E-mail: info@enzi.co.jp
+                            </p>
+                            <div class="share-items">
+                                <div class="fb-share-button share-item-button"
+                                     data-href="<?php echo e(url()->current()); ?>"
+                                     data-mobile_iframe="true"
+                                     data-layout="button">
+                                </div>
+                                <div class="g-plus share-item-button" data-action="share" data-annotation="bubble" data-height="24" data-href="<?php echo e(url()->current()); ?>"></div>
+                            </div>
+                        </div>
+                        <div class="footer-copyright">
+                            <p>&copy; <?php echo date("Y"); ?> <a href="<?php echo e(url('')); ?>"><?php echo e($contact->nameco); ?></a></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        <!-- END .footer -->
         </footer>
 
+        <!-- BEGIN .back_top -->
         <div class="back_top" style="display: none;">
             <a href="#top"><i class="fa fa-chevron-up"></i></a>
         </div>
+
+        <!-- BEGIN .popup_menu -->
         <div class="popup_menu visible-xs">
             <a href="#dat-menu" class="btn-popup" title="menu">
                 <i class="fa fa-bars"></i>
                 <span class="popup-text-menu">MENU</span>
             </a>
         </div>
-
-
-        <!-- END .boxed -->
-        <!--        </div>-->
 
         <!-- Scripts -->
         <script type="text/javascript" src="<?php echo e(url('public/home/jscript/jquery-latest.min.js')); ?>"></script>
@@ -211,7 +245,6 @@
         <script type="text/javascript" src="<?php echo e(url('public/js/jquery.sticky-kit.min.js')); ?>"></script>
         <script src="<?php echo e(asset('public/js/home/customer.js')); ?>"></script>
         <script async src="<?php echo e(asset('public/js/home/boxchat.js')); ?>"></script>
-        <!-- END body -->
 <!--
         <script>
             if ($(window).width() > 1050) {
@@ -219,7 +252,5 @@
             }
         </script>
 -->
-
     </body>
-    <!-- END html -->
 </html>
