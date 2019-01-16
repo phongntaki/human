@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request; 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 use App\Cate;
@@ -39,14 +39,14 @@ use Session;
 
 class HomeController extends Controller {
 
-	public $idlang = 0;
-    function __construct(){ 
-		$this->middleware(function ($request, $next) {
-			$this->idlang = session()->get('idlocale') ;
+    public $idlang = 0;
+    function __construct(){
+        $this->middleware(function ($request, $next) {
+            $this->idlang = session()->get('idlocale') ;
             return $next($request);
         });
     }
-    public function public_var(){ 
+    public function public_var(){
 
             $modnews    = ModNews::where('idlang', $this->idlang)->orderBy('modnumber', 'desc')->get();
             foreach ($modnews as $itemmod => $valuemod) {
@@ -54,15 +54,14 @@ class HomeController extends Controller {
                 $news_special = array();
                 foreach ($listnews as $itemlist => $valuelist) {
                     $news   = News::where('idlistnew', $valuelist->id)->orderBy('newnumber', 'desc')->get();
-                    $listnews[$itemlist]["news"] = $news; 
+                    $listnews[$itemlist]["news"] = $news;
                     if(empty($news_special)){
                         $news_special = $news;
                         $listnews[$itemlist]["news_special"] = $news_special;
                     }
-                } 
-                $modnews[$itemmod]["listnews"] = $listnews; 
+                }
+                $modnews[$itemmod]["listnews"] = $listnews;
             }
-
 
             $modproducts    = ModProduct::select('modproducts.*', DB::raw('translates.trname as trname'))
                                 ->join("translates","translates.trid", "=", "modproducts.id")
@@ -84,10 +83,10 @@ class HomeController extends Controller {
                                             ->where('hide', 0)
                                             ->orderBy('products.id', 'desc')->get();
                     $listproducts[$itemlist]["products"] = $products;
-                } 
-                $modproducts[$itemmod]["listproducts"] = $listproducts; 
+                }
+                $modproducts[$itemmod]["listproducts"] = $listproducts;
             }
-            
+
 
 
             $contact = Contact::find(Session::get('idlocale'));
@@ -150,12 +149,12 @@ class HomeController extends Controller {
                         if(!$check){
                             array_push($tag_arr,$tag[$c]);
                         }
-                        
+
                     }
-                }                                   
-  
+                }
+
             }
-           
+
             $tag_list = $tag_arr;
             $result = array(
                 "adverts_main"=>$adverts_main,
@@ -164,7 +163,7 @@ class HomeController extends Controller {
                 "adverts_bottom"=>$adverts_bottom,
                 "lasted_news"=>$lasted_news ,
                 "socials"=>$socials,
-                "languages"=>$languages,                
+                "languages"=>$languages,
                 "modnews"=>$modnews,
                 "modproducts"=>$modproducts,
                 "contact"=>$contact,
@@ -177,89 +176,89 @@ class HomeController extends Controller {
                 "listproducts_cat"=>$listproducts_cat,
                 "tag_list"=>$tag_list,
                 );
-            
+
             return $result;
     }
     public function error_404()
-	{  
+    {
         $public_var = $this->public_var();
 
-		return view('home.404',array_merge($public_var, [ ]) );
-	}
+        return view('home.404',array_merge($public_var, [ ]) );
+    }
 
     // ====================index=================
-	public function index()
-	{ 
+    public function index()
+    {
         $mod_new = ModNews::orderBy('modnumber','desc')->get();
         $public_var = $this->public_var();
-		return view('home.index', array_merge($public_var, [
+        return view('home.index', array_merge($public_var, [
                                                             "index_modnew" =>$mod_new,
                                                             ] ));
-	}
+    }
 
     // ====================news=================
-	public function news($slug)
-	{ 
-        $itemnews	= News::select('news.*')
-        					->join("listnews","listnews.id", "=", "news.idlistnew")
-        					->join("modnews","modnews.id", "=", "listnews.listidmod")
-        					->where('modnews.idlang', $this->idlang)
-        					->where('news.slug', $slug)
-        					->get()->first();        
+    public function news($slug)
+    {
+        $itemnews    = News::select('news.*')
+                            ->join("listnews","listnews.id", "=", "news.idlistnew")
+                            ->join("modnews","modnews.id", "=", "listnews.listidmod")
+                            ->where('modnews.idlang', $this->idlang)
+                            ->where('news.slug', $slug)
+                            ->get()->first();
 
         if(empty($itemnews)){
            $itemnews    = News::select('news.*')
                             ->join("modnews","modnews.id", "=", "news.idmodnew")
                             ->where('modnews.idlang', $this->idlang)
                             ->where('news.slug', $slug)
-                            ->get()->first();  
+                            ->get()->first();
         }
-		if(empty($itemnews)){
-			return redirect("");
-		}else{ 
+        if(empty($itemnews)){
+            return redirect("");
+        }else{
             $new_in_list_active = News::where('idlistnew',$itemnews->idlistnew)
                                         ->where('id','<>',$itemnews->id)
                                         ->orderBy('created_at','DESC')
                                         ->take(4)
-                                        ->get();  
-	    	$new_in_list_item = News::where('idlistnew',$itemnews->idlistnew)
+                                        ->get();
+            $new_in_list_item = News::where('idlistnew',$itemnews->idlistnew)
                                         ->where('id','<>',$itemnews->id)
                                         ->orderBy('created_at','DESC')
                                         ->skip(3)
                                         ->take(4)
-                                        ->get();	
+                                        ->get();
 
             $itemnews->view_count = $itemnews->view_count +1;
             $itemnews->save();
             $public_var = $this->public_var();
-            return view('home.news',array_merge($public_var, [ 
-                                                            'new_in_list_active'=>$new_in_list_active, 
-        													'new_in_list_item'=>$new_in_list_item, 
-                                                            'itemnews'=>$itemnews, 
+            return view('home.news',array_merge($public_var, [
+                                                            'new_in_list_active'=>$new_in_list_active,
+                                                            'new_in_list_item'=>$new_in_list_item,
+                                                            'itemnews'=>$itemnews,
                                                              ]));
-		}
-	}
+        }
+    }
 
     // ======================list new=============
-	public function list_news($slug)
+    public function list_news($slug)
     {
         $list = ListNew::where('slug',$slug)->first();
         if(!empty($list)){
             $total = News::where('idlistnew',$list->id)->count();
             $listnews_cat = News::where('idlistnew',$list->id)->where('status','<>',0)->orderBy('created_at','DESC')->take(10)->get();
             $public_var = $this->public_var();
-            return view('home.listnews',array_merge($public_var, [ 
+            return view('home.listnews',array_merge($public_var, [
                                                     'listnew'=>$list,
                                                     'listnews_cat'=>$listnews_cat,
                                                     "total" => $total,
                                                     ]));
         } else {
             $mod = ModNews::where('slug',$slug)->first();
-            if(!empty($mod)){                
+            if(!empty($mod)){
                 $public_var = $this->public_var();
                 $total = News::where('idmodnew',$mod->id)->count();
                 $modnews_cat = News::where('idmodnew',$mod->id)->where('status','<>',0)->orderBy('created_at','DESC')->take(10)->get();
-                return view('home.modnews',array_merge($public_var, [ 
+                return view('home.modnews',array_merge($public_var, [
                                                                     'modnew' =>$mod,
                                                                     'modnews_cat'=>$modnews_cat,
                                                                     "total" => $total,
@@ -267,93 +266,93 @@ class HomeController extends Controller {
             } else {
                 return redirect()->Route('error_404');
             }
-            
+
         }
     }
 
-	public function search()
-	{        
+    public function search()
+    {
 
-        $key = Input::get('key', ""); 
+        $key = Input::get('key', "");
 
         $news = News::where('status','<>',0)->where('newsname',"like",'%'.$key.'%')->take(20)->get();
         $public_var = $this->public_var();
-        return view('home.search',array_merge($public_var, [ 											
-            												'news_serch'=>$news,
-            												'key'=>$key,		
+        return view('home.search',array_merge($public_var, [
+                                                            'news_serch'=>$news,
+                                                            'key'=>$key,
                                                             ] ));
-	}
+    }
     public function tags($tag)
-    {        
+    {
 
         $key = str_replace("-"," ",$tag);
 
         $news = News::where('status','<>',0)->where('newtag',"like",'%'.$key.'%')->get();
 
         $public_var = $this->public_var();
-        return view('home.search',array_merge($public_var, [                                            
+        return view('home.search',array_merge($public_var, [
                                                             'news'=>$news,
-                                                            'tags'=>$key,        
+                                                            'tags'=>$key,
                                                             ] ));
     }
 
-	// ======================`kout========================
-	public function checkout() 
-	{
-		if(session('logined_cus') == 1){
-			return redirect('thanhtoan');
-		}else{
-			$carts = Cart::content();
-	        $cities 	= Cities::orderBy('name', 'desc')->get(); 
-            // ================================   
-			// ================================   
- 
- 
-            $public_var = $this->public_var();
-            return view('home.checkout',array_merge($public_var, [  
-													'carts'=>$carts, 
-													'cities'=>$cities ]) );
-		}
-	}
-	public function order_not_account(Request $request){
-        Session::put('logined_cus', 0);
-		Session::put('logined_cusid', 1);
-	}
+    // ======================`kout========================
+    public function checkout()
+    {
+        if(session('logined_cus') == 1){
+            return redirect('thanhtoan');
+        }else{
+            $carts = Cart::content();
+            $cities     = Cities::orderBy('name', 'desc')->get();
+            // ================================
+            // ================================
 
-	public function select_distict_ajax(Request $request){
-		$idcity 	= $request->input('idcity');
-        $districts 	= Districts::where('idcity',$idcity)->orderBy('name', 'desc')->get();
+
+            $public_var = $this->public_var();
+            return view('home.checkout',array_merge($public_var, [
+                                                    'carts'=>$carts,
+                                                    'cities'=>$cities ]) );
+        }
+    }
+    public function order_not_account(Request $request){
+        Session::put('logined_cus', 0);
+        Session::put('logined_cusid', 1);
+    }
+
+    public function select_distict_ajax(Request $request){
+        $idcity     = $request->input('idcity');
+        $districts     = Districts::where('idcity',$idcity)->orderBy('name', 'desc')->get();
         $html = "<option value=''>".trans('shipping.select_district')."</option>";
         foreach ($districts as $item) {
-        	$html.="<option value=".$item->id.">".$item->name."</option>";
+            $html.="<option value=".$item->id.">".$item->name."</option>";
         }
         echo $html;
-	}
-	public function select_ward_ajax(Request $request){
-		$iddistrict 	= $request->input('iddistrict');
-        $wards 	= Wards::where('iddistrict',$iddistrict)->orderBy('name', 'desc')->get();
+    }
+    public function select_ward_ajax(Request $request){
+        $iddistrict     = $request->input('iddistrict');
+        $wards     = Wards::where('iddistrict',$iddistrict)->orderBy('name', 'desc')->get();
         $html = "<option value=''>".trans('shipping.select_ward')."</option>";
         foreach ($wards as $item) {
-        	$html.="<option value=".$item->id.">".$item->name."</option>";
+            $html.="<option value=".$item->id.">".$item->name."</option>";
         }
         echo $html;
-	}
-	
-	// =============================login=========================
-	public function login()
-	{ 
-		if(session('logined_cusid') != "" && session('logined_cus') == 1){
-			return redirect('user');
-		}
-		
-		// ================================  
-		// ================================   
+    }
+
+    // =============================login=========================
+    public function login()
+    {
+        if(session('logined_cusid') != "" && session('logined_cus') == 1){
+            return redirect('user');
+        }
+
+        // ================================
+        // ================================
         $public_var = $this->public_var();
         return view('home.login',array_merge($public_var, []) );
-	}
+    }
 
     public function postlogin(Request $request)
-    { 
+    {
         // echo "<pre>";
         // echo $request;
         // echo "</pre>";
@@ -362,8 +361,8 @@ class HomeController extends Controller {
         $password   = sha1($request->input('password'));
         echo "<script type='text/javascript'>alert('$email');</script>";
         echo "<script type='text/javascript'>alert('$password');</script>";
-        
-        
+
+
         $checkLogin = Customers::where("cusemail",'=',$email)->where("cuspass",'=',$password)->first();
         echo "<pre>";
         echo $checkLogin;
@@ -384,22 +383,22 @@ class HomeController extends Controller {
         }
     }
 
-	public function login_ajax(Request $request){
-		$email 		= $request->input('email');
-		$password 	= sha1($request->input('pass'));
+    public function login_ajax(Request $request){
+        $email         = $request->input('email');
+        $password     = sha1($request->input('pass'));
 
-		$checkLogin = Customers::where("cusemail",'=',$email)->where("cuspass",'=',$password)->where("status",'=',1)->first();
-		if(count($checkLogin) == 1){
-          	Session::put('logined_cus', 1);
-			Session::put('logined_cusid', $checkLogin->id);
-			Session::put('logined_cusfullname', $checkLogin->cusfullname);
-			Session::put('logined_cusemail', $checkLogin->cusemail);
-			Session::put('logined_cusphone', $checkLogin->cusphone);
-			Session::put('logined_cusimg', $checkLogin->cusimg);
-			Session::put('logined_cusaddress', $checkLogin->cusaddress);
+        $checkLogin = Customers::where("cusemail",'=',$email)->where("cuspass",'=',$password)->where("status",'=',1)->first();
+        if(count($checkLogin) == 1){
+              Session::put('logined_cus', 1);
+            Session::put('logined_cusid', $checkLogin->id);
+            Session::put('logined_cusfullname', $checkLogin->cusfullname);
+            Session::put('logined_cusemail', $checkLogin->cusemail);
+            Session::put('logined_cusphone', $checkLogin->cusphone);
+            Session::put('logined_cusimg', $checkLogin->cusimg);
+            Session::put('logined_cusaddress', $checkLogin->cusaddress);
 
 
-              // ==============save info to order =============== 
+              // ==============save info to order ===============
               Session::put('pay_name', $checkLogin->cusfullname);
               Session::put('pay_phone', $checkLogin->cusphone);
               Session::put('pay_address', $checkLogin->cusaddress);
@@ -408,39 +407,39 @@ class HomeController extends Controller {
               Session::put('shipping_phone', session('pay_phone'));
               Session::put('shipping_address', session('pay_address'));
               Session::put('same_address', 1);
-              Session::put('shipping_error', 0); 
+              Session::put('shipping_error', 0);
               // =============================
 
-			echo 1;
-		}else{
-			echo 0;
-		}
-	}	
+            echo 1;
+        }else{
+            echo 0;
+        }
+    }
 
 
-	public function ok()
-	{  
-		// ================================  
+    public function ok()
+    {
+        // ================================
         $public_var = $this->public_var();
         return view('home.ok',array_merge($public_var, [ ]) );
-	}
+    }
 
 
-	public function register()
-	{ 
-		if(session('logined_cusid') != "" && session('logined_cus') == 1){
-			return redirect('user');
-		}
+    public function register()
+    {
+        if(session('logined_cusid') != "" && session('logined_cus') == 1){
+            return redirect('user');
+        }
 
-		// ================================   
-		// ================================ 
-  
+        // ================================
+        // ================================
+
         $public_var = $this->public_var();
         return view('home.register',array_merge($public_var, [ ]) );
-	}
+    }
 
     public function postRegister(Request $request)
-    { 
+    {
         $this->validate(request(), [
             'fullname' => 'required',
             'email' => 'required|email',
@@ -450,9 +449,9 @@ class HomeController extends Controller {
         $email      = $request->input('email');
         $password   = sha1($request->input('password'));
 
-        
 
-        
+
+
         $checkRegister = Customers::where("cusemail",'=',$email)->first();
         $cus = new Customers();
         $cus->idgroup = 1;
@@ -504,64 +503,64 @@ class HomeController extends Controller {
         // return view('home.login',array_merge($public_var, [ ]) );
     }
 
-	function get_client_ip() {
-	    $ipaddress = '';
-	    if (isset($_SERVER['HTTP_CLIENT_IP']))
-	        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-	    else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
-	        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
-	    else if(isset($_SERVER['HTTP_X_FORWARDED']))
-	        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
-	    else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
-	        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
-	    else if(isset($_SERVER['HTTP_FORWARDED']))
-	        $ipaddress = $_SERVER['HTTP_FORWARDED'];
-	    else if(isset($_SERVER['REMOTE_ADDR']))
-	        $ipaddress = $_SERVER['REMOTE_ADDR'];
-	    else
-	        $ipaddress = 'UNKNOWN';
-	    return $ipaddress;
-	}
+    function get_client_ip() {
+        $ipaddress = '';
+        if (isset($_SERVER['HTTP_CLIENT_IP']))
+            $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+        else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+            $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        else if(isset($_SERVER['HTTP_X_FORWARDED']))
+            $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+        else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
+            $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+        else if(isset($_SERVER['HTTP_FORWARDED']))
+            $ipaddress = $_SERVER['HTTP_FORWARDED'];
+        else if(isset($_SERVER['REMOTE_ADDR']))
+            $ipaddress = $_SERVER['REMOTE_ADDR'];
+        else
+            $ipaddress = 'UNKNOWN';
+        return $ipaddress;
+    }
 
-	// ===============user===================
-	public function user()
-	{ 
-		if(session('logined_cusid') == "" || session('logined_cus') != 1 ){
-			return redirect("login");
-		}
+    // ===============user===================
+    public function user()
+    {
+        if(session('logined_cusid') == "" || session('logined_cus') != 1 ){
+            return redirect("login");
+        }
 
-		$customer 	= Customers::find(Session::get("logined_cusid"));
-        $cities 	= Cities::orderBy('name', 'desc')->get();
+        $customer     = Customers::find(Session::get("logined_cusid"));
+        $cities     = Cities::orderBy('name', 'desc')->get();
 
-        // ================================   
-		// ================================  
-  
+        // ================================
+        // ================================
+
         $public_var = $this->public_var();
-        return view('home.user',array_merge($public_var, [ 
-											'customer'=>$customer,
-											'cities'=>$cities ]) );
-	}
+        return view('home.user',array_merge($public_var, [
+                                            'customer'=>$customer,
+                                            'cities'=>$cities ]) );
+    }
 
-	// ===============contact===================
-	public function contact()
-	{    
-        // ================================  
-		// ================================   
+    // ===============contact===================
+    public function contact()
+    {
+        // ================================
+        // ================================
         $public_var = $this->public_var();
         return view('home.contact',array_merge($public_var, [ ]) );
-	}
+    }
 
 
-    function save_contact(Request $request){ 
-        $name         	= $request->input('name');
+    function save_contact(Request $request){
+        $name             = $request->input('name');
         $email          = $request->input('email');
         $content        = $request->input('content');
         $register_error = 0;
 
         $error = array(
           "name"       => "",
-          "email"      => "", 
-          "content"    => "", 
+          "email"      => "",
+          "content"    => "",
           );
 
         if(empty($name)){
@@ -578,13 +577,13 @@ class HomeController extends Controller {
           $error["content"] = trans('form.err_content');
           $register_error = 1;
         }
- 
-        
+
+
         if($register_error == 0){
           $contact = new Contactus;
-          $contact->name   		= $name;
-          $contact->email       = $email; 
-          $contact->content     = $content; 
+          $contact->name           = $name;
+          $contact->email       = $email;
+          $contact->content     = $content;
           $contact->save();
         }
 
@@ -597,7 +596,7 @@ class HomeController extends Controller {
         $take = $rq->take;
         $modnew = ModNews::where('id',$modid)->first();
         $modnews_cat = News::where('idmodnew',$modid)->where('status','<>',0)->orderBy('created_at','DESC')->skip($skip)->take($take)->get();
-        return view('home.content_news_ajax',compact('modnews_cat','modnew'));  
+        return view('home.content_news_ajax',compact('modnews_cat','modnew'));
     }
     public function loadmore_news_in_list(Request $rq){
         $listid = $rq->listid;
@@ -611,7 +610,7 @@ class HomeController extends Controller {
     public function lien_he(){
         $public_var = $this->public_var();
         return view('home.lienhe',array_merge($public_var, [ ]) );
-        
+
     }
 
     public function gioi_thieu(){
@@ -663,7 +662,7 @@ class HomeController extends Controller {
         if($request->hasFile('hnnavatarfile')){
             echo "<script type='text/javascript'>alert('zz111');</script>";
             $file = $request->file('hnnavatarfile');
-            $nameimg = $file->getClientOriginalName(); 
+            $nameimg = $file->getClientOriginalName();
             $hinh = "imageEnzi".str_random(6)."_".$nameimg;
             while(file_exists("public/img/customers/".$hinh))
             {

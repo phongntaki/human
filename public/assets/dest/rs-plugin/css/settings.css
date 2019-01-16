@@ -269,7 +269,6 @@ white-space:nowrap;
 }
 
 .tp-caption.boxshadow {
--moz-box-shadow:0px 0px 20px rgba(0, 0, 0, 0.5);
 -webkit-box-shadow:0px 0px 20px rgba(0, 0, 0, 0.5);
 box-shadow:0px 0px 20px rgba(0, 0, 0, 0.5);
 }
@@ -370,8 +369,6 @@ line-height:70px;
 font-family:"Open Sans";
 background-color:#db4360;
 padding:0px 20px;
--webkit-border-radius:0px;
--moz-border-radius:0px;
 border-radius:0px;
 }
 
@@ -385,8 +382,6 @@ line-height:70px;
 font-family:"Open Sans";
 background-color:#fff;
 padding:0px 20px;
--webkit-border-radius:0px;
--moz-border-radius:0px;
 border-radius:0px;
 }
 
@@ -400,8 +395,6 @@ line-height:70px;
 font-family:"Open Sans";
 background-color:#67ae73;
 padding:0px 20px;
--webkit-border-radius:0px;
--moz-border-radius:0px;
 border-radius:0px;
 }
 
@@ -768,7 +761,6 @@ border-style:none;
 
 
 .tp-caption.boxshadow{
-		-moz-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 		-webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 		box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 	}
@@ -881,25 +873,25 @@ border-style:none;
 
 
 .tp-simpleresponsive  .button.green, .tp-simpleresponsive  .button:hover.green,
-.tp-simpleresponsive  .purchase.green, .tp-simpleresponsive  .purchase:hover.green			{ background-color:#21a117; -webkit-box-shadow:  0px 3px 0px 0px #104d0b;        -moz-box-shadow:   0px 3px 0px 0px #104d0b;        box-shadow:   0px 3px 0px 0px #104d0b;  }
+.tp-simpleresponsive  .purchase.green, .tp-simpleresponsive  .purchase:hover.green			{ background-color:#21a117; -webkit-box-shadow:  0px 3px 0px 0px #104d0b;        box-shadow:   0px 3px 0px 0px #104d0b;  }
 
 
 .tp-simpleresponsive  .button.blue, .tp-simpleresponsive  .button:hover.blue,
-.tp-simpleresponsive  .purchase.blue, .tp-simpleresponsive  .purchase:hover.blue			{ background-color:#1d78cb; -webkit-box-shadow:  0px 3px 0px 0px #0f3e68;        -moz-box-shadow:   0px 3px 0px 0px #0f3e68;        box-shadow:   0px 3px 0px 0px #0f3e68;}
+.tp-simpleresponsive  .purchase.blue, .tp-simpleresponsive  .purchase:hover.blue			{ background-color:#1d78cb; -webkit-box-shadow:  0px 3px 0px 0px #0f3e68;        box-shadow:   0px 3px 0px 0px #0f3e68;}
 
 
 .tp-simpleresponsive  .button.red, .tp-simpleresponsive  .button:hover.red,
-.tp-simpleresponsive  .purchase.red, .tp-simpleresponsive  .purchase:hover.red				{ background-color:#cb1d1d; -webkit-box-shadow:  0px 3px 0px 0px #7c1212;        -moz-box-shadow:   0px 3px 0px 0px #7c1212;        box-shadow:   0px 3px 0px 0px #7c1212;}
+.tp-simpleresponsive  .purchase.red, .tp-simpleresponsive  .purchase:hover.red				{ background-color:#cb1d1d; -webkit-box-shadow:  0px 3px 0px 0px #7c1212;        box-shadow:   0px 3px 0px 0px #7c1212;}
 
 .tp-simpleresponsive  .button.orange, .tp-simpleresponsive  .button:hover.orange,
-.tp-simpleresponsive  .purchase.orange, .tp-simpleresponsive  .purchase:hover.orange		{ background-color:#ff7700; -webkit-box-shadow:  0px 3px 0px 0px #a34c00;        -moz-box-shadow:   0px 3px 0px 0px #a34c00;        box-shadow:   0px 3px 0px 0px #a34c00;}
+.tp-simpleresponsive  .purchase.orange, .tp-simpleresponsive  .purchase:hover.orange		{ background-color:#ff7700; -webkit-box-shadow:  0px 3px 0px 0px #a34c00;        box-shadow:   0px 3px 0px 0px #a34c00;}
 
 .tp-simpleresponsive  .button.darkgrey, .tp-simpleresponsive  .button.grey,
 .tp-simpleresponsive  .button:hover.darkgrey, .tp-simpleresponsive  .button:hover.grey,
-.tp-simpleresponsive  .purchase.darkgrey, .tp-simpleresponsive  .purchase:hover.darkgrey	{ background-color:#555; -webkit-box-shadow:  0px 3px 0px 0px #222;        -moz-box-shadow:   0px 3px 0px 0px #222;        box-shadow:   0px 3px 0px 0px #222;}
+.tp-simpleresponsive  .purchase.darkgrey, .tp-simpleresponsive  .purchase:hover.darkgrey	{ background-color:#555; -webkit-box-shadow:  0px 3px 0px 0px #222;        box-shadow:   0px 3px 0px 0px #222;}
 
 .tp-simpleresponsive  .button.lightgrey, .tp-simpleresponsive  .button:hover.lightgrey,
-.tp-simpleresponsive  .purchase.lightgrey, .tp-simpleresponsive  .purchase:hover.lightgrey	{ background-color:#888; -webkit-box-shadow:  0px 3px 0px 0px #555;        -moz-box-shadow:   0px 3px 0px 0px #555;        box-shadow:   0px 3px 0px 0px #555;}
+.tp-simpleresponsive  .purchase.lightgrey, .tp-simpleresponsive  .purchase:hover.lightgrey	{ background-color:#888; -webkit-box-shadow:  0px 3px 0px 0px #555;        box-shadow:   0px 3px 0px 0px #555;}
 
 
 
@@ -964,6 +956,7 @@ border-style:none;
 	-	IE8 HACKS	-
 *******************************/
 .noFilterClass {
+	-webkit-filter:none !important;
 	filter:none !important;
 }
 
@@ -1047,9 +1040,9 @@ border-style:none;
 											}
 
 
-.tp-bullets.simplebullets.navbar						{ 	border:1px solid #666; border-bottom:1px solid #444; background:url(../assets/boxed_bgtile.png); height:40px; padding:0px 10px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px ;}
+.tp-bullets.simplebullets.navbar						{ 	border:1px solid #666; border-bottom:1px solid #444; background:url(../assets/boxed_bgtile.png); height:40px; padding:0px 10px; border-radius: 5px ;}
 
-.tp-bullets.simplebullets.navbar-old					{ 	 background:url(../assets/navigdots_bgtile.png); height:35px; padding:0px 10px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px ;}
+.tp-bullets.simplebullets.navbar-old					{ 	 background:url(../assets/navigdots_bgtile.png); height:35px; padding:0px 10px; border-radius: 5px ;}
 
 
 .tp-bullets.simplebullets.round .bullet					{	cursor:pointer; position:relative;	background:url(../assets/bullet.png) no-Repeat top left;	width:20px;	height:20px;  margin-right:0px; float:left; margin-top:0px; margin-left:3px;}
@@ -1242,6 +1235,7 @@ border-radius: 5px;
 -moz-border-radius: 5px;
 -webkit-border-radius: 5px;
 border: none;
+-webkit-box-shadow: none;
 box-shadow: none;
 text-shadow: none;
 line-height: 30px;

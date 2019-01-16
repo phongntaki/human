@@ -6,99 +6,61 @@
 @section('seo_url', url()->current())
 @section('content')
 
-<div class="boxed active">
+<div class="boxed active pages">
     <div class="wrapper">
 
-        <h1>カテゴリトップ／アーカイブページ2</h1>
+<!--        <h1>カテゴリトップ／アーカイブページ2</h1>-->
 
         <div class="content-block has-sidebar">
             <!-- BEGIN .content-block-single -->
             <div class="content-block-single">
-                <!-- BEGIN .content-panel -->
-                <div class="content-panel">
+
+                <div class="content-panel carousel-type">
                     <div class="content-panel-title">
-                        <ul class="sub_menu">
-                            <li class="active"><a href="{{ url('loai-tin/'.$modnew->slug) }}">{{ $modnew->modname }}</a></li>
+                        <h2 class="panel-title"><a href="{{ url('loai-tin/'.$modnew->slug) }}">{{ $modnew->modname }}</a></h2>
+                        <ul class="panel-title-submenu">
+<!--                            <li class="active"><a href="{{ url('loai-tin/'.$modnew->slug) }}">{{ $modnew->modname }}</a></li>-->
                             @foreach($modnew->listnew_inmod($modnew->id) as $cat_mod)
-                                <li>
+                                <li class="submenu-item">
                                     <a href="{{ url('loai-tin/'.$cat_mod->slug) }}">{{ $cat_mod->listname }}</a>
                                 </li>
                             @endforeach
                         </ul>
                     </div>
+<!--
                     <?php
-                        $item = $modnew->top_news_item($modnew->id);
-                        $hot = $item->shift();
+                        $item = $modnew->top_news_item($modnew->id)->take(3);
+//                        $hot = $item->shift();
                      ?>
-                    <div class="row">
-                        <div class="hidden-xs col-md-7 nopadding">
-                            <div class="content-panel-body article-list">
-
-                                <div class="item" data-color-top-slider="#867eef">
-                                    <div class="item-header">
-                                        <a href="{{url('chi-tiet/'.$hot->slug)}}">
-                                            <span class="comment-tag"><i class="fa fa-comment-o"></i><span class="fb-comments-count" data-href="{{url('chi-tiet/'.$hot->slug)}}"></span><i></i></span>
-                                            <span class="read-more-wrapper"><span class="read-more">Đọc thêm +<i></i></span></span>
-                                            <img src="{{url('public/img/news/300x300/'.$hot->newimg)}}" alt="No image" />
-                                        </a>
+-->
+                    <div class="content-panel-body">
+                        <ul class="panel-items">
+                            @foreach($item as $news)
+                            <li class="item">
+                                <a href="{{url('/chi-tiet/'.$news->slug)}}">
+                                    <div class="item-image">
+                                        <img src="{{url('public/img/news/800x800/'.$news['newimg'])}}" alt="{{$news->created_at}}" />
                                     </div>
-                                    <div class="item-content">
-                                        <h3><a href="{{url('chi-tiet/'.$hot->slug)}}">{{$hot->newsname}}</a></h3>
-                                        <span class="item-meta">
-                                            <a href="#"><i class="fa fa-clock-o"></i>{{$hot->created_at}}</a>
-                                        </span>
-                                        <p>{!! $hot->newintro !!}</p>
+                                    <div class="item-lead">
+                                        <p class="item-date">{{$news->created_at->format('Y/m/d')}}</p>
+                                        <h3 class="item-title">{{$news->newsname}}</h3>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="hidden-xs col-md-5 nopadding">
-                            <div class="content-panel-body article-list">
-                                <ul>
-                                    @foreach($item as $news)
-                                    <li>
-                                        <a href="{{url('/chi-tiet/'.$news->slug)}}" title="{{$news->newsname}}"><b class="fa fa-angle-right" aria-hidden="true"></b> <b>{{$news->newsname}}</b> </a>
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="visible-xs col-xs-12">
-                            <div class="mobile_hot_img">
-                                <a href="{{url('/chi-tiet/'.$hot->slug)}}" title="{{$hot->newsname}}">
-                                    <img class="img-responsive" src="{{url('public/img/news/300x300/'.$hot->newimg)}}" alt="{{$hot->newimg}}">
                                 </a>
-                            </div>
-                            <div class="mobile_title">
-                                <a href="{{url('/chi-tiet/'.$hot->slug)}}" title="{{$hot->newsname}}"><h1>{{$hot->newsname}}</h1></a>
-                            </div>
-                        </div>
-                        @foreach($item as $m_item)
-                        <div class="visible-xs col-xs-6 padding4">
-                            <div class="mobile_img">
-                                <a href="{{url('/chi-tiet/'.$m_item->slug)}}" title="{{$m_item->newsname}}"><img class="img-responsive" src="{{url('public/img/news/300x300/'.$m_item['newimg'])}}" alt=""></a>
-                            </div>
-                            <div class="mobile_title">
-                                <a href="{{url('/chi-tiet/'.$m_item->slug)}}" title="{{$m_item->newsname}}"><h1>{{$m_item->newsname}}</h1></a>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-                <!-- END .content-panel -->
-            {{-- tin moi trong mod          --}}
-                <!-- BEGIN .content-panel -->
-                <div class="content-panel">
-                    <div class="content-panel-title">
-                        <ul class="sub_menu">
-                            <li class="active"><a>Tin mới trong mục</a></li>
+                            </li>
+                            @endforeach
                         </ul>
                     </div>
-                    <div class="row" id="content_pro">
+                </div>
+
+                {{-- tin moi trong mod          --}}
+                <div class="content-panel block-type">
+                    <div class="content-panel-title">
+                        <h2 class="panel-title">Tin mới trong mục</h2>
+                    </div>
+                    <div class="content-panel-body" id="content_pro">
                         @include('home.content_news_ajax')
                     </div>
                 </div>
-                <!-- END .content-panel -->
 
                 <!-- BEGIN Loading -->
                 <div class="ajax-load text-center" style="display:none;z-index: 10000; opacity: 1;">
@@ -112,6 +74,7 @@
                     </a>
                 </div>
             </div>
+
             <!-- BEGIN .sidebar -->
                 @include('home.sitebar_right')
         </div>
