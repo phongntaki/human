@@ -33,6 +33,58 @@
         <!-- END .ot-breaking-news-body -->
         </div>
 
+        <section id="slider"><!--slider-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                            
+                            
+                            <div class="carousel-inner">
+                                <?php $__currentLoopData = $slide_active; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slide_actives): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <div class="item active">
+                                    <div class="col-sm-6">
+                                        <h1><?php echo e($slide_actives->created_at->format('Y/m/d')); ?></h1>
+                                        <h2><?php echo e($slide_actives->newsname); ?></h2>
+                                        <p><?php echo e($slide_actives->newintro); ?></p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <img src="<?php echo e(url('public/img/news/300x300/'.$slide_actives['newimg'])); ?>" class="girl img-responsive" alt="" />
+                                    </div>
+                                </div>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                                <?php $__currentLoopData = $slide_no_active; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slide_no_actives): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <div class="item">
+                                    <div class="col-sm-6">
+                                        <h1><?php echo e($slide_no_actives->created_at->format('Y/m/d')); ?></h1>
+                                        <h2><?php echo e($slide_no_actives->newsname); ?></h2>
+                                        <p><?php echo e($slide_no_actives->newintro); ?></p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <img src="<?php echo e(url('public/img/news/300x300/'.$slide_no_actives['newimg'])); ?>" class="girl img-responsive" alt="" />
+                                    </div>
+                                </div>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                
+                                
+                            </div>
+                            
+                            <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section><!--/slider-->
+
+
+
 
         <div class="content-block has-sidebar">
             <!-- BEGIN .content-block-single -->

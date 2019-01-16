@@ -49,13 +49,13 @@
     <div class="widget widget-ranking">
         <h3 class="widget-title">Đọc nhiều nhất</h3>
         <ul class="widget-article-lists">
-        <!-- <?php $count =1; ?> -->
+        <?php $count =1; ?>
         <?php $__currentLoopData = $most_news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_most): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <!-- <?php if($count <6): ?> -->
+            <?php if($count <6): ?>
             <li class="item">
                 <a href="<?php echo e(url('chi-tiet/'.$item_most->slug)); ?>">
                     <div class="item-image">
-                        <p class="item-counter"><?php echo e($item_most->view_count); ?></p>
+                        <p class="item-counter"><?php echo e($count); ?></p>
                         <img src="<?php echo e(url('/public/img/news/100x100/'.$item_most->newimg)); ?>" alt="<?php echo e($item_most->newsname); ?>" />
                     </div>
                     <div class="item-lead">
@@ -64,8 +64,8 @@
                     </div>
                 </a>
             </li>
-           <!--  <?php endif; ?> -->
-        <!-- <?php  $count = $count +1; ?> -->
+            <?php endif; ?>
+        <?php  $count = $count +1; ?>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </ul>
     </div>
