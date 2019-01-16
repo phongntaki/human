@@ -9,7 +9,7 @@
 <div class="boxed active">
     <div class="wrapper">
 
-        <h1>記事ページ</h1>
+        <h1>記事ページ2</h1>
 
         <div class="content-block has-sidebar">
             <!-- BEGIN .content-block-single -->
@@ -46,15 +46,6 @@
                 <!-- BEGIN .content-panel -->
                 <div class="content-panel">
                     <div class="content_news">
-                        <div class="share_news">
-                            <div class="fb-share-button"
-                                data-href="<?php echo e(url()->current()); ?>"
-                                data-mobile_iframe="true"
-                                data-layout="button">
-                             </div> <hr style="margin: 5px;">
-                             <!-- Đặt thẻ này vào nơi bạn muốn nút chia sẻ kết xuất. -->
-                        <div class="g-plus" data-action="share" data-annotation="bubble" data-height="24" data-href="<?php echo e(url()->current()); ?>"></div>
-                        </div>
                         <?php echo $itemnews->newcontent; ?>
 
                     </div>

@@ -1,31 +1,35 @@
-<div class="hidden-xs col-xs-12 col-md-9 nopadding">
+<ul class="panel-items">
     @foreach($modnews_cat as $hot)
-    <div class="col-md-12">
-        <div class="content-panel-body article-list">
-            <div class="item" data-color-top-slider="#867eef">
-                <div class="item-header">
-                    <a href="{{url('chi-tiet/'.$hot->slug)}}">
-                        <span class="comment-tag"><i class="fa fa-comment-o"></i><span class="fb-comments-count" data-href="{{url('chi-tiet/'.$hot->slug)}}"></span><i></i></span>
-                        <span class="read-more-wrapper"><span class="read-more">Đọc thêm +<i></i></span></span>
-                        <img src="{{url('public/img/news/300x300/'.$hot->newimg)}}" alt="No image" />
-                    </a>
-                </div>
-                <div class="item-content">
-                    <h3><a href="{{url('chi-tiet/'.$hot->slug)}}">{{$hot->newsname}}</a></h3>
-                    <span class="item-meta">
-                        <a href="#"><i class="fa fa-clock-o"></i>{{$hot->created_at}}</a>
-                    </span>
-                    <p>{!! $hot->newintro !!}</p>
-                </div>
+    <li class="item">
+        <a href="{{url('chi-tiet/'.$hot->slug)}}">
+            <div class="item-image">
+                <p class="comment-tag"><i class="fa fa-comment-o"></i><span class="fb-comments-count" data-href="{{url('chi-tiet/'.$hot->slug)}}"></span><i></i></p>
+                <p class="read-more-wrapper"><span class="read-more">Đọc thêm +<i></i></span></p>
+                <img src="{{url('public/img/news/800x800/'.$hot->newimg)}}" alt="{{$hot->newsname}}">
             </div>
-        </div>
-    </div>
+            <div class="item-lead">
+                <h3 class="item-title">{{$hot->newsname}}</h3>
+                <p class="item-desc">{!! $hot->newintro !!}</p>
+                <p class="item-date">{{$hot->created_at->format('Y/m/d')}}</p>
+
+            </div>
+        </a>
+    </li>
     @endforeach
-</div>
+</ul>
+
+
+
+
+<!--
 <?php $i=0; ?>
 @foreach($modnews_cat as $item)
 @if($modnew->type ==0)
 @if($i ==0 || $i ==7 ||$i ==0 ||$i ==13)
+
+<?php
+    echo $i;
+?>
     <div class="visible-xs col-xs-12">
         <div class="mobile_hot_img">
             <a href="{{url('/chi-tiet/'.$item->slug)}}" title="{{$item->newsname}}">
@@ -51,7 +55,7 @@
     <div class="item">
         <div class="item-header">
             <a href="{{url('chi-tiet/'.$item->slug)}}" title="{{$item->newsname}}">
-                <b>{{$count}}</b>  <img src="{{url('public/img/news/300x300/'.$item->newimg)}} " alt="no img" width="50" />
+                <b>{{$count}}</b>  <img src="{{url('public/img/news/300x300/'.$item->newimg)}} " alt="no img" width="50">
             </a>
         </div>
         <div class="item-content">
@@ -69,7 +73,7 @@
         <div class="item">
             <div class="item-header">
                 <a href="{{url('chi-tiet/'.$item->slug)}}">
-                    <img src="{{url('/public/img/news/100x100/'.$item->newimg)}}" alt="no img" width="80" />
+                    <img src="{{url('/public/img/news/100x100/'.$item->newimg)}}" alt="no img" width="80">
                 </a>
             </div>
             <div class="item-content">
@@ -85,4 +89,8 @@
     </div>
 </div>
 @endif
+
+
 @endforeach
+-->
+
