@@ -128,6 +128,13 @@ class HomeController extends Controller {
             $lasted_news = News::orderBy('created_at','DESC')->take(10)->get();
             $most_news = News::orderBy('view_count','DESC')->take(5)->get();
             $khuyenmai = News::orderBy('created_at','DESC')->take(10)->get();
+            $slide_active = News::orderBy('created_at','DESC')->take(1)->get();
+            $slide_no_active = News::orderBy('created_at','DESC')->skip(1)->take(9)->get();
+            // echo "<pre>";
+            // echo $slide_no_active;
+            // echo "</pre>";
+            // exit();
+
             $adverts_main    = Advert::where('idlang', $this->idlang)->where('hide', 2)->where('area', 4)->orderBy('sort', 'asc')->get();
             $adverts_top    = Advert::where('idlang', $this->idlang)->where('hide', 2)->where('area', 1)->orderBy('sort', 'asc')->get();
             $adverts_center = Advert::where('idlang', $this->idlang)->where('hide', 2)->where('area', 2)->orderBy('sort', 'asc')->get();
@@ -165,6 +172,8 @@ class HomeController extends Controller {
                 "most_news"=>$most_news,
                 "listproducts"=>$listproducts,
                 "khuyenmai"=>$khuyenmai,
+                "slide_active"=>$slide_active,
+                "slide_no_active"=>$slide_no_active,
                 "listproducts_cat"=>$listproducts_cat,
                 "tag_list"=>$tag_list,
                 );

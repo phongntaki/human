@@ -5,29 +5,9 @@
 @section('seo_image', (!empty($contact)?asset($contact->seo_image):""))
 @section('seo_url', url()->current())
 @section('content')
-<!-- BEGIN .wrapper -->
-    <div class="wrapper">
 
-        <!-- BEGIN .ot-breaking-news-body -->
-<!--
-        <div class="ot-breaking-news-body" data-breaking-timeout="4000" data-breaking-autostart="true">
-            <div class="ot-breaking-news-controls">
-                <button class="right" data-break-dir="right"><i class="fa fa-angle-right"></i></button>
-                <button class="right" data-break-dir="left"><i class="fa fa-angle-left"></i></button>
-                <strong><i class="fa fa-bar-chart"></i>Tin mới    </strong>
-            </div>
-            <div class="ot-breaking-news-content">
-                <div class="ot-breaking-news-content-wrap">
-                    @foreach($khuyenmai as $item_km)
-                    <div class="item">
-                        <strong><a href="{{url('/chi-tiet/'.$item_km->slug)}}">{{ $item_km->newsname}}</a></strong>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
--->
-        <!-- END .ot-breaking-news-body -->
-<!--        </div>-->
+<div class="boxed active">
+    <div class="wrapper">
 
         <h1>沿革ページ</h1>
 
@@ -71,27 +51,10 @@
                 <!-- END .content-panel -->
                 @endforeach
             </div>
-            <!-- END .content-block-single -->
             <!-- BEGIN .sidebar -->
-            <aside class="sidebar sticky_column">
-                @include('home.sitebar_right')
-            <!-- END .sidebar -->
-            </aside>
+            @include('home.sitebar_right')
         </div>
-        <!-- BEGIN .content-panel -->
-        <div class="content-panel">
-            <div class="content-panel-body do-space">
-                @if($adverts_main[$ads]->code != "")
-                    {{$adverts_main[$ads]->code}}
-                @else
-                <a href="{{$adverts_main[$ads]->link}}" target="_blank">
-                    <img src="{{url('public/img/images_bn/'.$adverts_main[$ads]->img)}}" alt="No image" width="100%" style="object-fit: contain; max-height: 150px; display: block;overflow:hidden; margin-bottom: 20px;" />
-                </a>
-                @endif
-            </div>
-        <!-- END .content-panel -->
-        </div>
-
-    <!-- END .wrapper -->
     </div>
+</div>
+
 @endsection

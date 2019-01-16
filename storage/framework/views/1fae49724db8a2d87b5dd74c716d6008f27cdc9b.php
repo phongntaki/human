@@ -4,29 +4,9 @@
 <?php $__env->startSection('seo_image', (!empty($contact)?asset($contact->seo_image):"")); ?>
 <?php $__env->startSection('seo_url', url()->current()); ?>
 <?php $__env->startSection('content'); ?>
-<!-- BEGIN .wrapper -->
-    <div class="wrapper">
 
-        <!-- BEGIN .ot-breaking-news-body -->
-<!--
-        <div class="ot-breaking-news-body" data-breaking-timeout="4000" data-breaking-autostart="true">
-            <div class="ot-breaking-news-controls">
-                <button class="right" data-break-dir="right"><i class="fa fa-angle-right"></i></button>
-                <button class="right" data-break-dir="left"><i class="fa fa-angle-left"></i></button>
-                <strong><i class="fa fa-bar-chart"></i>Tin mới    </strong>
-            </div>
-            <div class="ot-breaking-news-content">
-                <div class="ot-breaking-news-content-wrap">
-                    <?php $__currentLoopData = $khuyenmai; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_km): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="item">
-                        <strong><a href="<?php echo e(url('/chi-tiet/'.$item_km->slug)); ?>"><?php echo e($item_km->newsname); ?></a></strong>
-                    </div>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </div>
-            </div>
--->
-        <!-- END .ot-breaking-news-body -->
-<!--        </div>-->
+<div class="boxed active">
+    <div class="wrapper">
 
         <h1>会社概要</h1>
 
@@ -81,35 +61,16 @@
                 <?php $index_count = 0; $ads = 0;?>
                 <?php $__currentLoopData = $modnews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index_mod): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <!-- BEGIN .content-panel -->
-
                 <?php $index_count = $index_count +1; ?>
                 <!-- END .content-panel -->
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
-            <!-- END .content-block-single -->
             <!-- BEGIN .sidebar -->
-            <aside class="sidebar sticky_column">
-                <?php echo $__env->make('home.sitebar_right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-            <!-- END .sidebar -->
-            </aside>
+            <?php echo $__env->make('home.sitebar_right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
-        <!-- BEGIN .content-panel -->
-        <div class="content-panel">
-            <div class="content-panel-body do-space">
-                <?php if($adverts_main[$ads]->code != ""): ?>
-                    <?php echo e($adverts_main[$ads]->code); ?>
-
-                <?php else: ?>
-                <a href="<?php echo e($adverts_main[$ads]->link); ?>" target="_blank">
-                    <img src="<?php echo e(url('public/img/images_bn/'.$adverts_main[$ads]->img)); ?>" alt="No image" width="100%" style="object-fit: contain; max-height: 150px; display: block;overflow:hidden; margin-bottom: 20px;" />
-                </a>
-                <?php endif; ?>
-            </div>
-        <!-- END .content-panel -->
-        </div>
-
-    <!-- END .wrapper -->
     </div>
+</div>
+
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('home.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
