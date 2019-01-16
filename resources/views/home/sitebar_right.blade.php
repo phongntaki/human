@@ -51,14 +51,14 @@
             </ul>
         </div>
 
-        {{-- doc nhieu nhat --}}
-        <div class="widget widget-ranking">
-            <h3 class="widget-title">Đọc nhiều nhất</h3>
-            <ul class="widget-article-lists">
-                <?php $count =1; ?>
-                @foreach($most_news as $item_most)
-                @if($count <6)
-                               <li class="item">
+{{-- doc nhieu nhat --}}
+    <div class="widget widget-ranking">
+        <h3 class="widget-title">Đọc nhiều nhất</h3>
+        <ul class="widget-article-lists">
+        <?php $count =1; ?>
+        @foreach($most_news as $item_most)
+            @if($count <6)
+            <li class="item">
                 <a href="{{url('chi-tiet/'.$item_most->slug)}}">
                     <div class="item-image">
                         <p class="item-counter">{{$count}}</p>
