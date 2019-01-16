@@ -2,7 +2,6 @@
 <html lang = "vi">
     <head>
         <title><?php echo $__env->yieldContent('title'); ?></title>
-        <!-- Meta Tags -->
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="description" content="">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,27 +15,13 @@
         <meta property="og:description" content="<?php echo $__env->yieldContent('seo_description'); ?>" >
         <meta property="og:url" content="<?php echo $__env->yieldContent('seo_url'); ?>">
         <meta property="og:site_name" content="<?php echo e((!empty($contact)?$contact->seo_title:"")); ?>">
-        <!-- Favicon -->
         <link rel="shortcut icon" href="<?php echo e(url('public/home/images/favicon.ico')); ?>">
 
-        <!-- Stylesheets -->
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/reset.css')); ?>">
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/font-awesome.min.css')); ?>">
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/weather-icons.min.css')); ?>">
         <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Arvo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
-<<<<<<< HEAD
-        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/bootstrap.min.css')); ?>" />
-        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/dat-menu.css')); ?>" />
-        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/main-stylesheet.css')); ?>" />
-        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/ot-lightbox.css')); ?>" />
-        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/shortcodes.css')); ?>" />
-        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/responsive.css')); ?>" />
-        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/mystyle.css')); ?>" />
-        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/demo-settings.css')); ?>" />
-        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/style.css')); ?>" />
-        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/lienhe.css')); ?>" />
-=======
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/bootstrap.min.css')); ?>">
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/dat-menu.css')); ?>">
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/main-stylesheet.css')); ?>">
@@ -47,7 +32,6 @@
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/demo-settings.css')); ?>">
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/style.css')); ?>">
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/lienhe.css')); ?>">
->>>>>>> 8d945d61505e66497a645261398ad055687b3c0a
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
