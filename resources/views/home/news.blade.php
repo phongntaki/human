@@ -5,28 +5,9 @@
 @section('seo_image', (!empty($contact)?asset($contact->seo_image):""))
 @section('seo_url', url()->current())
 @section('content')
-<!-- BEGIN .wrapper -->
+
+<div class="boxed active">
     <div class="wrapper">
-        <!-- BEGIN .ot-breaking-news-body -->
-<!--
-        <div class="ot-breaking-news-body" data-breaking-timeout="4000" data-breaking-autostart="true">
-            <div class="ot-breaking-news-controls">
-                <button class="right" data-break-dir="right"><i class="fa fa-angle-right"></i></button>
-                <button class="right" data-break-dir="left"><i class="fa fa-angle-left"></i></button>
-                <strong><i class="fa fa-bar-chart"></i>Tin mới</strong>
-            </div>
-            <div class="ot-breaking-news-content">
-                <div class="ot-breaking-news-content-wrap">
-                @foreach($khuyenmai as $item_km)
-                    <div class="item">
-                        <strong><a href="{{url('/chi-tiet/'.$item_km->slug)}}">{{ $item_km->newsname}}</a></strong>
-                    </div>
-                @endforeach
-                </div>
-            </div>
--->
-        <!-- END .ot-breaking-news-body -->
-<!--        </div>-->
 
         <h1>記事ページ</h1>
 
@@ -166,15 +147,9 @@
             @endif
             <!-- END .content-block-single -->
             </div>
-
             <!-- BEGIN .sidebar -->
-            <aside class="sidebar sticky_column">
-                @include('home.sitebar_right')
-            <!-- END .sidebar -->
-            </aside>
+            @include('home.sitebar_right')
         </div>
-
-
-    <!-- END .wrapper -->
     </div>
+</div>
 @endsection

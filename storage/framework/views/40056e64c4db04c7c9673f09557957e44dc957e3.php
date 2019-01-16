@@ -5,31 +5,11 @@
 <?php $__env->startSection('seo_image', (!empty($contact)?asset($contact->seo_image):"")); ?>
 <?php $__env->startSection('seo_url', url()->current()); ?>
 <?php $__env->startSection('content'); ?>
-<!-- BEGIN .wrapper -->
+
+<div class="boxed active">
     <div class="wrapper">
 
-        <!-- BEGIN .ot-breaking-news-body -->
-<!--
-        <div class="ot-breaking-news-body" data-breaking-timeout="4000" data-breaking-autostart="true">
-            <div class="ot-breaking-news-controls">
-                <button class="right" data-break-dir="right"><i class="fa fa-angle-right"></i></button>
-                <button class="right" data-break-dir="left"><i class="fa fa-angle-left"></i></button>
-                <strong><i class="fa fa-bar-chart"></i>Tin mới    </strong>
-            </div>
-            <div class="ot-breaking-news-content">
-                <div class="ot-breaking-news-content-wrap">
-                <?php $__currentLoopData = $khuyenmai; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_km): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="item">
-                        <strong><a href="<?php echo e(url('/chi-tiet/'.$item_km->slug)); ?>"><?php echo e($item_km->newsname); ?></a></strong>
-                    </div>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </div>
-            </div>
--->
-        <!-- END .ot-breaking-news-body -->
-<!--        </div>-->
-
-        <h1>カテゴリトップ／アーカイブページ</h1>
+        <h1>カテゴリトップ／アーカイブページ2</h1>
 
         <div class="content-block has-sidebar">
             <!-- BEGIN .content-block-single -->
@@ -116,58 +96,29 @@
                     </div>
                     <div class="row" id="content_pro">
                         <?php echo $__env->make('home.content_news_ajax', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-                        <div class="hidden-xs col-md-3 nopadding sticky_column">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <?php if($adverts_center[0]->code != ""): ?>
-                                        <?php echo e($adverts_center[0]->code); ?>
-
-                                    <?php else: ?>
-                                    <a href="<?php echo e($adverts_center[0]->link); ?>" target="_blank">
-                                        <img src="<?php echo e(url('public/img/images_bn/'.$adverts_center[0]->img)); ?>" alt="No image" width="100%" style="object-fit: contain;" />
-                                    </a>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <!-- END .content-panel -->
+
+                <!-- BEGIN Loading -->
                 <div class="ajax-load text-center" style="display:none;z-index: 10000; opacity: 1;">
                     <p><img src="#">Đang tải</p>
                 </div>
-                 <div class="text-center" <?php if($total <=10): ?> style="display: none;" <?php endif; ?>>
+
+                <!-- BIGIN ReadMore -->
+                <div class="text-center" <?php if($total <=10): ?> style="display: none;" <?php endif; ?>>
                      <a class="btn btn-default btn-more-info" id="load_more" base_url="<?php echo e(url('')); ?>" modid="<?php echo e($modnew->id); ?>" skip="10" take="5" total="<?php echo e($total); ?>"  role="button">
                         <i class="fa fa-refresh" aria-hidden="true"></i> Xem thêm
                     </a>
                 </div>
             </div>
-            <!-- END .content-block-single -->
             <!-- BEGIN .sidebar -->
-            <aside class="sidebar sticky_column ">
                 <?php echo $__env->make('home.sitebar_right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-
-            <!-- END .sidebar -->
-            </aside>
         </div>
-        <!-- BEGIN .content-panel -->
-        <div class="content-panel">
-            <div class="content-panel-body do-space">
-                <?php if($adverts_main[0]->code != ""): ?>
-                    <?php echo e($adverts_main[0]->code); ?>
-
-                <?php else: ?>
-                <a href="<?php echo e($adverts_main[0]->link); ?>" target="_blank">
-                    <img src="<?php echo e(url('public/img/images_bn/'.$adverts_main[0]->img)); ?>" alt="No image" width="100%" style="object-fit: contain; max-height: 150px; display: block;overflow:hidden; margin-bottom: 20px;" />
-                </a>
-                <?php endif; ?>
-            </div>
-        <!-- END .content-panel -->
-        </div>
-
-    <!-- END .wrapper -->
     </div>
-    <script type="text/javascript">
+</div>
+
+<script type="text/javascript">
         $("#load_more").click(function(e){
           e.preventDefault()
           base_url = $(this).attr('base_url');
@@ -212,6 +163,7 @@
                 });
         });
     </script>
+
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('home.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

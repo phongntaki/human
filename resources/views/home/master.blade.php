@@ -78,6 +78,7 @@
                                 </li>
                                 <!--                                    ドロップダウンテスト用-->
 
+<!--
                                 <li id="home_login" class="btn-myaccount dropdown hover"><a class="myaccount" href="">Hi {{Session::get('logined_cusfullname')}}</a>
                                     <ul id="home_logout" class="dropdown-menu">
                                         <li><a href="{{ url('my-profile') }}">My profile setting</a></li>
@@ -85,6 +86,7 @@
                                         <li><a href="">test</a></li>
                                     </ul>
                                 </li>
+-->
 
                                 @if (Session::get('logined_cus') == 1)
                                 <li id="home_login" class="btn-account dropdown hover"><a class="myaccount" href="">Hi {{Session::get('logined_cusfullname')}}</a>
@@ -115,7 +117,6 @@
                 <!-- END .header-logo -->
             </div>
 
-<!--
             @if (Session::get('logined_cus') != 1)
             <div class="no-information">
                 <p class="noinfo-text">
@@ -123,7 +124,6 @@
                 </p>
             </div>
             @endif
--->
 
             <!-- BEGIN .global-nav -->
             <div class="global-nav">
@@ -166,17 +166,7 @@
 
         <!-- BEGIN .content -->
         <section class="content">
-<!--
-            <div class="boxed active">
-                <div class="wrapper">
--->
-
                     @yield('content')
-
-<!--
-                </div>
-            </div>
--->
         <!-- END .content -->
         </section>
 
@@ -221,12 +211,14 @@
         <script src="{{ asset('public/js/home/customer.js') }}"></script>
         <script async src="{{ asset('public/js/home/boxchat.js') }}"></script>
         <!-- END body -->
+<!--
         <script>
-            if ($(window).width() >700) {
+            if ($(window).width() > 1050) {
                 $(".sticky_column").stick_in_parent();
             }
         </script>
-        
+-->
+
     </body>
     <!-- END html -->
 </html>
