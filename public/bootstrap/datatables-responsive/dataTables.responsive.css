@@ -17,7 +17,9 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
   border-radius: 16px;
   text-align: center;
   line-height: 14px;
+  -webkit-box-shadow: 0 0 3px #444;
   box-shadow: 0 0 3px #444;
+  -webkit-box-sizing: content-box;
   box-sizing: content-box;
   content: '+';
   background-color: #31b131;
@@ -67,7 +69,9 @@ table.dataTable.dtr-column > tbody > tr > th.control:before {
   border-radius: 16px;
   text-align: center;
   line-height: 14px;
+  -webkit-box-shadow: 0 0 3px #444;
   box-shadow: 0 0 3px #444;
+  -webkit-box-sizing: content-box;
   box-sizing: content-box;
   content: '+';
   background-color: #31b131;

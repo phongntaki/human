@@ -121,6 +121,7 @@
     font-size: 16px;
     position: relative;
     background: #0191d0;
+    -webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.30);
     box-shadow: 0 2px 5px rgba(0,0,0,0.30);
 }
 .right_detail_product .btn_add_cart:hover,
@@ -170,6 +171,7 @@
 }
 .tab_detail_product .tab-content{
     border: 1px solid #EBE6DF;
+    -webkit-box-shadow: 0 5px 8px #EBE6DF;
     box-shadow: 0 5px 8px #EBE6DF;
     padding: 20px;
 }

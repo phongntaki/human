@@ -7,6 +7,8 @@
     padding:0px 0; /*Increse its value if want to move the arrows out of the div.inner */
     position:relative;
     -webkit-user-select: none;
+    -moz-user-select:none;
+    -ms-user-select:none;
     user-select:none;
 }
 
@@ -17,6 +19,7 @@
 
     /*the followings should not be changed */    
     height: calc( 100% - 80px );  
+    -webkit-box-sizing:border-box;  
     box-sizing:border-box;
     width:100%;
     position:relative;
@@ -43,11 +46,13 @@
     opacity:1;
     display:block;
     margin: 13px 0;
+    -webkit-transition:all 0.5s;
     transition:all 0.5s;
     text-align:center;
     padding:0;
     position:relative;
     list-style:none;
+    -webkit-backface-visibility:hidden;
     backface-visibility:hidden;
 	-webkit-filter: grayscale(100%);
 	filter: grayscale(100%);
@@ -97,8 +102,10 @@
     color:white;
     z-index:10;
     cursor:pointer;
+    -webkit-transition:opacity 0.6s;
     transition:opacity 0.6s;
     *background-color:#ccc;/*IE7 hack*/
+    -webkit-backface-visibility:hidden;
     backface-visibility:hidden;
 }
 
@@ -129,15 +136,13 @@
 }
 
 #thumbnail-slider-prev::before {
-    top:12px;
-    -ms-transform:rotate(-45deg);/*IE9*/
+    top:12px;/*IE9*/
     -webkit-transform:rotate(45deg);
     transform: rotate(45deg);
 }
 
 #thumbnail-slider-next::before {
-    bottom:12px;
-    -ms-transform:rotate(135deg);/*IE9*/
+    bottom:12px;/*IE9*/
     -webkit-transform:rotate(-135deg);
     transform: rotate(-135deg);
 }
