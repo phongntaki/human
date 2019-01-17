@@ -35,7 +35,7 @@
                                <li class="item">
                 <a href="{{url('chi-tiet/'.$item_lt->slug)}}">
                     <div class="item-image">
-                        <img src="{{url('/public/img/news/100x100/'.$item_lt->newimg)}}" alt="{{$item_lt->newsname}}" />
+                        <img src="{{url('/public/img/news/300x300/'.$item_lt->newimg)}}" alt="{{$item_lt->newsname}}" />
                     </div>
                     <div class="item-lead">
                         <h4 class="item-title">{{$item_lt->newsname}}</h4>
@@ -62,12 +62,13 @@
                 <a href="{{url('chi-tiet/'.$item_most->slug)}}">
                     <div class="item-image">
                         <p class="item-counter">{{$count}}</p>
-                        <img src="{{url('/public/img/news/100x100/'.$item_most->newimg)}}" alt="{{$item_most->newsname}}" />
+                        <div class="item-image-inner">
+                            <img src="{{url('/public/img/news/300x300/'.$item_most->newimg)}}" alt="{{$item_most->newsname}}" />
+                        </div>
                     </div>
                     <div class="item-lead">
                         <h4 class="item-title">{{$item_most->newsname}}</h4>
                         <p class="item-date">
-<!--                        <i class="fa fa-clock-o"></i>-->
                         {{$item_most->created_at->format('Y/m/d')}}</p>
                     </div>
                 </a>
