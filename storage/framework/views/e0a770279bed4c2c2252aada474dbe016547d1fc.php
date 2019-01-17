@@ -182,11 +182,12 @@
 -->
                         </div>
                         <div class="company-info">
-                            <a href="<?php echo e(url('')); ?>" class="footer-logo"><img src="<?php echo e(url('/public/home/images/logo2.png')); ?>" alt="<?php echo e($contact->nameco); ?>"></a>
+                            <a href="<?php echo e(url('')); ?>" class="footer-logo"><img src="<?php echo e(url('/public/home/'.$contact['logo'])); ?>" alt="<?php echo e($contact->nameco); ?>"></a>
                             <p class="company-text">
-                                Cơ sở 1: Đà Nẵng<br>
-                                Điện thoại: 375 458 698 555<br>
-                                E-mail: info@enzi.co.jp
+                                <?php echo e($contact->address); ?><br>
+                                Điện thoại: <?php echo e($contact->phone); ?><br>
+                                E-mail: <?php echo e($contact->mail); ?>
+
                             </p>
                             <div class="share-items">
                                 <div class="fb-share-button share-item-button"
