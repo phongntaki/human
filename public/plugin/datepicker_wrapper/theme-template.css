@@ -14,7 +14,6 @@ http://uglymongrel.com.com
 .ui-datepicker .ui-datepicker-prev {
 	/* ui-shadow */
 	-webkit-box-shadow: /*{global-box-shadow-size}*/ /*{global-box-shadow-color}*/;
-	-moz-box-shadow: /*{global-box-shadow-size}*/ /*{global-box-shadow-color}*/;
 	box-shadow: /*{global-box-shadow-size}*/ /*{global-box-shadow-color}*/;
 }
 /* Swatches */

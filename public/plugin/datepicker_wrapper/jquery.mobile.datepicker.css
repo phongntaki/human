@@ -21,7 +21,6 @@ div.hasDatepicker {
 	top: .6em;
 	margin-top: 0;
 	text-indent: -9999px;
-	-webkit-border-radius: 1em;
 	border-radius: 1em;
 	vertical-align: middle;
 	margin-right: .625em;
@@ -43,7 +42,6 @@ div.hasDatepicker {
 	background-color: rgba(0,0,0,.3) /*{global-icon-disc}*/;
 	background-position: center center;
 	background-repeat: no-repeat;
-	-webkit-border-radius: 1em;
 	border-radius: 1em;
 }
 .ui-datepicker .ui-datepicker-next:after{

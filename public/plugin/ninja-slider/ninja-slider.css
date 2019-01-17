@@ -7,6 +7,7 @@
 
     margin:0 auto;
     overflow:hidden;
+    -webkit-box-sizing:border-box;
     box-sizing:border-box;
 }
 
@@ -53,6 +54,7 @@
     margin:0 auto;/*center-aligned */
     font-size:0px;
     position:relative;
+    -webkit-box-sizing:border-box;
     box-sizing:border-box;
 }
 
@@ -73,7 +75,9 @@
     position:relative;
     list-style:none;
     padding:0;
+    -webkit-box-sizing:border-box;
     box-sizing:border-box;
+    -ms-touch-action:pan-y;
     touch-action:pan-y;
 }
 
@@ -90,6 +94,7 @@
     padding:0;
     opacity:0;
     overflow:hidden;
+    -webkit-box-sizing:border-box;
     box-sizing:border-box;
 }
 
@@ -104,6 +109,7 @@
     background-size:zoom;/*Note: If transitionType is zoom, it will be overridden to cover.*/
 
     /*decorate border*/
+    -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.8),inset 0 0 2px rgba(255,255,255,.4);
     box-shadow: 0 1px 5px rgba(0,0,0,.8),inset 0 0 2px rgba(255,255,255,.4);
 
     cursor:default;
@@ -167,11 +173,14 @@
     margin-top:-28px;
     background-color:rgba(0,0,0,0.4);
     background-color:#ccc\9;/*IE8 hack*/
+    -webkit-backface-visibility:hidden;
     backface-visibility:hidden;
     color:white;
     overflow:hidden;
     white-space:nowrap;
     -webkit-user-select: none;
+    -moz-user-select:none;
+    -ms-user-select:none;
     user-select:none;
     border-radius:2px;
     z-index:10;
@@ -208,8 +217,8 @@
 }
 
 /*pagination within the prev/next buttons*/
-#ninja-slider-prev div {opacity:0;margin-left:30px;transition:opacity 0.7s;}
-#ninja-slider-next div {opacity:0;margin-right:30px;transition:opacity 0.7s;}
+#ninja-slider-prev div {opacity:0;margin-left:30px;-webkit-transition:opacity 0.7s;transition:opacity 0.7s;}
+#ninja-slider-next div {opacity:0;margin-right:30px;-webkit-transition:opacity 0.7s;transition:opacity 0.7s;}
 #ninja-slider.fullscreen #ninja-slider-prev:hover div {opacity:1;}
 #ninja-slider.fullscreen #ninja-slider-next:hover div {opacity:1;}
 /* arrows */
@@ -224,18 +233,18 @@
     border-top: 2px solid white;
 }
 
-#ninja-slider-prev::before {
-    -ms-transform:rotate(-45deg);/*IE 9*/
+#ninja-slider-prev::before {/*IE 9*/
     -webkit-transform:rotate(-45deg);
     transform: rotate(-45deg);
+    -webkit-backface-visibility:hidden;
     backface-visibility:hidden;
     left:14px;
 }
 
-#ninja-slider-next::before {
-    -ms-transform:rotate(135deg);/*IE 9*/
+#ninja-slider-next::before {/*IE 9*/
     -webkit-transform:rotate(135deg);
     transform: rotate(135deg);
+    -webkit-backface-visibility:hidden;
     backface-visibility:hidden;
     right:14px;
 }
@@ -252,6 +261,8 @@
 {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 }
 

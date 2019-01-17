@@ -63,10 +63,6 @@
 }
 .newsletter-box .btn {
 	border: medium none;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	-o-border-radius: 3px;
-	-ms-border-radius: 3px;
 	border-radius: 3px;
 	display: inline-block;
 	height: 40px;
@@ -79,15 +75,12 @@
 }
 .bg-gray {
 	background-image: -moz-linear-gradient(center bottom, #BBBBBB 0%, #F0F0F0 100%);
+	-webkit-box-shadow: 0 1px 0 #B4B3B3;
 	box-shadow: 0 1px 0 #B4B3B3;
 }
 .social li {
 	background: none repeat scroll 0 0 #B5B5B5;
 	border: 2px solid #B5B5B5;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
-	-o-border-radius: 50%;
-	-ms-border-radius: 50%;
 	border-radius: 50%;
 	float: left;
 	height: 36px;

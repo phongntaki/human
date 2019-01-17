@@ -504,6 +504,7 @@ footer .navbar-right{
     z-index:999999999999999;
     width:270px;
     height:300px auto;
+    -webkit-box-shadow:6px 6px 6px 10px rgba(0,0,0,0.2);
     box-shadow:6px 6px 6px 10px rgba(0,0,0,0.2);
     border-top-left-radius:5px;
     border-top-right-radius:5px;
@@ -696,6 +697,7 @@ footer .navbar-right{
     width: 55px;
     height: 55px;
     max-width: none;
+    -o-object-fit: contain;
     object-fit: contain;
 }
 .item_filter_list_product a{
@@ -732,6 +734,7 @@ footer .navbar-right{
         height: 55px;
         max-width: none;
         width: auto;
+        -o-object-fit: contain;
         object-fit: contain;
     }
     .filter_list_product h3{
@@ -744,6 +747,7 @@ footer .navbar-right{
         height: 75px;
         max-width: none;
         width: auto;
+        -o-object-fit: contain;
         object-fit: contain; 
         padding-left: 10px;
     }
@@ -769,6 +773,7 @@ footer .navbar-right{
         height: 55px;
         max-width: none;
         width: auto;
+        -o-object-fit: contain;
         object-fit: contain;
         padding: 5px;
         margin-left: 10px;

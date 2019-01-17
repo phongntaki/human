@@ -51,6 +51,7 @@
 
 .box_main{ 
     border: 1px solid #EBE6DF;
+    -webkit-box-shadow: 0 5px 8px #EBE6DF;
     box-shadow: 0 5px 8px #EBE6DF;
 }
 
