@@ -129,10 +129,6 @@ class HomeController extends Controller {
             $khuyenmai = News::orderBy('created_at','DESC')->take(10)->get();
             $slide_active = News::orderBy('created_at','DESC')->take(1)->get();
             $slide_no_active = News::orderBy('created_at','DESC')->skip(1)->take(9)->get();
-            // echo "<pre>";
-            // echo $slide_no_active;
-            // echo "</pre>";
-            // exit();
 
             $adverts_main    = Advert::where('idlang', $this->idlang)->where('hide', 2)->where('area', 4)->orderBy('sort', 'asc')->get();
             $adverts_top    = Advert::where('idlang', $this->idlang)->where('hide', 2)->where('area', 1)->orderBy('sort', 'asc')->get();
@@ -243,15 +239,22 @@ class HomeController extends Controller {
     public function list_news($slug)
     {
         $list = ListNew::where('slug',$slug)->first();
+
         if(!empty($list)){
             $total = News::where('idlistnew',$list->id)->count();
-            $listnews_cat = News::where('idlistnew',$list->id)->where('status','<>',0)->orderBy('created_at','DESC')->take(10)->get();
-            $public_var = $this->public_var();
-            return view('home.listnews',array_merge($public_var, [
+            if($total!=0){
+                $listnews_cat = News::where('idlistnew',$list->id)->where('status','<>',0)->orderBy('created_at','DESC')->take(10)->get();
+                $public_var = $this->public_var();
+                return view('home.listnews',array_merge($public_var, [
                                                     'listnew'=>$list,
                                                     'listnews_cat'=>$listnews_cat,
                                                     "total" => $total,
                                                     ]));
+            }
+            else{
+                return redirect()->Route('error_404');
+            }
+            
         } else {
             $mod = ModNews::where('slug',$slug)->first();
             if(!empty($mod)){

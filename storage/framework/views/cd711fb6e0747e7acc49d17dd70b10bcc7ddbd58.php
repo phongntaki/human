@@ -5,37 +5,39 @@
 <?php $__env->startSection('seo_image', (!empty($contact)?asset($contact->seo_image):"")); ?>
 <?php $__env->startSection('seo_url', url()->current()); ?>
 <?php $__env->startSection('content'); ?>
-<!-- BEGIN .wrapper -->
-<div class="wrapper">
 
-	<div class="content-block">
+<div class="boxed active">
+    <div class="wrapper">
 
-		<!-- BEGIN .content-block-single -->
-		<div class="content-block-single">
-			
-			<!-- BEGIN .content-panel -->
-			<div class="content-panel">
-				<div class="content-panel-body big-message">
+        <div class="content-block">
 
-					<div class="big-message-inner">
-						<i class="fa fa-file-text-o"></i>
-						<h1>Page not found</h1>
-						<h2>Error 404</h2>
-						<p>Trang bạn đang cố truy cập hiện không được tìm thấy. </p>
-						<a href="<?php echo e(url('/')); ?>" class="back-button"><i class="fa fa-home"></i>Về trang chủ</a>
-					</div>
+            <!-- BEGIN .content-block-single -->
+            <div class="content-block-single">
 
-				</div>
-			<!-- END .content-panel -->
-			</div>
+                <!-- BEGIN .content-panel -->
+                <div class="content-panel">
+                    <div class="content-panel-body big-message">
 
-		<!-- END .content-block-single -->
-		</div>
+                        <div class="big-message-inner">
+                            <i class="fa fa-file-text-o"></i>
+                            <h1>Page not found</h1>
+                            <h2>Error 404</h2>
+                            <p>Trang bạn đang cố truy cập hiện không được tìm thấy. </p>
+                            <a href="<?php echo e(url('/')); ?>" class="back-button"><i class="fa fa-home"></i>Về trang chủ</a>
+                        </div>
 
-	</div>
-	
+                    </div>
+                <!-- END .content-panel -->
+                </div>
 
-<!-- END .wrapper -->
+            <!-- END .content-block-single -->
+            </div>
+
+        </div>
+
+    </div>
 </div>
+
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('home.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
