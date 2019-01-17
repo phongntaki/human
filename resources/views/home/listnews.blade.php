@@ -21,13 +21,14 @@
                             <li class="active"><a href="{{ url('loai-tin/'.$listnew->slug) }}">{{ $listnew->listname }}</a></li>
                         </ul>
                     </div>
+                    <?php
+                        $item = $listnew->most_news_in_list_new($listnew->id);
+                        $hot = $item->shift();
+                    ?>
                     <div class="row">
                         <div class="hidden-xs col-md-7 nopadding">
                             <div class="content-panel-body article-list">
-                            <?php
-                                $item = $listnew->most_news_in_list_new($listnew->id);
-                                $hot = $item->shift();
-                            ?>
+                            
                                 <div class="item" data-color-top-slider="#867eef">
                                     <div class="item-header">
                                         <a href="{{url('chi-tiet/'.$hot['slug'])}}">
