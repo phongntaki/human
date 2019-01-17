@@ -5,29 +5,9 @@
 <?php $__env->startSection('seo_image', (!empty($contact)?asset($contact->seo_image):"")); ?>
 <?php $__env->startSection('seo_url', url()->current()); ?>
 <?php $__env->startSection('content'); ?>
-<!-- BEGIN .wrapper -->
-    <div class="wrapper">
 
-        <!-- BEGIN .ot-breaking-news-body -->
-<!--
-        <div class="ot-breaking-news-body" data-breaking-timeout="4000" data-breaking-autostart="true">
-            <div class="ot-breaking-news-controls">
-                <button class="right" data-break-dir="right"><i class="fa fa-angle-right"></i></button>
-                <button class="right" data-break-dir="left"><i class="fa fa-angle-left"></i></button>
-                <strong><i class="fa fa-bar-chart"></i>Tin mới    </strong>
-            </div>
-            <div class="ot-breaking-news-content">
-                <div class="ot-breaking-news-content-wrap">
-                <?php $__currentLoopData = $khuyenmai; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_km): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="item">
-                        <strong><a href="<?php echo e(url('/chi-tiet/'.$item_km->slug)); ?>"><?php echo e($item_km->newsname); ?></a></strong>
-                    </div>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </div>
-            </div>
--->
-        <!-- END .ot-breaking-news-body -->
-<!--        </div>-->
+<div class="boxed active">
+    <div class="wrapper">
 
         <h1>投稿記事アーカイブ</h1>
 
@@ -41,13 +21,14 @@
                             <li class="active"><a href="<?php echo e(url('loai-tin/'.$listnew->slug)); ?>"><?php echo e($listnew->listname); ?></a></li>
                         </ul>
                     </div>
+                    <?php
+                        $item = $listnew->most_news_in_list_new($listnew->id);
+                        $hot = $item->shift();
+                    ?>
                     <div class="row">
                         <div class="hidden-xs col-md-7 nopadding">
                             <div class="content-panel-body article-list">
-                            <?php
-                                $item = $listnew->most_news_in_list_new($listnew->id);
-                                $hot = $item->shift();
-                            ?>
+                            
                                 <div class="item" data-color-top-slider="#867eef">
                                     <div class="item-header">
                                         <a href="<?php echo e(url('chi-tiet/'.$hot['slug'])); ?>">
@@ -105,20 +86,6 @@
                     </div>
                     <div class="row" id="content_pro">
                         <?php echo $__env->make('home.content_news_ajax_list', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-                        <div class="hidden-xs col-md-3 nopadding sticky_column">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <?php if($adverts_center[0]->code != ""): ?>
-                                        <?php echo e($adverts_center[0]->code); ?>
-
-                                    <?php else: ?>
-                                    <a href="<?php echo e($adverts_center[0]->link); ?>" target="_blank">
-                                        <img src="<?php echo e(url('public/img/images_bn/'.$adverts_center[0]->img)); ?>" alt="No image" width="100%" style="object-fit: contain;" />
-                                    </a>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <!-- END .content-panel -->
@@ -131,75 +98,58 @@
                     </a>
                 </div>
             </div>
-            <!-- END .content-block-single -->
             <!-- BEGIN .sidebar -->
-            <aside class="sidebar sticky_column hidden-xs">
-                <?php echo $__env->make('home.sitebar_right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-            <!-- END .sidebar -->
-            </aside>
+            <?php echo $__env->make('home.sitebar_right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
-        <!-- BEGIN .content-panel -->
-        <div class="content-panel">
-            <div class="content-panel-body do-space">
-                <?php if($adverts_main[0]->code != ""): ?>
-                    <?php echo e($adverts_main[0]->code); ?>
-
-                <?php else: ?>
-                <a href="<?php echo e($adverts_main[0]->link); ?>" target="_blank">
-                    <img src="<?php echo e(url('public/img/images_bn/'.$adverts_main[0]->img)); ?>" alt="No image" width="100%" style="object-fit: contain; max-height: 150px; display: block;overflow:hidden; margin-bottom: 20px;" />
-                </a>
-                <?php endif; ?>
-            </div>
-        <!-- END .content-panel -->
-        </div>
-
-    <!-- END .wrapper -->
     </div>
-    <script type="text/javascript">
-        $("#load_more").click(function(e){
-          e.preventDefault()
-          base_url = $(this).attr('base_url');
-          listid = $(this).attr('listid');
-          skip = $(this).attr('skip');
-          take = $(this).attr('take');
-          total = $(this).attr('total');
-          $.ajax(
-                {
-                    url: base_url+'/loadmorelist',
-                    type: 'GET',
-                    data: {
-                        "listid" : listid,
-                        "skip" : skip,
-                        "take" : take,
-                    },
-                    beforeSend: function()
-                    {
-                        $('.ajax-load').show();
-                    }
-                })
-                .done(function(data)
-                {
-                    if(data.html == " "){
-                        $('.ajax-load').html("Không có kết quả nào !");
-                        return;
-                    }
-                    $('.ajax-load').hide();
-                    $("#content_pro").append(data);
-                    $('#load_more').attr('skip', parseInt(skip) +5);
-                    skip = $('#load_more').attr('skip');
+</div>
 
-                    if (parseInt(skip) >= parseInt(total)) {
-                        $('#load_more').css('display', 'none');
-                    }
-                    // console.log(data);
-
-                })
-                .fail(function(jqXHR, ajaxOptions, thrownError)
+<script type="text/javascript">
+    $("#load_more").click(function(e){
+        e.preventDefault()
+        base_url = $(this).attr('base_url');
+        listid = $(this).attr('listid');
+        skip = $(this).attr('skip');
+        take = $(this).attr('take');
+        total = $(this).attr('total');
+        $.ajax(
+            {
+                url: base_url+'/loadmorelist',
+                type: 'GET',
+                data: {
+                    "listid" : listid,
+                    "skip" : skip,
+                    "take" : take,
+                },
+                beforeSend: function()
                 {
-                      alert('server not responding...');
-                });
+                    $('.ajax-load').show();
+                }
+            })
+            .done(function(data)
+                  {
+            if(data.html == " "){
+                $('.ajax-load').html("Không có kết quả nào !");
+                return;
+            }
+            $('.ajax-load').hide();
+            $("#content_pro").append(data);
+            $('#load_more').attr('skip', parseInt(skip) +5);
+            skip = $('#load_more').attr('skip');
+
+            if (parseInt(skip) >= parseInt(total)) {
+                $('#load_more').css('display', 'none');
+            }
+            // console.log(data);
+
+        })
+            .fail(function(jqXHR, ajaxOptions, thrownError)
+                  {
+            alert('server not responding...');
         });
-    </script>
+    });
+</script>
+
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('home.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

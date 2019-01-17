@@ -28,7 +28,7 @@ class ModNews extends Model
         return $news;
     } 
     public function news_in_mod($mod_id){
-        $news = News::where('idmodnew',$mod_id)->where('status','<>',0)->orderBy('created_at','DESC')->skip(0)->take(5)->get();
+        $news = News::where('idmodnew',$mod_id)->where('status','<>',0)->orderBy('created_at','DESC')->skip(0)->take(6)->get();
         return $news;
     }
     public function listnew_inmod ($id){
