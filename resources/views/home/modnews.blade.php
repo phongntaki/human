@@ -19,14 +19,14 @@
                     <div class="content-panel-title">
                         <h2 class="panel-title"><a href="{{ url('loai-tin/'.$modnew->slug) }}">{{ $modnew->modname }}</a></h2>
                         <ul class="panel-title-submenu">
-<!--                            <li class="active"><a href="{{ url('loai-tin/'.$modnew->slug) }}">{{ $modnew->modname }}</a></li>-->
                             @foreach($modnew->listnew_inmod($modnew->id) as $cat_mod)
-                                <li class="submenu-item">
-                                    <a href="{{ url('loai-tin/'.$cat_mod->slug) }}">{{ $cat_mod->listname }}</a>
-                                </li>
+                            <li class="submenu-item">
+                                <a href="{{ url('loai-tin/'.$cat_mod->slug) }}">{{ $cat_mod->listname }}</a>
+                            </li>
                             @endforeach
                         </ul>
                     </div>
+
 <!--
                     <?php
                         $item = $modnew->top_news_item($modnew->id)->take(3);
@@ -68,7 +68,7 @@
                 </div>
 
                 <!-- BIGIN ReadMore -->
-                <div class="text-center" @if($total <=10) style="display: none;" @endif>
+                <div class="text-center" @if($total <=9) style="display: none;" @endif>
                      <a class="btn btn-default btn-more-info" id="load_more" base_url="{{url('')}}" modid="{{$modnew->id}}" skip="10" take="5" total="{{$total}}"  role="button">
                         <i class="fa fa-refresh" aria-hidden="true"></i> Xem thêm
                     </a>
