@@ -10,7 +10,7 @@
 
         <h1>検索結果ページ</h1>
 
-        <div class="content-block has-sidebar">
+        <div class="content-block">
             <!-- BEGIN .content-block-single -->
             <div class="content-block-single">
 

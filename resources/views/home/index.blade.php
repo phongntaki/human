@@ -127,7 +127,9 @@
                             @endforeach
                         </ul>
                     </div>
-                    <p class="content-panel-more"><a href="{{ url('loai-tin/'.$index_mod->slug) }}"><i class="fa fa-angle-right"></i>Đọc thêm</a></p>
+                    <div class="read-more top-index">
+                        <a class="btn-more" href="{{ url('loai-tin/'.$index_mod->slug) }}" role="button"><i class="fas fa-angle-right"></i>Xem thêm</a>
+                    </div>
                 </div>
 
                 <?php $index_count = $index_count +1; ?>

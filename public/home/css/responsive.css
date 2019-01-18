@@ -102,12 +102,21 @@ height: auto!important;
 
 /* TABLET */
 @media only screen and (max-width: 1050px) {
+
+    /* common
+    --------------------------------*/
     body {
         font-size: 1.6rem;
     }
-
     .wrapper {
         max-width: 95%;
+    }
+    .read-more .btn-more {
+        height: 46px;
+        line-height: 46px;
+    }
+    .read-more .btn-more i.fas {
+        line-height: 46px;
     }
 
 
@@ -175,7 +184,7 @@ height: auto!important;
 
     /* content
     --------------------------------*/
-    .content .content-block.has-sidebar .content-block-single {
+    .content .content-block .content-block-single {
         float: none;
         width: 100%;
         margin-bottom: 50px;
@@ -190,23 +199,14 @@ height: auto!important;
     .content .content-block .content-panel-title .panel-title-submenu {
         display: none;
     }
+    .content-panel.carousel-type .content-panel-body .panel-items .item .item-image {
+        margin-bottom: 15px;
+    }
 
-    /* panel-more */
-    .content .content-block .content-panel-more {
+    /* read-more */
+    .read-more.top-index {
         display: block;
-        text-align: center;
-    }
-    .content .content-block .content-panel-more a {
-        display: inline-block;
-        font-size: 1.4rem;
-        color: #fff;
-        padding: 0 15px;
-        line-height: 36px;
-        background-color: #ccc;
-        border-radius: 18px;
-    }
-    .content .content-block .content-panel-more i.fa {
-        margin-right: 6px;
+        margin: 25px 0 50px;
     }
 
 
@@ -216,7 +216,6 @@ height: auto!important;
     .sidebar {
         float: none;
         width: 100%;
-        height: auto !important;
     }
     .sidebar .widget-wrap {
         display: -webkit-box;
@@ -255,6 +254,9 @@ height: auto!important;
         background-size: 12%;
     }
 
+    .sidebar .widget .widget-article-lists .item .item-image img {
+        height: 85px;
+    }
     .sidebar .widget.widget-ranking .widget-article-lists .item .item-image .item-counter {
         width: 30px;
         height: 30px;
@@ -368,6 +370,11 @@ height: auto!important;
 /* PHONE */
 @media only screen and (max-width: 767px) {
 
+    /* common
+    ------------------------------*/
+    body {
+        font-size: 1.4rem;
+    }
     .wrapper {
         max-width: 90%;
     }
@@ -424,41 +431,76 @@ height: auto!important;
 
     /* content
     -------------------------------*/
+    .content .content-block .content-block-single {
+        margin-bottom: 60px;
+    }
     .content .content-block .content-panel {
-        margin-bottom: 50px;
+        margin-bottom: 25px;
     }
     .content .content-block .content-panel-title .panel-title {
         font-size: 2.0rem;
     }
 
     /* panel-body */
-    .content-panel .content-panel-body .panel-items {
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column;
-    }
-    .content-panel .content-panel-body .panel-items .item {
+    .content-panel.carousel-type .content-panel-body .panel-items .item {
         width: 100%;
         padding: 0;
         margin-bottom: 30px;
         border: none;
     }
-    .content-panel .content-panel-body .panel-items .item:first-child,
-    .content-panel .content-panel-body .panel-items .item:nth-of-type(4) {
+
+    /* carousel-type */
+    .content-panel.carousel-type .content-panel-body .panel-items .item:first-child,
+    .content-panel.carousel-type .content-panel-body .panel-items .item:nth-of-type(4) {
         border: none;
     }
-    .content-panel .content-panel-body .panel-items .item .item-image {
+
+    /* carousel-type, block-type */
+    .content-panel.carousel-type .content-panel-body .panel-items .item .item-image,
+    .content-panel.block-type .content-panel-body .panel-items .item .item-image {
         height: 185px;
         margin-bottom: 15px;
     }
-    .content-panel .content-panel-body .panel-items .item .item-image img {
-        width: 100%;
-        height: auto;
+    .content-panel.carousel-type .content-panel-body .panel-items .item .item-lead .item-date,
+    .content-panel.block-type .content-panel-body .panel-items .item .item-lead .item-date{
+        margin-bottom: 5px;
     }
-    .content-panel .content-panel-body .panel-items .item .item-lead .item-date {
-        margin-bottom: 3px;
+
+    /* block-type */
+    .content-panel.block-type .content-panel-body .panel-items .item {
+        margin-bottom: 30px;
     }
+    .content-panel.block-type .content-panel-body .panel-items .item a {
+        display: block;
+/*        margin-bottom: 30px;*/
+    }
+    .content-panel.block-type .content-panel-body .panel-items .item .item-lead {
+        position: relative;
+    }
+    .content-panel.block-type .content-panel-body .panel-items .item .item-lead .item-title {
+        font-size: 1.6rem;
+        margin-bottom: 0;
+    }
+    .content-panel.block-type .content-panel-body .panel-items .item .item-lead .item-desc {
+        display: none;
+    }
+    .content-panel.block-type .content-panel-body .panel-items .item .item-lead .comment-tag {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    /* read-more */
+    .read-more {
+        margin: 50px 0;
+    }
+    .read-more .btn-more {
+        display: block;
+    }
+    .read-more.top-index {
+        margin: 50px 0 65px;
+    }
+
 
 
 
@@ -489,6 +531,40 @@ height: auto!important;
         width: 26px;
         height: 26px;
         line-height: 26px;
+    }
+
+
+    /* footer
+    --------------------------------*/
+    .footer .footer-contents {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        padding: 50px 20px 35px;
+    }
+    .footer .footer-contents .company-message {
+        -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+        order: 2;
+        margin-bottom: 35px;
+    }
+    .footer .footer-contents .company-info {
+        -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+        order: 1;
+        margin-bottom: 35px;
+    }
+    .footer .footer-contents .footer-copyright {
+        -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+        order: 3;
+        -ms-flex-item-align: center;
+        align-self: center;
+        margin: 0;
     }
 
 

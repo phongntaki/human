@@ -1,10 +1,10 @@
-@extends('home.master')
-@section('title', (!empty($contact)?$contact->seo_title:""))
-@section('seo_keyword', (!empty($contact)?$contact->seo_keyword:""))
-@section('seo_description', (!empty($contact)?$contact->seo_description:""))
-@section('seo_image', (!empty($contact)?asset($contact->seo_image):""))
-@section('seo_url', url()->current())
-@section('content')
+
+<?php $__env->startSection('title', (!empty($contact)?$contact->seo_title:"")); ?>
+<?php $__env->startSection('seo_keyword', (!empty($contact)?$contact->seo_keyword:"")); ?>
+<?php $__env->startSection('seo_description', (!empty($contact)?$contact->seo_description:"")); ?>
+<?php $__env->startSection('seo_image', (!empty($contact)?asset($contact->seo_image):"")); ?>
+<?php $__env->startSection('seo_url', url()->current()); ?>
+<?php $__env->startSection('content'); ?>
 
 <div class="boxed active">
     <div class="wrapper">
@@ -14,13 +14,13 @@
             <div class="content-block-single">
 
                 <!-- BEGIN .content-panel -->
-                {{-- tin moi trong mod          --}}
+                
                 <div class="content-panel block-type">
                     <div class="content-panel-title">
-                        <h2 class="panel-title"><a href="{{ url('loai-tin/'.$listnew->slug) }}">{{ $listnew->listname }}</a></h2>
+                        <h2 class="panel-title"><a href="<?php echo e(url('loai-tin/'.$listnew->slug)); ?>"><?php echo e($listnew->listname); ?></a></h2>
                     </div>
                     <div class="content-panel-body" id="content_pro">
-                        @include('home.content_news_ajax_list')
+                        <?php echo $__env->make('home.content_news_ajax_list', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                     </div>
                 </div>
 
@@ -30,15 +30,15 @@
                     <p><img src="#">Đang tải</p>
                 </div>
                 <!-- BIGIN ReadMore -->
-                <div class="text-center" @if($total <=10) style="display: none;" @endif>
-                     <a class="btn btn-default btn-more-info" id="load_more" base_url="{{url('')}}" listid="{{$listnew->id}}" skip="10" take="5" total="{{$total}}"  role="button">
+                <div class="text-center" <?php if($total <=10): ?> style="display: none;" <?php endif; ?>>
+                     <a class="btn btn-default btn-more-info" id="load_more" base_url="<?php echo e(url('')); ?>" listid="<?php echo e($listnew->id); ?>" skip="10" take="5" total="<?php echo e($total); ?>"  role="button">
                         <i class="fa fa-refresh" aria-hidden="true"></i> Xem thêm
                     </a>
                 </div>
             </div>
 
             <!-- BEGIN .sidebar -->
-            @include('home.sitebar_right')
+            <?php echo $__env->make('home.sitebar_right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
     </div>
 </div>
@@ -89,4 +89,6 @@
     });
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('home.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

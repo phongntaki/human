@@ -6,15 +6,13 @@
 @section('seo_url', url()->current())
 @section('content')
 
-<div class="boxed active pages">
+<div class="boxed active">
     <div class="wrapper">
 
-<!--        <h1>カテゴリトップ／アーカイブページ2</h1>-->
-
-        <div class="content-block has-sidebar">
+        <div class="content-block">
             <!-- BEGIN .content-block-single -->
             <div class="content-block-single">
-
+                <!-- BEGIN .content-panel -->
                 <div class="content-panel carousel-type">
                     <div class="content-panel-title">
                         <h2 class="panel-title"><a href="{{ url('loai-tin/'.$modnew->slug) }}">{{ $modnew->modname }}</a></h2>
@@ -27,12 +25,9 @@
                         </ul>
                     </div>
 
-<!--
                     <?php
                         $item = $modnew->top_news_item($modnew->id)->take(3);
-//                        $hot = $item->shift();
                      ?>
--->
                     <div class="content-panel-body">
                         <ul class="panel-items">
                             @foreach($item as $news)
@@ -52,6 +47,7 @@
                     </div>
                 </div>
 
+                <!-- BEGIN .content-panel -->
                 {{-- tin moi trong mod          --}}
                 <div class="content-panel block-type">
                     <div class="content-panel-title">
@@ -68,15 +64,16 @@
                 </div>
 
                 <!-- BIGIN ReadMore -->
-                <div class="text-center" @if($total <=9) style="display: none;" @endif>
-                     <a class="btn btn-default btn-more-info" id="load_more" base_url="{{url('')}}" modid="{{$modnew->id}}" skip="10" take="5" total="{{$total}}"  role="button">
-                        <i class="fa fa-refresh" aria-hidden="true"></i> Xem thêm
+                <div class="read-more" @if($total <=9) style="display: none;" @endif>
+                    <a class="btn-more" id="load_more" base_url="{{url('')}}" modid="{{$modnew->id}}" skip="10" take="5" total="{{$total}}"  role="button">
+                        <i class="fas fa-angle-right"></i>
+                         Xem thêm
                     </a>
                 </div>
             </div>
 
             <!-- BEGIN .sidebar -->
-                @include('home.sitebar_right')
+             @include('home.sitebar_right')
         </div>
     </div>
 </div>

@@ -6,15 +6,13 @@
 <?php $__env->startSection('seo_url', url()->current()); ?>
 <?php $__env->startSection('content'); ?>
 
-<div class="boxed active pages">
+<div class="boxed active">
     <div class="wrapper">
 
-<!--        <h1>カテゴリトップ／アーカイブページ2</h1>-->
-
-        <div class="content-block has-sidebar">
+        <div class="content-block">
             <!-- BEGIN .content-block-single -->
             <div class="content-block-single">
-
+                <!-- BEGIN .content-panel -->
                 <div class="content-panel carousel-type">
                     <div class="content-panel-title">
                         <h2 class="panel-title"><a href="<?php echo e(url('loai-tin/'.$modnew->slug)); ?>"><?php echo e($modnew->modname); ?></a></h2>
@@ -27,12 +25,9 @@
                         </ul>
                     </div>
 
-<!--
                     <?php
                         $item = $modnew->top_news_item($modnew->id)->take(3);
-//                        $hot = $item->shift();
                      ?>
--->
                     <div class="content-panel-body">
                         <ul class="panel-items">
                             <?php $__currentLoopData = $item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $news): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -52,6 +47,7 @@
                     </div>
                 </div>
 
+                <!-- BEGIN .content-panel -->
                 
                 <div class="content-panel block-type">
                     <div class="content-panel-title">
@@ -68,15 +64,16 @@
                 </div>
 
                 <!-- BIGIN ReadMore -->
-                <div class="text-center" <?php if($total <=9): ?> style="display: none;" <?php endif; ?>>
-                     <a class="btn btn-default btn-more-info" id="load_more" base_url="<?php echo e(url('')); ?>" modid="<?php echo e($modnew->id); ?>" skip="10" take="5" total="<?php echo e($total); ?>"  role="button">
-                        <i class="fa fa-refresh" aria-hidden="true"></i> Xem thêm
+                <div class="read-more" <?php if($total <=9): ?> style="display: none;" <?php endif; ?>>
+                    <a class="btn-more" id="load_more" base_url="<?php echo e(url('')); ?>" modid="<?php echo e($modnew->id); ?>" skip="10" take="5" total="<?php echo e($total); ?>"  role="button">
+                        <i class="fas fa-angle-right"></i>
+                         Xem thêm
                     </a>
                 </div>
             </div>
 
             <!-- BEGIN .sidebar -->
-                <?php echo $__env->make('home.sitebar_right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+             <?php echo $__env->make('home.sitebar_right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
     </div>
 </div>

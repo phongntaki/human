@@ -9,7 +9,7 @@
 <div class="boxed active">
     <div class="wrapper">
 
-        <div class="content-block has-sidebar">
+        <div class="content-block">
             <!-- BEGIN .content-block-single -->
             <div class="content-block-single">
 
