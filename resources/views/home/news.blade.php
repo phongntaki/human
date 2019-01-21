@@ -9,8 +9,6 @@
 <div class="boxed active">
     <div class="wrapper">
 
-        <h1>記事ページ2</h1>
-
         <div class="content-block">
             <!-- BEGIN .content-block-single -->
             <div class="content-block-single">
@@ -18,17 +16,18 @@
                 <!-- BEGIN .content-panel -->
                 <div class="content-panel">
                     <div class="content-panel-body article-header">
-                        <strong class="category-link">
-                        @if($itemnews->idlistnew !="")
-                            Danh mục : <a href="{{url('loai-tin/'.$itemnews->list_name($itemnews->idlistnew)['slug'])}}">{{ $itemnews->list_name($itemnews->idlistnew)['listname'] }}</a>
-                        @elseif($itemnews->idmodnew !="")
-                            Danh mục : <a href="{{url('loai-tin/'.$itemnews->mod_name($itemnews->idmodnew)['slug'])}}">{{ $itemnews->mod_name($itemnews->idmodnew)['modname'] }}</a>
-                        @endif
-                        </strong>
-                        <h2>{{$itemnews->newsname}}</h2>
+                        <p class="news-date">{{ $itemnews->created_at->format('Y/m/d')}}</p>
+                        <h2 class="news-title">{{$itemnews->newsname}}</h2>
+                        <p class="category-link">
+                            @if($itemnews->idlistnew !="")
+                                Danh mục : <a href="{{url('loai-tin/'.$itemnews->list_name($itemnews->idlistnew)['slug'])}}">{{ $itemnews->list_name($itemnews->idlistnew)['listname'] }}</a>
+                            @elseif($itemnews->idmodnew !="")
+                                Danh mục : <a href="{{url('loai-tin/'.$itemnews->mod_name($itemnews->idmodnew)['slug'])}}">{{ $itemnews->mod_name($itemnews->idmodnew)['modname'] }}</a>
+                            @endif
+                        </p>
+
                         <div class="article-meta">
-                            <a href="#" class="meta-item">{{$itemnews->newuser}}</a>
-                            <a href="#" class="meta-item">{{ $itemnews->created_at }}</a>
+
                             <a href="#comments" class="meta-item"><span class="fb-comments-count" data-href="{{url()->current()}}"></span> Bình Luận</a>
                             <a href="#" title="" class="meta-item">{{ $itemnews->view_count }} Lượt xem</a>
                             @if($itemnews->dangky !="")

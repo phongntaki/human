@@ -19,7 +19,6 @@
         <link rel="shortcut icon" href="{{url('public/home/images/favicon.ico')}}">
 
         <link type="text/css" rel="stylesheet" href="{{url('public/home/css/reset.css')}}">
-        <link type="text/css" rel="stylesheet" href="{{url('public/home/css/font-awesome.min.css')}}">
         <link type="text/css" rel="stylesheet" href="{{url('public/home/css/weather-icons.min.css')}}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -33,6 +32,8 @@
         <link type="text/css" rel="stylesheet" href="{{url('public/home/css/demo-settings.css')}}">
         <link type="text/css" rel="stylesheet" href="{{url('public/home/css/style.css')}}">
         <link type="text/css" rel="stylesheet" href="{{url('public/home/css/lienhe.css')}}">
+        <link type="text/css" rel="stylesheet" href="{{url('public/home/css/slick.css')}}">
+        <link type="text/css" rel="stylesheet" href="{{url('public/home/css/slick-theme.css')}}">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -217,9 +218,21 @@
         <script type="text/javascript" src="{{url('public/home/jscript/dat-menu.js')}}"></script>
         <script type="text/javascript" src="{{url('public/home/jscript/theme-scripts.js')}}"></script>
         <script type="text/javascript" src="{{url('public/home/jscript/ot-lightbox.js')}}"></script>
+        <script type="text/javascript" src="{{url('public/home/jscript/slick.min.js')}}"></script>
+        <script type="text/javascript" src="{{url('public/home/jscript/ofi.min.js')}}"></script>
         <script type="text/javascript" src="{{url('public/js/jquery.sticky-kit.min.js')}}"></script>
         <script src="{{ asset('public/js/home/customer.js') }}"></script>
         <script async src="{{ asset('public/js/home/boxchat.js') }}"></script>
+        <script>
+            $('.main-slider').slick({
+                autoplay:true,
+                autoplaySpeed:5000,
+                dots:true,
+            });
+        </script>
+        <script>
+            objectFitImages('img.object-fit-img');
+        </script>
 <!--
         <script>
             if ($(window).width() > 1050) {
