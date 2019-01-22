@@ -4,7 +4,7 @@
         <div class="widget widget-info">
             <h3 class="widget-title">Tư vấn trực tiếp</h3>
             {{-- tin moi nhat --}}
-            <p>Văn bản giả được nhập vào.Văn bản giả được nhập vào.Văn bản giả được nhập vào.</p>
+            <p>Hãy liên lạc với chúng tôi khi bạn có vấn đề cần giải đáp</p>
             <ul class="widget-article-lists" >
                 <li class="item info-phone">
                     <span class="hidden">Phone: </span>012-345-6789<br>

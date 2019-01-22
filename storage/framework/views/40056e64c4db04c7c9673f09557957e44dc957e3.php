@@ -1,10 +1,10 @@
-@extends('home.master')
-@section('title', (!empty($contact)?$contact->seo_title:""))
-@section('seo_keyword', (!empty($contact)?$contact->seo_keyword:""))
-@section('seo_description', (!empty($contact)?$contact->seo_description:""))
-@section('seo_image', (!empty($contact)?asset($contact->seo_image):""))
-@section('seo_url', url()->current())
-@section('content')
+
+<?php $__env->startSection('title', (!empty($contact)?$contact->seo_title:"")); ?>
+<?php $__env->startSection('seo_keyword', (!empty($contact)?$contact->seo_keyword:"")); ?>
+<?php $__env->startSection('seo_description', (!empty($contact)?$contact->seo_description:"")); ?>
+<?php $__env->startSection('seo_image', (!empty($contact)?asset($contact->seo_image):"")); ?>
+<?php $__env->startSection('seo_url', url()->current()); ?>
+<?php $__env->startSection('content'); ?>
 
 <div class="boxed active">
     <div class="wrapper">
@@ -15,13 +15,13 @@
                 <!-- BEGIN .content-panel -->
                 <div class="content-panel carousel-type">
                     <div class="content-panel-title">
-                        <h2 class="panel-title"><a href="{{ url('loai-tin/'.$modnew->slug) }}">{{ $modnew->modname }}</a></h2>
+                        <h2 class="panel-title"><a href="<?php echo e(url('loai-tin/'.$modnew->slug)); ?>"><?php echo e($modnew->modname); ?></a></h2>
                         <ul class="panel-title-submenu">
-                            @foreach($modnew->listnew_inmod($modnew->id) as $cat_mod)
+                            <?php $__currentLoopData = $modnew->listnew_inmod($modnew->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat_mod): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <li class="submenu-item">
-                                <a href="{{ url('loai-tin/'.$cat_mod->slug) }}">{{ $cat_mod->listname }}</a>
+                                <a href="<?php echo e(url('loai-tin/'.$cat_mod->slug)); ?>"><?php echo e($cat_mod->listname); ?></a>
                             </li>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
 
@@ -30,31 +30,31 @@
                      ?>
                     <div class="content-panel-body">
                         <ul class="panel-items">
-                            @foreach($item as $news)
+                            <?php $__currentLoopData = $item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $news): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <li class="item">
-                                <a href="{{url('/chi-tiet/'.$news->slug)}}">
+                                <a href="<?php echo e(url('/chi-tiet/'.$news->slug)); ?>">
                                     <div class="item-image">
-                                        <img src="{{url('public/img/news/800x800/'.$news['newimg'])}}" alt="{{$news->created_at}}" />
+                                        <img src="<?php echo e(url('public/img/news/800x800/'.$news['newimg'])); ?>" alt="<?php echo e($news->created_at); ?>" />
                                     </div>
                                     <div class="item-lead">
-                                        <p class="item-date">{{$news->created_at->format('Y/m/d')}}</p>
-                                        <h3 class="item-title">{{$news->newsname}}</h3>
+                                        <p class="item-date"><?php echo e($news->created_at->format('Y/m/d')); ?></p>
+                                        <h3 class="item-title"><?php echo e($news->newsname); ?></h3>
                                     </div>
                                 </a>
                             </li>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
                 </div>
 
                 <!-- BEGIN .content-panel -->
-                {{-- tin moi trong mod          --}}
+                
                 <div class="content-panel block-type">
                     <div class="content-panel-title">
                         <h2 class="panel-title">Tin mới trong mục</h2>
                     </div>
                     <div class="content-panel-body" id="content_pro">
-                        @include('home.content_news_ajax')
+                        <?php echo $__env->make('home.content_news_ajax', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                     </div>
                 </div>
 
@@ -64,8 +64,8 @@
                 </div>
 
                 <!-- BIGIN ReadMore -->
-                <div class="read-more" @if($total <=9) style="display: none;" @endif>
-                    <a class="btn-more" id="load_more" base_url="{{url('')}}" modid="{{$modnew->id}}" skip="10" take="5" total="{{$total}}"  role="button">
+                <div class="read-more" <?php if($total <=9): ?> style="display: none;" <?php endif; ?>>
+                    <a class="btn-more" id="load_more" base_url="<?php echo e(url('')); ?>" modid="<?php echo e($modnew->id); ?>" skip="10" take="5" total="<?php echo e($total); ?>"  role="button">
                         <i class="fas fa-angle-right"></i>
                          Xem thêm
                     </a>
@@ -73,7 +73,7 @@
             </div>
 
             <!-- BEGIN .sidebar -->
-             @include('home.sitebar_right')
+             <?php echo $__env->make('home.sitebar_right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
     </div>
 </div>
@@ -124,4 +124,6 @@
         });
     </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('home.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

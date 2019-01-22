@@ -1,10 +1,10 @@
-@extends('home.master')
-@section('title', (!empty($contact)?$contact->seo_title:""))
-@section('seo_keyword', (!empty($contact)?$contact->seo_keyword:""))
-@section('seo_description', (!empty($contact)?$contact->seo_description:""))
-@section('seo_image', (!empty($contact)?asset($contact->seo_image):""))
-@section('seo_url', url()->current())
-@section('content')
+
+<?php $__env->startSection('title', (!empty($contact)?$contact->seo_title:"")); ?>
+<?php $__env->startSection('seo_keyword', (!empty($contact)?$contact->seo_keyword:"")); ?>
+<?php $__env->startSection('seo_description', (!empty($contact)?$contact->seo_description:"")); ?>
+<?php $__env->startSection('seo_image', (!empty($contact)?asset($contact->seo_image):"")); ?>
+<?php $__env->startSection('seo_url', url()->current()); ?>
+<?php $__env->startSection('content'); ?>
 
 <div class="boxed active">
     <div class="wrapper">
@@ -16,27 +16,28 @@
                 <!-- BEGIN .content-panel -->
                 <div class="content-panel">
                     <div class="content-panel-body article-header">
-                        <p class="news-date">{{ $itemnews->created_at->format('Y/m/d')}}</p>
-                        <h2 class="news-title">{{$itemnews->newsname}}</h2>
+                        <p class="news-date"><?php echo e($itemnews->created_at->format('Y/m/d')); ?></p>
+                        <h2 class="news-title"><?php echo e($itemnews->newsname); ?></h2>
                         <p class="category-link">
-                            @if($itemnews->idlistnew !="")
-                                Danh mục : <a href="{{url('loai-tin/'.$itemnews->list_name($itemnews->idlistnew)['slug'])}}">{{ $itemnews->list_name($itemnews->idlistnew)['listname'] }}</a>
-                            @elseif($itemnews->idmodnew !="")
-                                Danh mục : <a href="{{url('loai-tin/'.$itemnews->mod_name($itemnews->idmodnew)['slug'])}}">{{ $itemnews->mod_name($itemnews->idmodnew)['modname'] }}</a>
-                            @endif
+                            <?php if($itemnews->idlistnew !=""): ?>
+                                Danh mục : <a href="<?php echo e(url('loai-tin/'.$itemnews->list_name($itemnews->idlistnew)['slug'])); ?>"><?php echo e($itemnews->list_name($itemnews->idlistnew)['listname']); ?></a>
+                            <?php elseif($itemnews->idmodnew !=""): ?>
+                                Danh mục : <a href="<?php echo e(url('loai-tin/'.$itemnews->mod_name($itemnews->idmodnew)['slug'])); ?>"><?php echo e($itemnews->mod_name($itemnews->idmodnew)['modname']); ?></a>
+                            <?php endif; ?>
                         </p>
 
                         <div class="article-meta">
 
-                            <a href="#comments" class="meta-item"><span class="fb-comments-count" data-href="{{url()->current()}}"></span> Bình Luận</a>
-                            <a href="#" title="" class="meta-item">{{ $itemnews->view_count }} Lượt xem</a>
-                            @if($itemnews->dangky !="")
+                            <a href="#comments" class="meta-item"><span class="fb-comments-count" data-href="<?php echo e(url()->current()); ?>"></span> Bình Luận</a>
+                            <a href="#" title="" class="meta-item"><?php echo e($itemnews->view_count); ?> Lượt xem</a>
+                            <?php if($itemnews->dangky !=""): ?>
                             <a class="btn btn-danger" id="btn_dangky" title="Cách đăng ký" data-toggle="modal" href='#modal_popup'>Đăng Ký</a>
-                            @endif
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="content-panel-body shortcode-content">
-                        {!! $itemnews->newintro !!}
+                        <?php echo $itemnews->newintro; ?>
+
                     </div>
                 <!-- END .content-panel -->
                 </div>
@@ -44,13 +45,14 @@
                 <!-- BEGIN .content-panel -->
                 <div class="content-panel">
                     <div class="content_news">
-                        {!! $itemnews->newcontent !!}
+                        <?php echo $itemnews->newcontent; ?>
+
                     </div>
 
                     <div class="text-center">
-                        @if($itemnews->dangky !="")
+                        <?php if($itemnews->dangky !=""): ?>
                             <a class="btn btn-danger" id="btn_dangky" title="Cách đăng ký" data-toggle="modal" href='#modal_popup'>Đăng Ký Ngay</a>
-                        @endif
+                        <?php endif; ?>
                     </div>
                 <!-- END .content-panel -->
                 </div>
@@ -60,10 +62,10 @@
                     <div class="content-panel-body article-main-share" style="line-height: 7px;">
                         <span class="share-front"><i class="fa fa-share-alt"></i>Share</span>
                         <div class="fb-share-button"
-                            data-href="{{url()->current()}}"
+                            data-href="<?php echo e(url()->current()); ?>"
                             data-layout="button_count">
                           </div>
-                          <div class="g-plus" data-action="share" data-annotation="bubble" data-height="24" data-href="{{url()->current()}}"></div>
+                          <div class="g-plus" data-action="share" data-annotation="bubble" data-height="24" data-href="<?php echo e(url()->current()); ?>"></div>
                     </div>
                 <!-- END .content-panel -->
                 </div>
@@ -77,11 +79,11 @@
                             $tags = explode(", ", $itemnews->newtag);
                         }
                     ?>
-                    @if(!empty($tags))
-                        @for($count=0; $count < count($tags);$count ++ )
-                            <a href="{{url('/tags/'.$tags[$count])}}">{{$tags[$count]}}</a>
-                        @endfor
-                    @endif
+                    <?php if(!empty($tags)): ?>
+                        <?php for($count=0; $count < count($tags);$count ++ ): ?>
+                            <a href="<?php echo e(url('/tags/'.$tags[$count])); ?>"><?php echo e($tags[$count]); ?></a>
+                        <?php endfor; ?>
+                    <?php endif; ?>
                     </div>
                 <!-- END .content-panel -->
                 </div>
@@ -89,8 +91,8 @@
                 <!-- BEGIN .content-panel -->
                 <div class="content-panel">
                     <div class="content-panel-body do-space">
-                        <a href="{{$adverts_main[0]->link}}" target="_blank">
-                            <img src="{{url('public/img/images_bn/'.$adverts_main[0]->img)}}" alt="No image" width="100%" style="object-fit: contain; max-height: 150px; display: block;overflow:hidden; margin-bottom: 20px;" />
+                        <a href="<?php echo e($adverts_main[0]->link); ?>" target="_blank">
+                            <img src="<?php echo e(url('public/img/images_bn/'.$adverts_main[0]->img)); ?>" alt="No image" width="100%" style="object-fit: contain; max-height: 150px; display: block;overflow:hidden; margin-bottom: 20px;" />
                         </a>
                     </div>
                 <!-- END .content-panel -->
@@ -101,12 +103,12 @@
                         <h2> Ý kiến của bạn</h2>
                     </div>
                     <div class="content-panel-body comment-list">
-                        <div class="fb-comments" data-href="{{url()->current()}}" data-width="100%" data-numposts="5"></div>
+                        <div class="fb-comments" data-href="<?php echo e(url()->current()); ?>" data-width="100%" data-numposts="5"></div>
                     </div>
                 <!-- END .content-panel -->
                 </div>
                 <!-- BEGIN .content-panel -->
-            @if($new_in_list_active->count()>0)
+            <?php if($new_in_list_active->count()>0): ?>
                 <div class="content-panel widget">
                     <div class="content-panel-title">
                         <h2>Đọc tiếp</h2>
@@ -114,32 +116,34 @@
                     <!-- BEGIN .top-slider-body -->
                     <div class="top-slider-body" data-top-slider-timeout="6000" data-top-slider-autostart="false">
                         <div class="widget-article-list">
-                        @foreach($new_in_list_active as $item_lt )
+                        <?php $__currentLoopData = $new_in_list_active; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_lt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="col-md-6">
                             <div class="item">
                                 <div class="item-header">
-                                    <a href="{{url('chi-tiet/'.$item_lt->slug)}}">
-                                        <img src="{{url('/public/img/news/100x100/'.$item_lt->newimg)}}" alt="no img" width="50" /></a>
+                                    <a href="<?php echo e(url('chi-tiet/'.$item_lt->slug)); ?>">
+                                        <img src="<?php echo e(url('/public/img/news/100x100/'.$item_lt->newimg)); ?>" alt="no img" width="50" /></a>
                                 </div>
                                 <div class="item-content">
-                                    <h4><a href="{{url('chi-tiet/'.$item_lt->slug)}}">{{$item_lt->newsname}}</a></h4>
+                                    <h4><a href="<?php echo e(url('chi-tiet/'.$item_lt->slug)); ?>"><?php echo e($item_lt->newsname); ?></a></h4>
                                     <span class="item-meta">
-                                        <a href="#"><i class="fa fa-clock-o"></i>{{$item_lt->created_at}}</a>
+                                        <a href="#"><i class="fa fa-clock-o"></i><?php echo e($item_lt->created_at); ?></a>
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                     </div>
                 <!-- END .content-panel -->
                 </div>
-            @endif
+            <?php endif; ?>
             <!-- END .content-block-single -->
             </div>
             <!-- BEGIN .sidebar -->
-            @include('home.sitebar_right')
+            <?php echo $__env->make('home.sitebar_right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('home.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

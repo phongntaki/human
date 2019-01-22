@@ -11,7 +11,7 @@
 
         <h1>沿革ページ</h1>
 
-        <div class="content-block has-sidebar">
+        <div class="content-block">
             <!-- BEGIN .content-block-single -->
             <div class="content-block-single">
                 <div style="color: rgb(48, 48, 48); font-family: Arial, Helvetica, sans-serif; font-size: 13px;">

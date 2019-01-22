@@ -11,7 +11,7 @@
 
         <h1>ログインページ</h1>
 
-        <div class="content-block has-sidebar">
+        <div class="content-block">
             <!-- BEGIN .content-block-single -->
             <div class="content-block-single">
                 <form role="form" class="form-vertical" action="" method="POST">
