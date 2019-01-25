@@ -5,6 +5,7 @@
 <?php $__env->startSection('seo_url', url()->current()); ?>
 <?php $__env->startSection('content'); ?>
 
+    <!-- BEGIN sliderp-sec -->
     <div class="boxed active slider-sec">
         <div class="wrapper">
             <!-- BEGIN .main-slider -->
@@ -27,6 +28,7 @@
         </div>
     </div>
 
+    <!-- BEGIN page-content -->
     <div class="boxed active">
     <div class="wrapper">
         <div class="content-block">
@@ -37,7 +39,7 @@
 
                 <div class="content-panel carousel-type">
                     <div class="content-panel-title">
-                        <h2 class="panel-title"><a href="<?php echo e(url('loai-tin/'.$index_mod->slug)); ?>"><?php echo e($index_mod->modname); ?></a></h2>
+                        <h2 class=" panel-title"><a href="<?php echo e(url('loai-tin/'.$index_mod->slug)); ?>"><?php echo e($index_mod->modname); ?></a></h2>
                         <ul class="panel-title-submenu">
                             <?php $__currentLoopData = $index_mod->listnews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $itemlist): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <li class="submenu-item"><a href="<?php echo e(url('/loai-tin/'.$itemlist->slug)); ?>"><?php echo e($itemlist->listname); ?></a></li>

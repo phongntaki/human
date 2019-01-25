@@ -52,7 +52,6 @@
     </head>
 
     <body class="ot-menu-will-follow">
-
         <!-- BEGIN .header -->
         <header class="header">
             <!-- BEGIN .top-menu -->
@@ -67,23 +66,12 @@
                                             <form action="<?php echo e(url('/search')); ?>">
                                                 <input type="text" name="key" placeholder="Nhập từ khóa tìm kiếm..">
                                             </form>
+                                            <i class="fas fa-search"></i>
                                         </div>
                                     </div>
                                 </li>
-                                <!--                                    ドロップダウンテスト用-->
-
-<!--
-                                <li id="home_login" class="btn-myaccount dropdown hover"><a class="myaccount" href="">Hi <?php echo e(Session::get('logined_cusfullname')); ?></a>
-                                    <ul id="home_logout" class="dropdown-menu">
-                                        <li><a href="<?php echo e(url('my-profile')); ?>">My profile setting</a></li>
-                                        <li><a href="<?php echo e(url('logout')); ?>">Logout</a></li>
-                                        <li><a href="">test</a></li>
-                                    </ul>
-                                </li>
--->
-
                                 <?php if(Session::get('logined_cus') == 1): ?>
-                                <li id="home_login" class="btn-account dropdown hover"><a class="myaccount" href="">Hi <?php echo e(Session::get('logined_cusfullname')); ?></a>
+                                <li id="home_login" class="btn-myaccount dropdown hover"><a class="myaccount" href="">Hi <?php echo e(Session::get('logined_cusfullname')); ?></a>
                                     <ul id="home_logout" class="dropdown-menu">
                                         <li><a href="<?php echo e(url('my-profile')); ?>">My profile setting</a></li>
                                         <li><a href="<?php echo e(url('logout')); ?>">Logout</a></li>
@@ -103,9 +91,9 @@
             <div class="header-logo">
                 <div class="boxed active">
                     <div class="wrapper">
-                        <h1 class="logo">
+                        <div class="logo">
                             <a href="<?php echo e(url('')); ?>"><img src="<?php echo e(url('/public/home/'.$contact['logo'])); ?>" alt="<?php echo e($contact->nameco); ?>"></a>
-                        </h1>
+                        </div>
                     </div>
                 </div>
                 <!-- END .header-logo -->
@@ -119,10 +107,10 @@
                             <nav class="nav">
                                 <ul class="nav-lists load-responsive" rel="DANH MỤC TIN">
                                     <li><a href="<?php echo e(url('')); ?>">TRANG CHỦ</a></li>
-                                    <li><a href="<?php echo e(url('')); ?>"><span>Giới thiệu</span></a>
+                                    <li><a href="<?php echo e(url('gioi-thieu')); ?>"><span>Giới thiệu</span></a>
                                         <ul class="sub-nav-lists">
-                                            <li><a href="<?php echo e(url('gioi-thieu')); ?>">Giới thiệu chung</a></li>
-                                            <li><a href="<?php echo e(url('hinh-thanh')); ?>">Hình thành và phát triển</a></li>
+                                            <li><a href="<?php echo e(url('hinh-thanh')); ?>">Giới thiệu chung</a></li>
+<!--                                            <li><a href="<?php echo e(url('hinh-thanh')); ?>">Hình thành và phát triển</a></li>-->
                                             <li><a href="<?php echo e(url('linh-vuc')); ?>">Lĩnh vực hoạt động</a></li>
                                         </ul>
                                     </li>
@@ -150,7 +138,7 @@
                 <div class="boxed active">
                     <div class="wrapper">
                         <p class="noinfo-text">
-                            <span class="nowrap">Bạn nên đăng ký thông tin cá</span> <span class="nowrap">nhân để chúng tôi có</span> <span class="nowrap">thể chọn ra công việc</span> <span class="nowrap">tốt nhất phù hợp với bạn.</span> <span class="nowrap">Chưa có tài khoản, đăng ký tại</span><span class="btn-noinfo nowrap"><a href="<?php echo e(url('/register')); ?>" style="color: #81F7F3">ĐÂY</a></span>
+                            <span class="nowrap">Bạn nên đăng ký thông tin cá</span> <span class="nowrap">nhân để chúng tôi có</span> <span class="nowrap">thể chọn ra công việc</span> <span class="nowrap">tốt nhất phù hợp với bạn.</span> <span class="nowrap">Chưa có tài khoản.</span><span class="btn-noinfo nowrap"><a href="<?php echo e(url('/register')); ?>" style="color: #81F7F3">Đăng Ký Ngay</a></span>
                         </p>
                     </div>
                 </div>

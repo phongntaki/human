@@ -15,7 +15,7 @@
                 <!-- BEGIN .content-panel -->
                 <div class="content-panel carousel-type">
                     <div class="content-panel-title">
-                        <h2 class="panel-title"><a href="{{ url('loai-tin/'.$modnew->slug) }}">{{ $modnew->modname }}</a></h2>
+                        <h1 class="panel-title"><a href="{{ url('loai-tin/'.$modnew->slug) }}">{{ $modnew->modname }}</a></h1>
                         <ul class="panel-title-submenu">
                             @foreach($modnew->listnew_inmod($modnew->id) as $cat_mod)
                             <li class="submenu-item">
