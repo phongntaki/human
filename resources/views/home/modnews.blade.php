@@ -33,12 +33,12 @@
                             @foreach($item as $news)
                             <li class="item">
                                 <a href="{{url('/chi-tiet/'.$news->slug)}}">
+                                    <div class="item-lead">
+                                        <h3 class="item-title">{{$news->newsname}}</h3>
+                                        <p class="item-date">{{$news->created_at->format('Y/m/d')}}</p>
+                                    </div>
                                     <div class="item-image">
                                         <img src="{{url('public/img/news/800x800/'.$news['newimg'])}}" alt="{{$news->created_at}}" />
-                                    </div>
-                                    <div class="item-lead">
-                                        <p class="item-date">{{$news->created_at->format('Y/m/d')}}</p>
-                                        <h3 class="item-title">{{$news->newsname}}</h3>
                                     </div>
                                 </a>
                             </li>
