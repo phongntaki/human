@@ -91,6 +91,19 @@
             <div class="header-logo">
                 <div class="boxed active">
                     <div class="wrapper">
+
+<!--
+    フォン君へ
+    TOPページを表示している時は、以下のソースを表示させてください。
+-->
+                        <h1 class="logo">
+                                <a href="{{url('')}}"><img src="{{ url('/public/home/'.$contact['logo'])}}" alt="{{$contact->nameco}}"></a>
+                        </h1>
+
+<!--
+フォン君へ
+その他のページを表示している時は、以下のソースを表示させてください。
+-->
                         <div class="logo">
                             <a href="{{url('')}}"><img src="{{ url('/public/home/'.$contact['logo'])}}" alt="{{$contact->nameco}}"></a>
                         </div>
