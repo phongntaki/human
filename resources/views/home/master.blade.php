@@ -52,7 +52,6 @@
     </head>
 
     <body class="ot-menu-will-follow">
-
         <!-- BEGIN .header -->
         <header class="header">
             <!-- BEGIN .top-menu -->
@@ -67,6 +66,7 @@
                                             <form action="{{ url('/search') }}">
                                                 <input type="text" name="key" placeholder="Nhập từ khóa tìm kiếm..">
                                             </form>
+                                            <i class="fas fa-search"></i>
                                         </div>
                                     </div>
                                 </li>
@@ -91,9 +91,27 @@
             <div class="header-logo">
                 <div class="boxed active">
                     <div class="wrapper">
+
+<!--
+    フォン君へ
+
+    ① TOPページを表示している時は、1つ目のソースを表示させて、2つ目のソースは消してください。
+    ② その他のページを表示している時は、1つ目のソースを消して、2つ目のソースを表示させてください。
+-->
+
+<!--1つ目のソース START-->
                         <h1 class="logo">
-                            <a href="{{url('')}}"><img src="{{ url('/public/home/'.$contact['logo'])}}" alt="{{$contact->nameco}}"></a>
+                                <a href="{{url('')}}"><img src="{{ url('/public/home/'.$contact['logo'])}}" alt="{{$contact->nameco}}"></a>
                         </h1>
+<!--1つ目のソース END-->
+
+
+<!--2つ目のソース START-->
+                        <div class="logo">
+                            <a href="{{url('')}}"><img src="{{ url('/public/home/'.$contact['logo'])}}" alt="{{$contact->nameco}}"></a>
+                        </div>
+<!--2つ目のソース END-->
+
                     </div>
                 </div>
                 <!-- END .header-logo -->
@@ -107,10 +125,10 @@
                             <nav class="nav">
                                 <ul class="nav-lists load-responsive" rel="DANH MỤC TIN">
                                     <li><a href="{{url('')}}">TRANG CHỦ</a></li>
-                                    <li><a href="{{url('')}}"><span>Giới thiệu</span></a>
+                                    <li><a href="{{url('gioi-thieu')}}"><span>Giới thiệu</span></a>
                                         <ul class="sub-nav-lists">
-                                            <li><a href="{{url('gioi-thieu')}}">Giới thiệu chung</a></li>
-                                            <li><a href="{{url('hinh-thanh')}}">Hình thành và phát triển</a></li>
+                                            <li><a href="{{url('hinh-thanh')}}">Giới thiệu chung</a></li>
+<!--                                            <li><a href="{{url('hinh-thanh')}}">Hình thành và phát triển</a></li>-->
                                             <li><a href="{{url('linh-vuc')}}">Lĩnh vực hoạt động</a></li>
                                         </ul>
                                     </li>
@@ -138,7 +156,7 @@
                 <div class="boxed active">
                     <div class="wrapper">
                         <p class="noinfo-text">
-                            <span class="nowrap">Bạn nên đăng ký thông tin cá</span> <span class="nowrap">nhân để chúng tôi có</span> <span class="nowrap">thể chọn ra công việc</span> <span class="nowrap">tốt nhất phù hợp với bạn.</span> <span class="nowrap">Chưa có tài khoản, đăng ký tại</span><span class="btn-noinfo nowrap"><a href="{{ url('/register') }}" style="color: #81F7F3">ĐÂY</a></span>
+                            <span class="nowrap">Bạn nên đăng ký thông tin cá</span> <span class="nowrap">nhân để chúng tôi có</span> <span class="nowrap">thể chọn ra công việc</span> <span class="nowrap">tốt nhất phù hợp với bạn.</span> <span class="nowrap">Chưa có tài khoản.</span><span class="btn-noinfo nowrap"><a href="{{ url('/register') }}" style="color: #81F7F3">Đăng Ký Ngay</a></span>
                         </p>
                     </div>
                 </div>

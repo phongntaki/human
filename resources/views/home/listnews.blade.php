@@ -17,7 +17,7 @@
                 {{-- tin moi trong mod          --}}
                 <div class="content-panel block-type">
                     <div class="content-panel-title">
-                        <h2 class="panel-title"><a href="{{ url('loai-tin/'.$listnew->slug) }}">{{ $listnew->listname }}</a></h2>
+                        <h1 class="panel-title"><a href="{{ url('loai-tin/'.$listnew->slug) }}">{{ $listnew->listname }}</a></h1>
                     </div>
                     <div class="content-panel-body" id="content_pro">
                         @include('home.content_news_ajax_list')

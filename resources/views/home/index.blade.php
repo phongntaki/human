@@ -6,6 +6,7 @@
 @section('seo_url', url()->current())
 @section('content')
 
+    <!-- BEGIN sliderp-sec -->
     <div class="boxed active slider-sec">
         <div class="wrapper">
             <!-- BEGIN .main-slider -->
@@ -28,6 +29,7 @@
         </div>
     </div>
 
+    <!-- BEGIN page-content -->
     <div class="boxed active">
     <div class="wrapper">
         <div class="content-block">
@@ -38,7 +40,7 @@
 
                 <div class="content-panel carousel-type">
                     <div class="content-panel-title">
-                        <h2 class="panel-title"><a href="{{ url('loai-tin/'.$index_mod->slug) }}">{{ $index_mod->modname }}</a></h2>
+                        <h2 class=" panel-title"><a href="{{ url('loai-tin/'.$index_mod->slug) }}">{{ $index_mod->modname }}</a></h2>
                         <ul class="panel-title-submenu">
                             @foreach($index_mod->listnews as $itemlist)
                             <li class="submenu-item"><a href="{{url('/loai-tin/'.$itemlist->slug)}}">{{$itemlist->listname}}</a></li>

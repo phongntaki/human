@@ -339,7 +339,10 @@
     /* common
     ------------------------------*/
     body {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
+    }
+    p {
+        font-size: 1.6rem;
     }
     .wrapper {
         max-width: 90%;
@@ -433,21 +436,20 @@
         height: 185px;
         margin-bottom: 15px;
     }
-    .content-panel.carousel-type .content-panel-body .panel-items .item .item-lead .item-date,
-    .content-panel.block-type .content-panel-body .panel-items .item .item-lead .item-date{
-        margin-bottom: 5px;
-    }
 
     /* block-type */
     .content-panel.block-type .content-panel-body .panel-items .item {
         margin-bottom: 30px;
     }
     .content-panel.block-type .content-panel-body .panel-items .item a {
-        display: block;
-/*        margin-bottom: 30px;*/
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
     }
     .content-panel.block-type .content-panel-body .panel-items .item .item-lead {
         position: relative;
+        padding-top: 26px;
     }
     .content-panel.block-type .content-panel-body .panel-items .item .item-lead .item-title {
         font-size: 1.6rem;
@@ -461,6 +463,12 @@
         top: 0;
         right: 0;
     }
+    .content-panel.block-type .content-panel-body .panel-items .item .item-lead .item-date {
+        font-size: 1.2rem;
+    }
+    .content-panel.block-type .content-panel-body .panel-items .item .item-lead .comment-date {
+        margin-bottom: 0;
+    }
 
     /* read-more */
     .read-more {
@@ -471,6 +479,106 @@
     }
     .read-more.top-index {
         margin: 10px 0 65px;
+    }
+
+
+    /* PostPage styling
+    --------------------------------*/
+    .content .content-block .content-panel.post-content {
+        margin-bottom: 50px;
+    }
+    .post-header .post-title {
+        font-size: 2.0rem;
+    }
+    .post-header .post-date {
+        font-size: 1.4rem;
+    }
+    .post-header .post-header-meta .post-share {
+        font-size: 1.2rem;
+    }
+
+    .post-body img {
+        margin-bottom: 0;
+    }
+    .post-body .desc {
+        font-size: 1.6rem;
+        font-weight: normal;
+    }
+    .post-body h2 {
+        font-size: 1.8rem;
+        padding-left: 18px;
+        margin: 50px 0 20px;
+    }
+    .post-body h3 {
+        font-size: 1.8rem;
+    }
+    .post-body h4 {
+        font-size: 1.8rem;
+    }
+    .post-body ul {
+        margin-left: 30px;
+    }
+    .post-body table {
+        font-size: 1.4rem;
+    }
+    .post-body .date-table caption {
+        font-size: 1.8rem;
+        margin-bottom: 3px;
+    }
+
+
+    /* 404 notfound
+    -----------------------------------------*/
+    .big-message {
+        padding: 100px 0 20px;
+    }
+    .big-message .big-message-heading {
+        text-align: center;
+    }
+    .big-message .big-message-heading .big-message-title {
+        font-size: 4.4rem;
+        padding: 0;
+        white-space: nowrap;
+    }
+    .big-message .big-message-heading i.far {
+        position: static;
+        display: block;
+        margin-bottom: 20px;
+    }
+    .big-message .big-message-content .sub-title {
+        font-size: 1.8rem;
+    }
+
+
+
+
+
+
+
+    /* Profile-Page */
+    .form-vertical {
+        margin-top: 50px;
+    }
+    .form-vertical .form-group {
+        display: block;
+        margin-bottom: 25px;
+    }
+    .form-vertical .form-group .control-label {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        margin-bottom: 10px;
+    }
+    .form-vertical .form-group.detail-textarea .control-label,
+    .form-vertical .form-group.detail-photo .control-label {
+        margin-top: 0;
+    }
+    .form-vertical .form-submit {
+        margin: 50px 0 25px;
+    }
+    .form-vertical .form-submit .form-button {
+        width: 100%;
+        padding: 14px 25px;
     }
 
 
@@ -550,17 +658,9 @@
 
 
 
-    .alert-message.alert-big strong {
-        font-size: 16px;
-    }
 
-    .full-width-articles > .item .item-content p, .photo-gallery-blocks > .item .item-content p, .split-article-slide-right > .item .item-content p, .content-panel-body.article-list > .item .item-content p, body, p {
-        font-size: 13px;
-        /* height: 58px; */
-        /* overflow: hidden;
-        text-overflow: ellipsis; */
-    }
 
+/*
     .h1, h1 {
         font-size: 30px;
     }
@@ -584,6 +684,7 @@
     .h6, h6 {
         font-size: 12px;
     }
+*/
 
     .shortcode-content .short-tabs > ul li a {
         padding: 15px 13px;

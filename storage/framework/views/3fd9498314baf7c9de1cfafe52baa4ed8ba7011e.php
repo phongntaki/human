@@ -17,7 +17,7 @@
                 
                 <div class="content-panel block-type">
                     <div class="content-panel-title">
-                        <h2 class="panel-title"><a href="<?php echo e(url('loai-tin/'.$listnew->slug)); ?>"><?php echo e($listnew->listname); ?></a></h2>
+                        <h1 class="panel-title"><a href="<?php echo e(url('loai-tin/'.$listnew->slug)); ?>"><?php echo e($listnew->listname); ?></a></h1>
                     </div>
                     <div class="content-panel-body" id="content_pro">
                         <?php echo $__env->make('home.content_news_ajax_list', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

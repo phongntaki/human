@@ -15,7 +15,7 @@
                 <!-- BEGIN .content-panel -->
                 <div class="content-panel carousel-type">
                     <div class="content-panel-title">
-                        <h2 class="panel-title"><a href="{{ url('loai-tin/'.$modnew->slug) }}">{{ $modnew->modname }}</a></h2>
+                        <h1 class="panel-title"><a href="{{ url('loai-tin/'.$modnew->slug) }}">{{ $modnew->modname }}</a></h1>
                         <ul class="panel-title-submenu">
                             @foreach($modnew->listnew_inmod($modnew->id) as $cat_mod)
                             <li class="submenu-item">
@@ -33,12 +33,12 @@
                             @foreach($item as $news)
                             <li class="item">
                                 <a href="{{url('/chi-tiet/'.$news->slug)}}">
+                                    <div class="item-lead">
+                                        <h3 class="item-title">{{$news->newsname}}</h3>
+                                        <p class="item-date">{{$news->created_at->format('Y/m/d')}}</p>
+                                    </div>
                                     <div class="item-image">
                                         <img src="{{url('public/img/news/800x800/'.$news['newimg'])}}" alt="{{$news->created_at}}" />
-                                    </div>
-                                    <div class="item-lead">
-                                        <p class="item-date">{{$news->created_at->format('Y/m/d')}}</p>
-                                        <h3 class="item-title">{{$news->newsname}}</h3>
                                     </div>
                                 </a>
                             </li>
