@@ -94,19 +94,24 @@
 
 <!--
     フォン君へ
-    TOPページを表示している時は、以下のソースを表示させてください。
+
+    ① TOPページを表示している時は、1つ目のソースを表示させて、2つ目のソースは消してください。
+    ② その他のページを表示している時は、1つ目のソースを消して、2つ目のソースを表示させてください。
 -->
+
+<!--1つ目のソース START-->
                         <h1 class="logo">
                                 <a href="{{url('')}}"><img src="{{ url('/public/home/'.$contact['logo'])}}" alt="{{$contact->nameco}}"></a>
                         </h1>
+<!--1つ目のソース END-->
 
-<!--
-フォン君へ
-その他のページを表示している時は、以下のソースを表示させてください。
--->
+
+<!--2つ目のソース START-->
                         <div class="logo">
                             <a href="{{url('')}}"><img src="{{ url('/public/home/'.$contact['logo'])}}" alt="{{$contact->nameco}}"></a>
                         </div>
+<!--2つ目のソース END-->
+
                     </div>
                 </div>
                 <!-- END .header-logo -->
