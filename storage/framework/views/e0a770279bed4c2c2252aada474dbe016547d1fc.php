@@ -51,7 +51,8 @@
         <!-- END head -->
     </head>
 
-    <body class="ot-menu-will-follow">
+    <body class="ot-menu-will-follow <?php echo e(Session::get('current_page')); ?>">
+
         <!-- BEGIN .header -->
         <header class="header">
             <!-- BEGIN .top-menu -->
@@ -91,9 +92,27 @@
             <div class="header-logo">
                 <div class="boxed active">
                     <div class="wrapper">
+
+<!--
+    フォン君へ
+
+    ① TOPページを表示している時は、1つ目のソースを表示させて、2つ目のソースは消してください。
+    ② その他のページを表示している時は、1つ目のソースを消して、2つ目のソースを表示させてください。
+-->
+
+<!--1つ目のソース START-->
+                        <h1 class="logo">
+                                <a href="<?php echo e(url('')); ?>"><img src="<?php echo e(url('/public/home/'.$contact['logo'])); ?>" alt="<?php echo e($contact->nameco); ?>"></a>
+                        </h1>
+<!--1つ目のソース END-->
+
+
+<!--2つ目のソース START-->
                         <div class="logo">
                             <a href="<?php echo e(url('')); ?>"><img src="<?php echo e(url('/public/home/'.$contact['logo'])); ?>" alt="<?php echo e($contact->nameco); ?>"></a>
                         </div>
+<!--2つ目のソース END-->
+
                     </div>
                 </div>
                 <!-- END .header-logo -->
