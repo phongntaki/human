@@ -9,48 +9,46 @@
 <div class="boxed active">
     <div class="wrapper">
 
-        <h1>沿革ページ</h1>
-
-        <div class="content-block has-sidebar">
+        <div class="content-block">
             <!-- BEGIN .content-block-single -->
             <div class="content-block-single">
-                <div style="color: rgb(48, 48, 48); font-family: Arial, Helvetica, sans-serif; font-size: 13px;">
-                    <strong>
-                        <span style="font-size: 14px;"><span style="font-family: &quot;times new roman&quot;, times, serif;">Cùng với lịch sử phát triển, trải qua thời gian dài phấn đấu và trưởng thành đã đánh dấu được một thương hiệu TTC Việt Nam năng động, sáng tạo, tiên phong trên thị trường xuất khẩu lao động tại Việt Nam.
-                        </span>
-                    </span>
-                    </strong>
+                <!-- BEGIN .content-panel post-content -->
+                <div class="content-panel post-content">
+                    <!-- BEGIN .post-header -->
+                    <div class="post-header">
+                        <h1 class="post-title">Giới thiệu chung</h1>
+                    </div>
+                    <div class="post-body">
+                        <table class="date-table">
+                            <tbody>
+                                <tr>
+                                    <th>企業名</th>
+                                    <td>株式会社エンジ</td>
+                                </tr>
+                                <tr>
+                                    <th>代表取締役社長</th>
+                                    <td>髙梨 海</td>
+                                </tr>
+                                <tr>
+                                    <th>設立</th>
+                                    <td>2019年00月00日</td>
+                                </tr>
+                                <tr>
+                                    <th>資本金</th>
+                                    <td>500万円</td>
+                                </tr>
+                                <tr>
+                                    <th>事業内容</th>
+                                    <td>住宅設備施工事業、IT事業</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2>沿革</h2>
+                        <p>Đây là văn bản mẫu. Cân bằng ký tự được nhập để xem số lượng dòng.Đây là văn bản mẫu. Cân bằng ký tự được nhập để xem số lượng dòng.Đây là văn bản mẫu. Cân bằng ký tự được nhập để xem số lượng dòng.Đây là văn bản mẫu. Cân bằng ký tự được nhập để xem số lượng dòng.Đây là văn bản mẫu. Cân bằng ký tự được nhập để xem số lượng dòng.</p>
+                    </div>
                 </div>
-                <div style="color: rgb(48, 48, 48); font-family: Arial, Helvetica, sans-serif; font-size: 13px;"><br>
-                    <span style="font-size: 14px;">
-                        <span style="font-family: &quot;times new roman&quot;, times, serif;">Với đội ngũ lãnh đạo giàu kinh nghiệm, chiến lược phát triển tốt, cán bộ công nhân viên được đào tạo chuyên ngành có năng lực, TTC Nhân Lực đã tiến bước vững chắc và phát triển liên tục để giữ vững uy tín và chất lượng xứng đáng với niềm tin yêu của người lao động.
-                        </span>
-                    </span>
-                </div>
-                <div style="color: rgb(48, 48, 48); font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;</div>
-                <div style="color: rgb(48, 48, 48); font-family: Arial, Helvetica, sans-serif; font-size: 13px;"><span style="font-size: 14px;"><span style="font-family: &quot;times new roman&quot;, times, serif;">Tiền thân là một doanh nghiệp với số vốn ít ỏi. Ngày nay, Công ty đã phát triển thành một trong những doanh nghiệp xuất khẩu lao động lớn nhất cả nước.</span></span><br>&nbsp;
-                </div>
-                <div style="color: rgb(48, 48, 48); font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center;"><span style="font-size: 14px;"><span style="font-family: &quot;times new roman&quot;, times, serif;"><img alt="" src="https://japan.net.vn/images/uploads/2016/02/20/DSC00147.jpg" style="border: 0px; width: 560px; height: 420px;"><br><br><span style="color: rgb(0, 0, 205);"><em>Chất lượng nguồn lao động luôn được TTC Việt Nam quan tâm lên hàng đầu</em></span></span></span>
-                </div>
-                <div style="color: rgb(48, 48, 48); font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;</div>
-                <div style="color: rgb(48, 48, 48); font-family: Arial, Helvetica, sans-serif; font-size: 13px;"><span style="font-family: &quot;times new roman&quot;, times, serif; font-size: 14px;">Công ty cổ phần nhân lực TTC Việt Nam luôn nằm trong trong top 10 doanh nghiệp có số lượng lao động xuất khẩu lớn nhất cả nước, điều này đã góp phần không nhỏ trong công tác đào tạo nghề và giải quyết việc làm cho nhiều lao động.</span>
-                </div>
-                <div style="color: rgb(48, 48, 48); font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;</div>
-                <div style="color: rgb(48, 48, 48); font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center;"><span style="font-size: 14px;"><span style="font-family: &quot;times new roman&quot;, times, serif;"><img alt="" src="https://japan.net.vn/images/uploads/2015/12/22/_TER2571.JPG" style="border: 0px; width: 560px; height: 372px;"></span></span></div>
-                <div style="color: rgb(48, 48, 48); font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;</div>
-                <div style="color: rgb(48, 48, 48); font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center;"><span style="color: rgb(0, 0, 205);"><span style="font-size: 14px;"><span style="font-family: &quot;times new roman&quot;, times, serif;"><em>TTC Nhân Lực đã khẳng định tên tuổi bằng tâm huyết của từng cán bộ công nhân viên, chất lượng dịch vụ và sự tin tưởng của người lao động.</em>&nbsp;</span></span></span>
-                </div>
-                <div style="color: rgb(48, 48, 48); font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;</div>
-                <div style="color: rgb(48, 48, 48); font-family: Arial, Helvetica, sans-serif; font-size: 13px;"><span style="font-size: 14px;"><span style="font-family: &quot;times new roman&quot;, times, serif;">Lấy sự hài lòng của người lao động làm trọng tâm cho mọi hoạt động, TTC Nhân Lực luôn tiên phong trong việc mang đến những giá trị tốt nhất cho lao động. Luôn tự đòi hỏi cao hơn ở chính mình, chúng tôi đã và đang không ngừng nỗ lực mở rộng và khai thác những thị trường lao động mới, hướng đến những giá trị tốt nhất cho người lao động</span></span></div>
-                <div style="color: rgb(48, 48, 48); font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;</div>
-                <div style="color: rgb(48, 48, 48); font-family: Arial, Helvetica, sans-serif; font-size: 13px;"><span style="font-family: &quot;times new roman&quot;, times, serif; font-size: 14px;">Để đạt được thành công hôm nay, bên cạnh việc thực hiện tốt các chiến lược và kế hoạch phát triển đúng đắn, thì một trong những yếu tố quan trọng là sự tin tưởng của người lao động với thương hiệu TTC Nhân Lực. Chính vì thế chúng tôi luôn muốn đáp lại những cảm tình quý giá đó bằng việc thể hiện trách nhiệm với người lao động thông qua những chính sách hỗ trợ&nbsp;</span><span style="font-size: 14px;"><span style="font-family: &quot;times new roman&quot;, times, serif;">tối đa cho người lao động.</span></span></div>
-                <?php $index_count = 0; $ads = 0;?>
-                @foreach($modnews as $index_mod)
-                <!-- BEGIN .content-panel -->
-                <?php $index_count = $index_count +1; ?>
-                <!-- END .content-panel -->
-                @endforeach
             </div>
+
             <!-- BEGIN .sidebar -->
             @include('home.sitebar_right')
         </div>

@@ -346,19 +346,6 @@
         }
     });
 
-    jQuery(window).on("load resize", function(){
-        if(jQuery(".content-block").hasClass("has-sidebar")){
-            jQuery(".sidebar").toArray().forEach2(function(a){
-                var thisel = jQuery(a);
-                setTimeout(function() {
-                    thisel.css("height", "auto");
-                    thisel.css("height", parseInt(thisel.parent().height())+"px");
-                    refreshSidebarFixed();
-                }, 500);
-            });
-        }
-    });
-
     jQuery(".lightbox", "body").on("click", function () {
         var thisel = jQuery(this);
         thisel.css('overflow', 'hidden');

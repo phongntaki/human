@@ -178,8 +178,14 @@ class HomeController extends Controller {
     public function error_404()
     {
         $public_var = $this->public_var();
-
+        Session::put('current_page', 'error-page');
         return view('home.404',array_merge($public_var, [ ]) );
+    }
+    public function not_found_content()
+    {
+        $public_var = $this->public_var();
+        Session::put('current_page', 'not-found-content-page');
+        return view('home.not_found_content',array_merge($public_var, [ ]) );
     }
 
     // ====================index=================
@@ -187,6 +193,7 @@ class HomeController extends Controller {
     {
         $mod_new = ModNews::orderBy('modnumber','desc')->get();
         $public_var = $this->public_var();
+        Session::put('current_page', 'top-page');
         return view('home.index', array_merge($public_var, [
                                                             "index_modnew" =>$mod_new,
                                                             ] ));
@@ -227,6 +234,7 @@ class HomeController extends Controller {
             $itemnews->view_count = $itemnews->view_count +1;
             $itemnews->save();
             $public_var = $this->public_var();
+            Session::put('current_page', 'post-page');
             return view('home.news',array_merge($public_var, [
                                                             'new_in_list_active'=>$new_in_list_active,
                                                             'new_in_list_item'=>$new_in_list_item,
@@ -245,6 +253,7 @@ class HomeController extends Controller {
             if($total!=0){
                 $listnews_cat = News::where('idlistnew',$list->id)->where('status','<>',0)->orderBy('created_at','DESC')->take(10)->get();
                 $public_var = $this->public_var();
+                Session::put('current_page', 'archive-top');
                 return view('home.listnews',array_merge($public_var, [
                                                     'listnew'=>$list,
                                                     'listnews_cat'=>$listnews_cat,
@@ -252,7 +261,7 @@ class HomeController extends Controller {
                                                     ]));
             }
             else{
-                return redirect()->Route('error_404');
+                return redirect()->Route('not_found_content');
             }
             
         } else {
@@ -261,6 +270,7 @@ class HomeController extends Controller {
                 $public_var = $this->public_var();
                 $total = News::where('idmodnew',$mod->id)->count();
                 $modnews_cat = News::where('idmodnew',$mod->id)->where('status','<>',0)->orderBy('created_at','DESC')->take(10)->get();
+                Session::put('current_page', 'category-top');
                 return view('home.modnews',array_merge($public_var, [
                                                                     'modnew' =>$mod,
                                                                     'modnews_cat'=>$modnews_cat,
@@ -280,6 +290,7 @@ class HomeController extends Controller {
 
         $news = News::where('status','<>',0)->where('newsname',"like",'%'.$key.'%')->take(20)->get();
         $public_var = $this->public_var();
+        Session::put('current_page', 'search-page');
         return view('home.search',array_merge($public_var, [
                                                             'news_serch'=>$news,
                                                             'key'=>$key,
@@ -300,23 +311,6 @@ class HomeController extends Controller {
     }
 
     // ======================`kout========================
-    public function checkout()
-    {
-        if(session('logined_cus') == 1){
-            return redirect('thanhtoan');
-        }else{
-            $carts = Cart::content();
-            $cities     = Cities::orderBy('name', 'desc')->get();
-            // ================================
-            // ================================
-
-
-            $public_var = $this->public_var();
-            return view('home.checkout',array_merge($public_var, [
-                                                    'carts'=>$carts,
-                                                    'cities'=>$cities ]) );
-        }
-    }
     public function order_not_account(Request $request){
         Session::put('logined_cus', 0);
         Session::put('logined_cusid', 1);
@@ -351,27 +345,17 @@ class HomeController extends Controller {
         // ================================
         // ================================
         $public_var = $this->public_var();
+        Session::put('current_page', 'login-page');
         return view('home.login',array_merge($public_var, []) );
     }
 
     public function postlogin(Request $request)
     {
-        // echo "<pre>";
-        // echo $request;
-        // echo "</pre>";
-        // echo "<script type='text/javascript'>alert('zz);</script>";
         $email      = $request->input('email');
         $password   = sha1($request->input('password'));
-        echo "<script type='text/javascript'>alert('$email');</script>";
-        echo "<script type='text/javascript'>alert('$password');</script>";
-
 
         $checkLogin = Customers::where("cusemail",'=',$email)->where("cuspass",'=',$password)->first();
-        echo "<pre>";
-        echo $checkLogin;
-        echo "</pre>";
         if($checkLogin!=null){
-            echo "<script type='text/javascript'>alert('$email');</script>";
             Session::put('logined_cus', 1);
             Session::put('logined_cusid', $checkLogin->id);
             Session::put('logined_cusfullname', $checkLogin->cusfullname);
@@ -381,7 +365,6 @@ class HomeController extends Controller {
             Session::put('logined_cusaddress', $checkLogin->cusaddress);
             return redirect()->route('gioi_thieu')->with(['flash_level'=>'success','flash_message'=>'Login Success']);
         }else{
-            echo "<script type='text/javascript'>alert('$password');</script>";
             return redirect()->route('login')->with(['flash_level'=>'success','flash_message'=>'Login Fail']);
         }
     }
@@ -438,6 +421,7 @@ class HomeController extends Controller {
         // ================================
 
         $public_var = $this->public_var();
+        Session::put('current_page', 'register-page');
         return view('home.register',array_merge($public_var, [ ]) );
     }
 
@@ -494,10 +478,12 @@ class HomeController extends Controller {
             $cus->save();
             $public_var = $this->public_var();
             echo "<script type='text/javascript'>alert('Register Success');</script>";
+            Session::put('current_page', 'login-page');
             return view('home.login',array_merge($public_var, [ ]) );
         } else{
             $public_var = $this->public_var();
             echo "<script type='text/javascript'>alert('Register Fail');</script>";
+            Session::put('current_page', 'register-page');
             return view('home.register',array_merge($public_var, [ ]) );
         }
         // auth()->login($user);
@@ -543,16 +529,6 @@ class HomeController extends Controller {
                                             'customer'=>$customer,
                                             'cities'=>$cities ]) );
     }
-
-    // ===============contact===================
-    public function contact()
-    {
-        // ================================
-        // ================================
-        $public_var = $this->public_var();
-        return view('home.contact',array_merge($public_var, [ ]) );
-    }
-
 
     function save_contact(Request $request){
         $name             = $request->input('name');
@@ -612,41 +588,39 @@ class HomeController extends Controller {
 
     public function lien_he(){
         $public_var = $this->public_var();
+        Session::put('current_page', 'contact-page');
         return view('home.lienhe',array_merge($public_var, [ ]) );
 
     }
 
     public function gioi_thieu(){
         $public_var = $this->public_var();
+        Session::put('current_page', 'message-page');
         return view('home.gioithieu',array_merge($public_var, [ ]) );
     }
     public function hinh_thanh(){
         $public_var = $this->public_var();
+        Session::put('current_page', 'about-page');
         return view('home.hinhthanh',array_merge($public_var, [ ]) );
     }
     public function linh_vuc(){
         $public_var = $this->public_var();
+        Session::put('current_page', 'industry-page');
         return view('home.linhvuc',array_merge($public_var, [ ]) );
     }
     public function my_profile(){
         if(Session::get('logined_cus') == 1){
             $cusEmail = Session::get('logined_cusemail');
             $cus_data = Customers::where("cusemail",'=',$cusEmail)->first();
-            // echo '<pre>';
-        // echo $cusId;
-        // echo '<br>';
-        // echo $cusId->id;
-        // echo '</pre>';
             $public_var = $this->public_var();
+            Session::put('current_page', 'profile-page');
             return view('home.myprofile',array_merge($public_var, [ ]), compact('cus_data'));
         } else{
-            // echo "<script type='text/javascript'>alert('zz22222');</script>";
             return redirect()->route('login')->with(['flash_level'=>'success','flash_message'=>'Login Fail']);
         }
     }
 
     public function post_my_profile(Request $request){
-        // echo "<script type='text/javascript'>alert('zz000');</script>";
         $cus_data = Customers::where("cusemail",'=',Session::get('logined_cusemail'))->first();
         $cus_data->cusfullname = $request->txtname;
         $cus_data->sex = $request->sex;

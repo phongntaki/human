@@ -6,18 +6,16 @@
 <?php $__env->startSection('seo_url', url()->current()); ?>
 <?php $__env->startSection('content'); ?>
 
-<div class="boxed active pages">
+<div class="boxed active">
     <div class="wrapper">
 
-<!--        <h1>カテゴリトップ／アーカイブページ2</h1>-->
-
-        <div class="content-block has-sidebar">
+        <div class="content-block">
             <!-- BEGIN .content-block-single -->
             <div class="content-block-single">
-
+                <!-- BEGIN .content-panel -->
                 <div class="content-panel carousel-type">
                     <div class="content-panel-title">
-                        <h2 class="panel-title"><a href="<?php echo e(url('loai-tin/'.$modnew->slug)); ?>"><?php echo e($modnew->modname); ?></a></h2>
+                        <h1 class="panel-title"><a href="<?php echo e(url('loai-tin/'.$modnew->slug)); ?>"><?php echo e($modnew->modname); ?></a></h1>
                         <ul class="panel-title-submenu">
                             <?php $__currentLoopData = $modnew->listnew_inmod($modnew->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat_mod): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <li class="submenu-item">
@@ -27,23 +25,20 @@
                         </ul>
                     </div>
 
-<!--
                     <?php
                         $item = $modnew->top_news_item($modnew->id)->take(3);
-//                        $hot = $item->shift();
                      ?>
--->
                     <div class="content-panel-body">
                         <ul class="panel-items">
                             <?php $__currentLoopData = $item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $news): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <li class="item">
                                 <a href="<?php echo e(url('/chi-tiet/'.$news->slug)); ?>">
+                                    <div class="item-lead">
+                                        <h3 class="item-title"><?php echo e($news->newsname); ?></h3>
+                                        <p class="item-date"><?php echo e($news->created_at->format('Y/m/d')); ?></p>
+                                    </div>
                                     <div class="item-image">
                                         <img src="<?php echo e(url('public/img/news/800x800/'.$news['newimg'])); ?>" alt="<?php echo e($news->created_at); ?>" />
-                                    </div>
-                                    <div class="item-lead">
-                                        <p class="item-date"><?php echo e($news->created_at->format('Y/m/d')); ?></p>
-                                        <h3 class="item-title"><?php echo e($news->newsname); ?></h3>
                                     </div>
                                 </a>
                             </li>
@@ -52,6 +47,7 @@
                     </div>
                 </div>
 
+                <!-- BEGIN .content-panel -->
                 
                 <div class="content-panel block-type">
                     <div class="content-panel-title">
@@ -68,15 +64,16 @@
                 </div>
 
                 <!-- BIGIN ReadMore -->
-                <div class="text-center" <?php if($total <=9): ?> style="display: none;" <?php endif; ?>>
-                     <a class="btn btn-default btn-more-info" id="load_more" base_url="<?php echo e(url('')); ?>" modid="<?php echo e($modnew->id); ?>" skip="10" take="5" total="<?php echo e($total); ?>"  role="button">
-                        <i class="fa fa-refresh" aria-hidden="true"></i> Xem thêm
+                <div class="read-more" <?php if($total <=9): ?> style="display: none;" <?php endif; ?>>
+                    <a class="btn-more" id="load_more" base_url="<?php echo e(url('')); ?>" modid="<?php echo e($modnew->id); ?>" skip="10" take="5" total="<?php echo e($total); ?>"  role="button">
+                        <i class="fas fa-angle-right"></i>
+                         Xem thêm
                     </a>
                 </div>
             </div>
 
             <!-- BEGIN .sidebar -->
-                <?php echo $__env->make('home.sitebar_right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+             <?php echo $__env->make('home.sitebar_right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
     </div>
 </div>

@@ -1,9 +1,10 @@
 <!DOCTYPE HTML>
 <html lang = "vi">
     <head>
+        <meta charset=UTF-8>
         <title><?php echo $__env->yieldContent('title'); ?></title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="description" content="">
+        <meta name="description" content="<?php echo $__env->yieldContent('seo_description'); ?>">
+        <meta name="keyword" content="<?php echo $__env->yieldContent('seo_keyword'); ?>">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
         <meta name="generator" content="enzi.co.jp">
@@ -18,8 +19,8 @@
         <link rel="shortcut icon" href="<?php echo e(url('public/home/images/favicon.ico')); ?>">
 
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/reset.css')); ?>">
-        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/font-awesome.min.css')); ?>">
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/weather-icons.min.css')); ?>">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Arvo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/bootstrap.min.css')); ?>">
@@ -28,10 +29,11 @@
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/ot-lightbox.css')); ?>">
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/shortcodes.css')); ?>">
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/responsive.css')); ?>">
-        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/mystyle.css')); ?>">
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/demo-settings.css')); ?>">
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/style.css')); ?>">
         <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/lienhe.css')); ?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/slick.css')); ?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo e(url('public/home/css/slick-theme.css')); ?>">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -49,7 +51,7 @@
         <!-- END head -->
     </head>
 
-    <body class="ot-menu-will-follow">
+    <body class="ot-menu-will-follow <?php echo e(Session::get('current_page')); ?>">
 
         <!-- BEGIN .header -->
         <header class="header">
@@ -68,20 +70,8 @@
                                         </div>
                                     </div>
                                 </li>
-                                <!--                                    ドロップダウンテスト用-->
-
-<!--
-                                <li id="home_login" class="btn-myaccount dropdown hover"><a class="myaccount" href="">Hi <?php echo e(Session::get('logined_cusfullname')); ?></a>
-                                    <ul id="home_logout" class="dropdown-menu">
-                                        <li><a href="<?php echo e(url('my-profile')); ?>">My profile setting</a></li>
-                                        <li><a href="<?php echo e(url('logout')); ?>">Logout</a></li>
-                                        <li><a href="">test</a></li>
-                                    </ul>
-                                </li>
--->
-
                                 <?php if(Session::get('logined_cus') == 1): ?>
-                                <li id="home_login" class="btn-account dropdown hover"><a class="myaccount" href="">Hi <?php echo e(Session::get('logined_cusfullname')); ?></a>
+                                <li id="home_login" class="btn-myaccount dropdown hover"><a class="myaccount" href="">Hi <?php echo e(Session::get('logined_cusfullname')); ?></a>
                                     <ul id="home_logout" class="dropdown-menu">
                                         <li><a href="<?php echo e(url('my-profile')); ?>">My profile setting</a></li>
                                         <li><a href="<?php echo e(url('logout')); ?>">Logout</a></li>
@@ -102,7 +92,7 @@
                 <div class="boxed active">
                     <div class="wrapper">
                         <h1 class="logo">
-                            <a href="<?php echo e(url('')); ?>"><img src="<?php echo e(url('/public/home/images/logo2.png')); ?>" alt="<?php echo e($contact->nameco); ?>"></a>
+                            <a href="<?php echo e(url('')); ?>"><img src="<?php echo e(url('/public/home/'.$contact['logo'])); ?>" alt="<?php echo e($contact->nameco); ?>"></a>
                         </h1>
                     </div>
                 </div>
@@ -170,23 +160,14 @@
                         <div class="company-message">
                             <?php echo $contact->slogan_intro; ?>
 
-<!--
-                            <div class="share-items">
-                                <div class="fb-share-button share-item-button"
-                                     data-href="<?php echo e(url()->current()); ?>"
-                                     data-mobile_iframe="true"
-                                     data-layout="button">
-                                </div>
-                                <div class="g-plus share-item-button" data-action="share" data-annotation="bubble" data-height="24" data-href="<?php echo e(url()->current()); ?>"></div>
-                            </div>
--->
                         </div>
                         <div class="company-info">
-                            <a href="<?php echo e(url('')); ?>" class="footer-logo"><img src="<?php echo e(url('/public/home/'.$contact['logo'])); ?>" alt="<?php echo e($contact->nameco); ?>"></a>
+                            <a href="<?php echo e(url('')); ?>" class="footer-logo">
+                                <img src="<?php echo e(url('public/home/images/logo-footer.png')); ?>" alt="<?php echo e($contact->nameco); ?>"></a>
                             <p class="company-text">
                                 <?php echo e($contact->address); ?><br>
                                 Điện thoại: <?php echo e($contact->phone); ?><br>
-                                E-mail: <?php echo e($contact->mail); ?>
+                                Mail: <?php echo e($contact->mail); ?>
 
                             </p>
                             <div class="share-items">
@@ -208,13 +189,13 @@
 
         <!-- BEGIN .back_top -->
         <div class="back_top" style="display: none;">
-            <a href="#top"><i class="fa fa-chevron-up"></i></a>
+            <a href="#top"><i class="fas fa-angle-up"></i></a>
         </div>
 
         <!-- BEGIN .popup_menu -->
         <div class="popup_menu visible-xs">
             <a href="#dat-menu" class="btn-popup" title="menu">
-                <i class="fa fa-bars"></i>
+                <i class="fas fa-bars"></i>
                 <span class="popup-text-menu">MENU</span>
             </a>
         </div>
@@ -227,9 +208,21 @@
         <script type="text/javascript" src="<?php echo e(url('public/home/jscript/dat-menu.js')); ?>"></script>
         <script type="text/javascript" src="<?php echo e(url('public/home/jscript/theme-scripts.js')); ?>"></script>
         <script type="text/javascript" src="<?php echo e(url('public/home/jscript/ot-lightbox.js')); ?>"></script>
+        <script type="text/javascript" src="<?php echo e(url('public/home/jscript/slick.min.js')); ?>"></script>
+        <script type="text/javascript" src="<?php echo e(url('public/home/jscript/ofi.min.js')); ?>"></script>
         <script type="text/javascript" src="<?php echo e(url('public/js/jquery.sticky-kit.min.js')); ?>"></script>
         <script src="<?php echo e(asset('public/js/home/customer.js')); ?>"></script>
         <script async src="<?php echo e(asset('public/js/home/boxchat.js')); ?>"></script>
+        <script>
+            $('.main-slider').slick({
+                autoplay:true,
+                autoplaySpeed:5000,
+                dots:true,
+            });
+        </script>
+        <script>
+            objectFitImages('img.object-fit-img');
+        </script>
 <!--
         <script>
             if ($(window).width() > 1050) {
