@@ -105,6 +105,7 @@ button:focus, input:focus, optgroup:focus, select:focus, textarea:focus {
     border: 1px solid #b9b9b9;
 }
 button {
+    font-size: 1.4rem;
     background: #F4F4F4;
     vertical-align: baseline;
 }
@@ -114,6 +115,20 @@ button i.fa {
 }
 button:hover {
     background: #F0F0F0;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-text-fill-color: inherit !important;
+    -webkit-box-shadow: 0 0 0px 1000px #FFFFFF inset;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 /* read-more */
@@ -515,7 +530,7 @@ button:hover {
     font-size: 1.6rem;
     text-align: center;
     padding: 25px 20px;
-    background-color: #edeaea;
+    background-color: #ededed;
     border-radius: 6px;
 }
 .no-information .btn-noinfo {
@@ -659,7 +674,7 @@ button:hover {
 -------------------------------------------------------------------*/
 
 .content {
-    margin-bottom: 85px;
+    margin-bottom: 60px;
 }
 .content .content-block:after {
     display: block;
@@ -732,8 +747,8 @@ body:not(.top-page) .content .content-block .content-block-single {
     border-radius: 12px;
 }
 .content-panel .content-panel-title .panel-title-submenu .submenu-item a:hover {
-    color: #333;
-    background-color: #d8d8d8;
+    color: #fff;
+    background-color: #aeaeae;
 }
 
 .content-panel .content-panel-body .panel-items .item a {
@@ -872,7 +887,7 @@ body:not(.top-page) .content .content-block .content-block-single {
     -webkit-box-ordinal-group: 3;
     -ms-flex-order: 2;
     order: 2;
-    padding-top: 34px;
+    padding: 34px 0 20px;
 }
 .content-panel.block-type .content-panel-body .panel-items .item .item-lead .item-title {
     font-size: 2.2rem;
@@ -928,15 +943,33 @@ body:not(.top-page) .content .content-block .content-block-single {
 .content-panel .content-panel-title .panel-title .search-text {
     color: #265ea6;
 }
-.content-panel.block-type .content-panel-body .panel-items .item .recruit-button {
+.content-panel.block-type .content-panel-body .panel-items .item .item-lead .item-meta {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    top: 0;
+    left: 0;
+
 }
-.content-panel.block-type .content-panel-body .panel-items .item .recruit-button a {
+.content-panel.block-type .content-panel-body .panel-items .item .item-lead .item-meta .item-date {
+    position: static;
+}
+.content-panel.block-type .content-panel-body .panel-items .item .item-lead .item-meta .category {
+    font-size: 1.1rem;
+    line-height: 24px;
+    text-transform: uppercase;
+}
+
+.content-panel.block-type .content-panel-body .panel-items .item .category-button a {
     display: inline-block;
     width: 100%;
+    padding: 0 12px;
+    color: #fff;
+    background-color: #aeaeae;
+    border-radius: 12px;
 }
+
+
+
+
 
 
 /* PostPage styling
@@ -1269,10 +1302,10 @@ body:not(.post-page) .post-header .post-title {
 }
 .form-vertical .form-group .control-label {
     position: relative;
-    max-width: 250px;
-    -webkit-flex-basis: 250px;
-    -ms-flex-preferred-size: 250px;
-    flex-basis: 250px;
+    max-width: 225px;
+    -webkit-flex-basis: 225px;
+    -ms-flex-preferred-size: 225px;
+    flex-basis: 225px;
     font-size: 1.6rem;
     line-height: 1.5;
     padding-right: 25px;
@@ -1317,7 +1350,7 @@ body:not(.post-page) .post-header .post-title {
 }
 .form-vertical .form-submit {
     text-align: center;
-    margin: 100px 0 50px;
+    margin: 75px 0;
 }
 .form-vertical .form-submit .form-button {
     display: inline-block;
@@ -1325,6 +1358,7 @@ body:not(.post-page) .post-header .post-title {
     font-weight: 700;
     text-transform: uppercase;
     padding: 12px 25px;
+    border: none;
     background-color: #265ea6;
     cursor: pointer;
     transition: 0.4s;
@@ -1332,22 +1366,99 @@ body:not(.post-page) .post-header .post-title {
 .form-vertical .form-submit .form-button:hover {
     opacity: 0.8;
 }
+.form-vertical .form-submit .form-button.button-red {
+    background-color: #c60720;
+    margin-right: 12px;
+}
+.form-vertical .form-submit .form-button.button-gray {
+    background-color: #a9a9a9;
+}
 
 
-/* login-page
+/* access-panel
 --------------------------------*/
-.content-panel.login-panel {
+.content .content-block .content-panel.access-panel {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
+    margin: 85px 0 100px;
 }
-.login-form {
+.access-panel .login-form,
+.access-panel .register-form {
     display: inline-block;
-    background-color: #efefef;
+    width: 600px;
+    padding: 80px 100px 90px;
+    background-color: #ededed;
+    border-radius: 6px;
 }
+.access-panel .panel-title {
+    font-size: 3.6rem;
+    color: #666;
+    text-align: center;
+    padding-bottom: 20px;
+    margin: 0 0 35px 0;
+    border-bottom: 1px dashed #ddd;
+}
+.access-panel .form-vertical {
+    margin: 0;
+}
+.access-panel .form-vertical .form-group {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.access-panel .form-vertical .form-group .alert {
+    padding: 0;
+    margin-bottom: 25px;
+    border: none;
+}
+.access-panel .form-vertical .form-group .control-label {
+    flex-basis: auto;
+    max-width: 100%;
+    padding: 0;
+    margin-bottom: 5px;
+}
+.access-panel .form-vertical .form-submit {
+    margin: 50px 0 0;
+}
+.access-panel .form-vertical .form-submit .form-button {
+    display: inline-block;
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 12px 25px;
+    background-color: #265ea6;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.access-panel .form-vertical .form-submit .button-red {
+    background-color: #c60720;
+}
+
+
+/* login-page
+--------------------------------*/
+.login-form .form-vertical .form-group.detail-password {
+    margin-bottom: 15px;
+}
+.login-form .form-vertical .password-message {
+    text-align: center;
+/*    margin-bottom: 50px;*/
+}
+.login-form .form-vertical .form-submit .button-red {
+    margin-right: 10px;
+}
+
+/* inquiry-page
+--------------------------------*/
+.
+
+
 
 
 

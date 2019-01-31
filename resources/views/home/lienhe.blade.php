@@ -13,13 +13,49 @@
             <!-- BEGIN .content-block-single -->
             <div class="content-block-single">
 
-                Test Content
+                <div class="content-panel">
+                    <div class="content-panel-title">
+                        <h1 class="panel-title">Liên hệ</h1>
+                    </div>
 
-            <!-- END .content-block-single -->
+                    <form class="form-vertical" action="" role="form">
+                        <div class="form-group">
+                            <label class="control-label" for="inquiry-name">Tên</label>
+                            <div class="control-detail">
+                                <input type="text" id="inquiry-name" class="form-control" name="inquiry-name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="inquiry-mail">E-Mail</label>
+                            <div class="control-detail">
+                                <input type="text" id="inquiry-mail" class="form-control" name="inquiry-mail">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="inquiry-tel">Số điện thoại</label>
+                            <div class="control-detail">
+                                <input type="text" id="inquiry-tel" class="form-control" name="inquiry-tel">
+                            </div>
+                        </div>
+                        <div class="form-group detail-textarea">
+                            <label class="control-label" for="inquiry-text">Nội dung thông điệp</label>
+                            <div class="control-detail">
+                                <textarea name="inquiry-text" id="inquiry-text" class="form-control" rows="8"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-submit">
+                            <button type="submit" class="form-button button-red">Gửi đi</button>
+                            <button type="submit" class="form-button button-gray">Nhập lại</button>
+                        </div>
+                    </form>
+                </div>
+
             </div>
+
             <!-- BEGIN .sidebar -->
             @include('home.sitebar_right')
         </div>
+
     </div>
 </div>
 
