@@ -33,7 +33,7 @@
     <div class="boxed active">
     <div class="wrapper">
         <div class="content-block">
-            <!-- BEGIN .content-block-single -->
+            <!-- BEGIN .content-block-single --><h1></h1>
             <div class="content-block-single">
             <?php $index_count = 0; $ads = 0;?>
             @foreach($modnews as $index_mod)

@@ -51,7 +51,8 @@
         <!-- END head -->
     </head>
 
-    <body class="ot-menu-will-follow">
+    <body class="ot-menu-will-follow {{Session::get('current_page') }}">
+
         <!-- BEGIN .header -->
         <header class="header">
             <!-- BEGIN .top-menu -->
