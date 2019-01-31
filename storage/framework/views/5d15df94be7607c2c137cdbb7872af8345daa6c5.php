@@ -4,7 +4,7 @@
         <div class="widget widget-info">
             <h3 class="widget-title">Tư vấn trực tiếp</h3>
             
-            <p>Văn bản giả được nhập vào.Văn bản giả được nhập vào.Văn bản giả được nhập vào.</p>
+            <p>Hãy liên lạc với chúng tôi khi bạn có vấn đề cần giải đáp</p>
             <ul class="widget-article-lists" >
                 <li class="item info-phone">
                     <span class="hidden">Phone: </span>012-345-6789<br>
@@ -35,7 +35,7 @@
                                <li class="item">
                 <a href="<?php echo e(url('chi-tiet/'.$item_lt->slug)); ?>">
                     <div class="item-image">
-                        <img src="<?php echo e(url('/public/img/news/100x100/'.$item_lt->newimg)); ?>" alt="<?php echo e($item_lt->newsname); ?>" />
+                        <img src="<?php echo e(url('/public/img/news/300x300/'.$item_lt->newimg)); ?>" alt="<?php echo e($item_lt->newsname); ?>" />
                     </div>
                     <div class="item-lead">
                         <h4 class="item-title"><?php echo e($item_lt->newsname); ?></h4>
@@ -62,12 +62,13 @@
                 <a href="<?php echo e(url('chi-tiet/'.$item_most->slug)); ?>">
                     <div class="item-image">
                         <p class="item-counter"><?php echo e($count); ?></p>
-                        <img src="<?php echo e(url('/public/img/news/100x100/'.$item_most->newimg)); ?>" alt="<?php echo e($item_most->newsname); ?>" />
+                        <div class="item-image-inner">
+                            <img src="<?php echo e(url('/public/img/news/300x300/'.$item_most->newimg)); ?>" alt="<?php echo e($item_most->newsname); ?>" />
+                        </div>
                     </div>
                     <div class="item-lead">
                         <h4 class="item-title"><?php echo e($item_most->newsname); ?></h4>
                         <p class="item-date">
-<!--                        <i class="fa fa-clock-o"></i>-->
                         <?php echo e($item_most->created_at->format('Y/m/d')); ?></p>
                     </div>
                 </a>

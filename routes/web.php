@@ -3,9 +3,9 @@
 Route::get('/',['as'=>'index','uses'=>'HomeController@index']);
 Route::get('/loai-tin/{slug}',['as'=>'list_news','uses'=>'HomeController@list_news']);
 Route::get('/chi-tiet/{slug}',['as'=>'news','uses'=>'HomeController@news']);
-Route::get('/checkout', 'HomeController@checkout');
 Route::get('/user',['as'=>'pay','uses'=>'HomeController@user']);
 Route::get('/error_404',['as'=>'error_404','uses'=>'HomeController@error_404']);
+Route::get('/not_found_content',['as'=>'not_found_content','uses'=>'HomeController@not_found_content']);
 // Route::get('/ok', 'HomeController@ok');
 Route::get('/ok',['as'=>'ok','uses'=>'HomeController@ok']);
 Route::get('/register', 'HomeController@register');
@@ -13,7 +13,6 @@ Route::post('register',['as'=>'register','uses'=>'HomeController@postRegister'])
 Route::get('/login', 'HomeController@login');
 Route::post('login',['as'=>'login','uses'=>'HomeController@postLogin']);
 Route::get('/logout', 'CustomerController@logout');
-Route::get('/contact', 'HomeController@contact');
 // loadmore
 Route::get('loadmoremod', ['as' => 'loadmoremod', 'uses' => 'HomeController@loadmore_news_in_mod']);
 Route::get('loadmorelist', ['as' => 'loadmorelist', 'uses' => 'HomeController@loadmore_news_in_list']);
