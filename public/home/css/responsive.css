@@ -560,7 +560,11 @@
         font-size: 1.8rem;
     }
 
-
+    /* notfound content
+    -----------------------------------------*/
+    .not-found-content-page .big-message .big-message-heading .big-message-title {
+        font-size: 2.6rem;
+    }
 
 
 

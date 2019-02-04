@@ -1248,6 +1248,7 @@ body:not(.post-page) .post-header .post-title {
     line-height: 1;
     padding-left: 80px;
     margin: 0;
+    white-space: nowrap;
 }
 .big-message .big-message-heading i.far,
 .big-message .big-message-heading .big-message-title {
@@ -1275,6 +1276,16 @@ body:not(.post-page) .post-header .post-title {
 .big-message .back-button a:hover {
     color: #999;
     border-color: #999;
+}
+
+/* notfound content
+-----------------------------------------*/
+.not-found-content-page .big-message .big-message-headign {
+
+}
+.not-found-content-page .big-message .big-message-heading .big-message-title {
+    font-size: 3.4rem;
+    padding-left: 0;
 }
 
 

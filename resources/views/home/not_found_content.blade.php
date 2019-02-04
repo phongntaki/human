@@ -17,22 +17,22 @@
                 <!-- BEGIN .content-panel -->
                 <div class="content-panel">
                     <div class="content-panel-body big-message">
-
-                        <div class="big-message-inner">
-                            <i class="fa fa-file-text-o"></i>
-                            <h1>Không tìm thấy nội dung</h1>
-                            <h2>Chưa cập nhật</h2>
-                            <p>Trang bạn đang truy cập hiện không có nội dung. </p>
-                            <a href="{{url('/')}}" class="back-button"><i class="fa fa-home"></i>Về trang chủ</a>
+                        <div class="big-message-heading">
+                            <h1 class="big-message-title">Không tìm thấy nội dung</h1>
                         </div>
-
+                        <div class="big-message-content">
+                            <h2 class="sub-title">Chưa cập nhật</h2>
+                            <p>Trang bạn đang truy cập hiện không có nội dung.</p>
+                            <p class="back-button">
+                                <a href="{{url('/')}}" class="back-button">Về trang chủ</a>
+                            </p>
+                        </div>
                     </div>
-                <!-- END .content-panel -->
                 </div>
-
-            <!-- END .content-block-single -->
             </div>
 
+            <!-- BEGIN .sidebar -->
+            @include('home.sitebar_right')
         </div>
 
     </div>
