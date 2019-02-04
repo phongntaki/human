@@ -33,26 +33,24 @@
                                         <h3 class="item-title"><?php echo e($item_serch->newsname); ?></h3>
                                         <p class="item-desc"><?php echo e($item_serch->newintro); ?></p>
 
-                                        <p class="item-date"><?php echo e($item_serch->created_at->format('Y/m/d')); ?></p>
+                                        <div class="item-meta">
+                                            <p class="item-date"><?php echo e($item_serch->created_at->format('Y/m/d')); ?></p>
+                                            <p class="category">
+                                                <?php if($item_serch->list_name($item_serch->idlistnew)['listname'] !=""): ?>
+                                                <?php echo e($item_serch->list_name($item_serch->idlistnew)['listname']); ?>
+
+                                                <?php else: ?>
+                                                <?php echo e($item_serch->mod_name($item_serch->idmodnew)['modname']); ?>
+
+                                                <?php endif; ?>
+                                            </p>
+                                        </div>
                                     </div>
                                     <div class="item-image">
                                         <img src="<?php echo e(url('/public/img/news/100x100/'.$item_serch->newimg)); ?>" alt="">
                                     </div>
                                 </a>
-<!--
-                                <div class="recruit-button">
-                                    <a href="<?php echo e(url('/loai-tin/'.$item_serch->list_name($item_serch->idlistnew)['slug'])); ?>">
-                                        <i class="fas fa-list-ul"></i>
-                                        <?php if($item_serch->list_name($item_serch->idlistnew)['listname'] !=""): ?>
-                                        <?php echo e($item_serch->list_name($item_serch->idlistnew)['listname']); ?>
 
-                                        <?php else: ?>
-                                        <?php echo e($item_serch->mod_name($item_serch->idmodnew)['modname']); ?>
-
-                                        <?php endif; ?>
-                                    </a>
-                                </div>
--->
                             </li>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>

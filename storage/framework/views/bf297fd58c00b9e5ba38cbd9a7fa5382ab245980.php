@@ -10,46 +10,42 @@
 
         <div class="content-block">
             <!-- BEGIN .content-panel -->
-            <div class="content-panel login-panel">
-                <div class="login-form">
-                    <h1>Login</h1>
-                    <form role="form" class="form-vertical" action="" method="POST">
+            <div class="content-panel access-panel">
+
+               <div class="login-form">
+                    <h1 class="panel-title">Login</h1>
+                   <form class="form-vertical" action="" method="POST" role="form">
                         <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
-                        <fieldset>
-                            <div class="control-group">
-                                <?php if(Session::has('flag')): ?>
-                                <div class="alert alert-<?php echo e(Session::get('flag')); ?>"><?php echo e(Session::get('message')); ?></div>
-                                <?php endif; ?>
-                                <label  class="control-label">E-Mail Address:</label>
-                                <div class="controls">
-                                    <input type="email" name="email" class="">
-                                </div>
+                        <div class="form-group detail-email">
+                            <?php if(Session::has('flag')): ?>
+                            <div class="alert alert-<?php echo e(Session::get('flag')); ?>">
+                                <p><?php echo e(Session::get('message')); ?></p>
                             </div>
-                            <div class="control-group">
-                                <label  class="control-label">Password:</label>
-                                <div class="controls">
-                                    <input type="password" name="password"  class="">
-                                </div>
+                            <?php endif; ?>
+                            <label class="control-label" for="login-email">E-Mail</label>
+                            <div class="control-detail">
+                                <input type="email" id="login-email" class="form-control" name="email">
                             </div>
-                            <div class="password-message">
-                                <a class="" href="#">Forgotten Password</a>
+                        </div>
+                        <div class="form-group detail-password">
+                            <label  class="control-label" for="login-password">Password</label>
+                            <div class="control-detail">
+                                <input type="password" id="login-password" class="form-control" name="password">
                             </div>
-                            <div class="login-submit">
-                                <button type="submit" class="btn btn-orange">Login</button>
-                                <a href="<?php echo e(url('/login_social/facebook/gioi-thieu')); ?>" class="btn btn-primary">Facebook Login</a>
-                            </div>
-                        </fieldset>
+                        </div>
+                        <div class="password-message">
+                            <a class="message-text" href="#">Forgotten Password</a>
+                        </div>
+                        <div class="form-submit">
+                            <button type="submit" class="form-button button-red">Login</button>
+                            <a href="<?php echo e(url('/login_social/facebook/gioi-thieu')); ?>" class="form-button">Facebook Login</a>
+                        </div>
                     </form>
                 </div>
-                <?php $index_count = 0; $ads = 0;?>
-                <?php $__currentLoopData = $modnews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index_mod): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <!-- BEGIN .content-panel -->
 
-                <?php $index_count = $index_count +1; ?>
-                <!-- END .content-panel -->
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
+
     </div>
 </div>
 
