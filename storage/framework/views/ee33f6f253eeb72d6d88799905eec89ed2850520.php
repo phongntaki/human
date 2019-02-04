@@ -67,6 +67,7 @@
                                             <form action="<?php echo e(url('/search')); ?>">
                                                 <input type="text" name="key" placeholder="Nhập từ khóa tìm kiếm..">
                                             </form>
+                                            <i class="fas fa-search"></i>
                                         </div>
                                     </div>
                                 </li>
@@ -91,9 +92,31 @@
             <div class="header-logo">
                 <div class="boxed active">
                     <div class="wrapper">
-                        <h1 class="logo">
-                            <a href="<?php echo e(url('')); ?>"><img src="<?php echo e(url('/public/home/'.$contact['logo'])); ?>" alt="<?php echo e($contact->nameco); ?>"></a>
-                        </h1>
+
+<!--
+    フォン君へ
+
+    ① TOPページを表示している時は、1つ目のソースを表示させて、2つ目のソースは消してください。
+    ② その他のページを表示している時は、1つ目のソースを消して、2つ目のソースを表示させてください。
+-->
+
+<!--1つ目のソース START-->
+                        <?php if(Session::get('current_page') == "top-page"): ?>
+                            <h1 class="logo">
+                                <a href="<?php echo e(url('')); ?>"><img src="<?php echo e(url('/public/home/'.$contact['logo'])); ?>" alt="<?php echo e($contact->nameco); ?>"></a>
+                            </h1>
+                        <?php else: ?>
+                            <div class="logo">
+                                <a href="<?php echo e(url('')); ?>"><img src="<?php echo e(url('/public/home/'.$contact['logo'])); ?>" alt="<?php echo e($contact->nameco); ?>"></a>
+                            </div>
+                        <?php endif; ?>
+<!--1つ目のソース END-->
+
+
+<!--2つ目のソース START-->
+                        
+<!--2つ目のソース END-->
+
                     </div>
                 </div>
                 <!-- END .header-logo -->
@@ -107,10 +130,10 @@
                             <nav class="nav">
                                 <ul class="nav-lists load-responsive" rel="DANH MỤC TIN">
                                     <li><a href="<?php echo e(url('')); ?>">TRANG CHỦ</a></li>
-                                    <li><a href="<?php echo e(url('')); ?>"><span>Giới thiệu</span></a>
+                                    <li><a href="<?php echo e(url('gioi-thieu')); ?>"><span>Giới thiệu</span></a>
                                         <ul class="sub-nav-lists">
-                                            <li><a href="<?php echo e(url('gioi-thieu')); ?>">Giới thiệu chung</a></li>
-                                            <li><a href="<?php echo e(url('hinh-thanh')); ?>">Hình thành và phát triển</a></li>
+                                            <li><a href="<?php echo e(url('hinh-thanh')); ?>">Giới thiệu chung</a></li>
+<!--                                            <li><a href="<?php echo e(url('hinh-thanh')); ?>">Hình thành và phát triển</a></li>-->
                                             <li><a href="<?php echo e(url('linh-vuc')); ?>">Lĩnh vực hoạt động</a></li>
                                         </ul>
                                     </li>
@@ -138,7 +161,7 @@
                 <div class="boxed active">
                     <div class="wrapper">
                         <p class="noinfo-text">
-                            <span class="nowrap">Bạn nên đăng ký thông tin cá</span> <span class="nowrap">nhân để chúng tôi có</span> <span class="nowrap">thể chọn ra công việc</span> <span class="nowrap">tốt nhất phù hợp với bạn.</span> <span class="nowrap">Chưa có tài khoản, đăng ký tại</span><span class="btn-noinfo nowrap"><a href="<?php echo e(url('/register')); ?>" style="color: #81F7F3">ĐÂY</a></span>
+                            <span class="nowrap">Bạn nên đăng ký thông tin cá</span> <span class="nowrap">nhân để chúng tôi có</span> <span class="nowrap">thể chọn ra công việc</span> <span class="nowrap">tốt nhất phù hợp với bạn.</span> <span class="nowrap">Chưa có tài khoản.</span><span class="btn-noinfo nowrap"><a href="<?php echo e(url('/register')); ?>" style="color: #81F7F3">Đăng Ký Ngay</a></span>
                         </p>
                     </div>
                 </div>
@@ -198,7 +221,7 @@
                 <i class="fas fa-bars"></i>
                 <span class="popup-text-menu">MENU</span>
             </a>
-        </div>
+        </div>,
 
         <!-- Scripts -->
         <script type="text/javascript" src="<?php echo e(url('public/home/jscript/jquery-latest.min.js')); ?>"></script>

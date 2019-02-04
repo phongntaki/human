@@ -222,7 +222,7 @@ class HomeController extends Controller {
             $new_in_list_active = News::where('idlistnew',$itemnews->idlistnew)
                                         ->where('id','<>',$itemnews->id)
                                         ->orderBy('created_at','DESC')
-                                        ->take(4)
+                                        ->take(6)
                                         ->get();
             $new_in_list_item = News::where('idlistnew',$itemnews->idlistnew)
                                         ->where('id','<>',$itemnews->id)

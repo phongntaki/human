@@ -66,18 +66,21 @@ jQuery(document).ready(function() {
 
 	// Add Login and Register
 	jQuery(".top-menu-lists").each(function() {
-		var _this = jQuery(this),
+		if($(window).width() < 1050){
+			var _this = jQuery(this),
 			listTitle = '';
-		jQuery(".dat-menu-list > ul").append(listTitle+_this.html());
-
+			jQuery(".dat-menu-list > ul").append(listTitle+_this.html());
+		}
 	});
 
 	// Login and Register Checks if menu has a submenu
 	jQuery(".dat-menu-list.dat-submenu > ul > li ul").each(function () {
-		var _this = jQuery(this);
-		jQuery("ul #home_logout").removeClass("dropdown-menu");
-		jQuery("ul #home_logout").addClass("sub-nav-lists");
-		jQuery("ul #home_logout").css("display", "block");
+		if($(window).width() < 1050){
+			var _this = jQuery(this);
+			jQuery("ul #home_logout").removeClass("dropdown-menu");
+			jQuery("ul #home_logout").addClass("sub-nav-lists");
+			jQuery("ul #home_logout").css("display", "block");
+		}
 	});
 
 	// Collects all menu lists and places them into ".dat-menu-list > ul"
