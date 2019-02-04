@@ -326,7 +326,7 @@ class CustomerController extends Controller
       Session::put('logined_cusphone', "");
       Session::put('logined_cusimg', "");
       Session::put('logined_cusaddress', "");
-      return redirect("gioi-thieu");
+      return redirect("");
     }
 
 

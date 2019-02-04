@@ -8,37 +8,39 @@
 <div class="boxed active">
     <div class="wrapper">
 
-        <h1>ログインページ</h1>
-
         <div class="content-block">
-            <!-- BEGIN .content-block-single -->
-            <div class="content-block-single">
-                <form role="form" class="form-vertical" action="" method="POST">
-              <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
-                <fieldset>
-                  <div class="control-group">
-                  <?php if(Session::has('flag')): ?>
-                        <div class="alert alert-<?php echo e(Session::get('flag')); ?>"><?php echo e(Session::get('message')); ?></div>
-                    <?php endif; ?>
-                    <label  class="control-label">E-Mail Address:</label>
-                    <div class="controls">
-                      <input type="email" name="email" class="">
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label  class="control-label">Password:</label>
-                    <div class="controls">
-                      <input type="password" name="password"  class="">
-                    </div>
-                  </div>
-                  <a class="" href="#">Forgotten Password</a>
-                  <br>
-                  <br>
-                  <button type="submit" class="btn btn-orange">Login</button>
-
-                    <a href="<?php echo e(url('/login_social/facebook/gioi-thieu')); ?>" class="btn btn-primary">Facebook Login</a>
-                </fieldset>
-              </form>
+            <!-- BEGIN .content-panel -->
+            <div class="content-panel login-panel">
+                <div class="login-form">
+                    <h1>Login</h1>
+                    <form role="form" class="form-vertical" action="" method="POST">
+                        <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+                        <fieldset>
+                            <div class="control-group">
+                                <?php if(Session::has('flag')): ?>
+                                <div class="alert alert-<?php echo e(Session::get('flag')); ?>"><?php echo e(Session::get('message')); ?></div>
+                                <?php endif; ?>
+                                <label  class="control-label">E-Mail Address:</label>
+                                <div class="controls">
+                                    <input type="email" name="email" class="">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label  class="control-label">Password:</label>
+                                <div class="controls">
+                                    <input type="password" name="password"  class="">
+                                </div>
+                            </div>
+                            <div class="password-message">
+                                <a class="" href="#">Forgotten Password</a>
+                            </div>
+                            <div class="login-submit">
+                                <button type="submit" class="btn btn-orange">Login</button>
+                                <a href="<?php echo e(url('/login_social/facebook/gioi-thieu')); ?>" class="btn btn-primary">Facebook Login</a>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
                 <?php $index_count = 0; $ads = 0;?>
                 <?php $__currentLoopData = $modnews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index_mod): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <!-- BEGIN .content-panel -->
@@ -47,8 +49,6 @@
                 <!-- END .content-panel -->
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
-            <!-- BEGIN .sidebar -->
-            <?php echo $__env->make('home.sitebar_right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
     </div>
 </div>

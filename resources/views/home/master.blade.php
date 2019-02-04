@@ -101,16 +101,20 @@
 -->
 
 <!--1つ目のソース START-->
-                        <h1 class="logo">
+                        @if(Session::get('current_page') == "top-page")
+                            <h1 class="logo">
                                 <a href="{{url('')}}"><img src="{{ url('/public/home/'.$contact['logo'])}}" alt="{{$contact->nameco}}"></a>
-                        </h1>
+                            </h1>
+                        @else
+                            <div class="logo">
+                                <a href="{{url('')}}"><img src="{{ url('/public/home/'.$contact['logo'])}}" alt="{{$contact->nameco}}"></a>
+                            </div>
+                        @endif
 <!--1つ目のソース END-->
 
 
 <!--2つ目のソース START-->
-                        <div class="logo">
-                            <a href="{{url('')}}"><img src="{{ url('/public/home/'.$contact['logo'])}}" alt="{{$contact->nameco}}"></a>
-                        </div>
+                        
 <!--2つ目のソース END-->
 
                     </div>
@@ -215,7 +219,7 @@
                 <i class="fas fa-bars"></i>
                 <span class="popup-text-menu">MENU</span>
             </a>
-        </div>
+        </div>,
 
         <!-- Scripts -->
         <script type="text/javascript" src="{{url('public/home/jscript/jquery-latest.min.js')}}"></script>

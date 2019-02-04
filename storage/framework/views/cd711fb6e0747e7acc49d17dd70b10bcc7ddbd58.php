@@ -10,29 +10,22 @@
     <div class="wrapper">
 
         <div class="content-block">
-
-            <!-- BEGIN .content-block-single -->
-            <div class="content-block-single">
-
                 <!-- BEGIN .content-panel -->
                 <div class="content-panel">
                     <div class="content-panel-body big-message">
-
-                        <div class="big-message-inner">
-                            <i class="fa fa-file-text-o"></i>
-                            <h1>Page not found</h1>
-                            <h2>Error 404</h2>
-                            <p>Trang bạn đang cố truy cập hiện không được tìm thấy. </p>
-                            <a href="<?php echo e(url('/')); ?>" class="back-button"><i class="fa fa-home"></i>Về trang chủ</a>
+                        <div class="big-message-heading">
+                            <i class="far fa-file"></i>
+                            <h1 class="big-message-title">404 not found.</h1>
                         </div>
-
+                        <div class="big-message-content">
+                            <h2 class="sub-title">Trang tìm kiếm không tìm thấy</h2>
+                            <p>Trang tìm kiếm tạm thời không thể truy cập được,  đã di chuyển hoặc có khả năng đã bị xóa, </p>
+                            <p class="back-button">
+                                <a href="<?php echo e(url('/')); ?>">Về trang chủ</a>
+                            </p>
+                        </div>
                     </div>
-                <!-- END .content-panel -->
                 </div>
-
-            <!-- END .content-block-single -->
-            </div>
-
         </div>
 
     </div>

@@ -15,7 +15,7 @@
                 <!-- BEGIN .content-panel -->
                 <div class="content-panel carousel-type">
                     <div class="content-panel-title">
-                        <h2 class="panel-title"><a href="<?php echo e(url('loai-tin/'.$modnew->slug)); ?>"><?php echo e($modnew->modname); ?></a></h2>
+                        <h1 class="panel-title"><a href="<?php echo e(url('loai-tin/'.$modnew->slug)); ?>"><?php echo e($modnew->modname); ?></a></h1>
                         <ul class="panel-title-submenu">
                             <?php $__currentLoopData = $modnew->listnew_inmod($modnew->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat_mod): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <li class="submenu-item">
@@ -33,12 +33,12 @@
                             <?php $__currentLoopData = $item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $news): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <li class="item">
                                 <a href="<?php echo e(url('/chi-tiet/'.$news->slug)); ?>">
+                                    <div class="item-lead">
+                                        <h3 class="item-title"><?php echo e($news->newsname); ?></h3>
+                                        <p class="item-date"><?php echo e($news->created_at->format('Y/m/d')); ?></p>
+                                    </div>
                                     <div class="item-image">
                                         <img src="<?php echo e(url('public/img/news/800x800/'.$news['newimg'])); ?>" alt="<?php echo e($news->created_at); ?>" />
-                                    </div>
-                                    <div class="item-lead">
-                                        <p class="item-date"><?php echo e($news->created_at->format('Y/m/d')); ?></p>
-                                        <h3 class="item-title"><?php echo e($news->newsname); ?></h3>
                                     </div>
                                 </a>
                             </li>
