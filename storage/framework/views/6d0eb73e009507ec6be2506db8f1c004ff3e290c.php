@@ -16,6 +16,7 @@
                 <!-- BEGIN .content-panel -->
                 <div class="content-panel">
                     <div class="content-panel-body big-message">
+
                         <div class="big-message-heading">
                             <h1 class="big-message-title">Không tìm thấy nội dung</h1>
                         </div>
