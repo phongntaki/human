@@ -33,24 +33,22 @@
                                         <h3 class="item-title">{{$item_serch->newsname}}</h3>
                                         <p class="item-desc">{{$item_serch->newintro}}</p>
 
-                                        <p class="item-date">{{$item_serch->created_at->format('Y/m/d')}}</p>
+                                        <div class="item-meta">
+                                            <p class="item-date">{{$item_serch->created_at->format('Y/m/d')}}</p>
+                                            <p class="category">
+                                                @if($item_serch->list_name($item_serch->idlistnew)['listname'] !="")
+                                                {{ $item_serch->list_name($item_serch->idlistnew)['listname'] }}
+                                                @else
+                                                {{$item_serch->mod_name($item_serch->idmodnew)['modname']}}
+                                                @endif
+                                            </p>
+                                        </div>
                                     </div>
                                     <div class="item-image">
                                         <img src="{{url('/public/img/news/100x100/'.$item_serch->newimg)}}" alt="">
                                     </div>
                                 </a>
-<!--
-                                <div class="recruit-button">
-                                    <a href="{{url('/loai-tin/'.$item_serch->list_name($item_serch->idlistnew)['slug'])}}">
-                                        <i class="fas fa-list-ul"></i>
-                                        @if($item_serch->list_name($item_serch->idlistnew)['listname'] !="")
-                                        {{ $item_serch->list_name($item_serch->idlistnew)['listname'] }}
-                                        @else
-                                        {{$item_serch->mod_name($item_serch->idmodnew)['modname']}}
-                                        @endif
-                                    </a>
-                                </div>
--->
+
                             </li>
                             @endforeach
                         </ul>

@@ -108,9 +108,11 @@
 
 
 <!--2つ目のソース START-->
+<!--
                         <div class="logo">
                             <a href="<?php echo e(url('')); ?>"><img src="<?php echo e(url('/public/home/'.$contact['logo'])); ?>" alt="<?php echo e($contact->nameco); ?>"></a>
                         </div>
+-->
 <!--2つ目のソース END-->
 
                     </div>

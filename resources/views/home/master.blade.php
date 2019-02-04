@@ -108,9 +108,11 @@
 
 
 <!--2つ目のソース START-->
+<!--
                         <div class="logo">
                             <a href="{{url('')}}"><img src="{{ url('/public/home/'.$contact['logo'])}}" alt="{{$contact->nameco}}"></a>
                         </div>
+-->
 <!--2つ目のソース END-->
 
                     </div>
