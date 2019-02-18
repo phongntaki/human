@@ -187,10 +187,6 @@
         margin: 25px 0 50px;
     }
 
-    /* login-Page */
-    .content .content-block .content-panel.access-panel {
-        margin: 85px 0 175px;
-    }
 
 
     /* sidebar
@@ -485,13 +481,6 @@
         margin: 10px 0 65px;
     }
 
-    /* serach-page
-    --------------------------------*/
-    .content-panel.block-type .content-panel-body .panel-items .item .category-button {
-        top: 200px;
-        right: 0;
-        left: 0;
-    }
 
     /* PostPage styling
     --------------------------------*/
@@ -560,11 +549,7 @@
         font-size: 1.8rem;
     }
 
-    /* notfound content
-    -----------------------------------------*/
-    .not-found-content-page .big-message .big-message-heading .big-message-title {
-        font-size: 2.6rem;
-    }
+
 
 
 
@@ -572,11 +557,11 @@
 
     /* Profile-Page */
     .form-vertical {
-        margin-top: 30px;
+        margin-top: 50px;
     }
     .form-vertical .form-group {
         display: block;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
     }
     .form-vertical .form-group .control-label {
         width: 100%;
@@ -589,47 +574,12 @@
         margin-top: 0;
     }
     .form-vertical .form-submit {
-        margin: 35px 0 25px;
+        margin: 50px 0 25px;
     }
     .form-vertical .form-submit .form-button {
         width: 100%;
         padding: 14px 25px;
     }
-    .form-vertical .form-submit .form-button.button-red {
-        margin: 0 0 20px;
-    }
-
-
-
-
-    /* access-panel */
-    .content .content-block .content-panel.access-panel {
-        margin: 20px 0;
-    }
-    .access-panel .login-form,
-    .access-panel .register-form {
-        padding: 30px 30px 35px;
-    }
-    .access-panel .panel-title {
-        font-size: 2.8rem;
-        padding-bottom: 15px;
-        margin-bottom: 25px;
-    }
-    .access-panel .form-vertical .form-group .control-label {
-        font-size: 1.4rem;
-    }
-    .login-form .form-vertical .form-submit {
-        margin-top: 30px;
-    }
-    .login-form .form-vertical .password-message {
-        font-size: 1.4rem;
-        margin-bottom: 30px;
-    }
-    .login-form .form-vertical .form-submit .button-red {
-        margin: 0 0 15px;
-    }
-
-
 
 
 
