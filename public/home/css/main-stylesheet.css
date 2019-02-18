@@ -360,6 +360,7 @@ select:-webkit-autofill:focus {
 /*header-logo
 ------------------------------------*/
 .header .header-logo {
+    height: 135px;
     padding: 35px 0;
 }
 .header .header-logo .logo {
@@ -524,7 +525,6 @@ select:-webkit-autofill:focus {
 -------------------------------------*/
 .no-information {
     z-index: 110;
-    display: none;
 }
 .no-information .noinfo-text {
     font-size: 1.6rem;
