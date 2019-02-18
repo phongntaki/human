@@ -92,15 +92,6 @@
             <div class="header-logo">
                 <div class="boxed active">
                     <div class="wrapper">
-
-<!--
-    フォン君へ
-
-    ① TOPページを表示している時は、1つ目のソースを表示させて、2つ目のソースは消してください。
-    ② その他のページを表示している時は、1つ目のソースを消して、2つ目のソースを表示させてください。
--->
-
-<!--1つ目のソース START-->
                         <?php if(Session::get('current_page') == "top-page"): ?>
                             <h1 class="logo">
                                 <a href="<?php echo e(url('')); ?>"><img src="<?php echo e(url('/public/home/'.$contact['logo'])); ?>" alt="<?php echo e($contact->nameco); ?>"></a>
@@ -110,13 +101,6 @@
                                 <a href="<?php echo e(url('')); ?>"><img src="<?php echo e(url('/public/home/'.$contact['logo'])); ?>" alt="<?php echo e($contact->nameco); ?>"></a>
                             </div>
                         <?php endif; ?>
-<!--1つ目のソース END-->
-
-
-<!--2つ目のソース START-->
-                        
-<!--2つ目のソース END-->
-
                     </div>
                 </div>
                 <!-- END .header-logo -->
@@ -221,7 +205,7 @@
                 <i class="fas fa-bars"></i>
                 <span class="popup-text-menu">MENU</span>
             </a>
-        </div>,
+        </div>
 
         <!-- Scripts -->
         <script type="text/javascript" src="<?php echo e(url('public/home/jscript/jquery-latest.min.js')); ?>"></script>
@@ -246,6 +230,7 @@
         <script>
             objectFitImages('img.object-fit-img');
         </script>
+        
 <!--
         <script>
             if ($(window).width() > 1050) {

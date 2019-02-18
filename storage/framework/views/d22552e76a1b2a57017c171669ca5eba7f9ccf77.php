@@ -12,51 +12,59 @@
             <!-- BEGIN .content-block-single -->
             <div class="content-block-single">
 
-                <form role="form" class="form-vertical" action="" method="POST" enctype="multipart/form-data">
-                    <div class="col-lg-8" style="padding-bottom:70px">
-                          <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
-                        <fieldset>
-                              <div class="form-group">
-                                <label class="control-label">Tên</label>
-                                <input class="form-control" name="txtname" placeholder=" " value="<?php echo e($cus_data->cusfullname); ?>" />
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">Giới tính</label>
-                                <div class="col-xs-12 col-md-12">
-                                    <div class="form-group">
-                                        <div class="col-xs-12 col-md-12">
-                                            <label class="radio-inline">
-                                                <input type="radio" name="sex" value="0"
-                                                <?php if($cus_data["sex"] == 0): ?>
-                                                    checked="checked"
-                                                <?php endif; ?>
-                                                > Nam
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="sex" value="1"
-                                                <?php if($cus_data["sex"] == 1): ?>
-                                                    checked="checked"
-                                                <?php endif; ?>
-                                                > Nữ
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">Ngày sinh</label>
+                <div class="content-panel">
+                    <div class="content-panel-title">
+                        <h1 class="panel-title">Đăng ký hồ sơ</h1>
+                    </div>
+
+                    <form class="form-vertical" method="POST" action="" enctype="multipart/form-data" role="form">
+                        <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+                        <div class="form-group">
+                            <label class="control-label">Tên</label>
+                            <div class="control-detail">
+                                <input type="text" class="form-control" name="txtname" placeholder=" " value="<?php echo e($cus_data->cusfullname); ?>" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Giới tính</label>
+                            <div class="control-detail">
+                                <label class="radio-inline">
+                                    <input type="radio" name="sex" value="0"
+                                           <?php if($cus_data["sex"] == 0): ?>
+                                           checked="checked"
+                                           <?php endif; ?>
+                                           > Nam
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="sex" value="1"
+                                           <?php if($cus_data["sex"] == 1): ?>
+                                           checked="checked"
+                                           <?php endif; ?>
+                                           > Nữ
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Ngày sinh</label>
+                            <div class="control-detail">
                                 <input class="form-control" name="birthday" type="date" value="<?php echo e($cus_data->birthday); ?>"/>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">Số điện thoại</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Số điện thoại</label>
+                            <div class="control-detail">
                                 <input class="form-control" name="phone" placeholder=" " value="<?php echo e($cus_data->cusphone); ?>" />
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">Địa chỉ</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Địa chỉ</label>
+                            <div class="control-detail">
                                 <input class="form-control" name="address" placeholder=" " value="<?php echo e($cus_data->cusaddress); ?>" />
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">Học vấn(Cấp cao nhất)</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Học vấn(Cấp cao nhất)</label>
+                            <div class="control-detail">
                                 <select class="form-control" name="nnHocVan" id="nn-hoc-van" required>
                                     <option value="">---Vui Lòng Chọn Học Vấn---</option>
                                     <option value="Cấp 3"
@@ -80,9 +88,11 @@
                                         <?php endif; ?>
                                     > Thạc sĩ </option>
                                 </select>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">Tiếng Nhật</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Tiếng Nhật</label>
+                            <div class="control-detail">
                                 <select class="form-control w50" name="nnLanguageJP" id="nn-language-jp" required>
                                     <option value="">---Vui Lòng Chọn Cấp độ---</option>
                                     <option value="N1"
@@ -111,46 +121,47 @@
                                         <?php endif; ?>
                                     > N5 </option>
                                 </select>
-                                <div>
-                                    <label class="control-label">Ngoại Ngữ Khác</label>
-                                    <input class="form-control" name="nnLanguageOther" placeholder="Toeic 500" value="<?php echo e($cus_data->language_other); ?>" />
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">Giới thiệu bản thân, kinh nghiệm làm việc</label>
-                                <div class="col-sx-12">
-                                  <textarea name="nnIntroduce" class="form-control" rows="4"><?php echo old('nnIntroduce',isset($cus_data) ? $cus_data['introduce'] : null); ?></textarea>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">Mong muốn</label>
-                                <div class="col-sx-12">
-                                  <textarea name="nnDesire" class="form-control" rows="4"><?php echo old('nnDesire',isset($cus_data) ? $cus_data['desire'] : null); ?></textarea>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label for="hnnavatar" class="col-sm-4 control-label"><i class="fa  fa-picture-o"></i> Hình ảnh</label>
-                                <div class="col-sm-8">
-                                    <img id="hnnavatar"
-                                    <?php if($cus_data["cusimg"]=="no-img.png" && $cus_data["cusimg"]==null): ?>
-                                     src="http://shopproject30.com/wp-content/themes/venera/images/placeholder-camera-green.png"
-                                     <?php else: ?>
-                                     src="<?php echo e(url('public/img/customers/'.$cus_data['cusimg'])); ?>"
-                                     <?php endif; ?>
-                                      alt="..." class="img-thumbnail" style="width: 50%;">
-                                    <input type="file" name="hnnavatarfile" id="hnnavatarfile" onchange="eshowimg(this);" style="display: none">
-                                    <input type="hidden" name="hnnimguserold" id="hnnimguserold">
-                                </div>
                             </div>
-                              <br>
-                              <br>
-                              <button type="submit" class="btn btn-orange">Update</button>
-                        </fieldset>
-                    </div>
-                  </form>
-
-            <!-- END .content-block-single -->
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Ngoại Ngữ Khác</label>
+                            <div class="control-detail">
+                                <input class="form-control" name="nnLanguageOther" placeholder="Toeic 500" value="<?php echo e($cus_data->language_other); ?>" />
+                            </div>
+                        </div>
+                        <div class="form-group detail-textarea">
+                            <label class="control-label"><span class="nowrap">Giới thiệu bản thân,</span> <span class="nowrap">kinh nghiệm làm việc</span></label>
+                            <div class="control-detail">
+                                <textarea name="nnIntroduce" class="form-control" rows="6"><?php echo old('nnIntroduce',isset($cus_data) ? $cus_data['introduce'] : null); ?></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group detail-textarea">
+                            <label class="control-label">Mong muốn</label>
+                            <div class="control-detail">
+                                <textarea name="nnDesire" class="form-control" rows="6"><?php echo old('nnDesire',isset($cus_data) ? $cus_data['desire'] : null); ?></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group detail-photo">
+                            <label for="hnnavatar" class="control-label">Hình ảnh<i class="far fa-image"></i></label>
+                            <div class="control-detail">
+                                <img id="hnnavatar"
+                                <?php if($cus_data["cusimg"]=="no-img.png" && $cus_data["cusimg"]==null): ?>
+                                 src="http://shopproject30.com/wp-content/themes/venera/images/placeholder-camera-green.png"
+                                 <?php else: ?>
+                                 src="<?php echo e(url('public/img/customers/'.$cus_data['cusimg'])); ?>"
+                                 <?php endif; ?>
+                                  alt="..." class="img-thumbnail" style="width: 50%;">
+                                <input type="file" name="hnnavatarfile" id="hnnavatarfile" onchange="eshowimg(this);" style="display: none">
+                                <input type="hidden" name="hnnimguserold" id="hnnimguserold">
+                            </div>
+                        </div>
+                        <div class="form-submit">
+                            <button type="submit" class="form-button button-red">Update</button>
+                        </div>
+                      </form>
+                </div>
             </div>
+
             <!-- BEGIN .sidebar -->
             <?php echo $__env->make('home.sitebar_right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>

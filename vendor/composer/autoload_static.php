@@ -19,6 +19,7 @@ class ComposerStaticInit4f8eae221da3774b25c1c2943a5da5e1
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
+        'e23faeee409e941dc9b4c80386209c39' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/functions.php',
         '2e8ee9f8e1e8c7e66f455d2e805a9ae7' => __DIR__ . '/../..' . '/app/function/function.php',
     );
 
@@ -353,6 +354,13 @@ class ComposerStaticInit4f8eae221da3774b25c1c2943a5da5e1
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
             ),
         ),
+        'L' => 
+        array (
+            'Laracasts\\Flash' => 
+            array (
+                0 => __DIR__ . '/..' . '/laracasts/flash/src',
+            ),
+        ),
         'D' => 
         array (
             'Doctrine\\Common\\Lexer\\' => 
@@ -385,10 +393,8 @@ class ComposerStaticInit4f8eae221da3774b25c1c2943a5da5e1
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\LanguageController' => __DIR__ . '/../..' . '/app/Http/Controllers/LanguageController.php',
         'App\\Http\\Controllers\\ListNewController' => __DIR__ . '/../..' . '/app/Http/Controllers/ListNewController.php',
-        'App\\Http\\Controllers\\ListProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ListProductController.php',
         'App\\Http\\Controllers\\MakettingController' => __DIR__ . '/../..' . '/app/Http/Controllers/MakettingController.php',
         'App\\Http\\Controllers\\ModNewsController' => __DIR__ . '/../..' . '/app/Http/Controllers/ModNewsController.php',
-        'App\\Http\\Controllers\\ModProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ModProductController.php',
         'App\\Http\\Controllers\\NewsController' => __DIR__ . '/../..' . '/app/Http/Controllers/NewsController.php',
         'App\\Http\\Controllers\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrderController.php',
         'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
@@ -397,7 +403,6 @@ class ComposerStaticInit4f8eae221da3774b25c1c2943a5da5e1
         'App\\Http\\Controllers\\SpecialGroupController' => __DIR__ . '/../..' . '/app/Http/Controllers/SpecialGroupController.php',
         'App\\Http\\Controllers\\TranslateController' => __DIR__ . '/../..' . '/app/Http/Controllers/TranslateController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
-        'App\\Http\\Controllers\\WarehouseController' => __DIR__ . '/../..' . '/app/Http/Controllers/WarehouseController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\AdminControllerMD' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminControllerMD.php',
         'App\\Http\\Middleware\\CounterViewPage' => __DIR__ . '/../..' . '/app/Http/Middleware/CounterViewPage.php',
@@ -2044,6 +2049,13 @@ class ComposerStaticInit4f8eae221da3774b25c1c2943a5da5e1
         'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/ConsoleColor.php',
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/Highlighter.php',
+        'Laracasts\\Flash\\Flash' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/Flash.php',
+        'Laracasts\\Flash\\FlashNotifier' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/FlashNotifier.php',
+        'Laracasts\\Flash\\FlashServiceProvider' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/FlashServiceProvider.php',
+        'Laracasts\\Flash\\LaravelSessionStore' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/LaravelSessionStore.php',
+        'Laracasts\\Flash\\Message' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/Message.php',
+        'Laracasts\\Flash\\OverlayMessage' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/OverlayMessage.php',
+        'Laracasts\\Flash\\SessionStore' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/SessionStore.php',
         'Laravel\\Socialite\\AbstractUser' => __DIR__ . '/..' . '/laravel/socialite/src/AbstractUser.php',
         'Laravel\\Socialite\\Contracts\\Factory' => __DIR__ . '/..' . '/laravel/socialite/src/Contracts/Factory.php',
         'Laravel\\Socialite\\Contracts\\Provider' => __DIR__ . '/..' . '/laravel/socialite/src/Contracts/Provider.php',

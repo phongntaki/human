@@ -13,6 +13,7 @@ Route::post('register',['as'=>'register','uses'=>'HomeController@postRegister'])
 Route::get('/login', 'HomeController@login');
 Route::post('login',['as'=>'login','uses'=>'HomeController@postLogin']);
 Route::get('/logout', 'CustomerController@logout');
+
 // loadmore
 Route::get('loadmoremod', ['as' => 'loadmoremod', 'uses' => 'HomeController@loadmore_news_in_mod']);
 Route::get('loadmorelist', ['as' => 'loadmorelist', 'uses' => 'HomeController@loadmore_news_in_list']);

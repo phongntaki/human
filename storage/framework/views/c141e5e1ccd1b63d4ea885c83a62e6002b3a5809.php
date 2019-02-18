@@ -12,34 +12,23 @@
             <!-- BEGIN .content-panel -->
             <div class="content-panel access-panel">
 
-               <div class="login-form">
-                    <h1 class="panel-title">Login</h1>
+               <div class="login-form" style="display: block;">
+                    <h1 class="panel-title">Quên mật khẩu</h1>
                    <form class="form-vertical" action="" method="POST" role="form">
                         <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
-                        <?php echo $__env->make('flash::message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                         <div class="form-group detail-email">
-                            <!-- <?php if(Session::has('flag')): ?>
+                            <?php if(Session::has('flag')): ?>
                             <div class="alert alert-<?php echo e(Session::get('flag')); ?>">
                                 <p><?php echo e(Session::get('message')); ?></p>
                             </div>
-                            <?php endif; ?> -->
+                            <?php endif; ?>
                             <label class="control-label" for="login-email">E-Mail</label>
                             <div class="control-detail">
                                 <input type="email" id="login-email" class="form-control" name="email">
                             </div>
                         </div>
-                        <div class="form-group detail-password">
-                            <label  class="control-label" for="login-password">Password</label>
-                            <div class="control-detail">
-                                <input type="password" id="login-password" class="form-control" name="password">
-                            </div>
-                        </div>
-                        <div class="password-message">
-                            <a class="message-text" href="<?php echo e(url('quen-mat-khau')); ?>">Forgotten Password</a>
-                        </div>
                         <div class="form-submit">
-                            <button type="submit" class="form-button button-red">Login</button>
-                            <a href="<?php echo e(url('/login_social/facebook/gioi-thieu')); ?>" class="form-button">Facebook Login</a>
+                            <button type="submit" class="form-button button-red">Cấp lại mật khẩu</button>
                         </div>
                     </form>
                 </div>
@@ -49,9 +38,7 @@
 
     </div>
 </div>
-<script>
-$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
-</script>
+
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('home.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
