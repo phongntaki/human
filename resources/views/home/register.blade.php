@@ -18,6 +18,12 @@
 
                     <form class="form-vertical" method="POST" action="" role="form">
                         {{ csrf_field() }}
+                        <!-- @if(Session::has('flag'))
+                        <div class="alert alert-{{Session::get('flag')}}">
+                            <p>{{Session::get('message')}}</p>
+                        </div>
+                        @endif -->
+                        @include('flash::message')
                         <div class="form-group{{ $errors->has('fullname') ? ' has-error' : '' }}">
                             <label class="control-label" for="fullname">FullName</label>
                             <div class="control-detail">
@@ -77,5 +83,8 @@
 
     </div>
 </div>
-
+<script>
+$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+</script>
 @endsection
+

@@ -365,6 +365,7 @@ class HomeController extends Controller {
             Session::put('logined_cusaddress', $checkLogin->cusaddress);
             return redirect()->route('gioi_thieu')->with(['flash_level'=>'success','flash_message'=>'Login Success']);
         }else{
+            flash('Đăng nhập thất bại!')->error();
             return redirect()->route('login')->with(['flash_level'=>'success','flash_message'=>'Login Fail']);
         }
     }
@@ -479,11 +480,17 @@ class HomeController extends Controller {
             $public_var = $this->public_var();
             echo "<script type='text/javascript'>alert('Register Success');</script>";
             Session::put('current_page', 'login-page');
+            // Session::put('flag','success');
+            // Session::put('message','Đăng ký thành công!');
+            flash('Đăng ký thành công!')->success();
             return view('home.login',array_merge($public_var, [ ]) );
         } else{
             $public_var = $this->public_var();
-            echo "<script type='text/javascript'>alert('Register Fail');</script>";
+            // echo "<script type='text/javascript'>alert('Register Fail');</script>";
             Session::put('current_page', 'register-page');
+            // Session::put('flag','danger');
+            // Session::put('message','Đăng ký thất bại!');
+            flash('Đăng ký thất bại!')->error();
             return view('home.register',array_merge($public_var, [ ]) );
         }
         // auth()->login($user);
@@ -670,4 +677,5 @@ class HomeController extends Controller {
         return redirect('gioi-thieu')->with('thongbao','Update Success');
 
     }
+
 }

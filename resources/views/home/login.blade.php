@@ -17,12 +17,13 @@
                     <h1 class="panel-title">Login</h1>
                    <form class="form-vertical" action="" method="POST" role="form">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        @include('flash::message')
                         <div class="form-group detail-email">
-                            @if(Session::has('flag'))
+                            <!-- @if(Session::has('flag'))
                             <div class="alert alert-{{Session::get('flag')}}">
                                 <p>{{Session::get('message')}}</p>
                             </div>
-                            @endif
+                            @endif -->
                             <label class="control-label" for="login-email">E-Mail</label>
                             <div class="control-detail">
                                 <input type="email" id="login-email" class="form-control" name="email">
@@ -35,7 +36,7 @@
                             </div>
                         </div>
                         <div class="password-message">
-                            <a class="message-text" href="#">Forgotten Password</a>
+                            <a class="message-text" href="{{url('quen-mat-khau')}}">Forgotten Password</a>
                         </div>
                         <div class="form-submit">
                             <button type="submit" class="form-button button-red">Login</button>
@@ -49,5 +50,7 @@
 
     </div>
 </div>
-
+<script>
+$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+</script>
 @endsection

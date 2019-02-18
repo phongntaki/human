@@ -28,7 +28,7 @@
         <article class="container-login center-block">
             <section>
                 <ul id="top-bar" class="nav nav-tabs nav-justified">
-                    <li class="active"><a href="#login-access" style="color: #">CỔNG THÔNG TIN ĐIỆN TỬ</a></li>
+                    <li class="active"><a href="#login-access" style="color: #">Tư vấn - Xuất khẩu lao động</a></li>
                 </ul>
                 <div class="tab-content tabs-login col-lg-12 col-md-12 col-sm-12 cols-xs-12">
                     <div id="login-access" class="tab-pane fade active in">

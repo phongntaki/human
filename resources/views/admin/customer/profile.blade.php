@@ -63,21 +63,21 @@
           <div class="form-group">
             <label for="nn-languagejp-cus" class="col-xs-3 control-label"><i class="fa  fa-comments-o"></i> {{ trans("admin.language_jp") }}:</label>
             <div class="col-xs-9">
-              <p>   {{$customer->language_jp}}
+              <p>   {{$customer->language_jp ? $customer->language_jp : '###############' }}
               </p>
             </div>
           </div>
           <div class="form-group">
             <label for="nn-languageother-cus" class="col-xs-3 control-label"><i class="fa  fa-comments-o"></i> {{ trans("admin.language_other") }}:</label>
             <div class="col-xs-9">
-              <p>   {{$customer->language_other}}
+              <p>   {{$customer->language_other ? $customer->language_other : '###############' }}
               </p>
             </div>
           </div>
           <div class="form-group">
             <label for="nn-education-cus" class="col-xs-3 control-label"><i class="fa  fa-comments-o"></i> {{ trans("admin.education") }}:</label>
             <div class="col-xs-9">
-              <p>   {{$customer->education}}
+              <p>   {{$customer->education ? $customer->education : '###############' }}
               </p>
             </div>
           </div>
@@ -85,20 +85,22 @@
           <div class="form-group">
             <label for="nn-introduce-cus" class="col-xs-3 control-label"><i class="fa  fa-comments-o"></i> {{ trans("admin.introduce") }}:</label>
             <div class="col-xs-9">
-              <p>   {{$customer->introduce}}
+              <p>   {{$customer->introduce ? $customer->introduce : '###############' }}
               </p>
             </div>
           </div>
           <div class="form-group">
             <label for="nn-desire-cus" class="col-xs-3 control-label"><i class="fa fa-ravelry"></i> {{ trans("admin.desire") }}:</label>
             <div class="col-xs-9" >
-              <p>{{$customer->desire}}</p>
+              <p>   {{$customer->desire ? $customer->desire : '###############' }}
+              </p>
             </div>
           </div>
           <div class="form-group">
             <label for="nn-desire-cus" class="col-xs-3 control-label"><i class="fa fa-ravelry"></i> {{ trans("admin.facebook") }}:</label>
             <div class="col-xs-9" >
-              <p>{{$customer->cusface}}</p>
+              <p>   {{$customer->cusface ? $customer->cusface : '###############' }}
+              </p>
             </div>
           </div>
       </div>   
