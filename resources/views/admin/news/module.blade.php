@@ -53,7 +53,7 @@
                                             <img src="{{ asset($modproduct->modimg) }}" style="width: 55px"> 
                                         </td>    
                                         <td>
-                                            <i class="nneditmodproduct btn btn-info fa fa-edit" description="{{ $modproduct->description }}" imgo="{{ asset($modproduct->modimg) }}" img="{{ $modproduct->modimg }}" id="ennmodproduct{{ $modproduct->id }}" editid="{{ $modproduct->id }}" lang="{{ $modproduct->idlang }}" name="{{ $modproduct->modname }}" type="{{ $modproduct->type }}" num="{{ $modproduct->modnumber }}"> Sửa</i>                                    
+                                            <i class="nneditmodproduct btn btn-info fa fa-edit" description="{{ $modproduct->description }}" imgo="{{ asset($modproduct->modimg) }}" img="{{ $modproduct->modimg }}" id="ennmodproduct{{ $modproduct->id }}" editid="{{ $modproduct->id }}" lang="{{ $modproduct->idlang }}" name="{{ $modproduct->modname }}" name_jp="{{ $modproduct->modname_jp }}" name_en="{{ $modproduct->modname_en }}" type="{{ $modproduct->type }}" num="{{ $modproduct->modnumber }}"> Sửa</i>                                    
                                             <i class="nndeletemodproduct btn btn-danger fa fa-trash" img="{{ $modproduct->modimg }}" editid="{{ $modproduct->id }}" name="{{ $modproduct->modname }}"> Xóa</i>
                                         </td>
                                     </tr>
@@ -106,6 +106,18 @@
                         <label for="modname" class="col-sm-3 control-label"><i class="fa  fa-font"></i> Tên:</label>
                         <div class="col-sm-9">
                           <input type="text" class="form-control" name="modname" id="modname" placeholder=" ">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modname_jp" class="col-sm-3 control-label"><i class="fa  fa-font"></i> Tên(Tiếng Nhật):</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="modname_jp" id="modname_jp" placeholder=" ">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="modname_en" class="col-sm-3 control-label"><i class="fa  fa-font"></i> Tên(Tiếng Anh):</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="modname_en" id="modname_en" placeholder=" ">
                         </div>
                     </div>
                     <div class="form-group">
@@ -186,6 +198,18 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="emodname_jp" class="col-sm-3 control-label"><i class="fa  fa-font"></i> Tên(Tiếng Nhật):</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="modname_jp" id="emodname_jp" placeholder=" ">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="emodname_en" class="col-sm-3 control-label"><i class="fa  fa-font"></i> Tên(Tiếng Anh):</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="modname_en" id="emodname_en" placeholder=" ">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="nntheloai" class="col-sm-3 control-label"><i class="fa  fa-font"></i> Cách hiển thị:</label>
                         <div class="col-sm-9">
                             <select class="form-control" name="txtetype" id="idetype">
@@ -231,7 +255,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Xóa modproduct</h4>
+            <h4 class="modal-title" id="myModalLabel">Xóa Thể Loại</h4>
           </div>
           <form class="form-horizontal" method="post" action="list/delete" enctype="multipart/form-data">
           <input type="hidden" name="dennidmodproduct" id="dennidmodproduct" />
@@ -239,7 +263,7 @@
           <input type="hidden" name="_token" value="{{ csrf_token()}}" />
           <div class="modal-body">
             <div class="row">
-                <h4 class="nnbodydelete">Bạn có chắc xóa modproduct <i id="deletename"></i></h4>
+                <h4 class="nnbodydelete">Bạn có chắc xóa Thể Loại <i id="deletename"></i></h4>
             </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-info" data-dismiss="modal">Đóng cửa sổ</button>

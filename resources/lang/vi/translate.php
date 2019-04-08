@@ -33,7 +33,6 @@ return [
 	"image" => "Hình ảnh", 
 	"Warehousehis" => "Lịch sử kho", 
 	"Ordertotal" => "Thống kê ĐH", 
-	"info" => "Thông tin công ty", 
 	"catgorypro" => "Loại sản phẩm", 
 	"grCustomer" => "Nhóm khách hàng", 
 	"addnew" => "Thêm mới", 

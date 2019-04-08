@@ -214,6 +214,7 @@ return [
 "sex"=>"Sex",
 "birthday"=>"Birthday",
 "facebook"=>"Facebook",
+"rank"=>"Rank",
 ];
 
 ?>

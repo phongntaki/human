@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
+use Session;
 
 trait ResetsPasswords
 {
@@ -25,7 +26,7 @@ trait ResetsPasswords
     public function showResetForm(Request $request, $token = null)
     {
         return view('auth.passwords.reset')->with(
-            ['token' => $token, 'email' => $request->email]
+            ['token' => $token, 'cusemail' => $request->cusemail]
         );
     }
 
@@ -65,7 +66,7 @@ trait ResetsPasswords
     {
         return [
             'token' => 'required',
-            'email' => 'required|email',
+            'cusemail' => 'required|email',
             'password' => 'required|confirmed|min:6',
         ];
     }
@@ -89,7 +90,7 @@ trait ResetsPasswords
     protected function credentials(Request $request)
     {
         return $request->only(
-            'email', 'password', 'password_confirmation', 'token'
+            'cusemail', 'password', 'password_confirmation', 'token'
         );
     }
 
@@ -102,14 +103,14 @@ trait ResetsPasswords
      */
     protected function resetPassword($user, $password)
     {
-        $user->password = Hash::make($password);
+        // $user->cuspass = Hash::make($password);
+        $user->cuspass = sha1($password);
 
         $user->setRememberToken(Str::random(60));
 
         $user->save();
 
         event(new PasswordReset($user));
-
         $this->guard()->login($user);
     }
 
@@ -135,8 +136,8 @@ trait ResetsPasswords
     protected function sendResetFailedResponse(Request $request, $response)
     {
         return redirect()->back()
-                    ->withInput($request->only('email'))
-                    ->withErrors(['email' => trans($response)]);
+                    ->withInput($request->only('cusemail'))
+                    ->withErrors(['cusemail' => trans($response)]);
     }
 
     /**

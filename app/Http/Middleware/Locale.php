@@ -19,19 +19,24 @@ class Locale
    */
    public function handle($request, Closure $next)
    {
-      $raw_locale = Session::get('locale');
-      if (in_array($raw_locale, \Config::get('app.locales'))) {
-        $loc = $raw_locale;
-      }else{
-        $lang = Language::find(1);
-        $loc = Config::get('app.locale');
-          \Session::put('locale',$loc);
-          \Session::put('idlocale',1);
-          \Session::put('currencylocale',$lang->currency);
-          \Session::put('curency_codelocale',$lang->curency_code);
-          \Session::save();
-      }
-      \App::setLocale($loc);         
+      //Doi du lieu trang admin
+      // $raw_locale = Session::get('locale');
+      // if (in_array($raw_locale, \Config::get('app.locales'))) {
+      //   $loc = $raw_locale;
+      // }else{
+      //   $lang = Language::find(1);
+      //   $loc = Config::get('app.locale');
+      //     \Session::put('locale',$loc);
+      //     \Session::put('idlocale',1);
+      //     \Session::put('currencylocale',$lang->currency);
+      //     \Session::put('curency_codelocale',$lang->curency_code);
+      //     \Session::save();
+      // }
+      // \App::setLocale($loc);
+
+      //Doi du lieu trang chu
+      $language = \Session::get('website_language',config('app.locale'));   
+      config(['app.locale' => $language]);      
       return $next($request);
    }
  }

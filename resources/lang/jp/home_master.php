@@ -1,0 +1,28 @@
+<?php
+return [
+    'login' => 'ログイン',
+    'register' => '登録',
+    'my_profile_setting' => 'フロフィル設定',
+    'logout' => 'ログアウト',
+    'search_key' => '検索..',
+    'home_page' => 'ホームページ',
+    'gioi_thieu' => '紹介',
+    'danh_muc_tin' => 'ニュースカタログ',
+    'gioi_thieu_chung' => '一般的な紹介',
+    'linh_vuc_hoat_dong' => '活動の分野',
+    'lien_he' => 'お問い合わせ',
+    'ban_nen_dang_ky_thong_tin_ca' => 'あなたに合った',
+    'nhan_de_chung_toi_co' => '最高の仕事を選ぶこと',
+    'the_chon_ra_cong_viec' => 'ができるようにあなたは',
+    'tot_nhat_phu_hop_voi_ban' => '個人情報を登録するべきです.',
+    'chua_co_tai_khoan' => 'まだアカウントがありません.',
+    'dang_ky_ngay' => '今すぐ登録',
+    'menu' => 'メニュー',
+    'location' => '住所',
+    'dien_thoai' => '電話番号',
+    'mail' => 'メール',
+    'hoten' => '名前',
+    'noi_dung_thong_diep' => 'メッセージ内容',
+    'gui_di' => '送る',
+    'nhap_lai' => '再入力'
+];

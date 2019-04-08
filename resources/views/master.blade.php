@@ -110,9 +110,9 @@
                                 <li>
                                     <a href="{{ url('/admin/socical/list')}}"><i class="fa fa-share-alt-square fa-fw"></i> {{ trans('translate.socical') }}</a>
                                 </li> -->
-                                <li>
+                                <!-- <li>
                                     <a href="{{ url('/admin/contact')}}"><i class="fa fa-exclamation-circle fa-fw"></i> {{ trans('translate.info') }}</a>
-                                </li>
+                                </li> -->
                             </ul>  
                         </li>
                         <li>

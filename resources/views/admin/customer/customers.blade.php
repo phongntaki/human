@@ -30,6 +30,7 @@
                     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-customer">
                         <thead>
                             <tr>
+                                <th>{{ trans("admin.rank") }}</th>
                                 <th>{{ trans("admin.name") }}</th>
                                 <th>{{ trans("admin.info") }}</th>
                                 <th>{{ trans("admin.phone") }}</th>
@@ -39,14 +40,14 @@
                         </thead>
                         <tbody>
                             @foreach($customers as $cus)
+
                             <tr class="odd gradeX">
+                                <td>{{ $cus->id }}</td>
                                 <td>{{ $cus->cusfullname }}</td>
                                 <td>{{ $cus->cusemail }}</td>
                                 <td>{{ $cus->cusphone }}</td>
-                                
                                 <td class="center">
-
-                                <img @if($cus->idloginsocial==null || !str_contains($cus->cusimg,'https')) src="{{ asset('public/img/customers/'.$cus->cusimg) }}" @else src="{{ $cus->cusimg }}" @endif style="width: 55px">
+                                    <img @if($cus->idloginsocial==null || !str_contains($cus->cusimg,'https')) src="{{ asset('public/img/customers/'.$cus->cusimg) }}" @else src="{{ $cus->cusimg }}" @endif style="width: 55px">
                                 </td>                                        
                                 <td>
                                     <i class="nneditcustomer btn btn-info fa fa-edit" id="enngr{{ $cus->id }}" editid="{{ $cus->id }}" name="{{ $cus->cusfullname }}" sex="{{$cus->sex}}" birthday="{{ $cus->birthday }}" education="{{$cus->education}}" language_jp="{{$cus->language_jp}}" language_other="{{$cus->language_other}}" introduce="{{$cus->introduce}}" desire="{{$cus->desire}}" imgo="{{ $cus->cusimg }}" phone="{{ $cus->cusphone }}" cusemail="{{ $cus->cusemail }}" status="{{ $cus->status }}" cusaddress="{{ $cus->cusaddress }}" cusface="{{ $cus->cusface }}" hide="{{ $cus->status }}" idgroup="{{ $cus->idgroup }}"> {{ trans("admin.edit") }}</i>

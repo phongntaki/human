@@ -16,7 +16,7 @@
                 <div class="content-panel post-content">
                     <!-- BEGIN .post-header -->
                     <div class="post-header">
-                        <h1 class="post-title">Giới thiệu chung</h1>
+                        <h1 class="post-title">{{trans('hinhthanh.gioi_thieu_chung')}}</h1>
                     </div>
                     <div class="post-body">
                         <table class="date-table">
@@ -43,7 +43,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <h2>沿革</h2>
+                        <h2>{{trans('hinhthanh.history')}}</h2>
                         <p>Đây là văn bản mẫu. Cân bằng ký tự được nhập để xem số lượng dòng.Đây là văn bản mẫu. Cân bằng ký tự được nhập để xem số lượng dòng.Đây là văn bản mẫu. Cân bằng ký tự được nhập để xem số lượng dòng.Đây là văn bản mẫu. Cân bằng ký tự được nhập để xem số lượng dòng.Đây là văn bản mẫu. Cân bằng ký tự được nhập để xem số lượng dòng.</p>
                     </div>
                 </div>

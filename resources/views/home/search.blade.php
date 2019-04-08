@@ -16,9 +16,9 @@
                 <div class="content-panel block-type">
                     <div class="content-panel-title">
                     @if(isset($key))
-                        <h1 class="panel-title">Kết quả tìm kiếm : <span class="search-text">{{ $key}}</span></h1>
+                        <h1 class="panel-title">{{trans('search.search_result')}} : <span class="search-text">{{ $key}}</span></h1>
                     @else
-                        <h1 class="panel-title">Các tin tức với tags : <span class="search-text">{{ $tags}}</span></h2>
+                        <h1 class="panel-title">{{trans('search.news_with_tags')}} : <span class="search-text">{{ $tags}}</span></h2>
                     @endif
                     </div>
 

@@ -202,6 +202,7 @@ return [
 "sex"=>"Giới tính",
 "birthday"=>"Ngày sinh",
 "facebook"=>"Facebook",
+"rank"=>"Số thứ tự",
 ];
 
 ?>

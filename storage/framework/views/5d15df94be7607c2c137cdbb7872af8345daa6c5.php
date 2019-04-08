@@ -2,15 +2,15 @@
 
     <div class="widget-wrap">
         <div class="widget widget-info">
-            <h3 class="widget-title">Tư vấn trực tiếp</h3>
+            <h3 class="widget-title"><?php echo e(trans('sitebar_right.direct_consult')); ?></h3>
             
-            <p>Hãy liên lạc với chúng tôi khi bạn có vấn đề cần giải đáp</p>
+            <p><?php echo e(trans('sitebar_right.hay_lien_lac_voi_chung_toi_khi_ban_co_van_de_can_giai_dap')); ?></p>
             <ul class="widget-article-lists" >
                 <li class="item info-phone">
-                    <span class="hidden">Phone: </span>012-345-6789<br>
-                    <span class="hidden">Time: </span><span class="info-phone-time">9:00-18:00</span>
+                    <span class="hidden"><?php echo e(trans('sitebar_right.phone')); ?>: </span>012-345-6789<br>
+                    <span class="hidden"><?php echo e(trans('sitebar_right.time')); ?>: </span><span class="info-phone-time">9:00-18:00</span>
                 </li>
-                <li class="item info-mail"><span class="hidden">Email: </span>info@enzi.vn</li>
+                <li class="item info-mail"><span class="hidden"><?php echo e(trans('sitebar_right.email')); ?>: </span>info@enzi.vn</li>
             </ul>
         </div>
 
@@ -27,7 +27,7 @@
     <div class="widget-wrap">
         
         <div class="widget widget-news">
-            <h3 class="widget-title">Tin mới nhất</h3>
+            <h3 class="widget-title"><?php echo e(trans('sitebar_right.tin_moi_nhat')); ?></h3>
             <ul class="widget-article-lists">
                 <?php $count =0; ?>
                 <?php $__currentLoopData = $lasted_news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_lt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -38,7 +38,18 @@
                         <img src="<?php echo e(url('/public/img/news/300x300/'.$item_lt->newimg)); ?>" alt="<?php echo e($item_lt->newsname); ?>" />
                     </div>
                     <div class="item-lead">
-                        <h4 class="item-title"><?php echo e($item_lt->newsname); ?></h4>
+                        <h4 class="item-title">
+                            <?php if(Session::get('website_language') === 'vi'): ?>
+                                <?php echo $item_lt->newsname; ?>
+
+                            <?php elseif(Session::get('website_language') === 'jp'): ?>
+                                <?php echo $item_lt->newsname_jp; ?>
+
+                            <?php elseif(Session::get('website_language') === 'en'): ?>
+                                <?php echo $item_lt->newsname_en; ?>
+
+                            <?php endif; ?>
+                        </h4>
                         <p class="item-date">
 <!--                        <i class="fa fa-clock-o"></i>-->
                         <?php echo e($item_lt->created_at->format('Y/m/d')); ?></p>
@@ -53,7 +64,7 @@
 
 
     <div class="widget widget-ranking">
-        <h3 class="widget-title">Đọc nhiều nhất</h3>
+        <h3 class="widget-title"><?php echo e(trans('sitebar_right.doc_nhieu_nhat')); ?></h3>
         <ul class="widget-article-lists">
         <?php $count =1; ?>
         <?php $__currentLoopData = $most_news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item_most): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -67,7 +78,18 @@
                         </div>
                     </div>
                     <div class="item-lead">
-                        <h4 class="item-title"><?php echo e($item_most->newsname); ?></h4>
+                        <h4 class="item-title">
+                            <?php if(Session::get('website_language') === 'vi'): ?>
+                                <?php echo $item_most->newsname; ?>
+
+                            <?php elseif(Session::get('website_language') === 'jp'): ?>
+                                <?php echo $item_most->newsname_jp; ?>
+
+                            <?php elseif(Session::get('website_language') === 'en'): ?>
+                                <?php echo $item_most->newsname_en; ?>
+
+                            <?php endif; ?>
+                        </h4>
                         <p class="item-date">
                         <?php echo e($item_most->created_at->format('Y/m/d')); ?></p>
                     </div>
@@ -79,32 +101,4 @@
             </ul>
         </div>
     </div>
-
-    <div class="widget-wrap">
-        
-        <div class="widget widget-adver">
-            <?php if($adverts_bottom[0]->code != ""): ?>
-            <?php echo e($adverts_bottom[0]->code); ?>
-
-            <?php else: ?>
-            <a href="<?php echo e($adverts_bottom[0]->link); ?>">
-                <img src="<?php echo e(url('public/img/images_bn/'.$adverts_bottom[0]->img)); ?>" alt="No image" />
-            </a>
-            <?php endif; ?>
-        </div>
-
-        
-        <div class="widget widget-adver">
-            <?php if($adverts_bottom[1]->code != ""): ?>
-            <?php echo e($adverts_bottom[1]->code); ?>
-
-            <?php else: ?>
-            <a href="<?php echo e($adverts_bottom[1]->link); ?>">
-                <img src="<?php echo e(url('public/img/images_bn/'.$adverts_bottom[1]->img)); ?>" alt="No image" />
-            </a>
-            <?php endif; ?>
-        </div>
-    </div>
-
-
 </aside>

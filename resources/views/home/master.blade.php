@@ -9,13 +9,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
         <meta name="generator" content="enzi.co.jp">
         <meta name="format-detection" content="telephone=no">
-        <meta property="fb:app_id" content="{{ (!empty($contact)?$contact->fb_app_id:"") }}">
+        <meta property="fb:app_id" content="{{ (!empty($contact)?$contact->fb_app_id:'') }}">
         <meta property="og:type" content="article">
         <meta property="og:title" content="@yield('title')">
-        <meta property="og:image" content="@yield('seo_image')" >
+        <meta property="og:image" content="@yield('seochỉage')" >
         <meta property="og:description" content="@yield('seo_description')" >
         <meta property="og:url" content="@yield('seo_url')">
-        <meta property="og:site_name" content="{{ (!empty($contact)?$contact->seo_title:"") }}">
+        <meta property="og:site_name" content="{{ (!empty($contact)?$contact->seo_title:'') }}">
         <link rel="shortcut icon" href="{{url('public/home/images/favicon.ico')}}">
 
         <link type="text/css" rel="stylesheet" href="{{url('public/home/css/reset.css')}}">
@@ -60,12 +60,23 @@
                 <div class="boxed active">
                     <div class="wrapper">
                         <nav class="top-menu-soc right">
+                            <span>
+                                <a href="{!! route('user.change-language', ['vi']) !!}">
+                                    <img alt="Tiếng Việt" class="flag" src="{{ url('/public/img/flag/vn-flag.png') }}">
+                                </a>
+                                <a href="{!! route('user.change-language', ['jp']) !!}">
+                                    <img alt="Tiếng Nhật" class="flag" src="{{ url('/public/img/flag/jp-flag.png') }}">
+                                </a>
+                                <a href="{!! route('user.change-language', ['en']) !!}">
+                                    <img alt="Tiếng Anh" class="flag" src="{{ url('/public/img/flag/en-flag.png') }}">
+                                </a>
+                            </span>
                             <ul class="top-menu-lists">
                                 <li class="search-block-wrapper">
                                     <div class="header-main-search">
                                         <div class="search-block">
                                             <form action="{{ url('/search') }}">
-                                                <input type="text" name="key" placeholder="Nhập từ khóa tìm kiếm..">
+                                                <input type="text" name="key" placeholder="{{trans('home_master.search_key')}}">
                                             </form>
                                             <i class="fas fa-search"></i>
                                         </div>
@@ -74,13 +85,13 @@
                                 @if (Session::get('logined_cus') == 1)
                                 <li id="home_login" class="btn-myaccount dropdown hover"><a class="myaccount" href="">Hi {{Session::get('logined_cusfullname')}}</a>
                                     <ul id="home_logout" class="dropdown-menu">
-                                        <li><a href="{{ url('my-profile') }}">My profile setting</a></li>
-                                        <li><a href="{{ url('logout') }}">Logout</a></li>
+                                        <li><a href="{{ url('my-profile') }}">{{trans('home_master.my_profile_setting')}}</a></li>
+                                        <li><a href="{{ url('logout') }}">{{trans('home_master.logout')}}</a></li>
                                     </ul>
                                 </li>
                                 @else
-                                <li class="btn-login"><a class="myaccount" href="{{ url('login') }}">Login</a></li>
-                                <li class="btn-register"><a href="{{ url('/register') }}" target="_blank" class="hover-color-google-plus">Register</a></li>
+                                <li class="btn-login"><a class="myaccount" href="{{ url('login') }}">{{trans('home_master.login')}}</a></li>
+                                <li class="btn-register"><a href="{{ url('/register') }}" target="_blank" class="hover-color-google-plus">{{trans('home_master.register')}}</a></li>
                                 @endif
                             </ul>
                         </nav>
@@ -94,11 +105,11 @@
                     <div class="wrapper">
                         @if(Session::get('current_page') == "top-page")
                             <h1 class="logo">
-                                <a href="{{url('')}}"><img src="{{ url('/public/home/'.$contact['logo'])}}" alt="{{$contact->nameco}}"></a>
+                                <a href="{{url('')}}"><img src="{{ url('/public/home/'.$contact['logo'])}}" alt=""></a>
                             </h1>
                         @else
                             <div class="logo">
-                                <a href="{{url('')}}"><img src="{{ url('/public/home/'.$contact['logo'])}}" alt="{{$contact->nameco}}"></a>
+                                <a href="{{url('')}}"><img src="{{ url('/public/home/'.$contact['logo'])}}" alt=""></a>
                             </div>
                         @endif
                     </div>
@@ -112,25 +123,48 @@
                     <div class="boxed active">
                         <div class="wrapper">
                             <nav class="nav">
-                                <ul class="nav-lists load-responsive" rel="DANH MỤC TIN">
-                                    <li><a href="{{url('')}}">TRANG CHỦ</a></li>
-                                    <li><a href="{{url('gioi-thieu')}}"><span>Giới thiệu</span></a>
+                                <ul class="nav-lists load-responsive" rel="{{trans('home_master.danh_muc_tin')}}">
+                                    <li><a href="{{url('')}}">{{trans('home_master.home_page')}}</a></li>
+                                    <li><a href="{{url('gioi-thieu')}}"><span>{{trans('home_master.gioi_thieu')}}</span></a>
                                         <ul class="sub-nav-lists">
-                                            <li><a href="{{url('hinh-thanh')}}">Giới thiệu chung</a></li>
+                                            <li><a href="{{url('hinh-thanh')}}">{{trans('home_master.gioi_thieu_chung')}}</a></li>
 <!--                                            <li><a href="{{url('hinh-thanh')}}">Hình thành và phát triển</a></li>-->
-                                            <li><a href="{{url('linh-vuc')}}">Lĩnh vực hoạt động</a></li>
+                                            <li><a href="{{url('linh-vuc')}}">{{trans('home_master.linh_vuc_hoat_dong')}}</a></li>
                                         </ul>
                                     </li>
-                                    @foreach($modnews as $key => $itemmod)
-                                    <li><a href="{{ url('loai-tin').'/'.$itemmod->slug }}"><span>{{$itemmod->modname}}</span></a>
+                                    @foreach($modnews as $key => $itemmod)    
+                                    <!-- <li><a href="{{ url('loai-tin').'/'.$itemmod->slug }}"><span>{{$itemmod->modname}}</span></a> -->
+                                    <li>
+                                        <a href="{{ url('loai-tin').'/'.$itemmod->slug }}">
+                                            <span>
+                                            @if(Session::get('website_language')==='vi' || Session::get('website_language')===null)
+                                                {!! $itemmod->modname !!}
+                                            @elseif(Session::get('website_language') === 'jp')
+                                                {!! $itemmod->modname_jp !!}
+                                            @elseif(Session::get('website_language') === 'en')
+                                                {!! $itemmod->modname_en !!}
+                                            @endif
+                                            </span>
+                                        </a>
                                         <ul class="sub-nav-lists">
                                             @foreach($itemmod->listnews as $itemlist)
-                                            <li><a href="{{ url('loai-tin').'/'.$itemlist->slug }}">{{$itemlist->listname}}</a></li>
+                                            <li>
+                                                <a href="{{ url('loai-tin').'/'.$itemlist->slug }}">
+                                                <!-- {{$itemlist->listname}} -->
+                                                @if(Session::get('website_language') === 'vi' || Session::get('website_language')===null)
+                                                    {!! $itemlist->listname !!}
+                                                @elseif(Session::get('website_language') === 'jp')
+                                                    {!! $itemlist->listname_jp !!}
+                                                @elseif(Session::get('website_language') === 'en')
+                                                    {!! $itemlist->listname_en !!}
+                                                @endif
+                                                </a>
+                                            </li>
                                             @endforeach
                                         </ul>
                                     </li>
                                     @endforeach
-                                    <li><a href="{{url('lien-he')}}">Liên hệ</a>
+                                    <li><a href="{{url('lien-he')}}">{{trans('home_master.lien_he')}}</a>
                                         <ul class="sub-nav-lists"></ul>
                                     </li>
                                 </ul>
@@ -145,7 +179,7 @@
                 <div class="boxed active">
                     <div class="wrapper">
                         <p class="noinfo-text">
-                            <span class="nowrap">Bạn nên đăng ký thông tin cá</span> <span class="nowrap">nhân để chúng tôi có</span> <span class="nowrap">thể chọn ra công việc</span> <span class="nowrap">tốt nhất phù hợp với bạn.</span> <span class="nowrap">Chưa có tài khoản.</span><span class="btn-noinfo nowrap"><a href="{{ url('/register') }}" style="color: #81F7F3">Đăng Ký Ngay</a></span>
+                            <span class="nowrap">{{trans('home_master.ban_nen_dang_ky_thong_tin_ca')}}</span> <span class="nowrap">{{trans('home_master.nhan_de_chung_toi_co')}}</span> <span class="nowrap">{{trans('home_master.the_chon_ra_cong_viec')}}</span> <span class="nowrap">{{trans('home_master.tot_nhat_phu_hop_voi_ban')}}</span> <span class="nowrap">{{trans('home_master.chua_co_tai_khoan')}}</span><span class="btn-noinfo nowrap"><a href="{{ url('/register') }}" style="color: #81F7F3">{{trans('home_master.dang_ky_ngay')}}</a></span>
                         </p>
                     </div>
                 </div>
@@ -164,15 +198,15 @@
                 <div class="wrapper">
                     <!-- BEGIN .footer-content -->
                     <div class="footer-contents">
-                        <div class="company-message">
+                        <!-- <div class="company-message">
                             {!! $contact->slogan_intro !!}
-                        </div>
+                        </div> -->
                         <div class="company-info">
                             <a href="{{url('')}}" class="footer-logo">
                                 <img src="{{url('public/home/images/logo-footer.png')}}" alt="{{$contact->nameco}}"></a>
                             <p class="company-text">
-                                {{$contact->address}}<br>
-                                Điện thoại: {{$contact->phone}}<br>
+                                <!-- {{trans('home_master.location')}}: {{$contact->address}}<br> -->
+                                {{trans('home_master.dien_thoai')}}: {{$contact->phone}}<br>
                                 Mail: {{$contact->mail}}
                             </p>
                             <div class="share-items">
@@ -201,7 +235,7 @@
         <div class="popup_menu visible-xs">
             <a href="#dat-menu" class="btn-popup" title="menu">
                 <i class="fas fa-bars"></i>
-                <span class="popup-text-menu">MENU</span>
+                <span class="popup-text-menu">{{trans('home_master.menu')}}</span>
             </a>
         </div>
 

@@ -16,8 +16,24 @@
                     <a href="{{url('/chi-tiet/'.$item_km->slug)}}">
                         <div class="item-lead">
                             <p class="item-date">{{ $item_km->created_at->format('Y/m/d')}}</p>
-                            <h3 class="item-title">{{ $item_km->newsname}}</h3>
-                            <p class="item-desc">{{ $item_km->newintro}}</p>
+                            <h3 class="item-title">
+                                @if(Session::get('website_language') === 'vi')
+                                    {!! $item_km->newsname !!}
+                                @elseif(Session::get('website_language') === 'jp')
+                                    {!! $item_km->newsname_jp !!}
+                                @elseif(Session::get('website_language') === 'en')
+                                    {!! $item_km->newsname_en !!}
+                                @endif
+                            </h3>
+                            <p class="item-desc">
+                                @if(Session::get('website_language') === 'vi')
+                                    {!! $item_km->newintro !!}
+                                @elseif(Session::get('website_language') === 'jp')
+                                    {!! $item_km->newintro_jp !!}
+                                @elseif(Session::get('website_language') === 'en')
+                                    {!! $item_km->newintro_en !!}
+                                @endif
+                            </p>
                         </div>
                         <div class="item-image">
                             <img class="object-fit-img" src="{{url('public/img/news/800x800/'.$item_km['newimg'])}}">
@@ -40,10 +56,32 @@
 
                 <div class="content-panel carousel-type">
                     <div class="content-panel-title">
-                        <h2 class=" panel-title"><a href="{{ url('loai-tin/'.$index_mod->slug) }}">{{ $index_mod->modname }}</a></h2>
+                        <h2 class=" panel-title">
+                            <a href="{{ url('loai-tin/'.$index_mod->slug) }}">
+                                <!-- {{ $index_mod->modname }} -->
+                                @if(Session::get('website_language') === 'vi')
+                                    {!! $index_mod->modname !!}
+                                @elseif(Session::get('website_language') === 'jp')
+                                    {!! $index_mod->modname_jp !!}
+                                @elseif(Session::get('website_language') === 'en')
+                                    {!! $index_mod->modname_en !!}
+                                @endif
+                            </a>
+                        </h2>
                         <ul class="panel-title-submenu">
                             @foreach($index_mod->listnews as $itemlist)
-                            <li class="submenu-item"><a href="{{url('/loai-tin/'.$itemlist->slug)}}">{{$itemlist->listname}}</a></li>
+                            <li class="submenu-item">
+                                <a href="{{url('/loai-tin/'.$itemlist->slug)}}">
+                                <!-- {{$itemlist->listname}} -->
+                                @if(Session::get('website_language') === 'vi')
+                                    {!! $itemlist->listname !!}
+                                @elseif(Session::get('website_language') === 'jp')
+                                    {!! $itemlist->listname_jp !!}
+                                @elseif(Session::get('website_language') === 'en')
+                                    {!! $itemlist->listname_en !!}
+                                @endif
+                                </a>
+                            </li>
                             @endforeach
                         </ul>
                     </div>
@@ -60,7 +98,15 @@
                                     </div>
                                     <div class="item-lead">
                                         <p class="item-date">{{$news->created_at->format('Y/m/d')}}</p>
-                                        <h3 class="item-title">{{$news->newsname}}</h3>
+                                        <h3 class="item-title">
+                                            @if(Session::get('website_language') === 'vi')
+                                                {!! $news->newsname !!}
+                                            @elseif(Session::get('website_language') === 'jp')
+                                                {!! $news->newsname_jp !!}
+                                            @elseif(Session::get('website_language') === 'en')
+                                                {!! $news->newsname_en !!}
+                                            @endif
+                                        </h3>
                                     </div>
                                 </a>
                             </li>

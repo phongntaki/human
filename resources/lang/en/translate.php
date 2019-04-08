@@ -37,7 +37,6 @@ return [
 	"modpro" => "Module product", 
 	"grCustomer" => "Group Customer", 
 	"addnew" => "Add new", 
-	"info" => "Info company setting",
 	"name" => "Name",
 	"update" => "Update", 
 	"close" => "Close", 

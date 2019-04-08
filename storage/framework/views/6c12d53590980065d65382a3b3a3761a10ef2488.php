@@ -111,9 +111,9 @@
                                 <li>
                                     <a href="<?php echo e(url('/admin/socical/list')); ?>"><i class="fa fa-share-alt-square fa-fw"></i> <?php echo e(trans('translate.socical')); ?></a>
                                 </li> -->
-                                <li>
+                                <!-- <li>
                                     <a href="<?php echo e(url('/admin/contact')); ?>"><i class="fa fa-exclamation-circle fa-fw"></i> <?php echo e(trans('translate.info')); ?></a>
-                                </li>
+                                </li> -->
                             </ul>  
                         </li>
                         <li>

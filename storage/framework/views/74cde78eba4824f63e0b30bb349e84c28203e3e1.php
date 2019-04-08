@@ -15,37 +15,38 @@
 
                 <div class="content-panel">
                     <div class="content-panel-title">
-                        <h1 class="panel-title">Liên hệ</h1>
+                        <h1 class="panel-title"><?php echo e(trans('lienhe.lien_he')); ?></h1>
                     </div>
 
-                    <form class="form-vertical" action="" role="form">
+                    <form class="form-vertical" method="POST" action="" role="form">
+                        <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
                         <div class="form-group">
-                            <label class="control-label" for="inquiry-name">Tên</label>
+                            <label class="control-label" for="inquiry_name"><?php echo e(trans('home_master.hoten')); ?></label>
                             <div class="control-detail">
-                                <input type="text" id="inquiry-name" class="form-control" name="inquiry-name">
+                                <input type="text" id="inquiry_name" class="form-control" name="inquiry_name">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="inquiry-mail">E-Mail</label>
+                            <label class="control-label" for="inquiry-mail"><?php echo e(trans('home_master.mail')); ?></label>
                             <div class="control-detail">
-                                <input type="text" id="inquiry-mail" class="form-control" name="inquiry-mail">
+                                <input type="text" id="inquiry_mail" class="form-control" name="inquiry_mail">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="inquiry-tel">Số điện thoại</label>
+                            <label class="control-label" for="inquiry_tel"><?php echo e(trans('home_master.dien_thoai')); ?></label>
                             <div class="control-detail">
-                                <input type="text" id="inquiry-tel" class="form-control" name="inquiry-tel">
+                                <input type="text" id="inquiry_tel" class="form-control" name="inquiry_tel">
                             </div>
                         </div>
                         <div class="form-group detail-textarea">
-                            <label class="control-label" for="inquiry-text">Nội dung thông điệp</label>
+                            <label class="control-label" for="inquiry_text"><?php echo e(trans('home_master.noi_dung_thong_diep')); ?></label>
                             <div class="control-detail">
-                                <textarea name="inquiry-text" id="inquiry-text" class="form-control" rows="8"></textarea>
+                                <textarea name="inquiry_text" id="inquiry_text" class="form-control" rows="8"></textarea>
                             </div>
                         </div>
                         <div class="form-submit">
-                            <button type="submit" class="form-button button-red">Gửi đi</button>
-                            <button type="submit" class="form-button button-gray">Nhập lại</button>
+                            <button type="submit" class="form-button button-red"><?php echo e(trans('home_master.gui_di')); ?></button>
+                            <button type="submit" class="form-button button-gray"><?php echo e(trans('home_master.nhap_lai')); ?></button>
                         </div>
                     </form>
                 </div>

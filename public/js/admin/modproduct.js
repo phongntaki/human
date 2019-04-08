@@ -4,6 +4,8 @@ $(document).ready(function() {
     var id = $(this).attr('editid');
     // $("input:radio[name=ennlang][value=" + $(this).attr('lang') + "]").attr('checked', 'checked');   
     $("#emodname").val($(this).attr('name'));
+    $("#emodname_jp").val($(this).attr('name_jp'));
+    $("#emodname_en").val($(this).attr('name_en'));
     $("#ennnumber").val($(this).attr('num'));
     $("#idetype").val($(this).attr('type'));
     $("#ennimguserold").val($(this).attr('img'));

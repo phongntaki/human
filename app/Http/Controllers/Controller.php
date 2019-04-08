@@ -41,16 +41,16 @@ class Controller extends BaseController
             \Session::put('currencylocale',$lang->currency);
             \Session::put('curency_codelocale',$lang->curency_code);
             \Session::save();
-            $this->reload_cart_with_lang($lang->id);
+            // $this->reload_cart_with_lang($lang->id);
           }
           return redirect()->back();
     }
     
     public function mail()
     {
-        $user = "phongntaki@mail.com";
+        $user = "sai.skrp@mail.com";
         $message = "test mail laravel";
-        Mail::send('phongntaki@mail.com', function($message){
+        Mail::send('sai.skrp@mail.com', function($message){
             $message->to($user->email);
             $message->subject('E-Mail Example');
         });

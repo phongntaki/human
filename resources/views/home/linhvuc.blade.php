@@ -16,7 +16,7 @@
                 <div class="content-panel post-content">
                     <!-- BEGIN .post-header -->
                     <div class="post-header">
-                        <h1 class="post-title">Danh sách các ngành công nghiệp</h1>
+                        <h1 class="post-title">{{trans('linhvuc.danh_sach_cac_nganh_cong_nghiep')}}</h1>
                     </div>
                     <div class="post-body">
                         <p>Đây là văn bản mẫu. Cân bằng ký tự được nhập để xem số lượng dòng.Đây là văn bản mẫu. Cân bằng ký tự được nhập để xem số lượng dòng.Đây là văn bản mẫu. Cân bằng ký tự được nhập để xem số lượng dòng.Đây là văn bản mẫu. Cân bằng ký tự được nhập để xem số lượng dòng.Đây là văn bản mẫu. Cân bằng ký tự được nhập để xem số lượng dòng.</p>

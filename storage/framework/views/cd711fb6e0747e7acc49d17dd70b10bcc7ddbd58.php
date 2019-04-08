@@ -18,10 +18,10 @@
                             <h1 class="big-message-title">404 not found.</h1>
                         </div>
                         <div class="big-message-content">
-                            <h2 class="sub-title">Trang tìm kiếm không tìm thấy</h2>
-                            <p>Trang tìm kiếm tạm thời không thể truy cập được,  đã di chuyển hoặc có khả năng đã bị xóa, </p>
+                            <h2 class="sub-title"><?php echo e(trans('404.trang_tim_kiem_khong_tim_thay')); ?></h2>
+                            <p><?php echo e(trans('404.trang_tim_kiem_tam_thoi_khong_the_truy_cap')); ?></p>
                             <p class="back-button">
-                                <a href="<?php echo e(url('/')); ?>">Về trang chủ</a>
+                                <a href="<?php echo e(url('/')); ?>"><?php echo e(trans('404.ve_trang_chu')); ?></a>
                             </p>
                         </div>
                     </div>
