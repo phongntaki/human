@@ -7,6 +7,8 @@ $(document).ready(function() {
 		$("#enntheloai").val($(this).attr('listidmod'));
 		$("#ennidlistpro").val($(this).attr('editid'));
 		$("#elistname").val($(this).attr('name'));
+		$("#elistname_jp").val($(this).attr('name_jp'));
+		$("#elistname_en").val($(this).attr('name_en'));
 		$("#ennnumber").val($(this).attr('num'));
 		$("#enndescription").val($(this).attr('description'));
 		$("#ideprice").val($(this).attr('ideprice'));
@@ -22,7 +24,7 @@ $(document).ready(function() {
 	});
 	$(".nndeditlistpro").click(function(){
 		$("#dennidlistpro").val($(this).attr('editid')) ;
-		$("#deletename").html($(this).attr('title')) ;
+		$("#deletename").html($(this).attr('name')) ;
 		$("#dennimglistpro").val($(this).attr('img'));	
 		$('.nn-modal-delete-listpro').modal('show');
 

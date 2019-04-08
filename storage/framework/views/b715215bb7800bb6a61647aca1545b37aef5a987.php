@@ -15,8 +15,30 @@
                     <a href="<?php echo e(url('/chi-tiet/'.$item_km->slug)); ?>">
                         <div class="item-lead">
                             <p class="item-date"><?php echo e($item_km->created_at->format('Y/m/d')); ?></p>
-                            <h3 class="item-title"><?php echo e($item_km->newsname); ?></h3>
-                            <p class="item-desc"><?php echo e($item_km->newintro); ?></p>
+                            <h3 class="item-title">
+                                <?php if(Session::get('website_language') === 'vi'): ?>
+                                    <?php echo $item_km->newsname; ?>
+
+                                <?php elseif(Session::get('website_language') === 'jp'): ?>
+                                    <?php echo $item_km->newsname_jp; ?>
+
+                                <?php elseif(Session::get('website_language') === 'en'): ?>
+                                    <?php echo $item_km->newsname_en; ?>
+
+                                <?php endif; ?>
+                            </h3>
+                            <p class="item-desc">
+                                <?php if(Session::get('website_language') === 'vi'): ?>
+                                    <?php echo $item_km->newintro; ?>
+
+                                <?php elseif(Session::get('website_language') === 'jp'): ?>
+                                    <?php echo $item_km->newintro_jp; ?>
+
+                                <?php elseif(Session::get('website_language') === 'en'): ?>
+                                    <?php echo $item_km->newintro_en; ?>
+
+                                <?php endif; ?>
+                            </p>
                         </div>
                         <div class="item-image">
                             <img class="object-fit-img" src="<?php echo e(url('public/img/news/800x800/'.$item_km['newimg'])); ?>">
@@ -39,10 +61,38 @@
 
                 <div class="content-panel carousel-type">
                     <div class="content-panel-title">
-                        <h2 class=" panel-title"><a href="<?php echo e(url('loai-tin/'.$index_mod->slug)); ?>"><?php echo e($index_mod->modname); ?></a></h2>
+                        <h2 class=" panel-title">
+                            <a href="<?php echo e(url('loai-tin/'.$index_mod->slug)); ?>">
+                                <!-- <?php echo e($index_mod->modname); ?> -->
+                                <?php if(Session::get('website_language') === 'vi'): ?>
+                                    <?php echo $index_mod->modname; ?>
+
+                                <?php elseif(Session::get('website_language') === 'jp'): ?>
+                                    <?php echo $index_mod->modname_jp; ?>
+
+                                <?php elseif(Session::get('website_language') === 'en'): ?>
+                                    <?php echo $index_mod->modname_en; ?>
+
+                                <?php endif; ?>
+                            </a>
+                        </h2>
                         <ul class="panel-title-submenu">
                             <?php $__currentLoopData = $index_mod->listnews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $itemlist): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <li class="submenu-item"><a href="<?php echo e(url('/loai-tin/'.$itemlist->slug)); ?>"><?php echo e($itemlist->listname); ?></a></li>
+                            <li class="submenu-item">
+                                <a href="<?php echo e(url('/loai-tin/'.$itemlist->slug)); ?>">
+                                <!-- <?php echo e($itemlist->listname); ?> -->
+                                <?php if(Session::get('website_language') === 'vi'): ?>
+                                    <?php echo $itemlist->listname; ?>
+
+                                <?php elseif(Session::get('website_language') === 'jp'): ?>
+                                    <?php echo $itemlist->listname_jp; ?>
+
+                                <?php elseif(Session::get('website_language') === 'en'): ?>
+                                    <?php echo $itemlist->listname_en; ?>
+
+                                <?php endif; ?>
+                                </a>
+                            </li>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
@@ -59,7 +109,18 @@
                                     </div>
                                     <div class="item-lead">
                                         <p class="item-date"><?php echo e($news->created_at->format('Y/m/d')); ?></p>
-                                        <h3 class="item-title"><?php echo e($news->newsname); ?></h3>
+                                        <h3 class="item-title">
+                                            <?php if(Session::get('website_language') === 'vi'): ?>
+                                                <?php echo $news->newsname; ?>
+
+                                            <?php elseif(Session::get('website_language') === 'jp'): ?>
+                                                <?php echo $news->newsname_jp; ?>
+
+                                            <?php elseif(Session::get('website_language') === 'en'): ?>
+                                                <?php echo $news->newsname_en; ?>
+
+                                            <?php endif; ?>
+                                        </h3>
                                     </div>
                                 </a>
                             </li>

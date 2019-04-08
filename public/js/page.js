@@ -48,7 +48,8 @@ $(document).ready(function() {
         responsive: true
     });
     $('#dataTables-customer').DataTable({
-        responsive: true
+      order: [0, 'desc'],
+        responsive: true,
     });
 
     $('#dataTables-product').DataTable({

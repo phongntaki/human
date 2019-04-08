@@ -24,7 +24,8 @@ class NewsController extends Controller
     public function ListNews(){
         $lang = Session::get('idlocale');
         $listnews = News::all();
-        $modnews = ModNews::where('idlang',$lang)->get();
+        // $modnews = ModNews::where('idlang',$lang)->get();
+        $modnews = ModNews::where('idlang',1)->get();
         $typenews = ListNew::all();
         return view('admin.news.news',['lnews'=>$listnews,'modulepro'=>$modnews,'typenews'=>$typenews]);
     }
@@ -51,11 +52,17 @@ class NewsController extends Controller
             ]);
         $new = new News;
         $new->newsname = $request->newsname;
+        $new->newsname_jp = $request->newsname_jp;
+        $new->newsname_en = $request->newsname_en;
         $new->newalt = changeTitle(trim($request->newsname));
         $new->slug = changeTitle(trim($request->newsname));
 
         $new->newintro = $request->nntomtatnew;
+        $new->newintro_jp = $request->nntomtatnew_jp;
+        $new->newintro_en = $request->nntomtatnew_en;
         $new->newcontent = $request->nncontentnew;
+        $new->newcontent_jp = $request->nncontentnew_jp;
+        $new->newcontent_en = $request->nncontentnew_en;
         $new->newkeywords = $request->nnkeywords;
         $new->newtag = $request->nntagnew;
 
@@ -102,11 +109,17 @@ class NewsController extends Controller
             ]);
         $new = News::find($request->ennidnews);
         $new->newsname = $request->newsname;
+        $new->newsname_jp = $request->ennnewsname_jp;
+        $new->newsname_en = $request->ennnewsname_en;
         $new->newalt = changeTitle(trim($request->newsname));
         $new->slug = changeTitle(trim($request->newsname));
 
         $new->newintro = $request->enntomtatnew;
+        $new->newintro_jp = $request->enntomtatnew_jp;
+        $new->newintro_en = $request->enntomtatnew_en;
         $new->newcontent = $request->enncontentnew;
+        $new->newcontent_jp = $request->enncontentnew_jp;
+        $new->newcontent_en = $request->enncontentnew_en;
         $new->newkeywords = $request->ennkeywords;
         $new->newtag = $request->enntagnew;
         $new->status = $request->ennhide;

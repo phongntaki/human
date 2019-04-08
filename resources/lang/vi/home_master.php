@@ -1,0 +1,28 @@
+<?php
+return [
+    'login' => 'Đăng Nhập',
+    'register' => 'Đăng Ký',
+    'my_profile_setting' => 'Thiết lập profile',
+    'logout' => 'Đăng xuất',
+    'search_key' => 'Nhập từ khóa tìm kiếm..',
+    'home_page' => 'Trang chủ',
+    'gioi_thieu' => 'Giới thiệu',
+    'danh_muc_tin' => 'DANH MỤC TIN',
+    'gioi_thieu_chung' => 'Giới Thiệu Chung',
+    'linh_vuc_hoat_dong' => 'Lĩnh vực hoạt động',
+    'lien_he' => 'Liên hệ',
+    'ban_nen_dang_ky_thong_tin_ca' => 'Bạn nên đăng ký thông tin cá',
+    'nhan_de_chung_toi_co' => 'nhân để chúng tôi có',
+    'the_chon_ra_cong_viec' => 'thể chọn ra công việc',
+    'tot_nhat_phu_hop_voi_ban' => 'tốt nhất phù hợp với bạn.',
+    'chua_co_tai_khoan' => 'Chưa có tài khoản.',
+    'dang_ky_ngay' => 'Đăng Ký Ngay',
+    'location' => 'Địa chỉ',
+    'menu' => 'Menu',
+    'dien_thoai' => 'Điện thoại',
+    'mail' => 'Mail',
+    'hoten' => 'Họ tên',
+    'noi_dung_thong_diep' => 'Nội dung thông điệp',
+    'gui_di' => 'Gửi',
+    'nhap_lai' => 'Nhập lại'
+];

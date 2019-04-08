@@ -18,7 +18,8 @@ class ListNewController extends Controller
    public function List2News(){
         $listproduct = ListNew::all();
         $lang = Session::get('idlocale');
-        $modulepro = ModNews::where('idlang',$lang)->get();
+        // $modulepro = ModNews::where('idlang',$lang)->get();
+        $modulepro = ModNews::where('idlang',1)->get();
         return view('admin.news.listnews',['news'=>$listproduct,'modulepro'=>$modulepro]);
     }
     public function AddListNews(Request $request){
@@ -39,6 +40,8 @@ class ListNewController extends Controller
             ]);
         $listproduct = new ListNew;
         $listproduct->listname = $request->listname;
+        $listproduct->listname_jp = $request->listname_jp;
+        $listproduct->listname_en = $request->listname_en;
         $listproduct->slug = changeTitle($request->listname);
         $listproduct->listnumber = $request->nnnumber;
         $listproduct->description = $request->nndescription;
@@ -77,6 +80,8 @@ class ListNewController extends Controller
             ]);
         $listproduct = ListNew::find($request->ennidlistpro);
         $listproduct->listname = $request->listname;
+        $listproduct->listname_jp = $request->listname_jp;
+        $listproduct->listname_en = $request->listname_en;
         $listproduct->slug = changeTitle($request->listname);
         $listproduct->listnumber = $request->ennnumber;
         $listproduct->description = $request->enndescription;

@@ -15,11 +15,27 @@
                 <!-- BEGIN .content-panel -->
                 <div class="content-panel carousel-type">
                     <div class="content-panel-title">
-                        <h1 class="panel-title"><a href="{{ url('loai-tin/'.$modnew->slug) }}">{{ $modnew->modname }}</a></h1>
+                        <h1 class="panel-title"><a href="{{ url('loai-tin/'.$modnew->slug) }}">
+                            @if(Session::get('website_language')==='vi' || Session::get('website_language')===null)
+                                {!! $modnew->modname !!}
+                            @elseif(Session::get('website_language') === 'jp')
+                                {!! $modnew->modname_jp !!}
+                            @elseif(Session::get('website_language') === 'en')
+                                {!! $modnew->modname_en !!}
+                            @endif
+                        </a></h1>
                         <ul class="panel-title-submenu">
                             @foreach($modnew->listnew_inmod($modnew->id) as $cat_mod)
                             <li class="submenu-item">
-                                <a href="{{ url('loai-tin/'.$cat_mod->slug) }}">{{ $cat_mod->listname }}</a>
+                                <a href="{{ url('loai-tin/'.$cat_mod->slug) }}">
+                                    @if(Session::get('website_language')==='vi' || Session::get('website_language')===null)
+                                        {!! $cat_mod->listname !!}
+                                    @elseif(Session::get('website_language') === 'jp')
+                                        {!! $cat_mod->listname_jp !!}
+                                    @elseif(Session::get('website_language') === 'en')
+                                        {!! $cat_mod->listname_en !!}
+                                    @endif
+                                </a>
                             </li>
                             @endforeach
                         </ul>
@@ -34,7 +50,15 @@
                             <li class="item">
                                 <a href="{{url('/chi-tiet/'.$news->slug)}}">
                                     <div class="item-lead">
-                                        <h3 class="item-title">{{$news->newsname}}</h3>
+                                        <h3 class="item-title">
+                                            @if(Session::get('website_language')==='vi' || Session::get('website_language')===null)
+                                                {!! $news->newsname !!}
+                                            @elseif(Session::get('website_language') === 'jp')
+                                                {!! $news->newsname_jp !!}
+                                            @elseif(Session::get('website_language') === 'en')
+                                                {!! $news->newsname_en !!}
+                                            @endif
+                                        </h3>
                                         <p class="item-date">{{$news->created_at->format('Y/m/d')}}</p>
                                     </div>
                                     <div class="item-image">
@@ -51,7 +75,7 @@
                 {{-- tin moi trong mod          --}}
                 <div class="content-panel block-type">
                     <div class="content-panel-title">
-                        <h2 class="panel-title">Tin mới trong mục</h2>
+                        <h2 class="panel-title">{{trans('modnews.new_news_in_the_section')}}</h2>
                     </div>
                     <div class="content-panel-body" id="content_pro">
                         @include('home.content_news_ajax')
@@ -60,14 +84,14 @@
 
                 <!-- BEGIN Loading -->
                 <div class="ajax-load text-center" style="display:none;z-index: 10000; opacity: 1;">
-                    <p><img src="#">Đang tải</p>
+                    <p><img src="#">{{trans('modnews.loading')}}</p>
                 </div>
 
                 <!-- BIGIN ReadMore -->
                 <div class="read-more" @if($total <=9) style="display: none;" @endif>
                     <a class="btn-more" id="load_more" base_url="{{url('')}}" modid="{{$modnew->id}}" skip="10" take="5" total="{{$total}}"  role="button">
                         <i class="fas fa-angle-right"></i>
-                         Xem thêm
+                         {{trans('modnews.see_more')}}
                     </a>
                 </div>
             </div>

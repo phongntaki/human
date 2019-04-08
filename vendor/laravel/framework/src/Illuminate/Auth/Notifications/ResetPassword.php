@@ -5,6 +5,7 @@ namespace Illuminate\Auth\Notifications;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
+// use Illuminate\Auth\Notifications\Mail;
 
 class ResetPassword extends Notification
 {
@@ -55,11 +56,16 @@ class ResetPassword extends Notification
         if (static::$toMailCallback) {
             return call_user_func(static::$toMailCallback, $notifiable, $this->token);
         }
+        // echo url(config('app.url/human').url('password/reset', $this->token, false));
+        // exit();
+        // $data = ['message' => 'This is a test!'];
+        // Mail::to('phongntaki@gmail.com')->send(new TestEmail($data));
+        
 
         return (new MailMessage)
             ->subject(Lang::getFromJson('Reset Password Notification'))
             ->line(Lang::getFromJson('You are receiving this email because we received a password reset request for your account.'))
-            ->action(Lang::getFromJson('Reset Password'), url(config('app.url').route('password.reset', $this->token, false)))
+            ->action(Lang::getFromJson('Reset Password'), url(config('app.url/human').url('password/reset', $this->token, false)))
             ->line(Lang::getFromJson('If you did not request a password reset, no further action is required.'));
     }
 

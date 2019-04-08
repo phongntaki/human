@@ -31,6 +31,7 @@
                     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-customer">
                         <thead>
                             <tr>
+                                <th><?php echo e(trans("admin.rank")); ?></th>
                                 <th><?php echo e(trans("admin.name")); ?></th>
                                 <th><?php echo e(trans("admin.info")); ?></th>
                                 <th><?php echo e(trans("admin.phone")); ?></th>
@@ -40,14 +41,14 @@
                         </thead>
                         <tbody>
                             <?php $__currentLoopData = $customers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cus): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
                             <tr class="odd gradeX">
+                                <td><?php echo e($cus->id); ?></td>
                                 <td><?php echo e($cus->cusfullname); ?></td>
                                 <td><?php echo e($cus->cusemail); ?></td>
                                 <td><?php echo e($cus->cusphone); ?></td>
-                                
                                 <td class="center">
-
-                                <img <?php if($cus->idloginsocial==null || !str_contains($cus->cusimg,'https')): ?> src="<?php echo e(asset('public/img/customers/'.$cus->cusimg)); ?>" <?php else: ?> src="<?php echo e($cus->cusimg); ?>" <?php endif; ?> style="width: 55px">
+                                    <img <?php if($cus->idloginsocial==null || !str_contains($cus->cusimg,'https')): ?> src="<?php echo e(asset('public/img/customers/'.$cus->cusimg)); ?>" <?php else: ?> src="<?php echo e($cus->cusimg); ?>" <?php endif; ?> style="width: 55px">
                                 </td>                                        
                                 <td>
                                     <i class="nneditcustomer btn btn-info fa fa-edit" id="enngr<?php echo e($cus->id); ?>" editid="<?php echo e($cus->id); ?>" name="<?php echo e($cus->cusfullname); ?>" sex="<?php echo e($cus->sex); ?>" birthday="<?php echo e($cus->birthday); ?>" education="<?php echo e($cus->education); ?>" language_jp="<?php echo e($cus->language_jp); ?>" language_other="<?php echo e($cus->language_other); ?>" introduce="<?php echo e($cus->introduce); ?>" desire="<?php echo e($cus->desire); ?>" imgo="<?php echo e($cus->cusimg); ?>" phone="<?php echo e($cus->cusphone); ?>" cusemail="<?php echo e($cus->cusemail); ?>" status="<?php echo e($cus->status); ?>" cusaddress="<?php echo e($cus->cusaddress); ?>" cusface="<?php echo e($cus->cusface); ?>" hide="<?php echo e($cus->status); ?>" idgroup="<?php echo e($cus->idgroup); ?>"> <?php echo e(trans("admin.edit")); ?></i>

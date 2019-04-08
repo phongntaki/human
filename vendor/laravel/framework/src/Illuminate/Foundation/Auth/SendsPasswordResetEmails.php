@@ -25,14 +25,18 @@ trait SendsPasswordResetEmails
      */
     public function sendResetLinkEmail(Request $request)
     {
+        // echo "<pre>";
+        // print_r($request->only('email'));
+        // echo "</pre>";
+        // exit();
         $this->validateEmail($request);
-
         // We will send the password reset link to this user. Once we have attempted
         // to send the link, we will examine the response then see the message we
         // need to show to the user. Finally, we'll send out a proper response.
         $response = $this->broker()->sendResetLink(
-            $request->only('email')
+            $request->only('cusemail')
         );
+        
 
         return $response == Password::RESET_LINK_SENT
                     ? $this->sendResetLinkResponse($response)
@@ -47,7 +51,7 @@ trait SendsPasswordResetEmails
      */
     protected function validateEmail(Request $request)
     {
-        $this->validate($request, ['email' => 'required|email']);
+        $this->validate($request, ['cusemail' => 'required|email']);
     }
 
     /**
@@ -71,8 +75,8 @@ trait SendsPasswordResetEmails
     protected function sendResetLinkFailedResponse(Request $request, $response)
     {
         return back()
-                ->withInput($request->only('email'))
-                ->withErrors(['email' => trans($response)]);
+                ->withInput($request->only('cusemail'))
+                ->withErrors(['cusemail' => trans($response)]);
     }
 
     /**
@@ -84,4 +88,9 @@ trait SendsPasswordResetEmails
     {
         return Password::broker();
     }
+
+    // public function sendPasswordResetNotification($token)
+    // {
+    //     $this->notify(new ResetPasswordNotification($token));
+    // }
 }

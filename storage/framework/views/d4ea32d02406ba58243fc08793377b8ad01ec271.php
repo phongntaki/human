@@ -15,11 +15,33 @@
                 <!-- BEGIN .content-panel -->
                 <div class="content-panel carousel-type">
                     <div class="content-panel-title">
-                        <h1 class="panel-title"><a href="<?php echo e(url('loai-tin/'.$modnew->slug)); ?>"><?php echo e($modnew->modname); ?></a></h1>
+                        <h1 class="panel-title"><a href="<?php echo e(url('loai-tin/'.$modnew->slug)); ?>">
+                            <?php if(Session::get('website_language')==='vi' || Session::get('website_language')===null): ?>
+                                <?php echo $modnew->modname; ?>
+
+                            <?php elseif(Session::get('website_language') === 'jp'): ?>
+                                <?php echo $modnew->modname_jp; ?>
+
+                            <?php elseif(Session::get('website_language') === 'en'): ?>
+                                <?php echo $modnew->modname_en; ?>
+
+                            <?php endif; ?>
+                        </a></h1>
                         <ul class="panel-title-submenu">
                             <?php $__currentLoopData = $modnew->listnew_inmod($modnew->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat_mod): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <li class="submenu-item">
-                                <a href="<?php echo e(url('loai-tin/'.$cat_mod->slug)); ?>"><?php echo e($cat_mod->listname); ?></a>
+                                <a href="<?php echo e(url('loai-tin/'.$cat_mod->slug)); ?>">
+                                    <?php if(Session::get('website_language')==='vi' || Session::get('website_language')===null): ?>
+                                        <?php echo $cat_mod->listname; ?>
+
+                                    <?php elseif(Session::get('website_language') === 'jp'): ?>
+                                        <?php echo $cat_mod->listname_jp; ?>
+
+                                    <?php elseif(Session::get('website_language') === 'en'): ?>
+                                        <?php echo $cat_mod->listname_en; ?>
+
+                                    <?php endif; ?>
+                                </a>
                             </li>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
@@ -34,7 +56,18 @@
                             <li class="item">
                                 <a href="<?php echo e(url('/chi-tiet/'.$news->slug)); ?>">
                                     <div class="item-lead">
-                                        <h3 class="item-title"><?php echo e($news->newsname); ?></h3>
+                                        <h3 class="item-title">
+                                            <?php if(Session::get('website_language')==='vi' || Session::get('website_language')===null): ?>
+                                                <?php echo $news->newsname; ?>
+
+                                            <?php elseif(Session::get('website_language') === 'jp'): ?>
+                                                <?php echo $news->newsname_jp; ?>
+
+                                            <?php elseif(Session::get('website_language') === 'en'): ?>
+                                                <?php echo $news->newsname_en; ?>
+
+                                            <?php endif; ?>
+                                        </h3>
                                         <p class="item-date"><?php echo e($news->created_at->format('Y/m/d')); ?></p>
                                     </div>
                                     <div class="item-image">
@@ -51,7 +84,7 @@
                 
                 <div class="content-panel block-type">
                     <div class="content-panel-title">
-                        <h2 class="panel-title">Tin mới trong mục</h2>
+                        <h2 class="panel-title"><?php echo e(trans('modnews.new_news_in_the_section')); ?></h2>
                     </div>
                     <div class="content-panel-body" id="content_pro">
                         <?php echo $__env->make('home.content_news_ajax', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
@@ -60,14 +93,15 @@
 
                 <!-- BEGIN Loading -->
                 <div class="ajax-load text-center" style="display:none;z-index: 10000; opacity: 1;">
-                    <p><img src="#">Đang tải</p>
+                    <p><img src="#"><?php echo e(trans('modnews.loading')); ?></p>
                 </div>
 
                 <!-- BIGIN ReadMore -->
                 <div class="read-more" <?php if($total <=9): ?> style="display: none;" <?php endif; ?>>
                     <a class="btn-more" id="load_more" base_url="<?php echo e(url('')); ?>" modid="<?php echo e($modnew->id); ?>" skip="10" take="5" total="<?php echo e($total); ?>"  role="button">
                         <i class="fas fa-angle-right"></i>
-                         Xem thêm
+                         <?php echo e(trans('modnews.see_more')); ?>
+
                     </a>
                 </div>
             </div>

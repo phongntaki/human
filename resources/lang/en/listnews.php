@@ -6,5 +6,7 @@ return [
 	"pagination_news" => "news",
 	"newest" => "News Newest",
 	"product_new" => "New products",
+	"xem_them" => "View more",
+	"loading" => "Loading",
 ];
 ?>

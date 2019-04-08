@@ -17,7 +17,16 @@
                 {{-- tin moi trong mod          --}}
                 <div class="content-panel block-type">
                     <div class="content-panel-title">
-                        <h1 class="panel-title"><a href="{{ url('loai-tin/'.$listnew->slug) }}">{{ $listnew->listname }}</a></h1>
+                        <h1 class="panel-title"><a href="{{ url('loai-tin/'.$listnew->slug) }}">
+                            <!-- {{ $listnew->listname }} -->
+                            @if(Session::get('website_language') === 'vi' || Session::get('website_language')===null)
+                                {!! $listnew->listname !!}
+                            @elseif(Session::get('website_language') === 'jp')
+                                {!! $listnew->listname_jp !!}
+                            @elseif(Session::get('website_language') === 'en')
+                                {!! $listnew->listname_en !!}
+                            @endif
+                        </a></h1>
                     </div>
                     <div class="content-panel-body" id="content_pro">
                         @include('home.content_news_ajax_list')
@@ -27,12 +36,12 @@
 
                 <!-- BEGIN Loading -->
                 <div class="ajax-load text-center" style="display:none;z-index: 10000; opacity: 1;">
-                    <p><img src="#">Đang tải</p>
+                    <p><img src="#">{{trans('listnews.loading')}}</p>
                 </div>
                 <!-- BIGIN ReadMore -->
                 <div class="text-center" @if($total <=10) style="display: none;" @endif>
                      <a class="btn btn-default btn-more-info" id="load_more" base_url="{{url('')}}" listid="{{$listnew->id}}" skip="10" take="5" total="{{$total}}"  role="button">
-                        <i class="fa fa-refresh" aria-hidden="true"></i> Xem thêm
+                        <i class="fa fa-refresh" aria-hidden="true"></i> {{trans('listnews.xem_them')}}
                     </a>
                 </div>
             </div>

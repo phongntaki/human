@@ -46,7 +46,7 @@
                                         <td class="center">
                                             <img src="{{ asset($listpro->listimg) }}" style="width: 55px"> 
                                         </td> 
-                                        <td><i class="nneditlistpro btn btn-info fa fa-edit" id="ennlistpro{{ $listpro->id }}" description="{{ $listpro->description }}" editid="{{ $listpro->id }}" listidmod="{{ $listpro->listidmod }}" name="{{ $listpro->listname }}" imgo="{{ asset($listpro->listimg) }}" img="{{ $listpro->listimg }}" num="{{ $listpro->listnumber }}"> Sửa</i>
+                                        <td><i class="nneditlistpro btn btn-info fa fa-edit" id="ennlistpro{{ $listpro->id }}" description="{{ $listpro->description }}" editid="{{ $listpro->id }}" listidmod="{{ $listpro->listidmod }}" name="{{ $listpro->listname }}" name_jp="{{ $listpro->listname_jp }}" name_en="{{ $listpro->listname_en }}" imgo="{{ asset($listpro->listimg) }}" img="{{ $listpro->listimg }}" num="{{ $listpro->listnumber }}"> Sửa</i>
                                             <i class="nndeditlistpro btn btn-danger fa fa-trash" img="{{ $listpro->listimg }}" editid="{{ $listpro->id }}" name="{{ $listpro->listname }}"> Xóa </i>
                                         </td>
 
@@ -100,6 +100,18 @@
                         <label for="listname" class="col-sm-3 control-label"><i class="fa  fa-font"></i> Tiêu đề:</label>
                         <div class="col-sm-9">
                           <input type="text" class="form-control" name="listname" id="listname" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="listname_jp" class="col-sm-3 control-label"><i class="fa  fa-font"></i> Tiêu đề(Tiếng Nhật):</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="listname_jp" id="listname_jp" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="listname_en" class="col-sm-3 control-label"><i class="fa  fa-font"></i> Tiêu đề(Tiếng Anh):</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="listname_en" id="listname_en" >
                         </div>
                     </div>
                     <div class="form-group">
@@ -171,6 +183,18 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="elistname_jp" class="col-sm-3 control-label"><i class="fa  fa-font"></i> Tiêu đề(Tiếng Nhật):</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="listname_jp" id="elistname_jp" placeholder="Tên loại Sp">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="elistname_en" class="col-sm-3 control-label"><i class="fa  fa-font"></i> Tiêu đề(Tiếng Anh):</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="listname_en" id="elistname_en" placeholder="Tên loại Sp">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="ennnumber" class="col-sm-3 control-label"><i class="fa  fa-toggle-on"></i> Hiện thị:</label>
                         <div class="col-sm-9">
                           <input type="text" class="form-control" name="ennnumber" id="ennnumber" placeholder="Thứ tự hiện thị < số >">
@@ -207,7 +231,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Xóa listpro</h4>
+            <h4 class="modal-title" id="myModalLabel">Xóa Loại Tin</h4>
           </div>
           <form class="form-horizontal" method="post" action="list/delete" enctype="multipart/form-data">
           <input type="hidden" name="dennidlistpro" id="dennidlistpro" /> 
@@ -215,7 +239,7 @@
           <input type="hidden" name="_token" value="{{ csrf_token()}}" />
           <div class="modal-body">
             <div class="row">
-                <h4 class="nnbodydelete">Bạn có chắc xóa listpro <i id="deletename"></i></h4>
+                <h4 class="nnbodydelete">Bạn có chắc xóa Loại Tin <i id="deletename"></i></h4>
             </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-info" data-dismiss="modal">Đóng cửa sổ</button>

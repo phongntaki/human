@@ -20,10 +20,16 @@ $(document).ready(function() {
 		$("#ennidnews").val($(this).attr('idlistnew')) ;
 		$("#ennidnews").val($(this).attr('editid')) ;
 		$("#enntitlenew").val($(this).attr('name')) ;
+		$("#enntitlenew_jp").val($(this).attr('name_jp')) ;
+		$("#enntitlenew_en").val($(this).attr('name_en')) ;
 		$("#ennkeywords").val($(this).attr('newkeywords')) ;
 		$("#enntagnew").val($(this).attr('newtag')) ;
 		$("#enntomtatnew").val($(this).attr('intro')) ;
+		$("#enntomtatnew_jp").val($(this).attr('intro_jp')) ;
+		$("#enntomtatnew_en").val($(this).attr('intro_en')) ;
 		 CKEDITOR.instances.enncontentnew.setData($(this).attr('newcontent'));
+		 CKEDITOR.instances.enncontentnew_jp.setData($(this).attr('newcontent_jp'));
+		 CKEDITOR.instances.enncontentnew_en.setData($(this).attr('newcontent_en'));
 		$("#ennimguserold").val($(this).attr('imgo'));		
 		$("#ennavatarfile").val("");
 		$("#ennavatar").attr('src',"../../public/img/news/100x100/"+$(this).attr('imgo'));
@@ -31,7 +37,7 @@ $(document).ready(function() {
 	});
 	$("body").on("click",".nndeditnew",function(e){ 
 		$("#dennidnew").val($(this).attr('editid')) ;
-		$("#deletename").html($(this).attr('title')) ;
+		$("#deletename").html($(this).attr('name')) ;
 		$("#dennimgnew").val($(this).attr('imgo'));	
 		$('.nn-modal-delete-news').modal('show');
 	})

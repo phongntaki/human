@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Customers;
 use App\GroupCustomers;
-use App\Order;
 use Illuminate\Http\Request;
 
 use Socialite; 
@@ -13,6 +12,10 @@ use App\Cities;
 use App\Districts;
 use App\Wards;
 use App\Contactus;
+use App\Models\PasswordReset;
+use App\Notifications\ResetPassword;
+use Mail;
+use Carbon\Carbon;
 
 class CustomerController extends Controller
 {
@@ -61,19 +64,6 @@ class CustomerController extends Controller
           Session::put('logined_cusphone', $item_user->cusphone);
           Session::put('logined_cusimg', $item_user->cusimg);
           Session::put('logined_cusaddress', $item_user->cusaddress);
-
-          // ==============save info to order =============== 
-          Session::put('pay_name', $item_user->cusfullname);
-          Session::put('pay_phone', $item_user->cusphone);
-          Session::put('pay_address', $item_user->cusaddress);
-
-          Session::put('shipping_name', session('pay_name'));
-          Session::put('shipping_phone', session('pay_phone'));
-          Session::put('shipping_address', session('pay_address'));
-          Session::put('same_address', 1);
-          Session::put('shipping_error', 0); 
-          // =============================
-            
         }
 
         $page_return = Session::get("page_return_login_social");
@@ -157,19 +147,6 @@ class CustomerController extends Controller
             Session::put('logined_cusphone', $item->cusphone);
             Session::put('logined_cusimg', $item->cusimg);
             Session::put('logined_cusaddress', $item->cusaddress);
-
-            // ==============save info to order =============== 
-            Session::put('pay_name', $item->cusfullname);
-            Session::put('pay_phone', $item->cusphone);
-            Session::put('pay_address', $item->cusaddress);
-
-            Session::put('shipping_name', session('pay_name'));
-            Session::put('shipping_phone', session('pay_phone'));
-            Session::put('shipping_address', session('pay_address'));
-            Session::put('same_address', 1);
-            Session::put('shipping_error', 0); 
-            // =============================
-
             $error["success"] = 1;
           }else{
             $error["success"] = 0;
@@ -338,10 +315,7 @@ class CustomerController extends Controller
 
     public function ProfileCus($id){
         $customer = Customers::find($id);
-        $order = Order::where('idcustomer',$id)->orderBy('created_at', 'desc')->get();
-        $count = Order::where('idcustomer',$id)->count();
-        $sum = Order::where('idcustomer',$id)->sum('total_order');
-        return view('admin.customer.profile',['customer'=>$customer,'listorder'=>$order,'count'=>$count,'sum'=>$sum]);
+        return view('admin.customer.profile',['customer'=>$customer]);
     }
     public function ListgrNews(){
         $grcus = GroupCustomers::all();
@@ -440,10 +414,11 @@ class CustomerController extends Controller
     }
     //  Customer ==================================
     public function ListCus(){
-        $customers = Customers::where('idgroup','<>',2)->get();
+        $customers = Customers::where('idgroup','<>',2)->orderBy('id','desc')->get();
         // echo "<pre>";
         // echo $customers;
         // echo "</pre>";
+        // exit();
         $grcus = GroupCustomers::all();
         return view('admin.customer.customers',['customers'=>$customers,'group'=>$grcus]);
     }
@@ -585,25 +560,20 @@ class CustomerController extends Controller
     }
 
     public function DeleteCus(Request $request){
-        $order = Order::where('idcustomer',$request->dennidCustomer)->count();
-        if($order == 0){
-            $cus = Customers::find($request->dennidCustomer);
-            $cus->delete();
-            $imgold = $request->dennimgCustomer;
-                if($imgold !="no-img.png" && ($imgold!='')){
-                    while(file_exists("public/img/customers/".$imgold))
-                    {
-                        unlink("public/img/customers/".$imgold);
-                    }
-                }
-            if( $cus->idgroup ==1){
-              return redirect('admin/customers/list')->with('thongbao','Xóa thành công');
-            } else {
-              return redirect('admin/customers/supports')->with('thongbao','Xóa thành công hỗ trợ viên');
-            }
-        } else{
-            return redirect('admin/customers/list')->with('loi','Xóa không thành công, kách hàng đã đặt đơn hàng');
-        }
+      $cus = Customers::find($request->dennidCustomer);
+      $cus->delete();
+      $imgold = $request->dennimgCustomer;
+          if($imgold !="no-img.png" && ($imgold!='')){
+              while(file_exists("public/img/customers/".$imgold))
+              {
+                  unlink("public/img/customers/".$imgold);
+              }
+          }
+      if( $cus->idgroup ==1){
+        return redirect('admin/customers/list')->with('thongbao','Xóa thành công');
+      } else {
+        return redirect('admin/customers/supports')->with('thongbao','Xóa thành công hỗ trợ viên');
+      }
         
 
     }
@@ -618,5 +588,71 @@ class CustomerController extends Controller
         $con = Contactus::find($request->dennidCustomer);
         $con->delete();
         return redirect('admin/customers/feedback')->with('thongbao','Xóa thành công');
+    }
+
+    public function send_mail_reset_pass(){
+      return view('customer.email');
+    }
+
+    public function post_send_mail_reset_pass(Request $request){
+      $customer = Customers::where('cusemail',$request->email)->first();
+      if($customer!=null){
+        $checkExistInPasswordReset = PasswordReset::where('email',$customer->cusemail)->first();
+
+        if($checkExistInPasswordReset != null){
+          //If exist then update
+          $passwordReset = PasswordReset::where('email',$customer->cusemail)->update(
+            ['token' => str_random(60)]
+          );
+
+        }
+        else{
+          //If not exist then create
+          $passwordReset = PasswordReset::create(array('email' => $customer->cusemail, 'token' => str_random(60)));
+        }
+
+        //Finish Create or update then Send mail
+        //Select email, token from PasswordReset after Created, Updated
+        $select = PasswordReset::where('email',$customer->cusemail)->first();
+        $mail = $select->email;
+        $token = $select->token;
+        $content = url('').'/password/reset/'.$token;
+
+        Mail::send('customer.maildb', array('email'=>$mail,'content'=>$content), function($message) use ($mail){
+          $message->to($mail, 'Visitor')->subject('Password Reset Mail!');
+        });
+        return redirect()->route('send-mail-reset-pass')
+            ->with('status','We have e-mailed your password reset link!');
+      }else{
+        echo "<script type='text/javascript'>alert('Không tồn tại mail bạn đã nhập');</script>";
+        return view('customer.email');
+      }
+    }
+
+    public function showResetForm($token){
+      return view('customer.reset',['token'=>$token]);
+    }
+
+    public function resetPass(Request $request){
+      $this->validate(request(), [
+          'email' => 'required|email',
+          'password' => 'required|confirmed'
+      ]);
+      $token = $request->token;
+      $mail = $request->email;
+      $passwordReset = PasswordReset::where('token', $token)->where('email', $mail)->firstOrFail();
+      if(Carbon::parse($passwordReset->updated_at)->addMinutes(720)->isPast()){
+        $delete = PasswordReset::where('token', $token);
+        $delete->delete();
+        return response()->json([
+          'message' => 'This password reset token is invalid.',
+        ],422);
+      }
+      $customer = Customers::where('cusemail',$passwordReset->email)->firstOrFail();
+      $updatePasswordCustomer = $customer->where('cusemail',$request->email)->update(['cuspass' => sha1($request->password)]);
+      $delete = PasswordReset::where('token', $token);
+      $delete->delete();
+      return redirect()->route('login')
+            ->with('status','Password reset success!');
     }
 }

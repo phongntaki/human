@@ -4,29 +4,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 use App\Cate;
-use App\Product;
-use App\ProductImage;
 use App\News;
 use App\Slide;
 use App\Banking;
 use App\Soft;
 use App\Socical;
-use App\Order;
-use App\OrderProduct;
 use App\Customers;
 use App\Contact;
 use App\Language;
 use App\Cities;
 use App\Districts;
 use App\Wards;
-use App\Shippings;
-use App\Payments;
 use App\Translate;
-use App\ModProduct;
-use App\ListProduct;
 use App\ModNews;
 use App\ListNew;
-use App\ProductStt;
 use App\Contactus;
 use App\Advert;
 use App\Specialgroup;
@@ -34,19 +25,28 @@ use App\Project;
 use App\Advisory;
 use App\User;
 use Auth;
-use Cart;
 use Session;
+use Mail;
 
 class HomeController extends Controller {
 
-    public $idlang = 0;
+    public $idlang = 1;
+    
     function __construct(){
+
         $this->middleware(function ($request, $next) {
-            $this->idlang = session()->get('idlocale') ;
+            // $this->idlang = session()->get('idlocale') ;
+            $this->idlang = 1;
             return $next($request);
         });
     }
     public function public_var(){
+            // if(Session::get('idlocale')==null){
+            //     Session::put('idlocale',1);
+            //     Session::put('locale',"vi");
+            //     Session::put('currencylocale',"đ");
+            //     Session::put('curency_codelocale',"VND");
+            // }
 
             $modnews    = ModNews::where('idlang', $this->idlang)->orderBy('modnumber', 'desc')->get();
             foreach ($modnews as $itemmod => $valuemod) {
@@ -63,63 +63,28 @@ class HomeController extends Controller {
                 $modnews[$itemmod]["listnews"] = $listnews;
             }
 
-            $modproducts    = ModProduct::select('modproducts.*', DB::raw('translates.trname as trname'))
-                                ->join("translates","translates.trid", "=", "modproducts.id")
-                                ->where('translates.tridlang', $this->idlang)
-                                ->where('translates.trcate', 1)
-                                ->orderBy('modnumber', 'asc')->get();
-            foreach ($modproducts as $itemmod => $valuemod) {
-                $listproducts   = ListProduct::select('listproducts.*', DB::raw('translates.trname as trname'))
-                                ->join("translates","translates.trid", "=", "listproducts.id")
-                                ->where('translates.tridlang', $this->idlang)
-                                ->where('listproducts.listidmod', $valuemod->id)
-                                ->where('translates.trcate', 2)
-                                ->orderBy('listnumber', 'desc')->get();
-                foreach ($listproducts as $itemlist => $valuelist) {
-                    $products   = Product::select('*', DB::raw('products.id as idproduct'))
-                                            ->join("productdetail","productdetail.idproduct", "=", "products.id")
-                                            ->where('idlist', $valuelist->id)
-                                            ->where('idlang', $this->idlang)
-                                            ->where('hide', 0)
-                                            ->orderBy('products.id', 'desc')->get();
-                    $listproducts[$itemlist]["products"] = $products;
-                }
-                $modproducts[$itemmod]["listproducts"] = $listproducts;
-            }
-
-
-
             $contact = Contact::find(Session::get('idlocale'));
-
+            if($contact==null){
+                Session::put('idlocale',1);
+                Session::put('locale',"vi");
+                Session::put('currencylocale',"đ");
+                Session::put('curency_codelocale',"VND");
+                Session::put('website_language',"vi");
+                Session::save();
+                $contact = Contact::find(Session::get('idlocale'));
+            }
+            // echo "<pre>";
+            // print_r($this->idlang);
+            // print_r($modnews);
+            // print_r(Session::get('idlocale'));
+            // print_r(Session::get('website_language'));
+            // echo "</pre>"; 
+            // exit();
 
             $listnews       = ListNew::select('listnews.*')
                             ->join("modnews","modnews.id", "=", "listnews.listidmod")
                             ->where('modnews.idlang', $this->idlang)
                             ->orderBy('listnumber', 'desc')->get();
-
-
-
-            $listproducts   = ListProduct::select('listproducts.*', DB::raw('translates.trname as trname'))
-                        ->join("translates","translates.trid", "=", "listproducts.id")
-                        ->where('translates.tridlang', $this->idlang)
-                        ->where('translates.trcate', 2)
-                        ->orderBy('listnumber', 'desc')->get();
-
-
-
-            $listproducts_cat   = ListProduct::select('listproducts.*', DB::raw('translates.trname as trname'))
-                            ->join("translates","translates.trid", "=", "listproducts.id")
-                            ->where('translates.tridlang', $this->idlang)
-                            ->where('translates.trcate', 2)
-                            ->orderBy('id', 'desc')->skip(0)->take(3)->get();
-            foreach ($listproducts_cat as $itemlist => $valuelist) {
-                $products   = Product::join("productdetail","productdetail.idproduct", "=", "products.id")
-                                        ->where('idlist', $valuelist->id)
-                                        ->where('idlang', $this->idlang)
-                                        ->where('hide', 0)
-                                        ->orderBy('products.id', 'desc')->skip(0)->take(3)->get();
-                $listproducts_cat[$itemlist]["products"] = $products;
-            }
 
             $socials    = Socical::where('idlang', $this->idlang)->where('hide', 2)->orderBy('id', 'desc')->get();
 
@@ -130,10 +95,10 @@ class HomeController extends Controller {
             $slide_active = News::orderBy('created_at','DESC')->take(1)->get();
             $slide_no_active = News::orderBy('created_at','DESC')->skip(1)->take(9)->get();
 
-            $adverts_main    = Advert::where('idlang', $this->idlang)->where('hide', 2)->where('area', 4)->orderBy('sort', 'asc')->get();
-            $adverts_top    = Advert::where('idlang', $this->idlang)->where('hide', 2)->where('area', 1)->orderBy('sort', 'asc')->get();
-            $adverts_center = Advert::where('idlang', $this->idlang)->where('hide', 2)->where('area', 2)->orderBy('sort', 'asc')->get();
-            $adverts_bottom = Advert::where('idlang', $this->idlang)->where('hide', 2)->where('area', 3)->orderBy('sort', 'asc')->get();
+            // $adverts_main    = Advert::where('idlang', $this->idlang)->where('hide', 2)->where('area', 4)->orderBy('sort', 'asc')->get();
+            // $adverts_top    = Advert::where('idlang', $this->idlang)->where('hide', 2)->where('area', 1)->orderBy('sort', 'asc')->get();
+            // $adverts_center = Advert::where('idlang', $this->idlang)->where('hide', 2)->where('area', 2)->orderBy('sort', 'asc')->get();
+            // $adverts_bottom = Advert::where('idlang', $this->idlang)->where('hide', 2)->where('area', 3)->orderBy('sort', 'asc')->get();
             $new_tag = News::all();
 
             $tag_arr=array();
@@ -153,26 +118,22 @@ class HomeController extends Controller {
 
             $tag_list = $tag_arr;
             $result = array(
-                "adverts_main"=>$adverts_main,
-                "adverts_top"=>$adverts_top,
-                "adverts_center"=>$adverts_center,
-                "adverts_bottom"=>$adverts_bottom,
+                // "adverts_main"=>$adverts_main,
+                // "adverts_top"=>$adverts_top,
+                // "adverts_center"=>$adverts_center,
+                // "adverts_bottom"=>$adverts_bottom,
                 "lasted_news"=>$lasted_news ,
                 "socials"=>$socials,
                 "languages"=>$languages,
                 "modnews"=>$modnews,
-                "modproducts"=>$modproducts,
                 "contact"=>$contact,
                 "listnews"=>$listnews,
                 "most_news"=>$most_news,
-                "listproducts"=>$listproducts,
                 "khuyenmai"=>$khuyenmai,
                 "slide_active"=>$slide_active,
                 "slide_no_active"=>$slide_no_active,
-                "listproducts_cat"=>$listproducts_cat,
                 "tag_list"=>$tag_list,
                 );
-
             return $result;
     }
     public function error_404()
@@ -193,7 +154,18 @@ class HomeController extends Controller {
     {
         $mod_new = ModNews::orderBy('modnumber','desc')->get();
         $public_var = $this->public_var();
+
         Session::put('current_page', 'top-page');
+        
+        // echo "<pre>";
+        // print_r(session()->all()); 
+        // echo "</pre>";
+        // echo "<br>";
+        // Session()->flush();
+        // echo "<pre>";
+        // print_r(session()->all()); 
+        // echo "</pre>";
+        // exit();
         return view('home.index', array_merge($public_var, [
                                                             "index_modnew" =>$mod_new,
                                                             ] ));
@@ -478,16 +450,17 @@ class HomeController extends Controller {
         if($checkRegister==null){
             $cus->save();
             $public_var = $this->public_var();
-            echo "<script type='text/javascript'>alert('Register Success');</script>";
-            Session::put('current_page', 'login-page');
+            // echo "<script type='text/javascript'>alert('Register Success');</script>";
+            // Session::put('current_page', 'login-page');
             // Session::put('flag','success');
             // Session::put('message','Đăng ký thành công!');
             flash('Đăng ký thành công!')->success();
-            return view('home.login',array_merge($public_var, [ ]) );
+            // return view('home.login',array_merge($public_var, [ ]) );
+            return redirect()->route('login')->with(array_merge($public_var, [ ]));
         } else{
             $public_var = $this->public_var();
             // echo "<script type='text/javascript'>alert('Register Fail');</script>";
-            Session::put('current_page', 'register-page');
+            // Session::put('current_page', 'register-page');
             // Session::put('flag','danger');
             // Session::put('message','Đăng ký thất bại!');
             flash('Đăng ký thất bại!')->error();
@@ -597,7 +570,19 @@ class HomeController extends Controller {
         $public_var = $this->public_var();
         Session::put('current_page', 'contact-page');
         return view('home.lienhe',array_merge($public_var, [ ]) );
+    }
 
+    public function post_lien_he(Request $request){
+        $name = $request->inquiry_name;
+        $mail = $request->inquiry_mail;
+        $tel = $request->inquiry_tel;
+        $content = $request->inquiry_text;
+        Mail::send('home.maildb', array('name'=>$name,'email'=>$mail, 'phone'=>$tel ,'content'=>$content), function($message){
+            $message->to('enzicontact@gmail.com', 'Visitor')->subject('Visitor Feedback!');
+        });
+        $public_var = $this->public_var();
+        echo "<script type='text/javascript'>alert('Send mail success');</script>";
+        return view('home.lienhe',array_merge($public_var, [ ]) );
     }
 
     public function gioi_thieu(){
@@ -676,6 +661,11 @@ class HomeController extends Controller {
         Session::put('logined_cusaddress', $request->address);
         return redirect('gioi-thieu')->with('thongbao','Update Success');
 
+    }
+
+    public function changeLanguage($language){
+        \Session::put('website_language',$language);
+        return redirect()->back();
     }
 
 }

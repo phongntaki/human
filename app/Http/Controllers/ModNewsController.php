@@ -32,6 +32,8 @@ class ModNewsController extends Controller
         $modnew = new ModNews;
         $modnew->idlang = $request->nnlang;
         $modnew->modname = $request->modname;
+        $modnew->modname_jp = $request->modname_jp;
+        $modnew->modname_en = $request->modname_en;
         $modnew->slug = changeTitle($request->modname);
         $modnew->modnumber = $request->nnnumber;
         $modnew->type = $request->txttype;
@@ -69,6 +71,8 @@ class ModNewsController extends Controller
         $modnew = ModNews::find($request->ennidmodproduct);
         $modnew->idlang         = $request->ennlang;
         $modnew->modname        = $request->modname;
+        $modnew->modname_jp        = $request->modname_jp;
+        $modnew->modname_en        = $request->modname_en;
         $modnew->slug           = changeTitle($request->modname);
         $modnew->modnumber      = $request->ennnumber;
         $modnew->type           = $request->txtetype;

@@ -15,7 +15,7 @@
                 <div class="content-panel post-content">
                     <!-- BEGIN .post-header -->
                     <div class="post-header">
-                        <h1 class="post-title">Giới thiệu chung công ty ENZI</h1>
+                        <h1 class="post-title">{{trans('gioithieu.gioi_thieu_chung')}}</h1>
                     </div>
                     <div class="post-body">
                         <p class="hero-image"><img src="{{url('public/home/images/message.jpg')}}" alt=""></p>

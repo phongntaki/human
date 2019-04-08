@@ -17,7 +17,19 @@
                 
                 <div class="content-panel block-type">
                     <div class="content-panel-title">
-                        <h2 class="panel-title"><a href="<?php echo e(url('loai-tin/'.$listnew->slug)); ?>"><?php echo e($listnew->listname); ?></a></h2>
+                        <h1 class="panel-title"><a href="<?php echo e(url('loai-tin/'.$listnew->slug)); ?>">
+                            <!-- <?php echo e($listnew->listname); ?> -->
+                            <?php if(Session::get('website_language') === 'vi' || Session::get('website_language')===null): ?>
+                                <?php echo $listnew->listname; ?>
+
+                            <?php elseif(Session::get('website_language') === 'jp'): ?>
+                                <?php echo $listnew->listname_jp; ?>
+
+                            <?php elseif(Session::get('website_language') === 'en'): ?>
+                                <?php echo $listnew->listname_en; ?>
+
+                            <?php endif; ?>
+                        </a></h1>
                     </div>
                     <div class="content-panel-body" id="content_pro">
                         <?php echo $__env->make('home.content_news_ajax_list', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
@@ -27,12 +39,13 @@
 
                 <!-- BEGIN Loading -->
                 <div class="ajax-load text-center" style="display:none;z-index: 10000; opacity: 1;">
-                    <p><img src="#">Đang tải</p>
+                    <p><img src="#"><?php echo e(trans('listnews.loading')); ?></p>
                 </div>
                 <!-- BIGIN ReadMore -->
                 <div class="text-center" <?php if($total <=10): ?> style="display: none;" <?php endif; ?>>
                      <a class="btn btn-default btn-more-info" id="load_more" base_url="<?php echo e(url('')); ?>" listid="<?php echo e($listnew->id); ?>" skip="10" take="5" total="<?php echo e($total); ?>"  role="button">
-                        <i class="fa fa-refresh" aria-hidden="true"></i> Xem thêm
+                        <i class="fa fa-refresh" aria-hidden="true"></i> <?php echo e(trans('listnews.xem_them')); ?>
+
                     </a>
                 </div>
             </div>

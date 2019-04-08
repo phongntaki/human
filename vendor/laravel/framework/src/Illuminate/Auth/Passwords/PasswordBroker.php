@@ -24,7 +24,6 @@ class PasswordBroker implements PasswordBrokerContract
      * @var \Illuminate\Contracts\Auth\UserProvider
      */
     protected $users;
-
     /**
      * The custom password validator callback.
      *
@@ -69,7 +68,8 @@ class PasswordBroker implements PasswordBrokerContract
         $user->sendPasswordResetNotification(
             $this->tokens->create($user)
         );
-
+        // echo $user;
+        // exit();
         return static::RESET_LINK_SENT;
     }
 

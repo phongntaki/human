@@ -13,7 +13,7 @@
             <div class="content-panel access-panel">
 
                 <div class="register-form">
-                    <h1 class="panel-title">Register</h1>
+                    <h1 class="panel-title"><?php echo e(trans('home_register.register')); ?></h1>
 
                     <form class="form-vertical" method="POST" action="" role="form">
                         <?php echo e(csrf_field()); ?>
@@ -25,7 +25,7 @@
                         <?php endif; ?> -->
                         <?php echo $__env->make('flash::message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                         <div class="form-group<?php echo e($errors->has('fullname') ? ' has-error' : ''); ?>">
-                            <label class="control-label" for="fullname">FullName</label>
+                            <label class="control-label" for="fullname"><?php echo e(trans('home_register.fullname')); ?></label>
                             <div class="control-detail">
                                 <input type="text" id="fullname" class="form-control" name="fullname" value="<?php echo e(old('fullname')); ?>" required autofocus>
 
@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="form-group<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
-                            <label class="control-label" for="register-email">E-Mail</label>
+                            <label class="control-label" for="register-email"><?php echo e(trans('home_register.email')); ?></label>
                             <div class="control-detail">
                                 <input type="email" id="register-email" class="form-control" name="email" value="<?php echo e(old('email')); ?>" required>
 
@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="form-group<?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
-                            <label class="control-label" for="register-password">Password</label>
+                            <label class="control-label" for="register-password"><?php echo e(trans('home_register.password')); ?></label>
                             <div class="control-detail">
                                 <input type="password" id="register-password" class="form-control" name="password" required>
 
@@ -64,14 +64,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label" for="password-confirmation">Confirm Password</label>
+                            <label class="control-label" for="password-confirmation"><?php echo e(trans('home_register.confirm_password')); ?></label>
                             <div class="control-detail">
                                 <input type="password" id="password-confirmation" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
 
                         <div class="form-submit">
-                            <button type="submit" class="form-button button-red">Register</button>
+                            <button type="submit" class="form-button button-red"><?php echo e(trans('home_register.register')); ?></button>
                         </div>
                     </form>
 

@@ -17,19 +17,55 @@
                 <div class="content-panel post-content">
                     <!-- BEGIN .post-header -->
                     <div class="post-header">
-                        <h1 class="post-title"><?php echo e($itemnews->newsname); ?></h1>
+                        <h1 class="post-title">
+                            <!-- <?php echo e($itemnews->newsname); ?> -->
+                            <?php if(Session::get('website_language') === 'vi' || Session::get('website_language')===null): ?>
+                                <?php echo $itemnews->newsname; ?>
+
+                            <?php elseif(Session::get('website_language') === 'jp'): ?>
+                                <?php echo $itemnews->newsname_jp; ?>
+
+                            <?php elseif(Session::get('website_language') === 'en'): ?>
+                                <?php echo $itemnews->newsname_en; ?>
+
+                            <?php endif; ?>
+                        </h1>
                         <p class="post-date"><?php echo e($itemnews->created_at->format('Y/m/d')); ?></p>
                         <div class="post-header-meta">
                             <p class="post-category">
                                 <?php if($itemnews->idlistnew !=""): ?>
-                                <a href="<?php echo e(url('loai-tin/'.$itemnews->list_name($itemnews->idlistnew)['slug'])); ?>"><?php echo e($itemnews->list_name($itemnews->idlistnew)['listname']); ?></a>
+                                <a href="<?php echo e(url('loai-tin/'.$itemnews->list_name($itemnews->idlistnew)['slug'])); ?>">
+                                    <!-- <?php echo e($itemnews->list_name($itemnews->idlistnew)['listname']); ?> -->
+                                    <?php if(Session::get('website_language')==='vi' || Session::get('website_language')===null): ?>
+                                        <?php echo $itemnews->list_name($itemnews->idlistnew)['listname']; ?>
+
+                                    <?php elseif(Session::get('website_language') === 'jp'): ?>
+                                        <?php echo $itemnews->list_name($itemnews->idlistnew)['listname_jp']; ?>
+
+                                    <?php elseif(Session::get('website_language') === 'en'): ?>
+                                        <?php echo $itemnews->list_name($itemnews->idlistnew)['listname_en']; ?>
+
+                                    <?php endif; ?>
+                                </a>
                                 <?php elseif($itemnews->idmodnew !=""): ?>
-                                <a href="<?php echo e(url('loai-tin/'.$itemnews->mod_name($itemnews->idmodnew)['slug'])); ?>"><?php echo e($itemnews->mod_name($itemnews->idmodnew)['modname']); ?></a>
+                                <a href="<?php echo e(url('loai-tin/'.$itemnews->mod_name($itemnews->idmodnew)['slug'])); ?>">
+                                    <!-- <?php echo e($itemnews->mod_name($itemnews->idmodnew)['modname']); ?> -->
+                                    <?php if(Session::get('website_language')==='vi' || Session::get('website_language')===null): ?>
+                                        <?php echo $itemnews->mod_name($itemnews->idmodnew)['modname']; ?>
+
+                                    <?php elseif(Session::get('website_language') === 'jp'): ?>
+                                        <?php echo $itemnews->mod_name($itemnews->idmodnew)['modname_jp']; ?>
+
+                                    <?php elseif(Session::get('website_language') === 'en'): ?>
+                                        <?php echo $itemnews->mod_name($itemnews->idmodnew)['modname_en']; ?>
+
+                                    <?php endif; ?>
+                                </a>
                                 <?php endif; ?>
                             </p>
                             <p class="post-share">
-                                <a href="#comments" class="meta-comment"><i class="fas fa-comment"></i><span class="fb-comments-count" data-href="<?php echo e(url()->current()); ?>"></span> Bình Luận</a>
-                                <a href="#" class="meta-view"><i class="fas fa-chart-bar"></i><?php echo e($itemnews->view_count); ?> Lượt xem</a>
+                                <a href="#comments" class="meta-comment"><i class="fas fa-comment"></i><span class="fb-comments-count" data-href="<?php echo e(url()->current()); ?>"></span> <?php echo e(trans('news.comment')); ?></a>
+                                <a href="#" class="meta-view"><i class="fas fa-chart-bar"></i><?php echo e($itemnews->view_count); ?> <?php echo e(trans('news.viewers')); ?></a>
                             </p>
                         </div>
                     </div>
@@ -37,14 +73,23 @@
                     <!-- BEGIN .post-body -->
                     <div class="post-body">
                         <div class="post-body-inner">
-                            <?php echo $itemnews->newcontent; ?>
+                            <!-- <?php echo $itemnews->newcontent; ?> -->
+                            <?php if(Session::get('website_language')==='vi' || Session::get('website_language')===null): ?>
+                                <?php echo $itemnews->newcontent; ?>
 
+                            <?php elseif(Session::get('website_language') === 'jp'): ?>
+                                <?php echo $itemnews->newcontent_jp; ?>
+
+                            <?php elseif(Session::get('website_language') === 'en'): ?>
+                                <?php echo $itemnews->newcontent_en; ?>
+
+                            <?php endif; ?>
                         </div>
 
                         <?php if(Session::get('logined_cus') != 1): ?>
                         <div class="no-information">
                             <p class="noinfo-text">
-                                <span class="nowrap">Bạn nên đăng ký thông tin cá</span> <span class="nowrap">nhân để chúng tôi có</span> <span class="nowrap">thể chọn ra công việc</span> <span class="nowrap">tốt nhất phù hợp với bạn.</span> <span class="nowrap">Chưa có tài khoản.</span><span class="btn-noinfo nowrap"><a href="<?php echo e(url('/register')); ?>" style="color: #81F7F3">Đăng Ký Ngay</a></span>
+                                <span class="nowrap"><?php echo e(trans('home_master.ban_nen_dang_ky_thong_tin_ca')); ?></span> <span class="nowrap"><?php echo e(trans('home_master.nhan_de_chung_toi_co')); ?></span> <span class="nowrap"><?php echo e(trans('home_master.the_chon_ra_cong_viec')); ?></span> <span class="nowrap"><?php echo e(trans('home_master.tot_nhat_phu_hop_voi_ban')); ?></span> <span class="nowrap"><?php echo e(trans('home_master.chua_co_tai_khoan')); ?></span><span class="btn-noinfo nowrap"><a href="<?php echo e(url('/register')); ?>" style="color: #81F7F3"><?php echo e(trans('home_master.dang_ky_ngay')); ?></a></span>
                             </p>
                         </div>
                             <?php endif; ?>
@@ -54,7 +99,7 @@
                     <div class="post-footer-meta">
                         <!-- social button -->
                         <div class="post-sns">
-                            <p class="share-title"><i class="fas fa-share-alt"></i>Share:</p>
+                            <p class="share-title"><i class="fas fa-share-alt"></i><?php echo e(trans('news.share')); ?>:</p>
                             <div class="fb-share-button"
                                  data-href="<?php echo e(url()->current()); ?>"
                                  data-layout="button_count">
@@ -63,7 +108,7 @@
                         </div>
                         <!-- post-tag -->
                         <div class="post-tags">
-                            <p class="tags-title"><i class="fas fa-tags"></i>Tags:</p>
+                            <p class="tags-title"><i class="fas fa-tags"></i><?php echo e(trans('news.tags')); ?>:</p>
                             <?php
                             if($itemnews->newtag !=""){
                                 $tags = explode(", ", $itemnews->newtag);
@@ -81,7 +126,7 @@
                 <!-- BEGIN .content-panel facebook-panel -->
                 <div class="content-panel fb-comment">
                     <div class="content-panel-title">
-                        <h2> Ý kiến của bạn</h2>
+                        <h2> <?php echo e(trans('news.your_opinion')); ?></h2>
                     </div>
                     <div class="content-panel-body">
                         <div class="fb-comments" data-href="<?php echo e(url()->current()); ?>" data-width="100%" data-numposts="5"></div>
@@ -93,7 +138,7 @@
                 <?php if($new_in_list_active->count()>0): ?>
                 <div class="content-panel carousel-type">
                     <div class="content-panel-title">
-                        <h2>Đọc tiếp</h2>
+                        <h2><?php echo e(trans('news.continue_reading')); ?></h2>
                     </div>
                     <div class="content-panel-body">
                        <ul class="panel-items">

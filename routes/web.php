@@ -6,7 +6,7 @@ Route::get('/chi-tiet/{slug}',['as'=>'news','uses'=>'HomeController@news']);
 Route::get('/user',['as'=>'pay','uses'=>'HomeController@user']);
 Route::get('/error_404',['as'=>'error_404','uses'=>'HomeController@error_404']);
 Route::get('/not_found_content',['as'=>'not_found_content','uses'=>'HomeController@not_found_content']);
-// Route::get('/ok', 'HomeController@ok');
+
 Route::get('/ok',['as'=>'ok','uses'=>'HomeController@ok']);
 Route::get('/register', 'HomeController@register');
 Route::post('register',['as'=>'register','uses'=>'HomeController@postRegister']);
@@ -14,25 +14,31 @@ Route::get('/login', 'HomeController@login');
 Route::post('login',['as'=>'login','uses'=>'HomeController@postLogin']);
 Route::get('/logout', 'CustomerController@logout');
 
-// loadmore
+
 Route::get('loadmoremod', ['as' => 'loadmoremod', 'uses' => 'HomeController@loadmore_news_in_mod']);
 Route::get('loadmorelist', ['as' => 'loadmorelist', 'uses' => 'HomeController@loadmore_news_in_list']);
-// search  + tag 
+
 Route::get('search', ['as' => 'search', 'uses' => 'HomeController@search']);
 Route::get('tags/{tag}', ['as' => 'tags', 'uses' => 'HomeController@tags']);
-//lien he
+
 Route::get('lien-he', ['as' => 'lien_he', 'uses' => 'HomeController@lien_he']);
+Route::post('lien-he', ['as' => 'lien_he', 'uses' => 'HomeController@post_lien_he']);
+Route::get('mail/send', 'MailController@send');
 Route::get('gioi-thieu', ['as' => 'gioi_thieu', 'uses' => 'HomeController@gioi_thieu']);
 Route::get('hinh-thanh', ['as' => 'hinh_thanh', 'uses' => 'HomeController@hinh_thanh']);
 Route::get('linh-vuc', ['as' => 'linh_vuc', 'uses' => 'HomeController@linh_vuc']);
 Route::get('my-profile', ['as' => 'my_profile', 'uses' => 'HomeController@my_profile']);
 Route::post('my-profile', ['as' => 'my_profile', 'uses' => 'HomeController@post_my_profile']);
 
+// Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
+// Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+// Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset.token');
+// Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+Route::get('send-mail-reset-pass', ['as' => 'send-mail-reset-pass', 'uses' => 'CustomerController@send_mail_reset_pass']);
+Route::post('send-mail-reset-pass', ['as' => 'send-mail-reset-pass', 'uses' => 'CustomerController@post_send_mail_reset_pass']);
+Route::get('password/reset/{token}', 'CustomerController@showResetForm')->name('password.reset.token');
+Route::post('password/reset', 'CustomerController@resetPass')->name('password.reset');
 
-//Social Login
-//config redirect trong config/services.php
-// http://localhost/longtrico/login/redirect/google
-// http://localhost/longtrico/login/redirect/facebook
 Route::get('/login_social/{provider?}/{page_return?}', 'CustomerController@login_social');
 Route::get('/login/redirect/{provider?}', 'CustomerController@login_redirect');
 Route::get('/login/callback/{provider?}', 'CustomerController@login_callback');
@@ -55,27 +61,22 @@ Route::get('get_post_ajax',['as'=>'get_post_ajax', 'uses'=>'HomeController@get_p
 Route::get('mail', 'Controller@mail');
 Route::get('setlocale/{locale}','Controller@Setlocale');
 
+
+Route::group(['middleware' => 'locale'], function(){
+    Route::get('change-language/{language}', 'HomeController@changeLanguage')->name('user.change-language');
+});
+
 Route::get('auth/login','UserController@GetLoginAdmin');
 Route::post('auth/login','UserController@PostLoginAdmin');
 
 Route::group(['prefix'=>'admin','middleware'=>'controller'],function(){
-    Route::get('/','OrderController@HomeAdmin');
+    // Route::get('/','OrderController@HomeAdmin');
+    Route::get('/','NewsController@ListNews');
 
     Route::group(['prefix'=>'auth'],function(){
         Route::get('logout','UserController@GetLogoutAdmin');
         Route::post('changepass','UserController@ChangePassAdmin');
 
-    });
-    Route::group(['prefix'=>'order'],function(){
-        Route::get('list','OrderController@GetOrder');
-        Route::post('add','OrderController@PostADOrder');
-        Route::get('chart','OrderController@ChartOrder');
-        // view ==================================
-        Route::get('view/{id}','OrderController@ViewOrder');
-        Route::get('print/{id}','OrderController@PrinterOrder');
-        Route::post('changestt','OrderController@ChangesttOrder');
-        Route::post('editadd','OrderController@EditAddOrder');
-        Route::post('deladd','OrderController@DelAddOrder');
     });
     Route::group(['prefix'=>'contact'],function(){
         Route::get('/','LanguageController@getContactEdit');
@@ -120,7 +121,6 @@ Route::group(['prefix'=>'admin','middleware'=>'controller'],function(){
         Route::post('list/edit','SocicalController@EditSocical'); 
         Route::post('list/delete','SocicalController@DeleteSocical'); 
     });
-    //news
     Route::group(['prefix'=>'modnews'],function(){
         Route::get('list','ModNewsController@ListModNews');
         Route::post('list','ModNewsController@AddModNews');
